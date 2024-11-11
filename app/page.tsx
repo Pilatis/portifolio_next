@@ -4,7 +4,7 @@ import React from 'react'
 import { FloatingNav } from '@/components/ui/FloatingNav';
 import Hero from "@/components/Hero";
 import Grid from '@/components/Grid';
-import { navItems, NavItemsTypes } from '@/utils/navItems';
+import { navItems, NavItemsTypes } from '@/data/navItems';
 
 export default function Home() {
   return (
