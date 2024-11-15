@@ -1,4 +1,4 @@
-export interface BentoGridItemTypes {
+export interface GridItemTypes {
     className?: string;
     title?: string | React.ReactNode;
     description?: string;

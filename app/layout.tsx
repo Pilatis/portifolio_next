@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ThemeProvider } from "./provider";
 import "./globals.css";
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Lucas Portifolio",
@@ -15,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br" suppressHydrationWarning>
         <body>
+          <React.StrictMode>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -23,6 +25,7 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
+          </React.StrictMode>
         </body>
     </html>
   );

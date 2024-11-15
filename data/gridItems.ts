@@ -1,15 +1,6 @@
-export interface GridItemsTypes {
-  id: number;
-  title: string;
-  description?: string;
-  className: string;
-  imageClassName?: string;
-  titleClassName: string;
-  image?: string;
-  spareImage?: string;
-}
+import { GridItemTypes } from '@/types/bentoGridItemTypes';
 
-export const gridItems: GridItemsTypes[] = [
+export const gridItems: GridItemTypes[] = [
   {
     id: 1,
     title: 'I prioritize client collaboration, fostering open communication',

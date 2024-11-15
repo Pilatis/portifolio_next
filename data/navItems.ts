@@ -1,8 +1,4 @@
-export interface NavItemsTypes {
-    id: number;
-    title: string;
-    link: string;
-}
+import { NavItemsTypes } from '@/types/NavItemsTypes';
 
 export const navItems: NavItemsTypes[] = [
     { id: 1, title: 'About', link: '#about' },
