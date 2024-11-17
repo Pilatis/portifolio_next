@@ -13,7 +13,9 @@ export const gridItems: GridItemTypes[] = [
     id: 2,
     title: 'I´m very flexible with time zone commnuicatios',
     className: 'lg:col-span-2 md:col-span-3 md:row-span-2',
-    titleClassName: 'justify-start'
+    titleClassName: 'justify-start',
+    imageClassName: 'absolute bottom-0',
+    image: 'section.svg',
   },
   {
     id: 3,
