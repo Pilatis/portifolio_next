@@ -3,13 +3,13 @@
 import React from 'react';
 import { BentoGrid, BentoGridItem } from '../ui/BentoGrid';
 import { gridItems } from '@/data/gridItems';
-import { GridItemsTypes } from '@/data/gridItems';
+import { GridItemTypes } from '@/types/bentoGridItemTypes';
 
 const Grid: React.FC = () => {
   return (
     <section id="about">
       <BentoGrid>
-        {gridItems.map((item: GridItemsTypes) => (
+        {gridItems.map((item: GridItemTypes) => (
           <BentoGridItem
             id={item.id}
             key={item.id}
