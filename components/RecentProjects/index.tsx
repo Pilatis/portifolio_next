@@ -18,6 +18,7 @@ const RecentProjects = () => {
           >
             <AnimatedPinDemo
               title={item.title}
+              description={item.description}
               href={item.link}
               image={item.image}
               iconList={item.iconsList}
