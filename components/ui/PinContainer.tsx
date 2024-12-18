@@ -4,6 +4,7 @@ import { PinContainer } from '../ui/3dPin';
 import Image from 'next/image';
 import { IconsListTypes, ProjectsItemsTypes } from '@/types/projectsItemsTypes';
 import { AnimatedTooltip } from './AnimatedTooltip';
+import { FaLocationArrow } from 'react-icons/fa';
 
 interface AnimatedPinDemoProps {
   title: string;
@@ -22,7 +23,7 @@ export function AnimatedPinDemo({
 }: AnimatedPinDemoProps) {
   return (
     <PinContainer title={title} href={href}>
-      <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] mb-1">
+      <div className="relative flex items-center justify-center sm:w-[570px] w-[60vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
         <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162d]">
           <Image src="/bg.png" alt="bg-image" width={500} height={500} />
         </div>
@@ -40,7 +41,7 @@ export function AnimatedPinDemo({
       <p className="text-left lg:text-xl lg:font-normal font-light text-sm line-clamp-2">
         {description}
       </p>
-      <div className="flex items-center justify-between mt-7 mb-3">
+      <div className="flex items-center justify-between flex-row sm:flex-col lg:flex-row sm:gap-2 mt-7 mb-3">
         <div className="flex items-center">
           {iconList.map((iconItem) => {
             const items = iconItem.icons.map((image, index) => ({
@@ -51,6 +52,12 @@ export function AnimatedPinDemo({
 
             return <AnimatedTooltip key={iconItem.id} items={items} />;
           })}
+        </div>
+        <div className="flex items-center justify-center">
+          <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+            Check Live Site
+          </p>
+          <FaLocationArrow className="ms-3" color="#CBACF9" />
         </div>
       </div>
     </PinContainer>

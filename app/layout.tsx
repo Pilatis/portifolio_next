@@ -16,7 +16,6 @@ export default function RootLayout({
   return (
     <html lang="pt-br" suppressHydrationWarning>
         <body>
-          <React.StrictMode>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
@@ -25,7 +24,6 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
-          </React.StrictMode>
         </body>
     </html>
   );

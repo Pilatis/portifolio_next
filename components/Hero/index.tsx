@@ -7,7 +7,7 @@ import { FaLocationArrow } from 'react-icons/fa'
 
 const Hero: React.FC = () => {
   return (
-    <div className="pb-28 pt-36">
+    <div className="pb-28 pt-32">
         <div>
           <Spotlight className="-top-40 left-full md:-left-32 md:-top-20 h-screen" fill="white" />
           <Spotlight className="-top-30 left-56 md:-left-42 md:-top-20 w-[20vw] h-[80vh]" fill="white" />
@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
               Hi, I&apos;m Lucas, a Next.js Developer based in Brazil
             </div>
 
-            <MagicButton href="#about" iconPosition="right" icon={<FaLocationArrow spacing={2} />}>
+            <MagicButton  href="#about" iconPosition="right" icon={<FaLocationArrow spacing={2} />}>
               Show my work
             </MagicButton>
           </div>

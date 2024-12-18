@@ -24,7 +24,7 @@ export const projectsItems: ProjectsItemsTypes[] = [
       {
         id: 2,
         icons: ['/next.svg', '/tail.svg', '/ts.svg', '/stream.svg', '/c.svg'],
-        names: ['nemae']
+        names: ['Next.js', 'Tailwind', 'Typescript']
       }
     ],
     link: ''
