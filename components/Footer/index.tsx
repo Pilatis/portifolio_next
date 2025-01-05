@@ -1,6 +1,9 @@
 import React from 'react';
 import MagicButton from '../ui/MagicButton';
-import { FaLocationArrow } from 'react-icons/fa'
+import { FaLocationArrow } from 'react-icons/fa';
+import { socialMediaItems } from '@/data/socialMediaItems';
+import Image from 'next/image';
+import { SocialMediaItemsTypes } from '@/types/socialMediaItemsTypes';
 
 const Footer: React.FC = () => {
   return (
@@ -20,8 +23,12 @@ const Footer: React.FC = () => {
         <p className="md:text-base text-sm md:font-normal font-light">
            Copyright Ⓒ 2025 Lucas
         </p>
-        <div className="w-full flex items-center justify-center">
-
+        <div className="w-full flex items-center md:gap-3 gap-6">
+           {socialMediaItems.map((item: SocialMediaItemsTypes) => (
+            <div key={item.id}>
+              <Image src={item.image} alt={item.image} />
+            </div>
+           ))}
         </div>
       </div>
     </div>
