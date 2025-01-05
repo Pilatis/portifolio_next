@@ -1,16 +1,14 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image'
 import { FloatingNav } from '@/components/ui/FloatingNav';
 import Hero from '@/components/Hero';
 import Grid from '@/components/Grid';
 import { navItems } from '@/data/navItems';
-import { NavItemsTypes } from '@/types/NavItemsTypes';
 import RecentProjects from '@/components/RecentProjects';
-import SVG from '../public/chakra-ui.svg'
 import Experiences from '@/components/Experiences';
 import Approach from '@/components/Approach';
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -19,13 +17,13 @@ export default function Home() {
         <FloatingNav
           navItems={navItems}
         />
-        <div className="pb-20">
+        <div id="about" className="pb-20">
           <Hero />
         </div>
         <div className="pb-11">
           <Grid />
         </div>
-        <div className="">
+        <div id="projects">
           <RecentProjects />
         </div>
         <div className="">
@@ -33,6 +31,9 @@ export default function Home() {
         </div>
         <div className="">
           <Approach />
+        </div>
+        <div className="mt-10">
+          <Footer />
         </div>
       </div>
     </main>

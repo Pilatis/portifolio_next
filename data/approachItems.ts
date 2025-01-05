@@ -20,6 +20,6 @@ export const approachItems: ApproachTypes[] = [
     title: 'Development & launch',
     description:
       "This is where the magic happens! Based on the approved design, I'll translate everything into functional code, building your website from the ground up.",
-    image: 'https://i.imgur.com/nhX3VEW.jpeg'
+    image: 'https://i.imgur.com/PD3BX08.jpeg'
   }
 ];

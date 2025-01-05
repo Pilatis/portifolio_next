@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
               Hi, I&apos;m Lucas, a Next.js Developer based in Brazil
             </div>
 
-            <MagicButton  href="#about" iconPosition="right" icon={<FaLocationArrow spacing={2} />}>
+            <MagicButton href="#about" iconPosition="right" icon={<FaLocationArrow spacing={2} />}>
               Show my work
             </MagicButton>
           </div>
