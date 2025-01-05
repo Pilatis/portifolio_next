@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
         <div className="w-full flex items-center md:gap-3 gap-6">
            {socialMediaItems.map((item: SocialMediaItemsTypes) => (
             <div key={item.id}>
-              <Image src={item.image} alt={item.image} />
+              <Image src={item.image} alt={item.image} width={20} height={20} />
             </div>
            ))}
         </div>
