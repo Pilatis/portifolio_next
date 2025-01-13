@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           achieve your goals
         </p>
       </div>
-      <MagicButton iconPosition="right" icon={<FaLocationArrow size="15px" />}>Let's get in touch</MagicButton>
+      <MagicButton iconPosition="right" icon={<FaLocationArrow size="15px" />}>Let&apos;s get in touch</MagicButton>
       <div className="w-full flex items-center flex-col md:gap-8 lg:justify-between mt-16">
         <p className="md:text-base text-sm md:font-normal font-light">
            Copyright Ⓒ 2025 Lucas
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
         <div className="w-full flex items-center md:gap-3 gap-6">
            {socialMediaItems.map((item: SocialMediaItemsTypes) => (
             <div key={item.id}>
-              <Image src={item.image} alt={item.image} width={20} height={20} />
+              <Image src={item.image} alt={item.name} width={20} height={20} />
             </div>
            ))}
         </div>

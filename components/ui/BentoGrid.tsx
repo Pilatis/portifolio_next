@@ -4,13 +4,15 @@ import { useState } from 'react';
 import { GridItemTypes } from '@/types/bentoGridItemTypes';
 import { cn } from '@/utils/cn';
 import Image from 'next/image';
-import { BackgroundGradientAnimation } from './BackgroundGradiantAnimation';
 import { skillsItems } from '@/data/skillsItems';
 import { SkillsItemsTypes } from '@/types/SkillsItemsTypes';
 import MagicButton from './MagicButton';
 import { IoCopyOutline } from "react-icons/io5";
-import Lottie from 'react-lottie';
 import animationData from '@/data/json/confetti.json'
+import dynamic from 'next/dynamic';
+
+const BackgroundAnimation = dynamic(() => import('./BackgroundGradiantAnimation'), { ssr: false });
+const LottieComponent = dynamic(() => import('react-lottie'), { ssr:  false });
 
 export const BentoGrid = ({
   className,
@@ -44,8 +46,10 @@ export const BentoGridItem = ({
   const [copied, setCopied] = useState<boolean>(false);
   
   const hadleCopy = ():void => {
-    navigator.clipboard.writeText('pilatidev1@gmail.com');
-    setCopied(true);
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText('pilatidev1@gmail.com')
+      setCopied(true);
+    } 
   }
 
   return (
@@ -88,10 +92,7 @@ export const BentoGridItem = ({
           )}
         </div>
         {id === 6 && (
-          <BackgroundGradientAnimation>
-            <div className="absolute z-50 w-full inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl">
-            </div>
-          </BackgroundGradientAnimation>           
+          <BackgroundAnimation />          
         )}
 
         <div
@@ -148,7 +149,7 @@ export const BentoGridItem = ({
           {id === 6 && 
           <div className="relative lg:bottom-4 md:mt-2 sm:-bottom-3">
              <div className="absolute -bottom-5 right-0">
-              <Lottie options={{ loop: copied, autoplay: copied, animationData, rendererSettings: {
+              <LottieComponent options={{ loop: copied, autoplay: copied, animationData, rendererSettings: {
                 preserveAspectRatio: 'xMidYMid slice'
               } }} />
              </div>
