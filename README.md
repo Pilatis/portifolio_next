@@ -25,6 +25,7 @@ git clone https://github.com/seu-usuario/seu-repositorio.git
 
 2. Acesse o diretório do projeto:
 
+```bash
 cd nome-do-projeto
 
 
