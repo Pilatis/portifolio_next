@@ -1,8 +1,9 @@
-🚀 Portfólio Pessoal
+<br />
+<h2>🚀 Portfólio Pessoal</h2>
 
 Este é o meu portfólio pessoal, desenvolvido com Next.js e React.js, utilizando Tailwind CSS para estilização e Sentry para monitoramento e debugging. Além disso, utilizei a Aceternity UI, uma biblioteca de componentes estilizados, para criar uma interface moderna e elegante.
 
-🖥️ Tecnologias Utilizadas
+<h2>🖥️ Tecnologias Utilizadas </h2>
 
 Next.js – Para estruturação otimizada
 
