@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { ThemeProvider } from "./provider";
+import { Inter } from "next/font/google";
+
 import "./globals.css";
-import React from "react";
+import { ThemeProvider } from "./provider";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lucas Portifolio",
-  description: "Modern & Minimalist Portifolio",
+  title: "Lucas Pilati's Portfolio",
+  description: "Modern & Minimal JS Mastery Portfolio",
 };
 
 export default function RootLayout({
@@ -14,17 +17,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-br" suppressHydrationWarning>
-        <body>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-        </body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        
+      </head>
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
