@@ -42,9 +42,6 @@ const Hero = () => {
 
       <div className="flex justify-center relative my-20 z-10">
         <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-          <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-            Dynamic Web Magic with Next.js
-          </p>
 
           {/**
            *  Link: https://ui.aceternity.com/components/text-generate-effect
@@ -57,7 +54,7 @@ const Hero = () => {
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I&apos;m Lucas Pilati, a Next.js Developer based in Brazil.
+            Hi! I&apos;m Lucas Pilati, a Front-End Developer based in Brazil.
           </p>
 
           <a href="#about">
