@@ -5,6 +5,17 @@ export const navItems = [
   { name: "Contact", link: "#contact" },
 ];
 
+export const aboutMe = {
+  title: "About",
+  highlight: "me",
+  paragraphs: [
+    "I’m Lucas Pilati, a Full Stack Developer based in Brazil, passionate about building clean, accessible and high-quality digital experiences.",
+    "I work mainly with React, Next.js and TypeScript, combining strong front-end foundations with back-end knowledge to build complete, reliable applications.",
+    "I enjoy exploring new technologies, improving how products are built, and contributing to projects that create real value for users and businesses.",
+  ],
+  imageAlt: "Lucas Pilati - Full Stack Developer",
+};
+
 export const gridItems = [
   {
     id: 1,
@@ -173,29 +184,29 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Front-end Developer",
-    desc: "Developing modern web applications using Next.js, React and TypeScript to create responsive and performant interfaces.",
+    title: "Full Stack Developer",
+    desc: "Building modern web applications with React, Next.js and TypeScript, focusing on scalability, performance and clean architecture, while integrating front-end and back-end solutions.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Developer App - React Native",
-    desc: "Developing native mobile applications for iOS and Android using React Native, creating fluid and intuitive experiences.",
+    title: "Front-End & Mobile Developer (React Native)",
+    desc: "Developing responsive web interfaces and native mobile applications for iOS and Android using React Native, delivering smooth and intuitive user experiences.",
     className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Freelance application development projects, from initial concept to deployment, delivering customized solutions for clients.",
+    title: "Freelance Full Stack Projects",
+    desc: "Working on freelance projects from concept to deployment, collaborating with clients to deliver customized web and application solutions tailored to real business needs.",
     className: "md:col-span-2",
     thumbnail: "/exp3.svg",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Technical leadership in frontend projects, architecting scalable solutions and mentoring development teams.",
+    title: "Front-End Technical Leadership",
+    desc: "Contributing to technical decisions, defining front-end architecture, and collaborating closely with design and product teams to ensure consistent, scalable solutions.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
