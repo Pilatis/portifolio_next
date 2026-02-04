@@ -1,10 +1,15 @@
+"use client";
+
 import { FaLocationArrow } from "react-icons/fa6";
 
 import MagicButton from "./MagicButton";
 import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
+import { useLanguage } from "@/context/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  const hero = t("hero") as { headline: string; subtitle: string; cta: string };
   return (
     <div className="pb-22 pt-36">
       {/**
@@ -55,17 +60,18 @@ const Hero = () => {
           />
           */}
           <TextGenerateEffect
-            words="Transforming Ideas into Scalable Digital Experiences"
+            key={hero.headline}
+            words={hero.headline}
             className="text-center text-[40px] md:text-5xl lg:text-6xl"
           />
 
           <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-            Hi! I&apos;m Lucas Pilati, a Full Stack Developer based in Brazil.
+            {hero.subtitle}
           </p>
 
           <a href="#about">
             <MagicButton
-              title="Show my work"
+              title={hero.cta}
               icon={<FaLocationArrow />}
               position="right"
             />

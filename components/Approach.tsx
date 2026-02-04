@@ -1,59 +1,58 @@
+"use client";
+
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
+import { useLanguage } from "@/context/LanguageContext";
+
+type ApproachCard = { title: string; order: string; des: string };
 
 const Approach = () => {
+  const { t } = useLanguage();
+  const approach = t("approach") as { heading: string; highlight: string; cards: ApproachCard[] };
+  const cards = approach.cards;
+  const configs = [
+    {
+      containerClassName: "bg-emerald-900 rounded-3xl overflow-hidden",
+      animationSpeed: 5.1,
+      colors: undefined as [number, number, number][] | undefined,
+      dotSize: undefined,
+    },
+    {
+      containerClassName: "bg-pink-900 rounded-3xl overflow-hidden",
+      animationSpeed: 3,
+      colors: [[255, 166, 158], [221, 255, 247]],
+      dotSize: 2,
+    },
+    {
+      containerClassName: "bg-sky-600 rounded-3xl overflow-hidden",
+      animationSpeed: 3,
+      colors: [[125, 211, 252]],
+      dotSize: undefined,
+    },
+  ];
   return (
     <section className="w-full py-20">
       <h1 className="heading">
-        My <span className="text-purple">approach</span>
+        {approach.heading} <span className="text-purple">{approach.highlight}</span>
       </h1>
-      {/* remove bg-white dark:bg-black */}
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center w-full gap-4">
-        {/* add des prop */}
-        <Card
-          title="Planning & Strategy"
-          icon={<AceternityIcon order="Phase 1" />}
-          des="I start by understanding goals, users and technical needs to define the right direction from day one."
-        >
-          <CanvasRevealEffect
-            animationSpeed={5.1}
-            // add these classed for the border rounded overflowing -> rounded-3xl overflow-hidden
-            containerClassName="bg-emerald-900 rounded-3xl overflow-hidden"
-          />
-        </Card>
-        <Card
-          title="Development & Collaboration"
-          icon={<AceternityIcon order="Phase 2" />}
-          des="I build with focus on clean code, clear communication and constant progress updates throughout the process."
-        >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            // change bg-black to bg-pink-900
-            containerClassName="bg-pink-900 rounded-3xl overflow-hidden"
-            colors={[
-              // change the colors of the
-              [255, 166, 158],
-              [221, 255, 247],
-            ]}
-            dotSize={2}
-          />
-          {/* Radial gradient for the cute fade */}
-          {/* remove this one */}
-          {/* <div className="absolute inset-0 [mask-image:radial-gradient(400px_at_center,white,transparent)] bg-black/50 dark:bg-black/90" /> */}
-        </Card>
-        <Card
-          title="Delivery & Evolution"
-          icon={<AceternityIcon order="Phase 3" />}
-          des="I deliver scalable, production-ready solutions and continuously improve them based on real usage and feedback."
-        >
-          <CanvasRevealEffect
-            animationSpeed={3}
-            containerClassName="bg-sky-600 rounded-3xl overflow-hidden"
-            colors={[[125, 211, 252]]}
-          />
-        </Card>
+        {cards.map((card, i) => (
+          <Card
+            key={i}
+            title={card.title}
+            icon={<AceternityIcon order={card.order} />}
+            des={card.des}
+          >
+            <CanvasRevealEffect
+              animationSpeed={configs[i].animationSpeed}
+              containerClassName={configs[i].containerClassName}
+              colors={configs[i].colors}
+              dotSize={configs[i].dotSize}
+            />
+          </Card>
+        ))}
       </div>
     </section>
   );

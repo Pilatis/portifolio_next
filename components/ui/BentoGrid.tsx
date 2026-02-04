@@ -1,17 +1,17 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
 
-// Also install this npm i --save-dev @types/react-lottie
 const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 import { cn } from "@/lib/utils";
-
-
 import { BackgroundGradientAnimation } from "./GradientBg";
 import GridGlobe from "./GridGlobe";
 import animationData from "@/data/confetti.json";
 import MagicButton from "../MagicButton";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const BentoGrid = ({
   className,
@@ -57,6 +57,8 @@ export const BentoGridItem = ({
   const rightLists = ["React Native", "JavaScript", "Node.js"];
 
   const [copied, setCopied] = useState(false);
+  const { t } = useLanguage();
+  const bento = t("bento") as { copyEmail: string; emailCopied: string };
 
   const defaultOptions = {
     loop: copied,
@@ -188,7 +190,7 @@ export const BentoGridItem = ({
               </div>
 
               <MagicButton
-                title={copied ? "Email is Copied!" : "Copy my email address"}
+                title={copied ? bento.emailCopied : bento.copyEmail}
                 icon={<IoCopyOutline />}
                 position="left"
                 handleClick={handleCopy}

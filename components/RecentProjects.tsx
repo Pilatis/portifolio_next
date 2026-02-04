@@ -4,16 +4,19 @@ import { FaLocationArrow } from "react-icons/fa6";
 
 import { projects } from "@/data";
 import { PinContainer } from "./ui/Pin";
+import { useLanguage } from "@/context/LanguageContext";
 
 const RecentProjects = () => {
+  const { t } = useLanguage();
+  const projectsT = t("projects") as { heading: string; highlight: string; checkLiveSite: string; items: Array<{ title: string; des: string }> };
   return (
     <div className="py-20">
       <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-purple">recent projects</span>
+        {projectsT.heading}{" "}
+        <span className="text-purple">{projectsT.highlight}</span>
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
-        {projects.map((item) => (
+        {projects.map((item, index) => (
           <div
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             key={item.id}
@@ -37,7 +40,7 @@ const RecentProjects = () => {
               </div>
 
               <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
-                {item.title}
+                {projectsT.items[index]?.title ?? item.title}
               </h1>
 
               <p
@@ -47,7 +50,7 @@ const RecentProjects = () => {
                   margin: "1vh 0",
                 }}
               >
-                {item.des}
+                {projectsT.items[index]?.des ?? item.des}
               </p>
 
               <div className="flex items-center justify-between mt-7 mb-3">
@@ -67,7 +70,7 @@ const RecentProjects = () => {
 
                 <div className="flex justify-center items-center">
                   <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    Check Live Site
+                    {projectsT.checkLiveSite}
                   </p>
                   <FaLocationArrow className="ms-3" color="#CBACF9" />
                 </div>
