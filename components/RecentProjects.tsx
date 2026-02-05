@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
 
 import { projects } from "@/data";
@@ -17,13 +18,14 @@ const RecentProjects = () => {
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {projects.map((item, index) => (
-          <div
+          <Link
+            href={`/${item.id}`}
             className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
             key={item.id}
           >
             <PinContainer
-              title="/ui.aceternity.com"
-              href="https://twitter.com/mannupaaji"
+              title={projectsT.checkLiveSite}
+              href={`/${item.id}`}
             >
               <div className="relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10">
                 <div
@@ -69,14 +71,20 @@ const RecentProjects = () => {
                 </div>
 
                 <div className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
-                    {projectsT.checkLiveSite}
-                  </p>
-                  <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  <a
+                    href={item.link?.startsWith("http") ? item.link : `https://${item.link?.replace(/^\//, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="flex items-center lg:text-xl md:text-xs text-sm text-purple hover:underline"
+                  >
+                    <span className="flex">{projectsT.checkLiveSite}</span>
+                    <FaLocationArrow className="ms-3" color="#CBACF9" />
+                  </a>
                 </div>
               </div>
             </PinContainer>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

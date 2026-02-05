@@ -103,6 +103,12 @@ const translations = {
       copyEmail: "Copy my email address",
       emailCopied: "Email is Copied!",
     },
+    projectPage: {
+      backToProjects: "Back to projects",
+      aboutTitle: "About this project",
+      techStack: "Tech stack",
+      notFound: "Project not found.",
+    },
   },
   pt: {
     nav: {
@@ -205,6 +211,12 @@ const translations = {
     bento: {
       copyEmail: "Copiar meu e-mail",
       emailCopied: "E-mail copiado!",
+    },
+    projectPage: {
+      backToProjects: "Voltar aos projetos",
+      aboutTitle: "Sobre o projeto",
+      techStack: "Stack técnico",
+      notFound: "Projeto não encontrado.",
     },
   },
 } as const;
