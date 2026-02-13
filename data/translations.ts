@@ -222,17 +222,17 @@ const translations = {
       cards: [
         {
           title: "Planejamento e Estratégia",
-          order: "Fase 1",
+          order: "Frase 1",
           des: "Começo entendendo objetivos, usuários e necessidades técnicas para definir a direção certa desde o primeiro dia.",
         },
         {
           title: "Desenvolvimento e Colaboração",
-          order: "Fase 2",
+          order: "Frase 2",
           des: "Desenvolvo com foco em código limpo, comunicação clara e atualizações constantes durante todo o processo.",
         },
         {
           title: "Entrega e Evolução",
-          order: "Fase 3",
+          order: "Frase 3",
           des: "Entrego soluções escaláveis e prontas para produção e as melhoro continuamente com base em uso real e feedback.",
         },
       ],

@@ -74,6 +74,8 @@ export default function ProjectPage() {
     );
   }
 
+  const backHref = `/#project-${project.id}`;
+
   return (
     <div key={lang} className="min-h-screen bg-black-100 relative overflow-hidden">
       {/* Background */}
@@ -94,7 +96,8 @@ export default function ProjectPage() {
           className="mb-8 md:mb-12"
         >
           <Link
-            href="/#projects"
+            href={backHref}
+            scroll={false}
             className="inline-flex items-center gap-2 text-white-200 hover:text-purple transition-colors text-sm md:text-base"
           >
             <IoArrowBack className="text-lg" />

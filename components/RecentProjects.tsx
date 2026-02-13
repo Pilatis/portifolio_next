@@ -11,18 +11,18 @@ const RecentProjects = () => {
   const { t } = useLanguage();
   const projectsT = t("projects") as { heading: string; highlight: string; checkLiveSite: string; items: Array<{ title: string; des: string }> };
   return (
-    <div className="py-20">
+    <div id="projects" className=" scroll-mt-20">
       <h1 className="heading">
         {projectsT.heading}{" "}
         <span className="text-purple">{projectsT.highlight}</span>
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {projects.map((item, index) => (
-          <Link
-            href={`/${item.id}`}
-            className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
-            key={item.id}
-          >
+          <div key={item.id} id={`project-${item.id}`} className="scroll-mt-24">
+            <Link
+              href={`/${item.id}`}
+              className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+            >
             <PinContainer
               title={projectsT.checkLiveSite}
               href={`/${item.id}`}
@@ -86,6 +86,7 @@ const RecentProjects = () => {
               </div>
             </PinContainer>
           </Link>
+          </div>
         ))}
       </div>
     </div>

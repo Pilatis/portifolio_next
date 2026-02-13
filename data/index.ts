@@ -95,6 +95,9 @@ export const STACK_LABELS: Record<string, string> = {
   "/stream.svg": "Stream",
   "/dock.svg": "Docker",
   "/c.svg": "C",
+  "/java.svg": "Java",
+  "/postgresql.svg": "PostgreSQL",
+  "/chakra.svg": "Chakra UI",
 };
 
 export const projects = [
@@ -103,7 +106,7 @@ export const projects = [
     title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
     des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
     img: "/voxa/voxa1.PNG",
-    iconLists: ["/re.svg", "/next.svg", "/stream.svg", "/ts.svg", "/dock.svg", "/git.svg"],
+    iconLists: ["/re.svg", "/next.svg", "/ts.svg", "/chakra.svg", "/dock.svg", "/git.svg", "/java.svg", "/postgresql.svg", "/git.svg"],
     link: "",
     media: [
       { src: "/voxa/voxa1.PNG", type: "image" as const },
@@ -120,7 +123,7 @@ export const projects = [
     des: "Um editor de texto simples feito com Electron, com suporte para abrir, editar, salvar e renomear arquivos .txt",
     img: "/p2.svg",
     images: ["/p2.svg", "/bg.png", "/grid.svg"],
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/chakra.svg", "/stream.svg", "/c.svg"],
     link: "/ui.yoom.com",
   },
   {
@@ -128,7 +131,7 @@ export const projects = [
     title: "DR Insights — Plataforma de Inteligência e Análise de Dados",
     des: "Plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.",
     img: "/dr/DrInsights4.PNG",
-    iconLists: ["/next.svg", "/re.svg", "/ts.svg", "/git.svg", "/tail.svg"],
+    iconLists: ["/next.svg", "/re.svg", "/ts.svg", "/chakra.svg", "java.svg", "/postgresql.svg", "/git.svg"],
     link: "",
     media: [
       { src: "/dr/dr2.PNG", type: "image" as const },
