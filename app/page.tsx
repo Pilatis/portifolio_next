@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { navItems } from "@/data";
 
 import Hero from "@/components/Hero";
@@ -13,8 +15,23 @@ import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 
 const Home = () => {
+  const pathname = usePathname();
+
+  // Scroll para o projeto pelo hash após montar (evita layout quebrado ao voltar pelo back)
+  useEffect(() => {
+    if (pathname !== "/" || typeof window === "undefined") return;
+    const hash = window.location.hash?.slice(1);
+    if (!hash || !hash.startsWith("project-")) return;
+    const el = document.getElementById(hash);
+    if (el) {
+      requestAnimationFrame(() => {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }, [pathname]);
+
   return (
-    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5">
+    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-x-hidden mx-auto sm:px-10 px-5">
       <div className="max-w-7xl w-full">
         {/* <FloatingNav navItems={navItems} /> */}
         <Hero />

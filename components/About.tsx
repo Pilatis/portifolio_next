@@ -2,15 +2,22 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { aboutMe } from "@/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { MovingBorder } from "./ui/MovingBorders";
 import { cn } from "@/lib/utils";
 
-// Photo in public folder (spaces encoded for URL)
 const PHOTO_SRC = "/Foto%20Profissional%20-%202.PNG";
 
+type AboutContent = {
+  title: string;
+  highlight: string;
+  paragraphs: string[];
+  imageAlt: string;
+};
 
 export default function About() {
+  const { t } = useLanguage();
+  const about = t("about") as AboutContent;
   return (
     <section
       id="about"
@@ -37,17 +44,16 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-              About{" "}
-              <span className="text-purple">{aboutMe.highlight}</span>
+              {about.title}{" "}
+              <span className="text-purple">{about.highlight}</span>
             </h2>
             <div className="space-y-4 text-white-200 text-base md:text-lg leading-relaxed">
-              {aboutMe.paragraphs.map((paragraph, i) => (
+              {about.paragraphs.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
             </div>
           </motion.div>
 
-          {/* Right: photo with Aceternity MovingBorder */}
           <motion.div
             className="flex justify-center lg:justify-end order-1 lg:order-2"
             initial={{ opacity: 0, x: 24 }}
@@ -55,7 +61,7 @@ export default function About() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
           >
-            <PhotoWithMovingBorder />
+            <PhotoWithMovingBorder imageAlt={about.imageAlt} />
           </motion.div>
         </div>
       </div>
@@ -63,7 +69,7 @@ export default function About() {
   );
 }
 
-function PhotoWithMovingBorder() {
+function PhotoWithMovingBorder({ imageAlt }: { imageAlt: string }) {
   const [mounted, setMounted] = useState(false);
   const borderRadius = "1.5rem";
   const innerRadius = "calc(1.5rem * 0.96)";
@@ -80,7 +86,6 @@ function PhotoWithMovingBorder() {
       )}
       style={{ borderRadius }}
     >
-      {/* Moving border only on client to avoid hydration mismatch (SVG/useAnimationFrame) */}
       {mounted && (
         <div
           className="absolute inset-0 rounded-[1.5rem]"
@@ -92,14 +97,13 @@ function PhotoWithMovingBorder() {
         </div>
       )}
 
-      {/* Inner content: photo + subtle border */}
       <div
         className="relative w-full h-full rounded-[1.5rem] overflow-hidden border border-white/10 bg-black/40"
         style={{ borderRadius: innerRadius }}
       >
         <img
           src={PHOTO_SRC}
-          alt={aboutMe.imageAlt}
+          alt={imageAlt}
           className="w-full h-full object-cover object-top"
           loading="eager"
         />

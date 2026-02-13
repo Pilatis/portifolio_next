@@ -19,7 +19,7 @@ export const aboutMe = {
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
+    title: "Collaborative mindset with designers, product and engineering teams.",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -49,7 +49,7 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
+    title: "Clean, scalable code with performance and usability in mind.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -60,7 +60,7 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
+    title: "Exploring advanced JavaScript and UI animations.",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -70,7 +70,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Do you want to start a project together?",
+    title: "Always open to new challenges and impactful projects.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -80,22 +80,67 @@ export const gridItems = [
   },
 ];
 
+export type ProjectMediaItem = {
+  src: string;
+  type: "image" | "video";
+};
+
+/** Nomes das tecnologias para tooltip nos ícones da stack */
+export const STACK_LABELS: Record<string, string> = {
+  "/next.svg": "Next.js",
+  "/re.svg": "React",
+  "/ts.svg": "TypeScript",
+  "/git.svg": "Git",
+  "/tail.svg": "Tailwind CSS",
+  "/stream.svg": "Stream",
+  "/dock.svg": "Docker",
+  "/c.svg": "C",
+  "/java.svg": "Java",
+  "/postgresql.svg": "PostgreSQL",
+  "/chakra.svg": "Chakra UI",
+};
+
 export const projects = [
   {
     id: 1,
-    title: "Ecommerce App",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/next.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
+    des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
+    img: "/voxa/voxa1.PNG",
+    iconLists: ["/re.svg", "/next.svg", "/ts.svg", "/chakra.svg", "/dock.svg", "/git.svg", "/java.svg", "/postgresql.svg", "/git.svg"],
+    link: "",
+    media: [
+      { src: "/voxa/voxa1.PNG", type: "image" as const },
+      { src: "/voxa/voxa2.PNG", type: "image" as const },
+      { src: "/voxa/solu2.PNG", type: "image" as const },
+      { src: "/voxa/Video%20Project%202.mp4", type: "video" as const },
+    ],
+    clientName: "Cognitiva Brasil",
+    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
   },
   {
     id: 2,
     title: "Electron Editor App",
     des: "Um editor de texto simples feito com Electron, com suporte para abrir, editar, salvar e renomear arquivos .txt",
     img: "/p2.svg",
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
+    images: ["/p2.svg", "/bg.png", "/grid.svg"],
+    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/chakra.svg", "/stream.svg", "/c.svg"],
     link: "/ui.yoom.com",
+  },
+  {
+    id: 3,
+    title: "DR Insights — Plataforma de Inteligência e Análise de Dados",
+    des: "Plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.",
+    img: "/dr/DrInsights4.PNG",
+    iconLists: ["/next.svg", "/re.svg", "/ts.svg", "/chakra.svg", "java.svg", "/postgresql.svg", "/git.svg"],
+    link: "",
+    media: [
+      { src: "/dr/dr2.PNG", type: "image" as const },
+      { src: "/dr/Dr6.PNG", type: "image" as const },
+      { src: "/dr/Dr3.PNG", type: "image" as const },
+      { src: "/dr/DrInsights4.PNG", type: "image" as const },
+    ],
+    clientName: "Cognitiva Brasil",
+    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
   },
   // {
   //   id: 3,
