@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
 
-import { projects } from "@/data";
+import { projects, STACK_LABELS } from "@/data";
 import { PinContainer } from "./ui/Pin";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -60,12 +60,13 @@ const RecentProjects = () => {
                   {item.iconLists && item.iconLists.length > 0 && item.iconLists.map((icon, index) => (
                     <div
                       key={index}
-                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                      title={STACK_LABELS[icon] ?? icon.replace(/^\/(.*)\.svg$/i, "$1")}
+                      className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center cursor-default"
                       style={{
                         transform: `translateX(-${5 * index + 2}px)`,
                       }}
                     >
-                      <img src={icon} alt="icon5" className="p-2" />
+                      <img src={icon} alt={STACK_LABELS[icon] ?? ""} className="p-2" />
                     </div>
                   ))}
                 </div>

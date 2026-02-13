@@ -39,12 +39,30 @@ const translations = {
       checkLiveSite: "Check Live Site",
       items: [
         {
-          title: "Ecommerce App",
-          des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
+          title: "Voxa – Career Development and Guidance Platform",
+          des: "Digital platform for self-awareness and career guidance, with assessments, tests and AI-powered interview simulation.",
+          fullDes: "I worked as a Front-end Developer on Voxa, a digital platform focused on helping people understand themselves better professionally and make more assertive decisions about their career. The project brings together different assessments and interactive experiences: career moment and professional goals tests, problem-solving and quick reasoning assessments, person–company fit mapping, leadership potential assessment through cognitive stimuli, and interview simulation with an AI-based interactive chat that analyzes answers and calculates results in real time. On the front-end, I built interactive and responsive interfaces, ensuring clear presentation of the tests, good user experience and smooth navigation through complex flow steps. I worked in close collaboration with product, UX and development teams, contributing to the continuous evolution of the platform and to an intuitive, reliable experience for the end user. The project involved challenges such as organizing dynamic flows, displaying personalized results and integrating with assessment logic, always with a focus on usability, accessibility and interface quality.",
+          media: [
+            { title: "Homepage", description: "Landing page of the Voxa platform, presenting the professional self-awareness journey, with access to career tests, job discovery and selection process simulation, in a modern, UX-focused layout." },
+            { title: "Tests and Results", description: "Overview of the platform's main tests (Career Moment, Solu, Fit Mapping and Volt), with consolidated results and insights on professional profile and potential." },
+            { title: "Solu Assessment", description: "Solu assessment interface, one of the platform's core evaluations for professional profile and problem-solving style." },
+            { title: "Interview Simulation", description: "Demo of the interview simulation with AI-based interactive chat, evaluating user answers and generating feedback for professional development." },
+          ],
         },
         {
           title: "Electron Editor App",
           des: "A simple text editor built with Electron, with support for opening, editing, saving and renaming .txt files.",
+        },
+        {
+          title: "DR Insights — Data Intelligence and Analytics Platform",
+          des: "Insights and data analytics platform for companies, integrating multiple social media APIs for analysis of posts, texts, documents and startup data.",
+          fullDes: "I worked as a Front-End Developer on a data insights and analytics platform for companies, integrating multiple social media APIs to analyze posts, texts, documents and startup data. The solution generates strategic insights through relational charts, pivot tables and interactive visualizations. I was responsible for developing responsive and scalable interfaces, with a focus on usability, performance and user experience. In collaboration with other developers and the UX team, I participated in daily meetings and technical decisions for the continuous evolution of the product. One of the highlights was the implementation of an interactive map that displays and marks company locations, enabling intuitive exploration of geographic data and expanding the visual analysis of insights presented on the platform.",
+          media: [
+            { title: "Interactive Company Map", description: "Interactive map that displays and marks companies geographically based on dynamic filters, enabling visual exploration of data, regional analysis and identification of market patterns in an intuitive and responsive way." },
+            { title: "Intelligent Term Search", description: "Intelligent search interface that allows analysis of terms across multiple market APIs, consolidating data from social networks and external sources to generate strategic insights, trends and relevant opportunities for companies." },
+            { title: "Text and Document Analysis", description: "Advanced text and document analysis module, responsible for processing large volumes of information and transforming unstructured data into actionable insights, supporting strategic decisions and market analysis." },
+            { title: "Homepage", description: "Platform homepage where the user searches for terms, themes or strategic topics. The feature consolidates data from multiple social networks and digital sources, returning an overview with charts, related topics and relevant indicators, facilitating trend analysis and data-driven decision making." },
+          ],
         },
       ],
     },
@@ -107,6 +125,7 @@ const translations = {
       backToProjects: "Back to projects",
       aboutTitle: "About this project",
       techStack: "Tech stack",
+      inPartnershipWith: "In partnership with",
       notFound: "Project not found.",
     },
   },
@@ -148,12 +167,30 @@ const translations = {
       checkLiveSite: "Ver site",
       items: [
         {
-          title: "Ecommerce App",
-          des: "Explore o sistema solar com esta simulação 3D dos planetas feita em Three.js.",
+          title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
+          des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
+          fullDes: "Atuação como Desenvolvedor Front-end no desenvolvimento do Voxa, uma plataforma digital focada em ajudar pessoas a se conhecerem melhor profissionalmente e tomarem decisões mais assertivas sobre sua carreira. O projeto reúne diferentes avaliações e experiências interativas, como: testes de momento de carreira e definição de objetivos profissionais; avaliações de resolução de problemas e raciocínio rápido; mapeamento de compatibilidade pessoa–empresa; avaliação de potencial de liderança por meio de estímulos cognitivos; simulação de entrevistas com chat interativo baseado em IA, com análise das respostas e cálculo de resultados em tempo real. No front-end, atuei na construção de interfaces interativas e responsivas, garantindo clareza na apresentação dos testes, boa experiência do usuário e fluidez na navegação entre etapas complexas do fluxo. Trabalhei em colaboração direta com time de produto, UX e desenvolvimento, contribuindo para a evolução contínua da plataforma e para a entrega de uma experiência intuitiva e confiável ao usuário final. O projeto envolveu desafios como organização de fluxos dinâmicos, exibição de resultados personalizados e integração com lógicas de avaliação, sempre com foco em usabilidade, acessibilidade e qualidade da interface.",
+          media: [
+            { title: "Homepage", description: "Tela inicial da plataforma Voxa, apresentando a jornada de autoconhecimento profissional, com acesso aos testes de carreira, descoberta de vagas e simulação de processos seletivos, em um layout moderno e focado em UX." },
+            { title: "Testes e Resultados", description: "Visão geral dos principais testes da plataforma (Momento de Carreira, Solu, Mapeamento de Compatibilidade e Volt), com consolidação de resultados e insights sobre perfil profissional e potencial." },
+            { title: "Avaliação Solu", description: "Interface da avaliação Solu, uma das principais avaliações da plataforma para perfil profissional e estilo de resolução de problemas." },
+            { title: "Simulação de Entrevista", description: "Demonstração da simulação de entrevista com chat interativo baseado em IA, avaliando respostas do usuário e gerando feedbacks para desenvolvimento profissional." },
+          ],
         },
         {
           title: "Electron Editor App",
           des: "Editor de texto simples feito com Electron: abrir, editar, salvar e renomear arquivos .txt.",
+        },
+        {
+          title: "DR Insights — Plataforma de Inteligência e Análise de Dados",
+          des: "Plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.",
+          fullDes: "Atuei como Desenvolvedor Front-End em uma plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups. A solução gera insights estratégicos por meio de gráficos relacionais, tabelas dinâmicas e visualizações interativas. Fui responsável pelo desenvolvimento de interfaces responsivas e escaláveis, com foco em usabilidade, performance e experiência do usuário. Em colaboração com outros desenvolvedores e o time de UX, participei de reuniões diárias e decisões técnicas para evolução contínua do produto. Um dos destaques do projeto foi a implementação de um mapa interativo, que exibe e marca a localização das empresas, permitindo a exploração intuitiva de dados geográficos e ampliando a análise visual dos insights apresentados na plataforma.",
+          media: [
+            { title: "Mapa Interativo de Empresas", description: "Mapa interativo que exibe e marca empresas geograficamente a partir de filtros dinâmicos, permitindo a exploração visual de dados, análise regional e identificação de padrões de mercado de forma intuitiva e responsiva." },
+            { title: "Busca Inteligente de Termos", description: "Interface de busca inteligente que permite a análise de termos em múltiplas APIs de mercado, consolidando dados de redes sociais e fontes externas para gerar insights estratégicos, tendências e oportunidades relevantes para empresas." },
+            { title: "Análise de Textos e Documentos", description: "Módulo de análise avançada de textos e documentos, responsável por processar grandes volumes de informação e transformar dados não estruturados em insights acionáveis, apoiando decisões estratégicas e análises de mercado." },
+            { title: "Página Inicial", description: "Página inicial da plataforma onde o usuário realiza pesquisas por termos, temas ou assuntos estratégicos. O recurso consolida dados de múltiplas redes sociais e fontes digitais, retornando uma visão geral com gráficos, tópicos relacionados e indicadores relevantes, facilitando a análise de tendências e a tomada de decisões baseada em dados." },
+          ],
         },
       ],
     },
@@ -216,6 +253,7 @@ const translations = {
       backToProjects: "Voltar aos projetos",
       aboutTitle: "Sobre o projeto",
       techStack: "Stack técnico",
+      inPartnershipWith: "Associado a",
       notFound: "Projeto não encontrado.",
     },
   },

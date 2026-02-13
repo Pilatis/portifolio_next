@@ -2,11 +2,11 @@
 
 import React from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 import { IoArrowBack } from "react-icons/io5";
-import { projects } from "@/data";
+import { projects, STACK_LABELS } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import MagicButton from "@/components/MagicButton";
@@ -14,32 +14,55 @@ import { cn } from "@/lib/utils";
 
 export default function ProjectPage() {
   const { projectId } = useParams();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const projectsT = t("projects") as {
     checkLiveSite: string;
-    items: Array<{ title: string; des: string }>;
+    items: Array<{
+      title: string;
+      des: string;
+      fullDes?: string;
+      media?: Array<{ title: string; description: string }>;
+    }>;
   };
   const projectPageT = t("projectPage") as {
     backToProjects: string;
     aboutTitle: string;
     techStack: string;
+    inPartnershipWith: string;
     notFound: string;
   };
 
   const project = projects.find((p) => String(p.id) === String(projectId));
   const index = project ? projects.findIndex((p) => p.id === project.id) : -1;
   const title = project && index >= 0 ? projectsT.items[index]?.title ?? project.title : "";
-  const description = project && index >= 0 ? projectsT.items[index]?.des ?? project.des : "";
+  const itemT = project && index >= 0 ? projectsT.items[index] : null;
+  const description = itemT?.fullDes ?? itemT?.des ?? (project?.des ?? "");
 
-  const carouselImages = project && "images" in project && Array.isArray((project as { images?: string[] }).images)
-    ? (project as { images: string[] }).images
-    : project
-      ? [project.img]
+  const projectMedia = project && "media" in project && Array.isArray((project as { media?: { src: string; type: "image" | "video" }[] }).media)
+    ? (project as { media: { src: string; type: "image" | "video" }[] }).media
+    : null;
+  const mediaCaptions = itemT?.media;
+  const carouselMedia =
+    projectMedia && mediaCaptions?.length
+      ? projectMedia.map((m, i) => ({
+          src: m.src,
+          type: m.type,
+          title: mediaCaptions[i]?.title,
+          description: mediaCaptions[i]?.description,
+        }))
+      : projectMedia
+        ? projectMedia.map((m) => ({ src: m.src, type: m.type }))
+        : undefined;
+  const carouselImages =
+    !carouselMedia && project
+      ? "images" in project && Array.isArray((project as { images?: string[] }).images)
+        ? (project as { images: string[] }).images
+        : [project.img]
       : [];
 
   if (!project) {
     return (
-      <div className="min-h-screen bg-black-100 flex flex-col items-center justify-center px-4">
+      <div key={lang} className="min-h-screen bg-black-100 flex flex-col items-center justify-center px-4">
         <p className="text-white-200 text-lg mb-6">{projectPageT.notFound}</p>
         <Link
           href="/#projects"
@@ -52,7 +75,7 @@ export default function ProjectPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black-100 relative overflow-hidden">
+    <div key={lang} className="min-h-screen bg-black-100 relative overflow-hidden">
       {/* Background */}
       <div
         className="fixed inset-0 pointer-events-none bg-grid-white/[0.02]"
@@ -75,7 +98,7 @@ export default function ProjectPage() {
             className="inline-flex items-center gap-2 text-white-200 hover:text-purple transition-colors text-sm md:text-base"
           >
             <IoArrowBack className="text-lg" />
-            Back to projects
+            {projectPageT.backToProjects}
           </Link>
         </motion.div>
 
@@ -97,6 +120,7 @@ export default function ProjectPage() {
           className="mb-10 md:mb-14"
         >
           <ProjectCarousel
+            media={carouselMedia}
             images={carouselImages}
             alt={title}
             className="shadow-2xl shadow-purple/10"
@@ -132,11 +156,29 @@ export default function ProjectPage() {
                   {project.iconLists.map((icon, i) => (
                     <div
                       key={i}
-                      className="w-12 h-12 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center hover:border-purple/30 transition-colors"
+                      title={STACK_LABELS[icon] ?? icon.replace(/^\/(.*)\.svg$/i, "$1")}
+                      className="w-12 h-12 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center hover:border-purple/30 transition-colors cursor-default"
                     >
-                      <img src={icon} alt="" className="w-7 h-7 object-contain" />
+                      <img src={icon} alt={STACK_LABELS[icon] ?? ""} className="w-7 h-7 object-contain" />
                     </div>
                   ))}
+                </div>
+              </div>
+            )}
+
+            {/* Cliente / Parceiro */}
+            {"clientName" in project && project.clientName && (
+              <div>
+                <p className="text-sm text-white-200 mb-2">{projectPageT.inPartnershipWith}</p>
+                <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
+                  {"clientLogo" in project && project.clientLogo && (
+                    <img
+                      src={project.clientLogo}
+                      alt=""
+                      className="h-9 w-auto object-contain flex-shrink-0 rounded-lg"
+                    />
+                  )}
+                  <span className="text-white font-medium text-sm">{project.clientName}</span>
                 </div>
               </div>
             )}

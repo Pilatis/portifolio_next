@@ -80,15 +80,39 @@ export const gridItems = [
   },
 ];
 
+export type ProjectMediaItem = {
+  src: string;
+  type: "image" | "video";
+};
+
+/** Nomes das tecnologias para tooltip nos ícones da stack */
+export const STACK_LABELS: Record<string, string> = {
+  "/next.svg": "Next.js",
+  "/re.svg": "React",
+  "/ts.svg": "TypeScript",
+  "/git.svg": "Git",
+  "/tail.svg": "Tailwind CSS",
+  "/stream.svg": "Stream",
+  "/dock.svg": "Docker",
+  "/c.svg": "C",
+};
+
 export const projects = [
   {
     id: 1,
-    title: "Ecommerce App",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    images: ["/p1.svg", "/bg.png", "/grid.svg"],
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/next.svg", "/fm.svg"],
-    link: "/ui.earth.com",
+    title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
+    des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
+    img: "/voxa/voxa1.PNG",
+    iconLists: ["/re.svg", "/next.svg", "/stream.svg", "/ts.svg", "/dock.svg", "/git.svg"],
+    link: "",
+    media: [
+      { src: "/voxa/voxa1.PNG", type: "image" as const },
+      { src: "/voxa/voxa2.PNG", type: "image" as const },
+      { src: "/voxa/solu2.PNG", type: "image" as const },
+      { src: "/voxa/Video%20Project%202.mp4", type: "video" as const },
+    ],
+    clientName: "Cognitiva Brasil",
+    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
   },
   {
     id: 2,
@@ -98,6 +122,22 @@ export const projects = [
     images: ["/p2.svg", "/bg.png", "/grid.svg"],
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
     link: "/ui.yoom.com",
+  },
+  {
+    id: 3,
+    title: "DR Insights — Plataforma de Inteligência e Análise de Dados",
+    des: "Plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.",
+    img: "/dr/DrInsights4.PNG",
+    iconLists: ["/next.svg", "/re.svg", "/ts.svg", "/git.svg", "/tail.svg"],
+    link: "",
+    media: [
+      { src: "/dr/dr2.PNG", type: "image" as const },
+      { src: "/dr/Dr6.PNG", type: "image" as const },
+      { src: "/dr/Dr3.PNG", type: "image" as const },
+      { src: "/dr/DrInsights4.PNG", type: "image" as const },
+    ],
+    clientName: "Cognitiva Brasil",
+    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
   },
   // {
   //   id: 3,
