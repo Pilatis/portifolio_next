@@ -10,12 +10,12 @@ const Footer = () => {
   const { t } = useLanguage();
   const footer = t("footer") as { ctaTitle: string; ctaHighlight: string; ctaTitleEnd: string; ctaSubtext: string; button: string; copyright: string };
   return (
-    <footer className="w-full pt-20 pb-10" id="contact">
-      <div className="w-full absolute left-0 -bottom-72 min-h-96">
+    <footer className="relative w-full pt-20 pb-10 overflow-hidden" id="contact">
+      <div className="absolute left-0 bottom-0 w-full min-h-96 pointer-events-none" aria-hidden>
         <img
           src="/footer-grid.svg"
-          alt="grid"
-          className="w-full h-full opacity-50 "
+          alt=""
+          className="w-full h-full opacity-50 object-cover object-bottom"
         />
       </div>
 
@@ -26,13 +26,12 @@ const Footer = () => {
         <p className="text-white-200 md:mt-10 my-5 text-center">
           {footer.ctaSubtext}
         </p>
-        <a href="mailto:pilatidev1@gmail.com">
-          <MagicButton
-            title={footer.button}
-            icon={<FaLocationArrow />}
-            position="right"
-          />
-        </a>
+        <MagicButton
+          title={footer.button}
+          icon={<FaLocationArrow />}
+          position="right"
+          href="mailto:pilatidev1@gmail.com"
+        />
       </div>
       <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
         <p className="md:text-base text-sm md:font-normal font-light">

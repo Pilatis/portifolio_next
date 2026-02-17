@@ -188,18 +188,14 @@ export default function ProjectPage() {
 
             {/* Live link */}
             {project.link && (
-              <a
+              <MagicButton
+                title={projectsT.checkLiveSite}
+                icon={<FaLocationArrow />}
+                position="right"
                 href={project.link.startsWith("http") ? project.link : `https://${project.link.replace(/^\//, "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block"
-              >
-                <MagicButton
-                  title={projectsT.checkLiveSite}
-                  icon={<FaLocationArrow />}
-                  position="right"
-                />
-              </a>
+              />
             )}
           </motion.aside>
         </div>
