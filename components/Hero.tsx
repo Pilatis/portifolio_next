@@ -69,13 +69,12 @@ const Hero = () => {
             {hero.subtitle}
           </p>
 
-          <a href="#about">
-            <MagicButton
-              title={hero.cta}
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
+          <MagicButton
+            title={hero.cta}
+            icon={<FaLocationArrow />}
+            position="right"
+            href="#about"
+          />
         </div>
       </div>
     </div>

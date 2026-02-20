@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaLocationArrow } from "react-icons/fa6";
 
 import { projects, STACK_LABELS } from "@/data";
@@ -8,6 +8,7 @@ import { PinContainer } from "./ui/Pin";
 import { useLanguage } from "@/context/LanguageContext";
 
 const RecentProjects = () => {
+  const router = useRouter();
   const { t } = useLanguage();
   const projectsT = t("projects") as { heading: string; highlight: string; checkLiveSite: string; items: Array<{ title: string; des: string }> };
   return (
@@ -19,9 +20,17 @@ const RecentProjects = () => {
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {projects.map((item, index) => (
           <div key={item.id} id={`project-${item.id}`} className="scroll-mt-24">
-            <Link
-              href={`/${item.id}`}
-              className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw]"
+            <div
+              role="button"
+              tabIndex={0}
+              className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw] cursor-pointer"
+              onClick={() => router.push(`/${item.id}`)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  router.push(`/${item.id}`);
+                }
+              }}
             >
             <PinContainer
               title={projectsT.checkLiveSite}
@@ -32,12 +41,13 @@ const RecentProjects = () => {
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <img src="/bg.png" alt="bgimg" />
+                  <img src="/bg.png"alt="bgimg" />
                 </div>
                 <img
                   src={item.img}
                   alt="cover"
                   className="z-10 absolute bottom-0"
+                  style={{ height: '100%' }}
                 />
               </div>
 
@@ -57,7 +67,7 @@ const RecentProjects = () => {
 
               <div className="flex items-center justify-between mt-7 mb-3">
                 <div className="flex items-center">
-                  {item.iconLists && item.iconLists.length > 0 && item.iconLists.map((icon, index) => (
+                  {item.iconLists && item.iconLists.length > 0 && item.iconLists.slice(0, 5).map((icon, index) => (
                     <div
                       key={index}
                       title={STACK_LABELS[icon] ?? icon.replace(/^\/(.*)\.svg$/i, "$1")}
@@ -85,7 +95,7 @@ const RecentProjects = () => {
                 </div>
               </div>
             </PinContainer>
-          </Link>
+          </div>
           </div>
         ))}
       </div>

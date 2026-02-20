@@ -70,12 +70,8 @@
   * {
     @apply border-border !scroll-smooth;
   }
-  html {
-    min-height: 0;
-  }
   body {
     @apply bg-background text-foreground;
-    min-height: 0;
   }
   button {
     @apply active:outline-none;

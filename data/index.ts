@@ -142,6 +142,22 @@ export const projects = [
     clientName: "Cognitiva Brasil",
     clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
   },
+  {
+    id: 4,
+    title: "B2BHotel – Plataforma SaaS de Gestão e Intermediação de Serviços para Hotéis",
+    des: "Plataforma SaaS B2B para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa.",
+    img: "/b2b/home-hotel.PNG",
+    iconLists: ["/re.svg", "/next.svg", "/ts.svg", "/chakra.svg", "/git.svg", "/java.svg", "/postgresql.svg"],
+    link: "",
+    media: [
+      { src: "/b2b/home-hotel.PNG", type: "image" as const },
+      { src: "/b2b/vagas.PNG", type: "image" as const },
+      { src: "/b2b/home.PNG", type: "image" as const },
+      { src: "/b2b/agenda.PNG", type: "image" as const },
+    ],
+    clientName: "Cognitiva Brasil",
+    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
+  },
   // {
   //   id: 3,
   //   title: "Mini blog app",
