@@ -156,7 +156,7 @@ export default function ProjectPage() {
               <div>
                 <h2 className="text-lg font-semibold text-purple mb-4">{projectPageT.techStack}</h2>
                 <div className="flex flex-wrap gap-3">
-                  {project.iconLists.map((icon, i) => (
+                  {project.iconLists.slice(0, 5).map((icon, i) => (
                     <div
                       key={i}
                       title={STACK_LABELS[icon] ?? icon.replace(/^\/(.*)\.svg$/i, "$1")}

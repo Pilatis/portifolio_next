@@ -36,7 +36,7 @@ const translations = {
     projects: {
       heading: "A small selection of",
       highlight: "recent projects",
-      checkLiveSite: "Check Live Site",
+      checkLiveSite: "View project",
       items: [
         {
           title: "Voxa – Career Development and Guidance Platform",
@@ -62,6 +62,17 @@ const translations = {
             { title: "Intelligent Term Search", description: "Intelligent search interface that allows analysis of terms across multiple market APIs, consolidating data from social networks and external sources to generate strategic insights, trends and relevant opportunities for companies." },
             { title: "Text and Document Analysis", description: "Advanced text and document analysis module, responsible for processing large volumes of information and transforming unstructured data into actionable insights, supporting strategic decisions and market analysis." },
             { title: "Homepage", description: "Platform homepage where the user searches for terms, themes or strategic topics. The feature consolidates data from multiple social networks and digital sources, returning an overview with charts, related topics and relevant indicators, facilitating trend analysis and data-driven decision making." },
+          ],
+        },
+        {
+          title: "B2BHotel – SaaS Platform for Hotel Service Management and Intermediation",
+          des: "B2B SaaS platform for intermediation and management of services in the hotel sector, connecting hotels, service providers and administrative staff.",
+          fullDes: "B2B SaaS platform aimed at intermediation and management of services in the hotel sector, connecting hotels, service providers and administrative staff in a centralized digital ecosystem. I actively participated in the development of the solution across different phases of the project, starting with a focus on front-end and later acting as a Full Stack developer, contributing both to the evolution of the interface and to the implementation of business rules and integrations on the backend. The platform is structured around three main profiles: Provider – structured onboarding flow with complete professional registration, automated resume generation, personalized calendar and intelligent opportunity filtering system; Hotel – operational panel for creating and tracking services, organizing demands and viewing indicators; Admin – operational core responsible for creating and managing services, financial consolidation, generation of receivables and payables, payment batch processing and integration with banking services. The solution was developed with a Full Stack architecture using React, Next.js, Spring Boot and PostgreSQL, hosted on AWS with separation between staging and production. The system centralizes operational and financial rules, including permission control by profile, automated report generation (PDF, CSV and XLSX) and REST API integration with Banco Inter for payment automation. Project in production, structured for scalability, operational control and continuous expansion.",
+          media: [
+            { title: "Hotel Dashboard – Operational View", description: "Main hotel panel with consolidated view of operations within the platform. The interface shows indicators such as active selection processes, scheduled interviews, hires made, vacancy validity, contracted plans and access requests, enabling quick monitoring and decision-making based on operational status." },
+            { title: "Vacancy Management – Filters and Operational Control", description: "Vacancy management interface with filters by sector, state and city, enabling full organization and control of published opportunities. The screen allows editing and tracking of vacancies, reinforcing the modular structure and centralized management of selection processes." },
+            { title: "Provider Dashboard – Personalized Opportunities", description: "Provider homepage with intelligent display of available vacancies according to location and applied filters (area, service, state and city). Designed to prioritize relevant opportunities and optimize navigation and applications within the platform." },
+            { title: "Provider Calendar – Custom Calendar", description: "Calendar developed for full visualization of selection processes, vacancies and scheduled times. The interface allows organized tracking of the professional's activities, with a customized structure for availability and commitment control." },
           ],
         },
       ],
@@ -164,7 +175,7 @@ const translations = {
     projects: {
       heading: "Uma pequena seleção de",
       highlight: "projetos recentes",
-      checkLiveSite: "Ver site",
+      checkLiveSite: "Ver projeto",
       items: [
         {
           title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
@@ -190,6 +201,17 @@ const translations = {
             { title: "Busca Inteligente de Termos", description: "Interface de busca inteligente que permite a análise de termos em múltiplas APIs de mercado, consolidando dados de redes sociais e fontes externas para gerar insights estratégicos, tendências e oportunidades relevantes para empresas." },
             { title: "Análise de Textos e Documentos", description: "Módulo de análise avançada de textos e documentos, responsável por processar grandes volumes de informação e transformar dados não estruturados em insights acionáveis, apoiando decisões estratégicas e análises de mercado." },
             { title: "Página Inicial", description: "Página inicial da plataforma onde o usuário realiza pesquisas por termos, temas ou assuntos estratégicos. O recurso consolida dados de múltiplas redes sociais e fontes digitais, retornando uma visão geral com gráficos, tópicos relacionados e indicadores relevantes, facilitando a análise de tendências e a tomada de decisões baseada em dados." },
+          ],
+        },
+        {
+          title: "B2BHotel – Plataforma SaaS de Gestão e Intermediação de Serviços para Hotéis",
+          des: "Plataforma SaaS B2B para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa.",
+          fullDes: "Plataforma SaaS B2B voltada para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa em um ecossistema digital centralizado. Participei ativamente do desenvolvimento da solução ao longo de diferentes fases do projeto, iniciando com foco em front-end e posteriormente atuando como desenvolvedor Full Stack, contribuindo tanto na evolução da interface quanto na implementação de regras de negócio e integrações no backend. A plataforma é estruturada em três perfis principais: Prestador – fluxo de onboarding estruturado com cadastro profissional completo, geração automatizada de currículo, agenda personalizada e sistema inteligente de filtragem de oportunidades; Hotel – painel operacional para criação e acompanhamento de serviços, organização de demandas e visualização de indicadores; Admin – núcleo operacional responsável pela criação e gestão de serviços, consolidação financeira, geração de contas a receber e contas a pagar, processamento de lotes de pagamento e integração com serviços bancários. A solução foi desenvolvida com arquitetura Full Stack utilizando React, Next.js, Spring Boot e PostgreSQL, hospedada em ambiente AWS com separação entre homologação e produção. O sistema centraliza regras operacionais e financeiras da operação, incluindo controle de permissões por perfil, geração automatizada de relatórios (PDF, CSV e XLSX) e integração via API REST com o Banco Inter para automação de pagamentos. Projeto em produção, estruturado para escalabilidade, controle operacional e expansão contínua.",
+          media: [
+            { title: "Dashboard do Hotel – Visão Operacional", description: "Painel principal do hotel com visão consolidada da operação dentro da plataforma. A interface apresenta indicadores como processos seletivos ativos, entrevistas agendadas, contratações realizadas, validade de vagas, planos contratados e solicitações de acesso, permitindo acompanhamento rápido e tomada de decisão baseada em status operacionais." },
+            { title: "Gestão de Vagas – Filtros e Controle Operacional", description: "Interface de gerenciamento de vagas com filtros por setor, estado e cidade, permitindo organização e controle completo das oportunidades publicadas. A tela possibilita edição e acompanhamento das vagas, reforçando a estrutura modular e a gestão centralizada de processos seletivos." },
+            { title: "Dashboard do Prestador – Oportunidades Personalizadas", description: "Página inicial do prestador com exibição inteligente de vagas disponíveis conforme localização e filtros aplicados (área, serviço, estado e cidade). Desenvolvida para priorizar oportunidades relevantes e otimizar a navegação e candidatura dentro da plataforma." },
+            { title: "Agenda do Prestador – Calendário Customizado", description: "Calendário desenvolvido para visualização completa de processos seletivos, vagas e horários agendados. A interface permite acompanhamento organizado das atividades do profissional, com estrutura personalizada para controle de disponibilidade e compromissos." },
           ],
         },
       ],

@@ -41,12 +41,13 @@ const RecentProjects = () => {
                   className="relative w-full h-full overflow-hidden lg:rounded-3xl"
                   style={{ backgroundColor: "#13162D" }}
                 >
-                  <img src="/bg.png" alt="bgimg" />
+                  <img src="/bg.png"alt="bgimg" />
                 </div>
                 <img
                   src={item.img}
                   alt="cover"
                   className="z-10 absolute bottom-0"
+                  style={{ height: '100%' }}
                 />
               </div>
 
@@ -66,7 +67,7 @@ const RecentProjects = () => {
 
               <div className="flex items-center justify-between mt-7 mb-3">
                 <div className="flex items-center">
-                  {item.iconLists && item.iconLists.length > 0 && item.iconLists.map((icon, index) => (
+                  {item.iconLists && item.iconLists.length > 0 && item.iconLists.slice(0, 5).map((icon, index) => (
                     <div
                       key={index}
                       title={STACK_LABELS[icon] ?? icon.replace(/^\/(.*)\.svg$/i, "$1")}
