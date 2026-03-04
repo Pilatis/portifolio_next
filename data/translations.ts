@@ -48,6 +48,7 @@ const translations = {
       heading: "A small selection of",
       highlight: "recent projects",
       checkLiveSite: "View project",
+      viewAll: "View all projects",
       items: [
         {
           title: "Voxa – Career Development and Guidance Platform",
@@ -92,6 +93,7 @@ const translations = {
       heading: "My",
       highlight: "certifications",
       filterAll: "All",
+      searchPlaceholder: "Search certifications...",
       inProgress: "In progress",
       viewAll: "View all certifications",
       viewDetails: "View details",
@@ -207,6 +209,13 @@ const translations = {
       inPartnershipWith: "In partnership with",
       notFound: "Project not found.",
     },
+    projectsPage: {
+      heading: "Projects",
+      pageBack: "Back to portfolio",
+      searchPlaceholder: "Search projects...",
+      filterAll: "All",
+      noResults: "No projects found.",
+    },
   },
   pt: {
     nav: {
@@ -255,6 +264,7 @@ const translations = {
       heading: "Uma pequena seleção de",
       highlight: "projetos recentes",
       checkLiveSite: "Ver projeto",
+      viewAll: "Ver mais projetos",
       items: [
         {
           title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
@@ -299,6 +309,7 @@ const translations = {
       heading: "Minhas",
       highlight: "certificações",
       filterAll: "Todos",
+      searchPlaceholder: "Buscar certificações...",
       inProgress: "Em andamento",
       viewAll: "Ver mais certificações",
       viewDetails: "Ver detalhes",
@@ -413,6 +424,13 @@ const translations = {
       techStack: "Stack técnico",
       inPartnershipWith: "Associado a",
       notFound: "Projeto não encontrado.",
+    },
+    projectsPage: {
+      heading: "Projetos",
+      pageBack: "Voltar ao portfólio",
+      searchPlaceholder: "Buscar projetos...",
+      filterAll: "Todos",
+      noResults: "Nenhum projeto encontrado.",
     },
   },
 } as const;

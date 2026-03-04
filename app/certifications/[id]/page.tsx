@@ -29,8 +29,9 @@ export default function CertificationDetailPage() {
   const { id } = useParams();
   const searchParams = useSearchParams();
   const { t } = useLanguage();
-  const certT = t("certifications") as CertDetailT;
+  const [imgError, setImgError] = useState(false);
 
+  const certT = t("certifications") as CertDetailT;
   const from = searchParams.get("from");
   const backHref = useMemo(
     () => (from === "home" ? "/#certifications" : "/certifications"),
@@ -56,7 +57,6 @@ export default function CertificationDetailPage() {
     );
   }
 
-  const [imgError, setImgError] = useState(false);
   const showPlaceholder = !cert.image || imgError;
   const getCategoryLabel = (key: string) => certT.categoryLabels?.[key] ?? key;
   const title = itemT?.title ?? cert.title;

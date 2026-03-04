@@ -12,6 +12,7 @@ type CertificationsT = {
   heading: string;
   highlight: string;
   filterAll: string;
+  searchPlaceholder?: string;
   inProgress: string;
   viewAll?: string;
   viewDetails?: string;
@@ -29,15 +30,33 @@ export default function Certifications({ variant = "home" }: CertificationsProps
   const { viewMode } = useViewMode();
   const certT = t("certifications") as CertificationsT;
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const isHome = variant === "home";
   const isCompact = viewMode === "recruiter";
 
   const featuredList = certifications.filter((c) => c.featured === true);
-  const filtered =
+
+  const byCategory =
     selectedCategory === null
       ? certifications
       : certifications.filter((c) => c.category.includes(selectedCategory));
+
+  const filtered = React.useMemo(() => {
+    if (isHome || isCompact) return byCategory;
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return byCategory;
+    return byCategory.filter((cert) => {
+      const idx = cert.id - 1;
+      const item = certT.items[idx];
+      const title = item?.title ?? cert.title;
+      const description = item?.description ?? cert.description;
+      const issuer = item?.issuer ?? cert.issuer;
+      const searchText = [title, description, issuer, ...cert.skills, ...cert.category].join(" ").toLowerCase();
+      return searchText.includes(q);
+    });
+  }, [byCategory, searchQuery, isHome, isCompact, certT.items]);
+
   const list = isHome ? featuredList : isCompact ? certifications : filtered;
 
   const getCategoryLabel = useCallback(
@@ -54,7 +73,15 @@ export default function Certifications({ variant = "home" }: CertificationsProps
       </h1>
 
       {!isHome && !isCompact && (
-        <div className="flex flex-wrap gap-2 mt-8 mb-10" role="group" aria-label="Filter by category">
+        <div className="mt-8 mb-10 flex flex-wrap items-center gap-2">
+          <input
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder={certT.searchPlaceholder ?? "Search certifications..."}
+            className="w-48 min-w-[12rem] flex-1 max-w-xs px-4 py-2 rounded-lg bg-black-200/80 border border-white/[0.08] text-white placeholder:text-white-200/50 focus:outline-none focus:border-purple/50 transition-colors text-sm"
+            aria-label={certT.searchPlaceholder ?? "Search certifications"}
+          />
           <button
             type="button"
             onClick={() => setSelectedCategory(null)}
