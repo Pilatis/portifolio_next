@@ -1,6 +1,8 @@
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
+  { name: "Certifications", link: "#certifications" },
+  { name: "Principles", link: "#principles" },
   { name: "Testimonials", link: "#testimonials" },
   { name: "Contact", link: "#contact" },
 ];
@@ -16,7 +18,19 @@ export const aboutMe = {
   imageAlt: "Lucas Pilati - Full Stack Developer",
 };
 
-export const gridItems = [
+export type ViewMode = "recruiter" | "technical";
+
+export const gridItems: Array<{
+  id: number;
+  title: string;
+  description: string;
+  className: string;
+  imgClassName: string;
+  titleClassName: string;
+  img: string;
+  spareImg: string;
+  visibleIn?: ViewMode[];
+}> = [
   {
     id: 1,
     title: "Collaborative mindset with designers, product and engineering teams.",
@@ -26,6 +40,7 @@ export const gridItems = [
     titleClassName: "justify-end",
     img: "/b1.svg",
     spareImg: "",
+    visibleIn: ["recruiter", "technical"],
   },
   {
     id: 2,
@@ -36,6 +51,7 @@ export const gridItems = [
     titleClassName: "justify-start",
     img: "",
     spareImg: "",
+    visibleIn: ["technical"],
   },
   {
     id: 3,
@@ -46,6 +62,7 @@ export const gridItems = [
     titleClassName: "justify-center",
     img: "",
     spareImg: "",
+    visibleIn: ["recruiter", "technical"],
   },
   {
     id: 4,
@@ -56,8 +73,8 @@ export const gridItems = [
     titleClassName: "justify-start",
     img: "/grid.svg",
     spareImg: "/b4.svg",
+    visibleIn: ["recruiter", "technical"],
   },
-
   {
     id: 5,
     title: "Exploring advanced JavaScript and UI animations.",
@@ -67,6 +84,7 @@ export const gridItems = [
     titleClassName: "justify-center md:justify-start lg:justify-center",
     img: "/b5.svg",
     spareImg: "/grid.svg",
+    visibleIn: ["technical"],
   },
   {
     id: 6,
@@ -77,6 +95,7 @@ export const gridItems = [
     titleClassName: "justify-center md:max-w-full max-w-60 text-center",
     img: "",
     spareImg: "",
+    visibleIn: ["technical"],
   },
 ];
 
@@ -99,6 +118,106 @@ export const STACK_LABELS: Record<string, string> = {
   "/postgresql.svg": "PostgreSQL",
   "/chakra.svg": "Chakra UI",
 };
+
+export type Certification = {
+  id: number;
+  image: string;
+  title: string;
+  description: string;
+  issuer: string;
+  startedAt: string;
+  issuedAt: string | null;
+  category: string[];
+  skills: string[];
+  /** Exibir na seção da home (apenas 3 em destaque) */
+  featured?: boolean;
+};
+
+export const certificationCategories = [
+  "Frontend",
+  "Backend",
+  "Fundamentos",
+  "Liderança",
+  "Metodologias Ágeis",
+] as const;
+
+export const certifications: Certification[] = [
+  {
+    id: 1,
+    image: "/images/certificates/next-react-udemy.jpg",
+    title: "Next.js e React",
+    issuer: "Udemy",
+    startedAt: "2023-12",
+    issuedAt: "2026-02",
+    category: ["Frontend", "Backend"],
+    skills: ["React", "Next.js", "Node.js", "HTML", "CSS"],
+    description:
+      "Formação completa em React e Next.js com aplicação prática em projetos reais, abordando renderização híbrida, roteamento, integração com APIs e fundamentos de Node.js para construção de aplicações full stack.",
+    featured: true,
+  },
+  {
+    id: 2,
+    image: "/images/certificates/react-maestria-udemy.jpg",
+    title: "React do Zero a Maestria (c/Hooks, Router, API, Projetos)",
+    issuer: "Udemy",
+    startedAt: "2023-11",
+    issuedAt: "2026-02",
+    category: ["Frontend"],
+    skills: ["React", "Node.js", "HTML", "CSS"],
+    description:
+      "Curso aprofundado em React com foco em Hooks, React Router, consumo de APIs e desenvolvimento de projetos práticos. Ênfase em arquitetura de componentes, gerenciamento de estado e boas práticas.",
+    featured: true,
+  },
+  {
+    id: 3,
+    image: "/images/certificates/computacao-fundamentos-ifsul.jpg",
+    title: "Computação: Fundamentos",
+    issuer: "IFSUL - Instituto Federal Sul-rio-grandense",
+    startedAt: "2025-10",
+    issuedAt: "2025-11",
+    category: ["Fundamentos"],
+    skills: ["Lógica de Programação", "Arquitetura de Computadores", "Algoritmos"],
+    description:
+      "Curso introdutório abordando fundamentos da computação, lógica de programação, conceitos estruturais de sistemas computacionais e bases teóricas essenciais para desenvolvimento de software.",
+  },
+  {
+    id: 4,
+    image: "/images/certificates/lideranca-uniasselvi.jpg",
+    title: "A Liderança na Gestão de Equipes",
+    issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
+    startedAt: "2025-11",
+    issuedAt: "2025-12",
+    category: ["Liderança"],
+    skills: ["Gestão de Equipes", "Comunicação", "Tomada de Decisão"],
+    description:
+      "Formação voltada ao desenvolvimento de competências em liderança, gestão de pessoas e organização de equipes, com foco em produtividade, comunicação estratégica e alinhamento de objetivos.",
+  },
+  {
+    id: 5,
+    image: "/images/certificates/javascript-freecodecamp.jpg",
+    title: "JavaScript",
+    issuer: "freeCodeCamp",
+    startedAt: "2024-12",
+    issuedAt: "2025-02",
+    category: ["Frontend", "Fundamentos"],
+    skills: ["JavaScript", "ES6+", "", "Manipulação de DOM", "Lógica de Programação"],
+    description:
+      "Certificação em fundamentos e prática de JavaScript moderno, incluindo manipulação de DOM, estruturas de dados, funções avançadas e construção de aplicações web interativas.",
+    featured: true,
+  },
+  {
+    id: 6,
+    image: "/images/certificates/scrum-uniasselvi.jpg",
+    title: "Scrum",
+    issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
+    startedAt: "2025-12",
+    issuedAt: null,
+    category: ["Metodologias Ágeis"],
+    skills: ["Scrum", "Gestão Ágil", "Sprints", "Product Backlog"],
+    description:
+      "Formação em metodologia Scrum com foco em organização de times ágeis, definição de papéis, planejamento de sprints e aplicação prática de frameworks ágeis em projetos de software.",
+  },
+];
 
 export const projects = [
   {
@@ -174,6 +293,104 @@ export const projects = [
   //   iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/three.svg", "/gsap.svg"],
   //   link: "/ui.apple.com",
   // },
+];
+
+export type EngineeringPrinciple = {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  visibleIn?: ViewMode[];
+  /** Exibir na seção da home (apenas alguns em destaque) */
+  featured?: boolean;
+};
+
+export const engineeringPrinciples: EngineeringPrinciple[] = [
+  {
+    id: 1,
+    title: "Separação Clara de Responsabilidades",
+    category: "Arquitetura",
+    tags: ["Clean Architecture", "SRP", "Modularização"],
+    description:
+      "Estruturação da aplicação com divisão clara entre camadas (controller, service, repository), evitando acoplamento e facilitando manutenção, testes e evolução do sistema.",
+    visibleIn: ["recruiter", "technical"],
+    featured: true,
+  },
+  {
+    id: 2,
+    title: "Arquitetura RESTful e Contratos Bem Definidos",
+    category: "Backend",
+    tags: ["REST", "Spring Boot", "API Contracts"],
+    description:
+      "Desenvolvimento de APIs REST com padronização de rotas, versionamento e contratos consistentes, garantindo previsibilidade na integração entre frontend e backend.",
+    visibleIn: ["recruiter", "technical"],
+    featured: true,
+  },
+  {
+    id: 3,
+    title: "Controle de Acesso Baseado em Roles",
+    category: "Segurança",
+    tags: ["RBAC", "Autorização", "JWT"],
+    description:
+      "Implementação de controle de permissões por role no backend, assegurando que cada tipo de usuário tenha acesso restrito às funcionalidades permitidas.",
+    visibleIn: ["recruiter", "technical"],
+    featured: true,
+  },
+  {
+    id: 4,
+    title: "Frontend Estruturado e Escalável",
+    category: "Frontend",
+    tags: ["React", "Next.js", "Componentização"],
+    description:
+      "Organização do frontend com componentização reutilizável, separação de lógica e apresentação, e estrutura de pastas orientada a domínio.",
+    visibleIn: ["recruiter", "technical"],
+  },
+  {
+    id: 5,
+    title: "Persistência e Modelagem de Dados Consistentes",
+    category: "Banco de Dados",
+    tags: ["PostgreSQL", "Modelagem Relacional"],
+    description:
+      "Modelagem relacional com foco em integridade, normalização e eficiência de consultas, utilizando PostgreSQL como banco principal.",
+    visibleIn: ["technical"],
+  },
+  {
+    id: 6,
+    title: "Infraestrutura e Deploy em Nuvem",
+    category: "DevOps",
+    tags: ["AWS", "Cloud", "Deploy"],
+    description:
+      "Configuração e deploy de aplicação em ambiente cloud, com separação de ambientes (HML/Prod) e organização segura de variáveis e credenciais.",
+    visibleIn: ["technical"],
+  },
+  {
+    id: 7,
+    title: "Código Limpo e Padrões de Qualidade",
+    category: "Qualidade",
+    tags: ["Clean Code", "Testes", "Manutenibilidade"],
+    description:
+      "Aplicação de boas práticas de escrita de código, nomenclatura clara, funções com responsabilidade única e cobertura de testes para reduzir débito técnico.",
+    visibleIn: ["technical"],
+  },
+  {
+    id: 8,
+    title: "Geração de Relatórios e Exportação de Dados",
+    category: "Backend",
+    tags: ["PDF", "CSV", "XLSX", "Exportação"],
+    description:
+      "Padronização da geração de relatórios em múltiplos formatos (PDF, CSV, XLSX) com contratos definidos e reuso de dados para consistência operacional.",
+    visibleIn: ["technical"],
+  },
+  {
+    id: 9,
+    title: "Performance e Otimização de Consultas",
+    category: "Banco de Dados",
+    tags: ["Performance", "Índices", "Queries"],
+    description:
+      "Uso de índices adequados, evitando N+1 e consultas pesadas, com monitoramento de impacto em tempo de resposta e carga no banco.",
+    visibleIn: ["technical"],
+  },
 ];
 
 export const testimonials = [

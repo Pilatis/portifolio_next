@@ -11,6 +11,7 @@ const PHOTO_SRC = "/Foto%20Profissional%20-%202.PNG";
 type AboutContent = {
   title: string;
   highlight: string;
+  short?: string[];
   paragraphs: string[];
   imageAlt: string;
 };
@@ -18,6 +19,7 @@ type AboutContent = {
 export default function About() {
   const { t } = useLanguage();
   const about = t("about") as AboutContent;
+  const paragraphs = about.paragraphs;
   return (
     <section
       id="about"
@@ -48,7 +50,7 @@ export default function About() {
               <span className="text-purple">{about.highlight}</span>
             </h2>
             <div className="space-y-4 text-white-200 text-base md:text-lg leading-relaxed">
-              {about.paragraphs.map((paragraph, i) => (
+              {paragraphs.map((paragraph, i) => (
                 <p key={i}>{paragraph}</p>
               ))}
             </div>

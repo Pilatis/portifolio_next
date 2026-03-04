@@ -8,6 +8,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { IoArrowBack } from "react-icons/io5";
 import { projects, STACK_LABELS } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
+import { useViewMode } from "@/context/ViewModeContext";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import MagicButton from "@/components/MagicButton";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,7 @@ import { cn } from "@/lib/utils";
 export default function ProjectPage() {
   const { projectId } = useParams();
   const { t, lang } = useLanguage();
+  const { viewMode } = useViewMode();
   const projectsT = t("projects") as {
     checkLiveSite: string;
     items: Array<{
@@ -36,7 +38,13 @@ export default function ProjectPage() {
   const index = project ? projects.findIndex((p) => p.id === project.id) : -1;
   const title = project && index >= 0 ? projectsT.items[index]?.title ?? project.title : "";
   const itemT = project && index >= 0 ? projectsT.items[index] : null;
-  const description = itemT?.fullDes ?? itemT?.des ?? (project?.des ?? "");
+  const description =
+    viewMode === "recruiter"
+      ? (itemT?.des ?? project?.des ?? "")
+      : (itemT?.fullDes ?? itemT?.des ?? project?.des ?? "");
+  const showAboutTitle = viewMode === "technical";
+  const showClientBlock = viewMode === "technical";
+  const showProjectLink = viewMode === "technical";
 
   const projectMedia = project && "media" in project && Array.isArray((project as { media?: { src: string; type: "image" | "video" }[] }).media)
     ? (project as { media: { src: string; type: "image" | "video" }[] }).media
@@ -138,7 +146,9 @@ export default function ProjectPage() {
             transition={{ duration: 0.4, delay: 0.3 }}
             className="lg:col-span-2"
           >
-            <h2 className="text-lg font-semibold text-purple mb-3">{projectPageT.aboutTitle}</h2>
+            {showAboutTitle && (
+              <h2 className="text-lg font-semibold text-purple mb-3">{projectPageT.aboutTitle}</h2>
+            )}
             <p className="text-white-200 text-base md:text-lg leading-relaxed">
               {description}
             </p>
@@ -170,7 +180,7 @@ export default function ProjectPage() {
             )}
 
             {/* Cliente / Parceiro */}
-            {"clientName" in project && project.clientName && (
+            {showClientBlock && "clientName" in project && project.clientName && (
               <div>
                 <p className="text-sm text-white-200 mb-2">{projectPageT.inPartnershipWith}</p>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
@@ -187,7 +197,7 @@ export default function ProjectPage() {
             )}
 
             {/* Live link */}
-            {project.link && (
+            {showProjectLink && project.link && (
               <MagicButton
                 title={projectsT.checkLiveSite}
                 icon={<FaLocationArrow />}

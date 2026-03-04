@@ -1,14 +1,16 @@
 "use client";
 
-import { FaLocationArrow } from "react-icons/fa6";
+import { FaLocationArrow, FaFileLines } from "react-icons/fa6";
 
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
 import { useLanguage } from "@/context/LanguageContext";
 
+const RESUME_URL = "/Lucas%20Pilati%20do%20Nascimento.pdf";
+
 const Footer = () => {
   const { t } = useLanguage();
-  const footer = t("footer") as { ctaTitle: string; ctaHighlight: string; ctaTitleEnd: string; ctaSubtext: string; button: string; copyright: string };
+  const footer = t("footer") as { ctaTitle: string; ctaHighlight: string; ctaTitleEnd: string; ctaSubtext: string; button: string; resumeTitle: string; copyright: string };
   return (
     <footer className="relative w-full pt-20 pb-10 overflow-hidden" id="contact">
       <div className="absolute left-0 bottom-0 w-full min-h-96 pointer-events-none" aria-hidden>
@@ -43,11 +45,20 @@ const Footer = () => {
             <div
               key={info.id}
               className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
-              onClick={() => window.open(info.link, '_blank')}
+              onClick={() => window.open(info.link, "_blank")}
             >
               <img src={info.img} alt="icons" width={20} height={20} />
             </div>
           ))}
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            title={footer.resumeTitle ?? "Resume"}
+            className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 text-white-200 hover:text-purple transition-colors"
+          >
+            <FaFileLines size={20} />
+          </a>
         </div>
       </div>
     </footer>

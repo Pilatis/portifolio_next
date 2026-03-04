@@ -5,6 +5,8 @@ const translations = {
     nav: {
       about: "About",
       projects: "Projects",
+      certifications: "Certifications",
+      principles: "Principles",
       testimonials: "Testimonials",
       contact: "Contact",
     },
@@ -16,12 +18,21 @@ const translations = {
     about: {
       title: "About",
       highlight: "me",
+      short: [
+        "Full Stack Developer based in Brazil. I work with React, Next.js and TypeScript to build clean, scalable applications.",
+        "I focus on front-end quality and back-end integration, and I contribute to projects that create real value for users and businesses.",
+      ],
       paragraphs: [
         "I'm Lucas Pilati, a Full Stack Developer based in Brazil, passionate about building clean, accessible and high-quality digital experiences.",
         "I work mainly with React, Next.js and TypeScript, combining strong front-end foundations with back-end knowledge to build complete, reliable applications.",
         "I enjoy exploring new technologies, improving how products are built, and contributing to projects that create real value for users and businesses.",
       ],
       imageAlt: "Lucas Pilati - Full Stack Developer",
+    },
+    viewMode: {
+      label: "View:",
+      recruiter: "Recruiter",
+      technical: "Technical",
     },
     grid: {
       items: [
@@ -37,6 +48,7 @@ const translations = {
       heading: "A small selection of",
       highlight: "recent projects",
       checkLiveSite: "View project",
+      viewAll: "View all projects",
       items: [
         {
           title: "Voxa – Career Development and Guidance Platform",
@@ -77,6 +89,37 @@ const translations = {
         },
       ],
     },
+    certifications: {
+      heading: "My",
+      highlight: "certifications",
+      filterAll: "All",
+      searchPlaceholder: "Search certifications...",
+      inProgress: "In progress",
+      viewAll: "View all certifications",
+      viewDetails: "View details",
+      pageBack: "Back to portfolio",
+      backToCertifications: "Back to certifications",
+      notFound: "Certification not found.",
+      period: "Period",
+      skillsLabel: "Skills",
+      categoryLabel: "Category",
+      issuerLabel: "Issuer",
+      categoryLabels: {
+        Frontend: "Frontend",
+        Backend: "Backend",
+        Fundamentos: "Fundamentals",
+        Liderança: "Leadership",
+        "Metodologias Ágeis": "Agile Methodologies",
+      },
+      items: [
+        { title: "Next.js and React", description: "Complete training in React and Next.js with practical application in real projects, covering hybrid rendering, routing, API integration and Node.js fundamentals for building full stack applications.", issuer: "Udemy" },
+        { title: "React from Zero to Mastery (Hooks, Router, API, Projects)", description: "In-depth React course focusing on Hooks, React Router, API consumption and practical project development. Emphasis on component architecture, state management and best practices.", issuer: "Udemy" },
+        { title: "Computing: Fundamentals", description: "Introductory course on computing fundamentals, programming logic, structural concepts of computer systems and essential theoretical foundations for software development.", issuer: "IFSUL - Federal Institute Sul-rio-grandense" },
+        { title: "Leadership in Team Management", description: "Training focused on developing leadership competencies, people management and team organization, with focus on productivity, strategic communication and goal alignment.", issuer: "Leonardo da Vinci University Center - Uniasselvi" },
+        { title: "JavaScript", description: "Certification in fundamentals and practice of modern JavaScript, including DOM manipulation, data structures, advanced functions and building interactive web applications.", issuer: "freeCodeCamp" },
+        { title: "Scrum", description: "Training in Scrum methodology with focus on agile team organization, role definition, sprint planning and practical application of agile frameworks in software projects.", issuer: "Leonardo da Vinci University Center - Uniasselvi" },
+      ],
+    },
     experience: {
       heading: "My",
       highlight: "work experience",
@@ -97,6 +140,32 @@ const translations = {
           title: "Front-End Technical Leadership",
           desc: "Contributing to technical decisions, defining front-end architecture, and collaborating closely with design and product teams to ensure consistent, scalable solutions.",
         },
+      ],
+    },
+    principles: {
+      heading: "Engineering",
+      highlight: "principles",
+      viewAll: "View all principles",
+      pageBack: "Back to portfolio",
+      categoryLabels: {
+        Arquitetura: "Architecture",
+        Backend: "Backend",
+        Frontend: "Frontend",
+        "Banco de Dados": "Database",
+        DevOps: "DevOps",
+        Segurança: "Security",
+        Qualidade: "Quality",
+      },
+      items: [
+        { title: "Clear Separation of Responsibilities", description: "Structuring the application with a clear division between layers (controller, service, repository), avoiding coupling and facilitating maintenance, testing and system evolution." },
+        { title: "RESTful Architecture and Well-Defined Contracts", description: "Development of REST APIs with route standardization, versioning and consistent contracts, ensuring predictability in frontend-backend integration." },
+        { title: "Role-Based Access Control", description: "Implementation of permission control by role on the backend, ensuring each user type has restricted access to allowed functionality." },
+        { title: "Structured and Scalable Frontend", description: "Frontend organization with reusable componentization, separation of logic and presentation, and domain-oriented folder structure." },
+        { title: "Consistent Data Persistence and Modeling", description: "Relational modeling with focus on integrity, normalization and query efficiency, using PostgreSQL as the main database." },
+        { title: "Cloud Infrastructure and Deploy", description: "Application configuration and deploy in cloud environment, with separation of environments (staging/prod) and secure organization of variables and credentials." },
+        { title: "Clean Code and Quality Standards", description: "Application of code writing best practices, clear naming, single-responsibility functions and test coverage to reduce technical debt." },
+        { title: "Report Generation and Data Export", description: "Standardization of report generation in multiple formats (PDF, CSV, XLSX) with defined contracts and data reuse for operational consistency." },
+        { title: "Performance and Query Optimization", description: "Use of appropriate indexes, avoiding N+1 and heavy queries, with monitoring of impact on response time and database load." },
       ],
     },
     approach: {
@@ -126,6 +195,7 @@ const translations = {
       ctaTitleEnd: "together?",
       ctaSubtext: "Let's connect and talk about how I can help bring your ideas to life.",
       button: "Let's get in touch",
+      resumeTitle: "Resume",
       copyright: "Copyright © 2026 Lucas Pilati",
     },
     bento: {
@@ -139,11 +209,20 @@ const translations = {
       inPartnershipWith: "In partnership with",
       notFound: "Project not found.",
     },
+    projectsPage: {
+      heading: "Projects",
+      pageBack: "Back to portfolio",
+      searchPlaceholder: "Search projects...",
+      filterAll: "All",
+      noResults: "No projects found.",
+    },
   },
   pt: {
     nav: {
       about: "Sobre",
       projects: "Projetos",
+      certifications: "Certificações",
+      principles: "Princípios",
       testimonials: "Depoimentos",
       contact: "Contato",
     },
@@ -155,12 +234,21 @@ const translations = {
     about: {
       title: "Sobre",
       highlight: "mim",
+      short: [
+        "Desenvolvedor Full Stack baseado no Brasil. Trabalho com React, Next.js e TypeScript para construir aplicações limpas e escaláveis.",
+        "Foco em qualidade de front-end e integração com back-end, contribuindo com projetos que geram valor real para usuários e negócios.",
+      ],
       paragraphs: [
         "Sou Lucas Pilati, Desenvolvedor Full Stack baseado no Brasil, apaixonado por criar experiências digitais limpas, acessíveis e de alta qualidade.",
         "Trabalho principalmente com React, Next.js e TypeScript, unindo bases sólidas de front-end a conhecimento de back-end para construir aplicações completas e confiáveis.",
         "Gosto de explorar novas tecnologias, melhorar a forma como produtos são construídos e contribuir com projetos que geram valor real para usuários e negócios.",
       ],
       imageAlt: "Lucas Pilati - Desenvolvedor Full Stack",
+    },
+    viewMode: {
+      label: "Visualização:",
+      recruiter: "Recrutador",
+      technical: "Técnico",
     },
     grid: {
       items: [
@@ -176,6 +264,7 @@ const translations = {
       heading: "Uma pequena seleção de",
       highlight: "projetos recentes",
       checkLiveSite: "Ver projeto",
+      viewAll: "Ver mais projetos",
       items: [
         {
           title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
@@ -216,6 +305,37 @@ const translations = {
         },
       ],
     },
+    certifications: {
+      heading: "Minhas",
+      highlight: "certificações",
+      filterAll: "Todos",
+      searchPlaceholder: "Buscar certificações...",
+      inProgress: "Em andamento",
+      viewAll: "Ver mais certificações",
+      viewDetails: "Ver detalhes",
+      pageBack: "Voltar ao portfólio",
+      backToCertifications: "Voltar às certificações",
+      notFound: "Certificação não encontrada.",
+      period: "Período",
+      skillsLabel: "Competências",
+      categoryLabel: "Categoria",
+      issuerLabel: "Instituição",
+      categoryLabels: {
+        Frontend: "Frontend",
+        Backend: "Backend",
+        Fundamentos: "Fundamentos",
+        Liderança: "Liderança",
+        "Metodologias Ágeis": "Metodologias Ágeis",
+      },
+      items: [
+        { title: "Next.js e React", description: "Formação completa em React e Next.js com aplicação prática em projetos reais, abordando renderização híbrida, roteamento, integração com APIs e fundamentos de Node.js para construção de aplicações full stack.", issuer: "Udemy" },
+        { title: "React do Zero a Maestria (c/Hooks, Router, API, Projetos)", description: "Curso aprofundado em React com foco em Hooks, React Router, consumo de APIs e desenvolvimento de projetos práticos. Ênfase em arquitetura de componentes, gerenciamento de estado e boas práticas.", issuer: "Udemy" },
+        { title: "Computação: Fundamentos", description: "Curso introdutório abordando fundamentos da computação, lógica de programação, conceitos estruturais de sistemas computacionais e bases teóricas essenciais para desenvolvimento de software.", issuer: "IFSUL - Instituto Federal Sul-rio-grandense" },
+        { title: "A Liderança na Gestão de Equipes", description: "Formação voltada ao desenvolvimento de competências em liderança, gestão de pessoas e organização de equipes, com foco em produtividade, comunicação estratégica e alinhamento de objetivos.", issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi" },
+        { title: "JavaScript", description: "Certificação em fundamentos e prática de JavaScript moderno, incluindo manipulação de DOM, estruturas de dados, funções avançadas e construção de aplicações web interativas.", issuer: "freeCodeCamp" },
+        { title: "Scrum", description: "Formação em metodologia Scrum com foco em organização de times ágeis, definição de papéis, planejamento de sprints e aplicação prática de frameworks ágeis em projetos de software.", issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi" },
+      ],
+    },
     experience: {
       heading: "Minha",
       highlight: "experiência",
@@ -238,9 +358,35 @@ const translations = {
         },
       ],
     },
+    principles: {
+      heading: "Princípios de",
+      highlight: "engenharia",
+      viewAll: "Ver mais princípios",
+      pageBack: "Voltar ao portfólio",
+      categoryLabels: {
+        Arquitetura: "Arquitetura",
+        Backend: "Backend",
+        Frontend: "Frontend",
+        "Banco de Dados": "Banco de Dados",
+        DevOps: "DevOps",
+        Segurança: "Segurança",
+        Qualidade: "Qualidade",
+      },
+      items: [
+        { title: "Separação Clara de Responsabilidades", description: "Estruturação da aplicação com divisão clara entre camadas (controller, service, repository), evitando acoplamento e facilitando manutenção, testes e evolução do sistema." },
+        { title: "Arquitetura RESTful e Contratos Bem Definidos", description: "Desenvolvimento de APIs REST com padronização de rotas, versionamento e contratos consistentes, garantindo previsibilidade na integração entre frontend e backend." },
+        { title: "Controle de Acesso Baseado em Roles", description: "Implementação de controle de permissões por role no backend, assegurando que cada tipo de usuário tenha acesso restrito às funcionalidades permitidas." },
+        { title: "Frontend Estruturado e Escalável", description: "Organização do frontend com componentização reutilizável, separação de lógica e apresentação, e estrutura de pastas orientada a domínio." },
+        { title: "Persistência e Modelagem de Dados Consistentes", description: "Modelagem relacional com foco em integridade, normalização e eficiência de consultas, utilizando PostgreSQL como banco principal." },
+        { title: "Infraestrutura e Deploy em Nuvem", description: "Configuração e deploy de aplicação em ambiente cloud, com separação de ambientes (HML/Prod) e organização segura de variáveis e credenciais." },
+        { title: "Código Limpo e Padrões de Qualidade", description: "Aplicação de boas práticas de escrita de código, nomenclatura clara, funções com responsabilidade única e cobertura de testes para reduzir débito técnico." },
+        { title: "Geração de Relatórios e Exportação de Dados", description: "Padronização da geração de relatórios em múltiplos formatos (PDF, CSV, XLSX) com contratos definidos e reuso de dados para consistência operacional." },
+        { title: "Performance e Otimização de Consultas", description: "Uso de índices adequados, evitando N+1 e consultas pesadas, com monitoramento de impacto em tempo de resposta e carga no banco." },
+      ],
+    },
     approach: {
-      heading: "Meu",
-      highlight: "approach",
+      heading: "Minha",
+      highlight: "abordagem",
       cards: [
         {
           title: "Planejamento e Estratégia",
@@ -265,6 +411,7 @@ const translations = {
       ctaTitleEnd: "juntos?",
       ctaSubtext: "Vamos conversar sobre como posso ajudar a dar vida às suas ideias.",
       button: "Vamos conversar",
+      resumeTitle: "Currículo",
       copyright: "Copyright © 2026 Lucas Pilati",
     },
     bento: {
@@ -277,6 +424,13 @@ const translations = {
       techStack: "Stack técnico",
       inPartnershipWith: "Associado a",
       notFound: "Projeto não encontrado.",
+    },
+    projectsPage: {
+      heading: "Projetos",
+      pageBack: "Voltar ao portfólio",
+      searchPlaceholder: "Buscar projetos...",
+      filterAll: "Todos",
+      noResults: "Nenhum projeto encontrado.",
     },
   },
 } as const;
