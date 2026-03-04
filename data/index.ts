@@ -18,7 +18,19 @@ export const aboutMe = {
   imageAlt: "Lucas Pilati - Full Stack Developer",
 };
 
-export const gridItems = [
+export type ViewMode = "recruiter" | "technical";
+
+export const gridItems: Array<{
+  id: number;
+  title: string;
+  description: string;
+  className: string;
+  imgClassName: string;
+  titleClassName: string;
+  img: string;
+  spareImg: string;
+  visibleIn?: ViewMode[];
+}> = [
   {
     id: 1,
     title: "Collaborative mindset with designers, product and engineering teams.",
@@ -28,6 +40,7 @@ export const gridItems = [
     titleClassName: "justify-end",
     img: "/b1.svg",
     spareImg: "",
+    visibleIn: ["recruiter", "technical"],
   },
   {
     id: 2,
@@ -38,6 +51,7 @@ export const gridItems = [
     titleClassName: "justify-start",
     img: "",
     spareImg: "",
+    visibleIn: ["technical"],
   },
   {
     id: 3,
@@ -48,6 +62,7 @@ export const gridItems = [
     titleClassName: "justify-center",
     img: "",
     spareImg: "",
+    visibleIn: ["recruiter", "technical"],
   },
   {
     id: 4,
@@ -58,8 +73,8 @@ export const gridItems = [
     titleClassName: "justify-start",
     img: "/grid.svg",
     spareImg: "/b4.svg",
+    visibleIn: ["recruiter", "technical"],
   },
-
   {
     id: 5,
     title: "Exploring advanced JavaScript and UI animations.",
@@ -69,6 +84,7 @@ export const gridItems = [
     titleClassName: "justify-center md:justify-start lg:justify-center",
     img: "/b5.svg",
     spareImg: "/grid.svg",
+    visibleIn: ["technical"],
   },
   {
     id: 6,
@@ -79,6 +95,7 @@ export const gridItems = [
     titleClassName: "justify-center md:max-w-full max-w-60 text-center",
     img: "",
     spareImg: "",
+    visibleIn: ["technical"],
   },
 ];
 
@@ -112,6 +129,8 @@ export type Certification = {
   issuedAt: string | null;
   category: string[];
   skills: string[];
+  /** Exibir na seção da home (apenas 3 em destaque) */
+  featured?: boolean;
 };
 
 export const certificationCategories = [
@@ -134,6 +153,7 @@ export const certifications: Certification[] = [
     skills: ["React", "Next.js", "Node.js", "HTML", "CSS"],
     description:
       "Formação completa em React e Next.js com aplicação prática em projetos reais, abordando renderização híbrida, roteamento, integração com APIs e fundamentos de Node.js para construção de aplicações full stack.",
+    featured: true,
   },
   {
     id: 2,
@@ -146,6 +166,7 @@ export const certifications: Certification[] = [
     skills: ["React", "Node.js", "HTML", "CSS"],
     description:
       "Curso aprofundado em React com foco em Hooks, React Router, consumo de APIs e desenvolvimento de projetos práticos. Ênfase em arquitetura de componentes, gerenciamento de estado e boas práticas.",
+    featured: true,
   },
   {
     id: 3,
@@ -179,9 +200,10 @@ export const certifications: Certification[] = [
     startedAt: "2024-12",
     issuedAt: "2025-02",
     category: ["Frontend", "Fundamentos"],
-    skills: ["JavaScript", "ES6+", "Manipulação de DOM", "Lógica de Programação"],
+    skills: ["JavaScript", "ES6+", "", "Manipulação de DOM", "Lógica de Programação"],
     description:
       "Certificação em fundamentos e prática de JavaScript moderno, incluindo manipulação de DOM, estruturas de dados, funções avançadas e construção de aplicações web interativas.",
+    featured: true,
   },
   {
     id: 6,
@@ -279,6 +301,9 @@ export type EngineeringPrinciple = {
   description: string;
   category: string;
   tags: string[];
+  visibleIn?: ViewMode[];
+  /** Exibir na seção da home (apenas alguns em destaque) */
+  featured?: boolean;
 };
 
 export const engineeringPrinciples: EngineeringPrinciple[] = [
@@ -289,6 +314,8 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["Clean Architecture", "SRP", "Modularização"],
     description:
       "Estruturação da aplicação com divisão clara entre camadas (controller, service, repository), evitando acoplamento e facilitando manutenção, testes e evolução do sistema.",
+    visibleIn: ["recruiter", "technical"],
+    featured: true,
   },
   {
     id: 2,
@@ -297,6 +324,8 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["REST", "Spring Boot", "API Contracts"],
     description:
       "Desenvolvimento de APIs REST com padronização de rotas, versionamento e contratos consistentes, garantindo previsibilidade na integração entre frontend e backend.",
+    visibleIn: ["recruiter", "technical"],
+    featured: true,
   },
   {
     id: 3,
@@ -305,6 +334,8 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["RBAC", "Autorização", "JWT"],
     description:
       "Implementação de controle de permissões por role no backend, assegurando que cada tipo de usuário tenha acesso restrito às funcionalidades permitidas.",
+    visibleIn: ["recruiter", "technical"],
+    featured: true,
   },
   {
     id: 4,
@@ -313,6 +344,7 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["React", "Next.js", "Componentização"],
     description:
       "Organização do frontend com componentização reutilizável, separação de lógica e apresentação, e estrutura de pastas orientada a domínio.",
+    visibleIn: ["recruiter", "technical"],
   },
   {
     id: 5,
@@ -321,6 +353,7 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["PostgreSQL", "Modelagem Relacional"],
     description:
       "Modelagem relacional com foco em integridade, normalização e eficiência de consultas, utilizando PostgreSQL como banco principal.",
+    visibleIn: ["technical"],
   },
   {
     id: 6,
@@ -329,6 +362,7 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["AWS", "Cloud", "Deploy"],
     description:
       "Configuração e deploy de aplicação em ambiente cloud, com separação de ambientes (HML/Prod) e organização segura de variáveis e credenciais.",
+    visibleIn: ["technical"],
   },
   {
     id: 7,
@@ -337,6 +371,7 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["Clean Code", "Testes", "Manutenibilidade"],
     description:
       "Aplicação de boas práticas de escrita de código, nomenclatura clara, funções com responsabilidade única e cobertura de testes para reduzir débito técnico.",
+    visibleIn: ["technical"],
   },
   {
     id: 8,
@@ -345,6 +380,7 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["PDF", "CSV", "XLSX", "Exportação"],
     description:
       "Padronização da geração de relatórios em múltiplos formatos (PDF, CSV, XLSX) com contratos definidos e reuso de dados para consistência operacional.",
+    visibleIn: ["technical"],
   },
   {
     id: 9,
@@ -353,6 +389,7 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     tags: ["Performance", "Índices", "Queries"],
     description:
       "Uso de índices adequados, evitando N+1 e consultas pesadas, com monitoramento de impacto em tempo de resposta e carga no banco.",
+    visibleIn: ["technical"],
   },
 ];
 

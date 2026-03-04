@@ -6,11 +6,14 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { projects, STACK_LABELS } from "@/data";
 import { PinContainer } from "./ui/Pin";
 import { useLanguage } from "@/context/LanguageContext";
+import { useViewMode } from "@/context/ViewModeContext";
 
 const RecentProjects = () => {
   const router = useRouter();
   const { t } = useLanguage();
+  const { viewMode } = useViewMode();
   const projectsT = t("projects") as { heading: string; highlight: string; checkLiveSite: string; items: Array<{ title: string; des: string }> };
+  const showClientBadge = viewMode === "technical";
   return (
     <div id="projects" className=" scroll-mt-20">
       <h1 className="heading">
@@ -64,6 +67,15 @@ const RecentProjects = () => {
               >
                 {projectsT.items[index]?.des ?? item.des}
               </p>
+
+              {showClientBadge && "clientName" in item && item.clientName && (
+                <div className="flex items-center gap-2 mt-2">
+                  {"clientLogo" in item && item.clientLogo && (
+                    <img src={item.clientLogo} alt="" className="h-6 w-auto object-contain rounded" />
+                  )}
+                  <span className="text-xs text-white-200/80">{item.clientName}</span>
+                </div>
+              )}
 
               <div className="flex items-center justify-between mt-7 mb-3">
                 <div className="flex items-center">

@@ -8,7 +8,7 @@ export default function LanguageSwitcher() {
 
   return (
     <div
-      className="fixed top-6 right-6 z-50 flex items-center gap-0.5 p-1 rounded-lg bg-black-200/80 backdrop-blur border border-white/10"
+      className="flex items-center gap-0.5 p-1 rounded-lg bg-black-200/80 backdrop-blur border border-white/10"
       role="group"
       aria-label="Switch language"
     >

@@ -18,12 +18,21 @@ const translations = {
     about: {
       title: "About",
       highlight: "me",
+      short: [
+        "Full Stack Developer based in Brazil. I work with React, Next.js and TypeScript to build clean, scalable applications.",
+        "I focus on front-end quality and back-end integration, and I contribute to projects that create real value for users and businesses.",
+      ],
       paragraphs: [
         "I'm Lucas Pilati, a Full Stack Developer based in Brazil, passionate about building clean, accessible and high-quality digital experiences.",
         "I work mainly with React, Next.js and TypeScript, combining strong front-end foundations with back-end knowledge to build complete, reliable applications.",
         "I enjoy exploring new technologies, improving how products are built, and contributing to projects that create real value for users and businesses.",
       ],
       imageAlt: "Lucas Pilati - Full Stack Developer",
+    },
+    viewMode: {
+      label: "View:",
+      recruiter: "Recruiter",
+      technical: "Technical",
     },
     grid: {
       items: [
@@ -84,6 +93,15 @@ const translations = {
       highlight: "certifications",
       filterAll: "All",
       inProgress: "In progress",
+      viewAll: "View all certifications",
+      viewDetails: "View details",
+      pageBack: "Back to portfolio",
+      backToCertifications: "Back to certifications",
+      notFound: "Certification not found.",
+      period: "Period",
+      skillsLabel: "Skills",
+      categoryLabel: "Category",
+      issuerLabel: "Issuer",
       categoryLabels: {
         Frontend: "Frontend",
         Backend: "Backend",
@@ -125,6 +143,8 @@ const translations = {
     principles: {
       heading: "Engineering",
       highlight: "principles",
+      viewAll: "View all principles",
+      pageBack: "Back to portfolio",
       categoryLabels: {
         Arquitetura: "Architecture",
         Backend: "Backend",
@@ -173,6 +193,7 @@ const translations = {
       ctaTitleEnd: "together?",
       ctaSubtext: "Let's connect and talk about how I can help bring your ideas to life.",
       button: "Let's get in touch",
+      resumeTitle: "Resume",
       copyright: "Copyright © 2026 Lucas Pilati",
     },
     bento: {
@@ -204,12 +225,21 @@ const translations = {
     about: {
       title: "Sobre",
       highlight: "mim",
+      short: [
+        "Desenvolvedor Full Stack baseado no Brasil. Trabalho com React, Next.js e TypeScript para construir aplicações limpas e escaláveis.",
+        "Foco em qualidade de front-end e integração com back-end, contribuindo com projetos que geram valor real para usuários e negócios.",
+      ],
       paragraphs: [
         "Sou Lucas Pilati, Desenvolvedor Full Stack baseado no Brasil, apaixonado por criar experiências digitais limpas, acessíveis e de alta qualidade.",
         "Trabalho principalmente com React, Next.js e TypeScript, unindo bases sólidas de front-end a conhecimento de back-end para construir aplicações completas e confiáveis.",
         "Gosto de explorar novas tecnologias, melhorar a forma como produtos são construídos e contribuir com projetos que geram valor real para usuários e negócios.",
       ],
       imageAlt: "Lucas Pilati - Desenvolvedor Full Stack",
+    },
+    viewMode: {
+      label: "Visualização:",
+      recruiter: "Recrutador",
+      technical: "Técnico",
     },
     grid: {
       items: [
@@ -270,6 +300,15 @@ const translations = {
       highlight: "certificações",
       filterAll: "Todos",
       inProgress: "Em andamento",
+      viewAll: "Ver mais certificações",
+      viewDetails: "Ver detalhes",
+      pageBack: "Voltar ao portfólio",
+      backToCertifications: "Voltar às certificações",
+      notFound: "Certificação não encontrada.",
+      period: "Período",
+      skillsLabel: "Competências",
+      categoryLabel: "Categoria",
+      issuerLabel: "Instituição",
       categoryLabels: {
         Frontend: "Frontend",
         Backend: "Backend",
@@ -311,6 +350,8 @@ const translations = {
     principles: {
       heading: "Princípios de",
       highlight: "engenharia",
+      viewAll: "Ver mais princípios",
+      pageBack: "Voltar ao portfólio",
       categoryLabels: {
         Arquitetura: "Arquitetura",
         Backend: "Backend",
@@ -333,8 +374,8 @@ const translations = {
       ],
     },
     approach: {
-      heading: "Meu",
-      highlight: "approach",
+      heading: "Minha",
+      highlight: "abordagem",
       cards: [
         {
           title: "Planejamento e Estratégia",
@@ -359,6 +400,7 @@ const translations = {
       ctaTitleEnd: "juntos?",
       ctaSubtext: "Vamos conversar sobre como posso ajudar a dar vida às suas ideias.",
       button: "Vamos conversar",
+      resumeTitle: "Currículo",
       copyright: "Copyright © 2026 Lucas Pilati",
     },
     bento: {
