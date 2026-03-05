@@ -1,6 +1,6 @@
 "use client";
 
-import { FaLocationArrow, FaFileLines } from "react-icons/fa6";
+import { FaLocationArrow, FaFileLines, FaGithub, FaLinkedin } from "react-icons/fa6";
 
 import { socialMedia } from "@/data";
 import MagicButton from "./MagicButton";
@@ -41,21 +41,28 @@ const Footer = () => {
         </p>
 
         <div className="flex items-center md:gap-3 gap-6">
-          {socialMedia && socialMedia.map((info: { id: number, img: string, link: string }) => (
-            <div
-              key={info.id}
-              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
-              onClick={() => window.open(info.link, "_blank")}
-            >
-              <img src={info.img} alt="icons" width={20} height={20} />
-            </div>
-          ))}
+          {socialMedia && socialMedia.map((info: { id: number, img: string, link: string }) => {
+            const isGitHub = info.link.includes("github");
+            const Icon = isGitHub ? FaGithub : FaLinkedin;
+            return (
+              <a
+                key={info.id}
+                href={info.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={isGitHub ? "GitHub" : "LinkedIn"}
+                className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 text-white-200 hover:text-purple hover:border-purple/50 transition-colors"
+              >
+                <Icon size={20} />
+              </a>
+            );
+          })}
           <a
             href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
             title={footer.resumeTitle ?? "Resume"}
-            className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 text-white-200 hover:text-purple transition-colors"
+            className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 text-white-200 hover:text-purple hover:border-purple/50 transition-colors"
           >
             <FaFileLines size={20} />
           </a>

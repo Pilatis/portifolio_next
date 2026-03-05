@@ -122,6 +122,7 @@ export const STACK_LABELS: Record<string, string> = {
 export type Certification = {
   id: number;
   image: string;
+  images?: string[];
   title: string;
   description: string;
   issuer: string;
@@ -129,7 +130,6 @@ export type Certification = {
   issuedAt: string | null;
   category: string[];
   skills: string[];
-  /** Exibir na seção da home (apenas 3 em destaque) */
   featured?: boolean;
 };
 
@@ -171,6 +171,7 @@ export const certifications: Certification[] = [
   {
     id: 3,
     image: "/images/certificates/computacao-fundamentos-ifsul.jpg",
+    images: ["/images/certificates/computacao-fundamentos-ifsul.jpg", "/images/certificates/computacao-fundamentos-ifsul-p2.jpg"],
     title: "Computação: Fundamentos",
     issuer: "IFSUL - Instituto Federal Sul-rio-grandense",
     startedAt: "2025-10",
@@ -183,6 +184,7 @@ export const certifications: Certification[] = [
   {
     id: 4,
     image: "/images/certificates/lideranca-uniasselvi.jpg",
+    images: ["/images/certificates/lideranca-uniasselvi.jpg", "/images/certificates/lideranca-uniasselvi-p2.jpg"],
     title: "A Liderança na Gestão de Equipes",
     issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
     startedAt: "2025-11",
@@ -208,6 +210,7 @@ export const certifications: Certification[] = [
   {
     id: 6,
     image: "/images/certificates/scrum-uniasselvi.jpg",
+    images: ["/images/certificates/scrum-uniasselvi.jpg", "/images/certificates/scrum-uniasselvi-p2.jpg"],
     title: "Scrum",
     issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
     startedAt: "2025-12",
@@ -216,6 +219,19 @@ export const certifications: Certification[] = [
     skills: ["Scrum", "Gestão Ágil", "Sprints", "Product Backlog"],
     description:
       "Formação em metodologia Scrum com foco em organização de times ágeis, definição de papéis, planejamento de sprints e aplicação prática de frameworks ágeis em projetos de software.",
+  },
+  {
+    id: 7,
+    image: "/images/certificates/react-native-ifsul.jpg",
+    images: ["/images/certificates/react-native-ifsul.jpg", "/images/certificates/react-native-ifsul-p2.jpg"],
+    title: "React Native: Criação de Aplicativos Móveis Modernos",
+    issuer: "IFSUL - Instituto Federal Sul-rio-grandense",
+    startedAt: "2025-03",
+    issuedAt: "2025-05",
+    category: ["Frontend"],
+    skills: ["React Native", "JavaScript", "Mobile", "iOS", "Android", "Expo"],
+    description:
+      "Curso de React Native ofertado pelo IFSUL (40 horas), realizado de 3 de março a 4 de maio de 2025. Abordagem prática na criação de aplicativos móveis modernos para iOS e Android, com foco em componentes, navegação, estado e integração com APIs.",
   },
 ];
 

@@ -118,6 +118,7 @@ const translations = {
         { title: "Leadership in Team Management", description: "Training focused on developing leadership competencies, people management and team organization, with focus on productivity, strategic communication and goal alignment.", issuer: "Leonardo da Vinci University Center - Uniasselvi" },
         { title: "JavaScript", description: "Certification in fundamentals and practice of modern JavaScript, including DOM manipulation, data structures, advanced functions and building interactive web applications.", issuer: "freeCodeCamp" },
         { title: "Scrum", description: "Training in Scrum methodology with focus on agile team organization, role definition, sprint planning and practical application of agile frameworks in software projects.", issuer: "Leonardo da Vinci University Center - Uniasselvi" },
+        { title: "React Native: Creating Modern Mobile Applications", description: "React Native course offered by IFSUL (40 hours), held from March 3 to May 4, 2025. Practical approach to creating modern mobile applications for iOS and Android, focusing on components, navigation, state and API integration.", issuer: "IFSUL - Federal Institute Sul-rio-grandense" },
       ],
     },
     experience: {
@@ -334,6 +335,7 @@ const translations = {
         { title: "A Liderança na Gestão de Equipes", description: "Formação voltada ao desenvolvimento de competências em liderança, gestão de pessoas e organização de equipes, com foco em produtividade, comunicação estratégica e alinhamento de objetivos.", issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi" },
         { title: "JavaScript", description: "Certificação em fundamentos e prática de JavaScript moderno, incluindo manipulação de DOM, estruturas de dados, funções avançadas e construção de aplicações web interativas.", issuer: "freeCodeCamp" },
         { title: "Scrum", description: "Formação em metodologia Scrum com foco em organização de times ágeis, definição de papéis, planejamento de sprints e aplicação prática de frameworks ágeis em projetos de software.", issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi" },
+        { title: "React Native: Criação de Aplicativos Móveis Modernos", description: "Curso de React Native ofertado pelo IFSUL (40 horas), realizado de 3 de março a 4 de maio de 2025. Abordagem prática na criação de aplicativos móveis modernos para iOS e Android, com foco em componentes, navegação, estado e integração com APIs.", issuer: "IFSUL - Instituto Federal Sul-rio-grandense" },
       ],
     },
     experience: {

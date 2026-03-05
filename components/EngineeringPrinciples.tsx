@@ -66,9 +66,10 @@ export default function EngineeringPrinciples({ variant = "home" }: EngineeringP
 
   const isHome = variant === "home";
   const featuredList = engineeringPrinciples.filter((p) => p.featured === true);
+  /** Na página full (/principles) o modo não afeta: sempre o mesmo conteúdo do technical (todos + cards completos). */
   const list = isHome
     ? featuredList.filter((p) => !p.visibleIn || p.visibleIn.includes(viewMode))
-    : engineeringPrinciples.filter((p) => !p.visibleIn || p.visibleIn.includes(viewMode));
+    : engineeringPrinciples.filter((p) => !p.visibleIn || p.visibleIn.includes("technical"));
 
   const getCategoryLabel = (category: string) => {
     return principlesT.categoryLabels?.[category] ?? category;
@@ -87,7 +88,7 @@ export default function EngineeringPrinciples({ variant = "home" }: EngineeringP
             principle={principle}
             itemT={principlesT.items[principle.id - 1]}
             categoryLabel={getCategoryLabel(principle.category)}
-            compact={viewMode === "recruiter"}
+            compact={isHome && viewMode === "recruiter"}
           />
         ))}
       </div>

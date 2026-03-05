@@ -33,7 +33,8 @@ export default function Certifications({ variant = "home" }: CertificationsProps
   const [searchQuery, setSearchQuery] = useState("");
 
   const isHome = variant === "home";
-  const isCompact = viewMode === "recruiter";
+  /** Na página full (/certifications) o modo não afeta: sempre conteúdo técnico (busca, filtros, cards completos). */
+  const isCompact = isHome && viewMode === "recruiter";
 
   const featuredList = certifications.filter((c) => c.featured === true);
 
