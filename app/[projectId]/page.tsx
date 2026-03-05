@@ -8,7 +8,6 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { IoArrowBack } from "react-icons/io5";
 import { projects, STACK_LABELS } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
-import { useViewMode } from "@/context/ViewModeContext";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import MagicButton from "@/components/MagicButton";
 import { cn } from "@/lib/utils";
@@ -16,7 +15,6 @@ import { cn } from "@/lib/utils";
 export default function ProjectPage() {
   const { projectId } = useParams();
   const { t, lang } = useLanguage();
-  const { viewMode } = useViewMode();
   const projectsT = t("projects") as {
     checkLiveSite: string;
     items: Array<{
@@ -38,13 +36,11 @@ export default function ProjectPage() {
   const index = project ? projects.findIndex((p) => p.id === project.id) : -1;
   const title = project && index >= 0 ? projectsT.items[index]?.title ?? project.title : "";
   const itemT = project && index >= 0 ? projectsT.items[index] : null;
-  const description =
-    viewMode === "recruiter"
-      ? (itemT?.des ?? project?.des ?? "")
-      : (itemT?.fullDes ?? itemT?.des ?? project?.des ?? "");
-  const showAboutTitle = viewMode === "technical";
-  const showClientBlock = viewMode === "technical";
-  const showProjectLink = viewMode === "technical";
+  /** Na página de detalhe o conteúdo é sempre completo (viewMode não afeta). */
+  const description = itemT?.fullDes ?? itemT?.des ?? project?.des ?? "";
+  const showAboutTitle = true;
+  const showClientBlock = true;
+  const showProjectLink = true;
 
   const projectMedia = project && "media" in project && Array.isArray((project as { media?: { src: string; type: "image" | "video" }[] }).media)
     ? (project as { media: { src: string; type: "image" | "video" }[] }).media

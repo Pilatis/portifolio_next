@@ -34,7 +34,8 @@ export function CertificationCard({
   from,
 }: CertificationCardProps) {
   const [imgError, setImgError] = useState(false);
-  const showPlaceholder = !cert.image || imgError;
+  const displayImage = cert.images?.[0] ?? cert.image;
+  const showPlaceholder = !displayImage || imgError;
   const detailHref = `/certifications/${cert.id}${from ? `?from=${from}` : ""}`;
   const isGridLayout = from === "list";
 
@@ -52,7 +53,7 @@ export function CertificationCard({
               className="relative w-full h-full overflow-hidden rounded-3xl"
               style={{ backgroundColor: "#13162D" }}
             >
-              <img src="/bg.png" alt="" className="w-full h-full object-cover opacity-40" />
+              <img src="/bg.png" alt="" className="w-full object-cover opacity-40" />
             </div>
             {showPlaceholder ? (
               <div className="z-10 absolute inset-0 flex items-center justify-center text-white-200/60 text-sm rounded-3xl bg-black-300/80">
@@ -60,7 +61,7 @@ export function CertificationCard({
               </div>
             ) : (
               <img
-                src={cert.image}
+                src={displayImage}
                 alt=""
                 className="z-10 absolute bottom-0 left-1/2 -translate-x-1/2 max-h-full w-auto object-contain"
                 style={{ maxWidth: "100%" }}

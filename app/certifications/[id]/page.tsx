@@ -57,7 +57,8 @@ export default function CertificationDetailPage() {
     );
   }
 
-  const showPlaceholder = !cert.image || imgError;
+  const certificationImages = cert.images?.length ? cert.images : [cert.image];
+  const showPlaceholder = certificationImages.length === 0 || imgError;
   const getCategoryLabel = (key: string) => certT.categoryLabels?.[key] ?? key;
   const title = itemT?.title ?? cert.title;
 
@@ -100,25 +101,37 @@ export default function CertificationDetailPage() {
           {title}
         </motion.h1>
 
-        {/* Imagem do certificado (equivalente ao carrossel do projeto) */}
+        {/* Imagem(ns) do certificado (uma ou várias, ex.: PDF com 2 páginas) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="mb-10 md:mb-14 rounded-2xl overflow-hidden border border-white/10 bg-black-200/80 shadow-2xl shadow-purple/10"
+          className="mb-10 md:mb-14 space-y-6"
         >
-          <div className="aspect-[4/3] w-full bg-black-300 flex items-center justify-center">
-            {showPlaceholder ? (
-              <div className="text-white-200/60 text-sm">Certificado</div>
-            ) : (
-              <img
-                src={cert.image}
-                alt=""
-                className="w-full h-full object-contain"
-                onError={() => setImgError(true)}
-              />
-            )}
-          </div>
+          {certificationImages.map((src, i) => (
+            <div
+              key={src + i}
+              className="rounded-2xl overflow-hidden border border-white/10 bg-black-200/80 shadow-2xl shadow-purple/10"
+            >
+              <div className="aspect-[4/3] w-full bg-black-300 flex items-center justify-center">
+                {certificationImages.length === 1 && imgError ? (
+                  <div className="text-white-200/60 text-sm">Certificado</div>
+                ) : (
+                  <img
+                    src={src}
+                    alt={certificationImages.length > 1 ? `Página ${i + 1}` : ""}
+                    className="w-full h-full object-contain"
+                    onError={() => setImgError(true)}
+                  />
+                )}
+              </div>
+            </div>
+          ))}
+          {showPlaceholder && certificationImages.length === 0 && (
+            <div className="aspect-[4/3] w-full rounded-2xl bg-black-300 flex items-center justify-center border border-white/10 text-white-200/60 text-sm">
+              Certificado
+            </div>
+          )}
         </motion.div>
 
         {/* Grid: descrição (2 col) + sidebar (1 col) - igual ao projeto */}
