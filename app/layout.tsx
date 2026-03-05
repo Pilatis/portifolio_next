@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
 import AppShell from "./AppShell";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AppShell>{children}</AppShell>
+          <SpeedInsights />
         </ThemeProvider>
       </body>
     </html>
