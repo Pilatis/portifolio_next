@@ -130,6 +130,10 @@ export type Certification = {
   issuedAt: string | null;
   category: string[];
   skills: string[];
+  topics?: string[];
+  practicalApplication?: string;
+  impact?: string;
+  hours?: string;
   featured?: boolean;
 };
 
@@ -151,8 +155,19 @@ export const certifications: Certification[] = [
     issuedAt: "2026-02",
     category: ["Frontend", "Backend"],
     skills: ["React", "Next.js", "Node.js", "HTML", "CSS"],
+    topics: [
+      "SSR e SSG com Next.js",
+      "Arquitetura de componentes em React",
+      "Roteamento e estrutura de aplicações",
+      "Integração com APIs",
+      "Fundamentos de aplicações full stack"
+    ],
     description:
-      "Formação completa em React e Next.js com aplicação prática em projetos reais, abordando renderização híbrida, roteamento, integração com APIs e fundamentos de Node.js para construção de aplicações full stack.",
+      "Formação completa em React e Next.js com aplicação prática em projetos reais, abordando renderização híbrida, roteamento e integração com APIs.",
+    practicalApplication:
+      "Aplicação dos conceitos no desenvolvimento de aplicações modernas utilizando React, Next.js e APIs REST.",
+    impact:
+      "Melhoria na organização de aplicações front-end, otimização de carregamento de páginas e melhor estruturação de projetos web.",
     featured: true,
   },
   {
@@ -164,35 +179,72 @@ export const certifications: Certification[] = [
     issuedAt: "2026-02",
     category: ["Frontend"],
     skills: ["React", "Node.js", "HTML", "CSS"],
+    topics: [
+      "Hooks do React",
+      "React Router",
+      "Consumo de APIs",
+      "Componentização",
+      "Estruturação de projetos"
+    ],
     description:
-      "Curso aprofundado em React com foco em Hooks, React Router, consumo de APIs e desenvolvimento de projetos práticos. Ênfase em arquitetura de componentes, gerenciamento de estado e boas práticas.",
+      "Curso aprofundado em React com foco em Hooks, React Router, consumo de APIs e desenvolvimento de projetos práticos.",
+    practicalApplication:
+      "Utilização dos conceitos para criação de interfaces modulares e reutilizáveis em aplicações React.",
+    impact:
+      "Aumento da reutilização de componentes e melhoria na manutenção de aplicações front-end.",
     featured: true,
   },
   {
     id: 3,
     image: "/images/certificates/computacao-fundamentos-ifsul.jpg",
-    images: ["/images/certificates/computacao-fundamentos-ifsul.jpg", "/images/certificates/computacao-fundamentos-ifsul-p2.jpg"],
+    images: [
+      "/images/certificates/computacao-fundamentos-ifsul.jpg",
+      "/images/certificates/computacao-fundamentos-ifsul-p2.jpg"
+    ],
     title: "Computação: Fundamentos",
     issuer: "IFSUL - Instituto Federal Sul-rio-grandense",
     startedAt: "2025-10",
     issuedAt: "2025-11",
     category: ["Fundamentos"],
     skills: ["Lógica de Programação", "Arquitetura de Computadores", "Algoritmos"],
+    topics: [
+      "Fundamentos da computação",
+      "Estruturas lógicas",
+      "Algoritmos básicos",
+      "Arquitetura de sistemas computacionais"
+    ],
     description:
-      "Curso introdutório abordando fundamentos da computação, lógica de programação, conceitos estruturais de sistemas computacionais e bases teóricas essenciais para desenvolvimento de software.",
+      "Curso introdutório abordando fundamentos da computação e lógica de programação.",
+    practicalApplication:
+      "Base teórica aplicada no desenvolvimento de algoritmos e resolução estruturada de problemas em projetos de software.",
+    impact:
+      "Fortalecimento da base lógica para desenvolvimento de aplicações e melhor entendimento da estrutura de sistemas.",
   },
   {
     id: 4,
     image: "/images/certificates/lideranca-uniasselvi.jpg",
-    images: ["/images/certificates/lideranca-uniasselvi.jpg", "/images/certificates/lideranca-uniasselvi-p2.jpg"],
+    images: [
+      "/images/certificates/lideranca-uniasselvi.jpg",
+      "/images/certificates/lideranca-uniasselvi-p2.jpg"
+    ],
     title: "A Liderança na Gestão de Equipes",
     issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
     startedAt: "2025-11",
     issuedAt: "2025-12",
     category: ["Liderança"],
     skills: ["Gestão de Equipes", "Comunicação", "Tomada de Decisão"],
+    topics: [
+      "Liderança estratégica",
+      "Comunicação organizacional",
+      "Gestão de equipes",
+      "Tomada de decisão"
+    ],
     description:
-      "Formação voltada ao desenvolvimento de competências em liderança, gestão de pessoas e organização de equipes, com foco em produtividade, comunicação estratégica e alinhamento de objetivos.",
+      "Formação voltada ao desenvolvimento de competências em liderança e gestão de equipes.",
+    practicalApplication:
+      "Aplicação dos conceitos na organização de fluxos de trabalho e colaboração em projetos de desenvolvimento.",
+    impact:
+      "Melhoria na comunicação e organização de tarefas em ambientes colaborativos.",
   },
   {
     id: 5,
@@ -200,39 +252,85 @@ export const certifications: Certification[] = [
     title: "JavaScript",
     issuer: "freeCodeCamp",
     startedAt: "2024-12",
-    issuedAt: "2025-02",
+    issuedAt: "2026-02",
+    hours: "300h",
     category: ["Frontend", "Fundamentos"],
-    skills: ["JavaScript", "ES6+", "", "Manipulação de DOM", "Lógica de Programação"],
+    skills: [
+      "JavaScript",
+      "ES6+",
+      "Manipulação de DOM",
+      "Estruturas de Dados",
+      "Lógica de Programação"
+    ],
+    topics: [
+      "Estruturas de dados",
+      "Programação funcional",
+      "ES6+",
+      "Manipulação de DOM",
+      "Algoritmos"
+    ],
     description:
-      "Certificação em fundamentos e prática de JavaScript moderno, incluindo manipulação de DOM, estruturas de dados, funções avançadas e construção de aplicações web interativas.",
+      "Certificação com forte abordagem prática em JavaScript moderno e resolução de problemas.",
+    practicalApplication:
+      "Uso contínuo do JavaScript no desenvolvimento de aplicações com React, Next.js e Node.js.",
+    impact:
+      "Melhoria na organização da lógica de negócio e maior eficiência na manipulação de dados em aplicações web.",
     featured: true,
   },
   {
     id: 6,
     image: "/images/certificates/scrum-uniasselvi.jpg",
-    images: ["/images/certificates/scrum-uniasselvi.jpg", "/images/certificates/scrum-uniasselvi-p2.jpg"],
+    images: [
+      "/images/certificates/scrum-uniasselvi.jpg",
+      "/images/certificates/scrum-uniasselvi-p2.jpg"
+    ],
     title: "Scrum",
     issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
     startedAt: "2025-12",
     issuedAt: null,
     category: ["Metodologias Ágeis"],
     skills: ["Scrum", "Gestão Ágil", "Sprints", "Product Backlog"],
+    topics: [
+      "Framework Scrum",
+      "Planejamento de sprints",
+      "Gestão de backlog",
+      "Papéis em times ágeis"
+    ],
     description:
-      "Formação em metodologia Scrum com foco em organização de times ágeis, definição de papéis, planejamento de sprints e aplicação prática de frameworks ágeis em projetos de software.",
+      "Formação em metodologia Scrum com foco na organização e execução de projetos ágeis.",
+    practicalApplication:
+      "Aplicação de práticas ágeis no planejamento e organização de projetos de software.",
+    impact:
+      "Melhoria na gestão de tarefas e organização do fluxo de desenvolvimento.",
   },
   {
     id: 7,
     image: "/images/certificates/react-native-ifsul.jpg",
-    images: ["/images/certificates/react-native-ifsul.jpg", "/images/certificates/react-native-ifsul-p2.jpg"],
+    images: [
+      "/images/certificates/react-native-ifsul.jpg",
+      "/images/certificates/react-native-ifsul-p2.jpg"
+    ],
     title: "React Native: Criação de Aplicativos Móveis Modernos",
     issuer: "IFSUL - Instituto Federal Sul-rio-grandense",
     startedAt: "2025-03",
     issuedAt: "2025-05",
+    hours: "40h",
     category: ["Frontend"],
     skills: ["React Native", "JavaScript", "Mobile", "iOS", "Android", "Expo"],
+    topics: [
+      "Componentes React Native",
+      "Navegação em aplicações mobile",
+      "Gerenciamento de estado",
+      "Integração com APIs",
+      "Desenvolvimento multiplataforma"
+    ],
     description:
-      "Curso de React Native ofertado pelo IFSUL (40 horas), realizado de 3 de março a 4 de maio de 2025. Abordagem prática na criação de aplicativos móveis modernos para iOS e Android, com foco em componentes, navegação, estado e integração com APIs.",
-  },
+      "Curso de React Native com abordagem prática para criação de aplicativos móveis modernos.",
+    practicalApplication:
+      "Exploração do desenvolvimento mobile multiplataforma utilizando React Native e integração com APIs.",
+    impact:
+      "Ampliação da capacidade de desenvolvimento para plataformas móveis iOS e Android.",
+  }
 ];
 
 export const projects = [
@@ -329,17 +427,17 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     category: "Arquitetura",
     tags: ["Clean Architecture", "SRP", "Modularização"],
     description:
-      "Estruturação da aplicação com divisão clara entre camadas (controller, service, repository), evitando acoplamento e facilitando manutenção, testes e evolução do sistema.",
+      "Estruturação da aplicação com separação clara entre camadas (controller, service e repository), reduzindo acoplamento entre componentes e promovendo maior manutenibilidade, testabilidade e evolução do sistema.",
     visibleIn: ["recruiter", "technical"],
     featured: true,
   },
   {
     id: 2,
-    title: "Arquitetura RESTful e Contratos Bem Definidos",
+    title: "Arquitetura RESTful e Contratos de API Consistentes",
     category: "Backend",
     tags: ["REST", "Spring Boot", "API Contracts"],
     description:
-      "Desenvolvimento de APIs REST com padronização de rotas, versionamento e contratos consistentes, garantindo previsibilidade na integração entre frontend e backend.",
+      "Desenvolvimento de APIs REST seguindo boas práticas de padronização de rotas, versionamento e definição de contratos estáveis, garantindo previsibilidade e integração confiável entre frontend e backend.",
     visibleIn: ["recruiter", "technical"],
     featured: true,
   },
@@ -349,62 +447,62 @@ export const engineeringPrinciples: EngineeringPrinciple[] = [
     category: "Segurança",
     tags: ["RBAC", "Autorização", "JWT"],
     description:
-      "Implementação de controle de permissões por role no backend, assegurando que cada tipo de usuário tenha acesso restrito às funcionalidades permitidas.",
+      "Implementação de controle de acesso baseado em papéis (RBAC) no backend, assegurando que diferentes perfis de usuário tenham permissões adequadas e acesso restrito às funcionalidades autorizadas.",
     visibleIn: ["recruiter", "technical"],
     featured: true,
   },
   {
     id: 4,
-    title: "Frontend Estruturado e Escalável",
+    title: "Arquitetura de Frontend Escalável",
     category: "Frontend",
     tags: ["React", "Next.js", "Componentização"],
     description:
-      "Organização do frontend com componentização reutilizável, separação de lógica e apresentação, e estrutura de pastas orientada a domínio.",
+      "Estruturação do frontend com componentização reutilizável, separação entre lógica de negócio e apresentação e organização de código orientada a domínio, facilitando escalabilidade e manutenção.",
     visibleIn: ["recruiter", "technical"],
   },
   {
     id: 5,
-    title: "Persistência e Modelagem de Dados Consistentes",
+    title: "Modelagem e Persistência de Dados Consistentes",
     category: "Banco de Dados",
     tags: ["PostgreSQL", "Modelagem Relacional"],
     description:
-      "Modelagem relacional com foco em integridade, normalização e eficiência de consultas, utilizando PostgreSQL como banco principal.",
+      "Modelagem de dados relacional com foco em integridade, normalização e eficiência de consultas, utilizando PostgreSQL para garantir consistência e confiabilidade na persistência das informações.",
     visibleIn: ["technical"],
   },
   {
     id: 6,
-    title: "Infraestrutura e Deploy em Nuvem",
+    title: "Infraestrutura e Deploy em Ambiente Cloud",
     category: "DevOps",
     tags: ["AWS", "Cloud", "Deploy"],
     description:
-      "Configuração e deploy de aplicação em ambiente cloud, com separação de ambientes (HML/Prod) e organização segura de variáveis e credenciais.",
+      "Configuração de infraestrutura e deploy em ambiente cloud, com separação adequada de ambientes (homologação e produção), gerenciamento seguro de variáveis e organização de processos de entrega.",
     visibleIn: ["technical"],
   },
   {
     id: 7,
-    title: "Código Limpo e Padrões de Qualidade",
+    title: "Código Limpo e Boas Práticas de Engenharia",
     category: "Qualidade",
     tags: ["Clean Code", "Testes", "Manutenibilidade"],
     description:
-      "Aplicação de boas práticas de escrita de código, nomenclatura clara, funções com responsabilidade única e cobertura de testes para reduzir débito técnico.",
+      "Aplicação de princípios de código limpo, incluindo nomenclatura clara, funções com responsabilidade única e estrutura modular, contribuindo para maior legibilidade, manutenibilidade e redução de débito técnico.",
     visibleIn: ["technical"],
   },
   {
     id: 8,
-    title: "Geração de Relatórios e Exportação de Dados",
+    title: "Padronização de Geração de Relatórios",
     category: "Backend",
     tags: ["PDF", "CSV", "XLSX", "Exportação"],
     description:
-      "Padronização da geração de relatórios em múltiplos formatos (PDF, CSV, XLSX) com contratos definidos e reuso de dados para consistência operacional.",
+      "Implementação de geração de relatórios em múltiplos formatos (PDF, CSV e XLSX), com padronização de contratos e reutilização de dados, garantindo consistência e confiabilidade nas exportações.",
     visibleIn: ["technical"],
   },
   {
     id: 9,
-    title: "Performance e Otimização de Consultas",
+    title: "Otimização de Consultas e Performance de Dados",
     category: "Banco de Dados",
     tags: ["Performance", "Índices", "Queries"],
     description:
-      "Uso de índices adequados, evitando N+1 e consultas pesadas, com monitoramento de impacto em tempo de resposta e carga no banco.",
+      "Otimização de consultas e modelagem de índices para reduzir carga no banco de dados, evitar problemas como N+1 queries e melhorar o tempo de resposta das aplicações.",
     visibleIn: ["technical"],
   },
 ];

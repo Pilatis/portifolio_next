@@ -16,6 +16,10 @@ type CertificationsT = {
   inProgress: string;
   viewAll?: string;
   viewDetails?: string;
+  topicsLabel: string;
+  practicalApplicationLabel: string;
+  impactLabel: string;
+  hoursLabel: string;
   categoryLabels: Record<string, string>;
   items: Array<{ title: string; description: string; issuer: string }>;
 };
@@ -122,6 +126,12 @@ export default function Certifications({ variant = "home" }: CertificationsProps
             inProgress={certT.inProgress}
             compact={isCompact}
             viewDetailsLabel={certT.viewDetails ?? "Ver detalhes"}
+            labels={{
+              topicsLabel: certT.topicsLabel ?? "Principais tópicos",
+              practicalApplicationLabel: certT.practicalApplicationLabel ?? "Aplicação prática",
+              impactLabel: certT.impactLabel ?? "Impacto",
+              hoursLabel: certT.hoursLabel ?? "Carga horária",
+            }}
             from={variant === "home" ? "home" : "list"}
           />
         ))}

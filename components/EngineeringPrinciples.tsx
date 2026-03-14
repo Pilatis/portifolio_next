@@ -5,7 +5,7 @@ import Link from "next/link";
 import { engineeringPrinciples } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
 import { useViewMode } from "@/context/ViewModeContext";
-import type { EngineeringPrinciple } from "@/data";
+import { PrincipleCard } from "./PrincipleCard";
 import { FaLocationArrow } from "react-icons/fa6";
 
 type PrinciplesT = {
@@ -15,44 +15,6 @@ type PrinciplesT = {
   categoryLabels: Record<string, string>;
   items: Array<{ title: string; description: string }>;
 };
-
-function PrincipleCard({
-  principle,
-  itemT,
-  categoryLabel,
-  compact,
-}: {
-  principle: EngineeringPrinciple;
-  itemT: PrinciplesT["items"][number];
-  categoryLabel: string;
-  compact: boolean;
-}) {
-  return (
-    <article className="rounded-2xl border border-white/[0.08] bg-black-200/80 p-5 flex flex-col h-full">
-      <span className="inline-flex w-fit px-2.5 py-1 rounded-md text-xs font-medium bg-purple/20 text-purple border border-purple/30 mb-3">
-        {categoryLabel}
-      </span>
-      <h3 className="font-bold text-lg text-white mb-2">{itemT?.title ?? principle.title}</h3>
-      {!compact && (
-        <>
-          <p className="text-sm text-white-200 leading-relaxed flex-1">
-            {itemT?.description ?? principle.description}
-          </p>
-          <div className="flex flex-wrap gap-1.5 mt-3">
-            {principle.tags.map((tag) => (
-              <span
-                key={tag}
-                className="px-2 py-0.5 rounded-md text-xs bg-white/[0.06] text-white-200 border border-white/[0.06]"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        </>
-      )}
-    </article>
-  );
-}
 
 type EngineeringPrinciplesProps = {
   /** home = apenas em destaque + link "Ver mais". full = todos na página /principles (sem filtro). */
