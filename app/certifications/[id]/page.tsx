@@ -13,11 +13,16 @@ type CertDetailT = {
   notFound: string;
   inProgress: string;
   period: string;
+  year: string;
+  hoursLabel: string;
+  topicsLabel: string;
+  practicalApplicationLabel: string;
+  impactLabel: string;
   skillsLabel: string;
   categoryLabel: string;
   issuerLabel: string;
   categoryLabels: Record<string, string>;
-  items: Array<{ title: string; description: string; issuer: string }>;
+  items: Array<{ title: string; description: string; issuer: string; skills?: string[] }>;
 };
 
 function formatDateRange(startedAt: string, issuedAt: string | null, inProgress: string): string {
@@ -28,7 +33,7 @@ function formatDateRange(startedAt: string, issuedAt: string | null, inProgress:
 export default function CertificationDetailPage() {
   const { id } = useParams();
   const searchParams = useSearchParams();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [imgError, setImgError] = useState(false);
 
   const certT = t("certifications") as CertDetailT;
@@ -57,14 +62,21 @@ export default function CertificationDetailPage() {
     );
   }
 
-  const certificationImages = cert.images?.length ? cert.images : [cert.image];
+  const certificationImages =
+    cert.imagePt != null || cert.imageEn != null
+      ? [lang === "pt" ? (cert.imagePt ?? cert.image) : (cert.imageEn ?? cert.image)]
+      : cert.images?.length
+        ? cert.images
+        : [cert.image];
   const showPlaceholder = certificationImages.length === 0 || imgError;
   const getCategoryLabel = (key: string) => certT.categoryLabels?.[key] ?? key;
   const title = itemT?.title ?? cert.title;
+  const issuer = itemT?.issuer ?? cert.issuer;
+  const topics = (cert.topics?.length ? cert.topics : cert.skills).slice(0, 5);
+  const displaySkills = itemT?.skills ?? cert.skills;
 
   return (
     <div className="min-h-screen bg-black-100 relative overflow-hidden">
-      {/* Background - igual à page de projeto */}
       <div
         className="fixed inset-0 pointer-events-none bg-grid-white/[0.02]"
         style={{
@@ -74,7 +86,6 @@ export default function CertificationDetailPage() {
       <div className="fixed inset-0 pointer-events-none bg-black-100 [mask-image:radial-gradient(ellipse_at_center,transparent_40%,black)]" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        {/* Back */}
         <motion.div
           initial={{ opacity: 0, x: -12 }}
           animate={{ opacity: 1, x: 0 }}
@@ -91,7 +102,7 @@ export default function CertificationDetailPage() {
           </Link>
         </motion.div>
 
-        {/* Title */}
+        {/* 1. Título */}
         <motion.h1
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,12 +112,12 @@ export default function CertificationDetailPage() {
           {title}
         </motion.h1>
 
-        {/* Imagem(ns) do certificado (uma ou várias, ex.: PDF com 2 páginas) */}
+        {/* 2. Imagem(ns) do certificado – destaque visual */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="mb-10 md:mb-14 space-y-6"
+          className="mb-8 md:mb-10 space-y-6"
         >
           {certificationImages.map((src, i) => (
             <div
@@ -134,42 +145,87 @@ export default function CertificationDetailPage() {
           )}
         </motion.div>
 
-        {/* Grid: descrição (2 col) + sidebar (1 col) - igual ao projeto */}
+        {/* 3. Instituição · 4. Ano/Período · 5. Carga horária */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.25 }}
+          className="flex flex-wrap items-center gap-x-4 gap-y-1 text-white-200 mb-10 pb-6 border-b border-white/10"
+        >
+          <span><strong className="text-purple/90">{certT.issuerLabel ?? "Instituição"}:</strong> {issuer}</span>
+          <span className="text-white-200/50">·</span>
+          <span><strong className="text-purple/90">{certT.period}:</strong> {formatDateRange(cert.startedAt, cert.issuedAt, certT.inProgress)}</span>
+          {cert.hours && (
+            <>
+              <span className="text-white-200/50">·</span>
+              <span><strong className="text-purple/90">{certT.hoursLabel}:</strong> {cert.hours}</span>
+            </>
+          )}
+        </motion.div>
+
+        {/* Grid: conteúdo principal (aprendizado → aplicação → impacto) + sidebar */}
         <div className="grid lg:grid-cols-3 gap-10 lg:gap-14">
-          {/* Descrição */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="lg:col-span-2"
+            className="lg:col-span-2 space-y-8"
           >
-            <h2 className="text-lg font-semibold text-purple mb-3">
-              {certT.issuerLabel ?? "Instituição"}
-            </h2>
-            <p className="text-white-200 text-base md:text-lg mb-6">
-              {itemT?.issuer ?? cert.issuer}
-            </p>
-            <p className="text-white-200 text-base md:text-lg leading-relaxed whitespace-pre-line">
+            {/* Descrição resumida */}
+            <p className="text-white-200 text-base md:text-lg leading-relaxed">
               {itemT?.description ?? cert.description}
             </p>
+
+            {/* Principais tópicos */}
+            {topics.length > 0 && (
+              <div>
+                <h2 className="text-lg font-semibold text-purple mb-3">
+                  {certT.topicsLabel ?? "Principais tópicos"}
+                </h2>
+                <ul className="list-none flex flex-wrap gap-2">
+                  {topics.map((topic) => (
+                    <li key={topic}>
+                      <span className="px-3 py-1.5 rounded-xl text-sm bg-white/[0.06] text-white-200 border border-white/10">
+                        {topic}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Aplicação prática */}
+            {cert.practicalApplication && (
+              <div>
+                <h2 className="text-lg font-semibold text-purple mb-3">
+                  {certT.practicalApplicationLabel ?? "Aplicação prática"}
+                </h2>
+                <p className="text-white-200 text-base md:text-lg leading-relaxed">
+                  {cert.practicalApplication}
+                </p>
+              </div>
+            )}
+
+            {/* Impacto */}
+            {cert.impact && (
+              <div>
+                <h2 className="text-lg font-semibold text-purple mb-3">
+                  {certT.impactLabel ?? "Impacto"}
+                </h2>
+                <p className="text-white-200 text-base md:text-lg leading-relaxed">
+                  {cert.impact}
+                </p>
+              </div>
+            )}
           </motion.div>
 
-          {/* Sidebar: período, categoria, competências */}
+          {/* Sidebar: categoria e competências */}
           <motion.aside
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.35 }}
             className="space-y-8"
           >
-            {/* Período */}
-            <div>
-              <h2 className="text-lg font-semibold text-purple mb-4">{certT.period}</h2>
-              <p className="text-white-200">
-                {formatDateRange(cert.startedAt, cert.issuedAt, certT.inProgress)}
-              </p>
-            </div>
-
-            {/* Categoria */}
             {cert.category.length > 0 && (
               <div>
                 <h2 className="text-lg font-semibold text-purple mb-4">{certT.categoryLabel}</h2>
@@ -186,15 +242,14 @@ export default function CertificationDetailPage() {
               </div>
             )}
 
-            {/* Competências (estilo similar ao tech stack do projeto) */}
-            {cert.skills.length > 0 && (
+            {displaySkills.length > 0 && (
               <div>
                 <h2 className="text-lg font-semibold text-purple mb-4">{certT.skillsLabel}</h2>
                 <div className="flex flex-wrap gap-3">
-                  {cert.skills.map((skill) => (
+                  {displaySkills.map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1.5 rounded-xl text-sm bg-white/[0.06] text-white-200 border border-white/10 hover:border-purple/30 transition-colors"
+                      className="px-3 py-1.5 rounded-xl text-sm bg-white/[0.06] text-white-200 border border-white/10"
                     >
                       {skill}
                     </span>

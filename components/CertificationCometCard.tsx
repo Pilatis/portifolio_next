@@ -3,47 +3,36 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import type { Certification } from "@/data";
+import type { CertificationItemT, CertificationCardLabels } from "./CertificationCard";
 import { FaLocationArrow } from "react-icons/fa6";
 import { useLanguage } from "@/context/LanguageContext";
-
-export type CertificationItemT = {
-  title: string;
-  description: string;
-  issuer: string;
-  skills?: string[];
-};
-
-export type CertificationCardLabels = {
-  topicsLabel: string;
-  practicalApplicationLabel: string;
-  impactLabel: string;
-  hoursLabel: string;
-};
+import { CometCard } from "@/components/ui/comet-card";
 
 function formatDateRange(startedAt: string, issuedAt: string | null, inProgress: string): string {
   if (issuedAt === null) return inProgress;
   return `${startedAt} – ${issuedAt}`;
 }
 
-type CertificationCardProps = {
+export type CertificationCometCardProps = {
   cert: Certification;
   itemT: CertificationItemT | undefined;
   inProgress: string;
   compact: boolean;
   viewDetailsLabel: string;
   labels: CertificationCardLabels;
-  from?: "home" | "list";
 };
 
-export function CertificationCard({
+/**
+ * Card de certificação com efeito 3D (CometCard). Usado apenas na página principal.
+ */
+export function CertificationCometCard({
   cert,
   itemT,
   inProgress,
   compact,
   viewDetailsLabel,
   labels,
-  from,
-}: CertificationCardProps) {
+}: CertificationCometCardProps) {
   const { lang } = useLanguage();
   const [imgError, setImgError] = useState(false);
   const displayImage =
@@ -51,22 +40,21 @@ export function CertificationCard({
       ? (lang === "pt" ? cert.imagePt ?? cert.image : cert.imageEn ?? cert.image)
       : (cert.images?.[0] ?? cert.image);
   const showPlaceholder = !displayImage || imgError;
-  const detailHref = `/certifications/${cert.id}${from ? `?from=${from}` : ""}`;
-  const isGridLayout = from === "list";
-  /** Competências traduzidas pelo idioma; na home no máximo 3, na página /certifications todas. */
+  const detailHref = `/certifications/${cert.id}?from=home`;
   const rawSkills = itemT?.skills ?? cert.skills;
-  const displaySkills = from === "home" ? rawSkills.slice(0, 3) : rawSkills;
+  const displaySkills = rawSkills.slice(0, 3);
   const hasExtra = Boolean(cert.practicalApplication || cert.impact || displaySkills.length > 0);
 
   return (
-    <div
-      className={`w-full flex items-center justify-center ${isGridLayout ? "min-h-0" : "lg:min-h-0"}`}
-    >
-      <div
-        className={`p-4 rounded-2xl shadow-[0_8px_16px_rgb(0_0_0/0.4)] border border-white/[0.1] hover:border-white/[0.2] transition duration-700 overflow-hidden flex flex-col h-full ${isGridLayout ? "w-full min-w-0" : "sm:w-96 w-[85vw]"}`}
-      >
-        <Link href={detailHref} className="flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black-100 rounded-xl">
-          {/* 1. Imagem do certificado – destaque visual */}
+    <div className="w-full flex items-center justify-center lg:min-h-0">
+      <CometCard className="w-[85vw] sm:w-96" rotateDepth={12} translateDepth={14}>
+        <Link
+          href={detailHref}
+          className="flex w-full cursor-pointer flex-col h-full p-4 rounded-2xl shadow-[0_8px_16px_rgb(0_0_0/0.4)] border border-white/[0.1] hover:border-white/[0.2] transition duration-700 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black-100"
+          style={{ transformStyle: "preserve-3d" }}
+          aria-label={itemT?.title ?? cert.title}
+        >
+          {/* Área da imagem – igual ao card padrão */}
           <div className="relative flex items-center justify-center w-full overflow-hidden h-[18vh] min-h-[140px] lg:h-[26vh] mb-6 rounded-2xl">
             <div
               className="absolute inset-0 overflow-hidden rounded-2xl"
@@ -89,12 +77,10 @@ export function CertificationCard({
             )}
           </div>
 
-          {/* 2. Título */}
           <h2 className="font-bold lg:text-xl md:text-lg text-base line-clamp-2 text-white mb-1">
             {itemT?.title ?? cert.title}
           </h2>
 
-          {/* 3. Instituição · 4. Período · 5. Carga horária */}
           <p className="text-sm text-white-200/90 mb-3 flex flex-wrap items-center gap-x-2 gap-y-0.5">
             <span>{itemT?.issuer ?? cert.issuer}</span>
             <span className="text-white-200/50">·</span>
@@ -107,7 +93,6 @@ export function CertificationCard({
             )}
           </p>
 
-          {/* Skills (home: max 3; /certifications: todas). Tópicos só na página de detalhe. */}
           {!compact && hasExtra && (
             <div className="space-y-3 flex-1">
               {displaySkills.length > 0 && (
@@ -157,7 +142,7 @@ export function CertificationCard({
             </span>
           </div>
         </Link>
-      </div>
+      </CometCard>
     </div>
   );
 }
