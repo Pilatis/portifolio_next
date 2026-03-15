@@ -122,6 +122,9 @@ export const STACK_LABELS: Record<string, string> = {
 export type Certification = {
   id: number;
   image: string;
+  /** Imagem por idioma (PT/EN); quando definidos, substituem `image` conforme o locale. */
+  imagePt?: string;
+  imageEn?: string;
   images?: string[];
   title: string;
   description: string;
@@ -143,6 +146,8 @@ export const certificationCategories = [
   "Fundamentos",
   "Liderança",
   "Metodologias Ágeis",
+  "Idiomas",
+  "Comunicação",
 ] as const;
 
 export const certifications: Certification[] = [
@@ -249,6 +254,8 @@ export const certifications: Certification[] = [
   {
     id: 5,
     image: "/images/certificates/javascript-freecodecamp.jpg",
+    imagePt: "/images/certificates/certificado-javascript-pt.JPG",
+    imageEn: "/images/certificates/certificado-javascript-en.JPG",
     title: "JavaScript",
     issuer: "freeCodeCamp",
     startedAt: "2024-12",
@@ -281,13 +288,13 @@ export const certifications: Certification[] = [
     id: 6,
     image: "/images/certificates/scrum-uniasselvi.jpg",
     images: [
-      "/images/certificates/scrum-uniasselvi.jpg",
-      "/images/certificates/scrum-uniasselvi-p2.jpg"
+      "/images/certificates/scrum-pt1.JPG",
+      "/images/certificates/scrum-pt2.JPG"
     ],
     title: "Scrum",
     issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
     startedAt: "2025-12",
-    issuedAt: null,
+    issuedAt: "2026-02",
     category: ["Metodologias Ágeis"],
     skills: ["Scrum", "Gestão Ágil", "Sprints", "Product Backlog"],
     topics: [
@@ -330,6 +337,32 @@ export const certifications: Certification[] = [
       "Exploração do desenvolvimento mobile multiplataforma utilizando React Native e integração com APIs.",
     impact:
       "Ampliação da capacidade de desenvolvimento para plataformas móveis iOS e Android.",
+  },
+  {
+    id: 8,
+    image: "/images/certificates/certificado-A2-english-pt.JPG",
+    imagePt: "/images/certificates/certificado-A2-english-pt.JPG",
+    imageEn: "/images/certificates/certificado-A2-english-en.JPG",
+    title: "English for Developers – A2 (CEFR)",
+    description:
+      "Certificação de inglês para desenvolvedores com foco em gramática, compreensão auditiva e leitura, alinhada ao nível A2 do Quadro Europeu Comum de Referência para Línguas (CEFR).",
+    issuer: "freeCodeCamp",
+    startedAt: "2026-02",
+    issuedAt: "2026-03",
+    category: ["Idiomas", "Comunicação"],
+    skills: ["English", "Reading", "Listening", "Grammar", "Technical Communication"],
+    topics: [
+      "Gramática aplicada",
+      "Compreensão auditiva",
+      "Leitura em inglês",
+      "Vocabulário técnico para desenvolvedores",
+      "Comunicação em ambiente técnico"
+    ],
+    practicalApplication:
+      "Utilização do inglês para leitura de documentação técnica, cursos internacionais e acompanhamento de conteúdos da comunidade global de desenvolvimento.",
+    impact:
+      "Maior autonomia para estudar tecnologias, compreender documentação oficial e interagir com materiais técnicos em inglês.",
+    featured: false
   }
 ];
 

@@ -4,11 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import type { Certification } from "@/data";
 import { FaLocationArrow } from "react-icons/fa6";
+import { useLanguage } from "@/context/LanguageContext";
 
 export type CertificationItemT = {
   title: string;
   description: string;
   issuer: string;
+  skills?: string[];
 };
 
 export type CertificationCardLabels = {
@@ -42,13 +44,18 @@ export function CertificationCard({
   labels,
   from,
 }: CertificationCardProps) {
+  const { lang } = useLanguage();
   const [imgError, setImgError] = useState(false);
-  const displayImage = cert.images?.[0] ?? cert.image;
+  const displayImage =
+    cert.imagePt != null || cert.imageEn != null
+      ? (lang === "pt" ? cert.imagePt ?? cert.image : cert.imageEn ?? cert.image)
+      : (cert.images?.[0] ?? cert.image);
   const showPlaceholder = !displayImage || imgError;
   const detailHref = `/certifications/${cert.id}${from ? `?from=${from}` : ""}`;
   const isGridLayout = from === "list";
-  /** Na home: no máximo 3 skills. Na página /certifications: tudo liberado (todas as skills). Tópicos só na página de detalhe. */
-  const displaySkills = from === "home" ? cert.skills.slice(0, 3) : cert.skills;
+  /** Competências traduzidas pelo idioma; na home no máximo 3, na página /certifications todas. */
+  const rawSkills = itemT?.skills ?? cert.skills;
+  const displaySkills = from === "home" ? rawSkills.slice(0, 3) : rawSkills;
   const hasExtra = Boolean(cert.practicalApplication || cert.impact || displaySkills.length > 0);
 
   return (

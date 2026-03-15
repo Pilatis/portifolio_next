@@ -22,7 +22,7 @@ type CertDetailT = {
   categoryLabel: string;
   issuerLabel: string;
   categoryLabels: Record<string, string>;
-  items: Array<{ title: string; description: string; issuer: string }>;
+  items: Array<{ title: string; description: string; issuer: string; skills?: string[] }>;
 };
 
 function formatDateRange(startedAt: string, issuedAt: string | null, inProgress: string): string {
@@ -33,7 +33,7 @@ function formatDateRange(startedAt: string, issuedAt: string | null, inProgress:
 export default function CertificationDetailPage() {
   const { id } = useParams();
   const searchParams = useSearchParams();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const [imgError, setImgError] = useState(false);
 
   const certT = t("certifications") as CertDetailT;
@@ -62,12 +62,18 @@ export default function CertificationDetailPage() {
     );
   }
 
-  const certificationImages = cert.images?.length ? cert.images : [cert.image];
+  const certificationImages =
+    cert.imagePt != null || cert.imageEn != null
+      ? [lang === "pt" ? (cert.imagePt ?? cert.image) : (cert.imageEn ?? cert.image)]
+      : cert.images?.length
+        ? cert.images
+        : [cert.image];
   const showPlaceholder = certificationImages.length === 0 || imgError;
   const getCategoryLabel = (key: string) => certT.categoryLabels?.[key] ?? key;
   const title = itemT?.title ?? cert.title;
   const issuer = itemT?.issuer ?? cert.issuer;
   const topics = (cert.topics?.length ? cert.topics : cert.skills).slice(0, 5);
+  const displaySkills = itemT?.skills ?? cert.skills;
 
   return (
     <div className="min-h-screen bg-black-100 relative overflow-hidden">
@@ -236,11 +242,11 @@ export default function CertificationDetailPage() {
               </div>
             )}
 
-            {cert.skills.length > 0 && (
+            {displaySkills.length > 0 && (
               <div>
                 <h2 className="text-lg font-semibold text-purple mb-4">{certT.skillsLabel}</h2>
                 <div className="flex flex-wrap gap-3">
-                  {cert.skills.map((skill) => (
+                  {displaySkills.map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1.5 rounded-xl text-sm bg-white/[0.06] text-white-200 border border-white/10"
