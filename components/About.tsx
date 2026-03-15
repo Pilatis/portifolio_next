@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { MovingBorder } from "./ui/MovingBorders";
+import { Terminal } from "./ui/terminal";
 import { cn } from "@/lib/utils";
 
 const PHOTO_SRC = "/Foto%20Profissional%20-%202.PNG";
@@ -17,7 +18,7 @@ type AboutContent = {
 };
 
 export default function About() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const about = t("about") as AboutContent;
   const paragraphs = about.paragraphs;
   return (
@@ -49,11 +50,18 @@ export default function About() {
               {about.title}{" "}
               <span className="text-purple">{about.highlight}</span>
             </h2>
-            <div className="space-y-4 text-white-200 text-base md:text-lg leading-relaxed">
-              {paragraphs.map((paragraph, i) => (
-                <p key={i}>{paragraph}</p>
-              ))}
-            </div>
+            <Terminal
+              key={lang}
+              commands={["cat ~/about.txt"]}
+              outputs={{ 0: paragraphs }}
+              username="lucas@portfolio"
+              typingSpeed={75}
+              delayBetweenCommands={800}
+              outputLineDelay={550}
+              initialDelay={400}
+              enableSound={false}
+              className="!max-w-full !px-0"
+            />
           </motion.div>
 
           <motion.div

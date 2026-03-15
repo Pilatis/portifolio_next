@@ -6,6 +6,7 @@ import { certifications, certificationCategories } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
 import { useViewMode } from "@/context/ViewModeContext";
 import { CertificationCard } from "./CertificationCard";
+import { CertificationCometCard } from "./CertificationCometCard";
 import { FaLocationArrow } from "react-icons/fa6";
 
 type CertificationsT = {
@@ -118,23 +119,40 @@ export default function Certifications({ variant = "home" }: CertificationsProps
       <div
         className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 ${isHome || isCompact ? "mt-8" : ""} ${!isHome ? "items-start" : ""}`}
       >
-        {list.map((cert) => (
-          <CertificationCard
-            key={cert.id}
-            cert={cert}
-            itemT={certT.items[cert.id - 1]}
-            inProgress={certT.inProgress}
-            compact={isCompact}
-            viewDetailsLabel={certT.viewDetails ?? "Ver detalhes"}
-            labels={{
-              topicsLabel: certT.topicsLabel ?? "Principais tópicos",
-              practicalApplicationLabel: certT.practicalApplicationLabel ?? "Aplicação prática",
-              impactLabel: certT.impactLabel ?? "Impacto",
-              hoursLabel: certT.hoursLabel ?? "Carga horária",
-            }}
-            from={variant === "home" ? "home" : "list"}
-          />
-        ))}
+        {list.map((cert) =>
+          isHome ? (
+            <CertificationCometCard
+              key={cert.id}
+              cert={cert}
+              itemT={certT.items[cert.id - 1]}
+              inProgress={certT.inProgress}
+              compact={isCompact}
+              viewDetailsLabel={certT.viewDetails ?? "Ver detalhes"}
+              labels={{
+                topicsLabel: certT.topicsLabel ?? "Principais tópicos",
+                practicalApplicationLabel: certT.practicalApplicationLabel ?? "Aplicação prática",
+                impactLabel: certT.impactLabel ?? "Impacto",
+                hoursLabel: certT.hoursLabel ?? "Carga horária",
+              }}
+            />
+          ) : (
+            <CertificationCard
+              key={cert.id}
+              cert={cert}
+              itemT={certT.items[cert.id - 1]}
+              inProgress={certT.inProgress}
+              compact={isCompact}
+              viewDetailsLabel={certT.viewDetails ?? "Ver detalhes"}
+              labels={{
+                topicsLabel: certT.topicsLabel ?? "Principais tópicos",
+                practicalApplicationLabel: certT.practicalApplicationLabel ?? "Aplicação prática",
+                impactLabel: certT.impactLabel ?? "Impacto",
+                hoursLabel: certT.hoursLabel ?? "Carga horária",
+              }}
+              from="list"
+            />
+          )
+        )}
       </div>
 
       {isHome && (
