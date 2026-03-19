@@ -2,11 +2,11 @@
 
 import Error from "next/error";
 
-export default function GlobalError({ error }) {
+export default function GlobalError({ error }: { error: Error }) {
   return (
     <html>
       <body>
-        <Error />
+        <Error statusCode={500} />
       </body>
     </html>
   );
