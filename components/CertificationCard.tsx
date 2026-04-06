@@ -11,6 +11,8 @@ export type CertificationItemT = {
   description: string;
   issuer: string;
   skills?: string[];
+  practicalApplication?: string;
+  impact?: string;
 };
 
 export type CertificationCardLabels = {
@@ -56,7 +58,9 @@ export function CertificationCard({
   /** Competências traduzidas pelo idioma; na home no máximo 3, na página /certifications todas. */
   const rawSkills = itemT?.skills ?? cert.skills;
   const displaySkills = from === "home" ? rawSkills.slice(0, 3) : rawSkills;
-  const hasExtra = Boolean(cert.practicalApplication || cert.impact || displaySkills.length > 0);
+  const practicalApplication = itemT?.practicalApplication ?? cert.practicalApplication;
+  const impact = itemT?.impact ?? cert.impact;
+  const hasExtra = Boolean(practicalApplication || impact || displaySkills.length > 0);
 
   return (
     <div
@@ -112,7 +116,7 @@ export function CertificationCard({
             <div className="space-y-3 flex-1">
               {displaySkills.length > 0 && (
                 <ul className="flex flex-wrap gap-1.5">
-                  {displaySkills.map((skill) => (
+                  {displaySkills.slice(0, 3).map((skill) => (
                     <li key={skill}>
                       <span className="border border-white/[0.2] rounded-full bg-black px-2 py-0.5 text-xs text-white-200">
                         {skill}
@@ -121,23 +125,23 @@ export function CertificationCard({
                   ))}
                 </ul>
               )}
-              {cert.practicalApplication && (
+              {practicalApplication && (
                 <div>
                   <p className="text-xs font-semibold text-purple/90 uppercase tracking-wide mb-1">
                     {labels.practicalApplicationLabel}
                   </p>
                   <p className="text-sm text-white-200/85 line-clamp-2 leading-snug">
-                    {cert.practicalApplication}
+                    {practicalApplication}
                   </p>
                 </div>
               )}
-              {cert.impact && (
+              {impact && (
                 <div>
                   <p className="text-xs font-semibold text-purple/90 uppercase tracking-wide mb-1">
                     {labels.impactLabel}
                   </p>
                   <p className="text-sm text-white-200/85 line-clamp-2 leading-snug">
-                    {cert.impact}
+                    {impact}
                   </p>
                 </div>
               )}

@@ -22,7 +22,14 @@ type CertificationsT = {
   impactLabel: string;
   hoursLabel: string;
   categoryLabels: Record<string, string>;
-  items: Array<{ title: string; description: string; issuer: string }>;
+  items: Array<{
+    title: string;
+    description: string;
+    issuer: string;
+    skills?: string[];
+    practicalApplication?: string;
+    impact?: string;
+  }>;
 };
 
 type CertificationsProps = {

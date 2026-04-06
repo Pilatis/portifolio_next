@@ -22,7 +22,14 @@ type CertDetailT = {
   categoryLabel: string;
   issuerLabel: string;
   categoryLabels: Record<string, string>;
-  items: Array<{ title: string; description: string; issuer: string; skills?: string[] }>;
+  items: Array<{
+    title: string;
+    description: string;
+    issuer: string;
+    skills?: string[];
+    practicalApplication?: string;
+    impact?: string;
+  }>;
 };
 
 function formatDateRange(startedAt: string, issuedAt: string | null, inProgress: string): string {
@@ -74,6 +81,8 @@ export default function CertificationDetailPage() {
   const issuer = itemT?.issuer ?? cert.issuer;
   const topics = (cert.topics?.length ? cert.topics : cert.skills).slice(0, 5);
   const displaySkills = itemT?.skills ?? cert.skills;
+  const practicalApplication = itemT?.practicalApplication ?? cert.practicalApplication;
+  const impact = itemT?.impact ?? cert.impact;
 
   return (
     <div className="min-h-screen bg-black-100 relative overflow-hidden">
@@ -182,7 +191,7 @@ export default function CertificationDetailPage() {
                 <h2 className="text-lg font-semibold text-purple mb-3">
                   {certT.topicsLabel ?? "Principais tópicos"}
                 </h2>
-                <ul className="list-none flex flex-wrap gap-2">
+                <ul className="list-none flex flex-wrap gap-4">
                   {topics.map((topic) => (
                     <li key={topic}>
                       <span className="px-3 py-1.5 rounded-xl text-sm bg-white/[0.06] text-white-200 border border-white/10">
@@ -195,25 +204,25 @@ export default function CertificationDetailPage() {
             )}
 
             {/* Aplicação prática */}
-            {cert.practicalApplication && (
+            {practicalApplication && (
               <div>
                 <h2 className="text-lg font-semibold text-purple mb-3">
                   {certT.practicalApplicationLabel ?? "Aplicação prática"}
                 </h2>
                 <p className="text-white-200 text-base md:text-lg leading-relaxed">
-                  {cert.practicalApplication}
+                  {practicalApplication}
                 </p>
               </div>
             )}
 
             {/* Impacto */}
-            {cert.impact && (
+            {impact && (
               <div>
                 <h2 className="text-lg font-semibold text-purple mb-3">
                   {certT.impactLabel ?? "Impacto"}
                 </h2>
                 <p className="text-white-200 text-base md:text-lg leading-relaxed">
-                  {cert.impact}
+                  {impact}
                 </p>
               </div>
             )}

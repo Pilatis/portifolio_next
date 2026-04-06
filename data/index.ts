@@ -148,6 +148,8 @@ export const certificationCategories = [
   "Metodologias Ágeis",
   "Idiomas",
   "Comunicação",
+  "Banco de Dados",
+  "APIs",
 ] as const;
 
 export const certifications: Certification[] = [
@@ -362,6 +364,72 @@ export const certifications: Certification[] = [
       "Utilização do inglês para leitura de documentação técnica, cursos internacionais e acompanhamento de conteúdos da comunidade global de desenvolvimento.",
     impact:
       "Maior autonomia para estudar tecnologias, compreender documentação oficial e interagir com materiais técnicos em inglês.",
+    featured: false
+  },
+  {
+    id: 9,
+    image: "/images/certificates/banco-de-dados-ifsulp1.jpg",
+    images: [
+      "/images/certificates/banco-de-dados-ifsulp1.jpg",
+      "/images/certificates/banco-de-dados-ifsul-p2.jpg"
+    ],
+    title: "Banco de Dados: Sistemas e Modelagem Relacional",
+    description:
+      "Formação em bancos de dados com foco em modelagem relacional, normalização e estruturação eficiente de dados, garantindo integridade, consistência e suporte a aplicações escaláveis.",
+    issuer: "IFSUL - Instituto Federal Sul-rio-grandense",
+    startedAt: "2026-03",
+    issuedAt: "2026-04",
+    category: ["Banco de Dados", "Backend"],
+    skills: [
+      "SQL",
+      "Data Modeling",
+      "Relational Databases",
+      "Database Design",
+      "Normalization"
+    ],
+    topics: [
+      "Conceitos de banco de dados",
+      "Modelagem de dados",
+      "Modelo relacional",
+      "Normalização"
+    ],
+    practicalApplication:
+      "Aplicação na modelagem de bancos relacionais para APIs e sistemas web, garantindo consistência de dados e eficiência em consultas.",
+    impact:
+      "Evolução na capacidade de estruturar bancos de dados de forma escalável e otimizada, reduzindo problemas de integridade e melhorando a performance das aplicações.",
+    hours: "20h",
+    featured: false
+  },
+  {
+    id: 10,
+    image: "",
+    title: "Node.js API Development and Backend Architecture",
+    description:
+      "Formação em desenvolvimento de APIs com Node.js, abordando construção de serviços RESTful, integração com bancos de dados e implementação de autenticação e autorização em aplicações backend.",
+    issuer: "Instituto Federal do Rio Grande do Sul (IFRS)",
+    startedAt: "2026-04",
+    issuedAt: null,
+    category: ["Backend", "APIs"],
+    skills: [
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "Backend Development",
+      "Authentication",
+      "Authorization"
+    ],
+    topics: [
+      "Introdução ao Node.js",
+      "APIs RESTful",
+      "Express.js",
+      "Integração com banco de dados",
+      "Autenticação e autorização"
+    ],
+    practicalApplication:
+      "Aplicação na construção de APIs modernas, com rotas estruturadas, integração com banco de dados e controle de acesso seguro.",
+    impact:
+      "Aprimoramento na construção de arquiteturas backend escaláveis e seguras, alinhadas com boas práticas de desenvolvimento de APIs.",
+    hours: "40h",
     featured: false
   }
 ];

@@ -43,7 +43,9 @@ export function CertificationCometCard({
   const detailHref = `/certifications/${cert.id}?from=home`;
   const rawSkills = itemT?.skills ?? cert.skills;
   const displaySkills = rawSkills.slice(0, 3);
-  const hasExtra = Boolean(cert.practicalApplication || cert.impact || displaySkills.length > 0);
+  const practicalApplication = itemT?.practicalApplication ?? cert.practicalApplication;
+  const impact = itemT?.impact ?? cert.impact;
+  const hasExtra = Boolean(practicalApplication || impact || displaySkills.length > 0);
 
   return (
     <div className="w-full flex items-center justify-center lg:min-h-0">
@@ -106,23 +108,23 @@ export function CertificationCometCard({
                   ))}
                 </ul>
               )}
-              {cert.practicalApplication && (
+              {practicalApplication && (
                 <div>
                   <p className="text-xs font-semibold text-purple/90 uppercase tracking-wide mb-1">
                     {labels.practicalApplicationLabel}
                   </p>
                   <p className="text-sm text-white-200/85 line-clamp-2 leading-snug">
-                    {cert.practicalApplication}
+                    {practicalApplication}
                   </p>
                 </div>
               )}
-              {cert.impact && (
+              {impact && (
                 <div>
                   <p className="text-xs font-semibold text-purple/90 uppercase tracking-wide mb-1">
                     {labels.impactLabel}
                   </p>
                   <p className="text-sm text-white-200/85 line-clamp-2 leading-snug">
-                    {cert.impact}
+                    {impact}
                   </p>
                 </div>
               )}
