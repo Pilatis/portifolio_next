@@ -149,7 +149,8 @@ export const certificationCategories = [
   "Idiomas",
   "Comunicação",
   "Banco de Dados",
-  "APIs",
+  "Inteligência Artificial",
+  "Dados",
 ] as const;
 
 export const certifications: Certification[] = [
@@ -402,33 +403,101 @@ export const certifications: Certification[] = [
   },
   {
     id: 10,
-    image: "",
-    title: "Node.js API Development and Backend Architecture",
+    image: "/images/certificates/node-pt1.JPG",
+    images: [
+      "/images/certificates/node-pt1.JPG",
+      "/images/certificates/node-pt2.JPG"
+    ],
+    title: "Node.js Desenvolvimento de APIs e Arquitetura de Backend",
     description:
-      "Formação em desenvolvimento de APIs com Node.js, abordando construção de serviços RESTful, integração com bancos de dados e implementação de autenticação e autorização em aplicações backend.",
+      "Certificação em desenvolvimento de APIs modernas com Node.js, abrangendo arquitetura RESTful, construção de serviços com Express.js, integração com bancos de dados e implementação de autenticação e autorização.",
     issuer: "Instituto Federal do Rio Grande do Sul (IFRS)",
-    startedAt: "2026-04",
-    issuedAt: null,
-    category: ["Backend", "APIs"],
+    startedAt: "2026-03",
+    issuedAt: "2026-04",
+    category: ["Backend"],
     skills: [
       "Node.js",
       "Express.js",
       "REST APIs",
       "Backend Development",
       "Authentication",
-      "Authorization"
+      "Authorization",
+      "Database Integration"
     ],
     topics: [
-      "Introdução ao Node.js",
-      "APIs RESTful",
-      "Express.js",
+      "Fundamentos do Node.js",
+      "Arquitetura RESTful",
+      "Desenvolvimento com Express.js",
       "Integração com banco de dados",
-      "Autenticação e autorização"
+      "Autenticação e autorização em APIs"
     ],
     practicalApplication:
-      "Aplicação na construção de APIs modernas, com rotas estruturadas, integração com banco de dados e controle de acesso seguro.",
+      "Aplicação na construção de APIs escaláveis, com definição de rotas, integração com banco de dados e implementação de controle de acesso seguro.",
     impact:
-      "Aprimoramento na construção de arquiteturas backend escaláveis e seguras, alinhadas com boas práticas de desenvolvimento de APIs.",
+      "Fortalecimento na construção de backends robustos e bem estruturados, com foco em segurança, organização e boas práticas de desenvolvimento de APIs.",
+    hours: "40h",
+    featured: false
+  },
+  {
+    id: 11,
+    image: "/images/certificates/ai-iftm.jpg",
+    title: "Inteligência Artificial I: Redes Neurais Artificiais",
+    description:
+      "Formação em Inteligência Artificial com foco em redes neurais artificiais, abordando desde os conceitos iniciais até arquiteturas como Perceptron, Adaline e Multilayer Perceptron (MLP).",
+    issuer: "Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro (IFTM)",
+    startedAt: "2026-04",
+    issuedAt: null,
+    category: ["Inteligência Artificial", "Dados"],
+    skills: [
+      "Inteligência Artificial",
+      "Redes Neurais",
+      "Machine Learning",
+      "Perceptron",
+      "MLP"
+    ],
+    topics: [
+      "Fundamentos de Inteligência Artificial",
+      "Redes neurais artificiais",
+      "Perceptron de camada simples",
+      "Adaline",
+      "Multilayer Perceptron (MLP)"
+    ],
+    practicalApplication:
+      "Compreensão e aplicação de conceitos de redes neurais em problemas computacionais, servindo como base para evolução em machine learning e sistemas inteligentes.",
+    impact:
+      "Expansão da base técnica em inteligência artificial, permitindo entendimento de algoritmos de aprendizado e suas aplicações em soluções modernas.",
+    hours: "40h",
+    featured: false
+  },
+  {
+    id: 12,
+    image: "/images/certificates/ai-iftm-2.jpg",
+    title: "Inteligência Artificial II: Arquiteturas Avançadas de Redes Neurais",
+    description:
+      "Formação avançada em Inteligência Artificial com foco em arquiteturas modernas de redes neurais, incluindo redes convolucionais, modelos recorrentes como LSTM e técnicas para tratamento de dados desbalanceados e redução de dimensionalidade.",
+    issuer: "Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro (IFTM)",
+    startedAt: "2026-04",
+    issuedAt: null,
+    category: ["Inteligência Artificial", "Dados"],
+    skills: [
+      "Redes Neurais",
+      "Deep Learning",
+      "CNN",
+      "LSTM",
+      "Machine Learning",
+      "Redução de Dimensionalidade"
+    ],
+    topics: [
+      "Redes neurais convolucionais (CNN)",
+      "Mapas auto-organizáveis de Kohonen",
+      "Redes LSTM",
+      "Tratamento de dados desbalanceados",
+      "Redução de dimensionalidade"
+    ],
+    practicalApplication:
+      "Aplicação de arquiteturas avançadas de redes neurais na construção de soluções inteligentes, incluindo processamento de dados complexos e sequenciais.",
+    impact:
+      "Evolução para o entendimento de modelos mais avançados de aprendizado de máquina, ampliando a capacidade de atuar em problemas reais com dados complexos.",
     hours: "40h",
     featured: false
   }
