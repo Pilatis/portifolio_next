@@ -40,7 +40,7 @@ const translations = {
         { title: "I'm very flexible with time zone communications", description: "" },
         { title: "My tech stack", description: "I constantly try to improve" },
         { title: "Clean, scalable code with performance and usability in mind.", description: "" },
-        { title: "Exploring advanced JavaScript and UI animations.", description: "The Inside Scoop" },
+        { title: "Building digital experiences that combine usability, performance and impact.", description: "The Inside Scoop" },
         { title: "Always open to new challenges and impactful projects.", description: "" },
       ],
     },
@@ -284,7 +284,7 @@ The project involved challenges such as multi-profile access control, complex op
       impactLabel: "Impact",
       stagingNoticeTitle: "Staging & demo content",
       stagingNoticeBody:
-        "Images, videos and screens from staging or test, not production. Fictional or anonymized content, no real client data.",
+        "Images, videos and screens from staging or test, not production. Names, numbers and flows are fictional or anonymized examples for the portfolio; they do not represent real clients or identifiable data.",
       stagingNoticeTerm: "staging",
       stagingNoticeTermTooltip:
         "Pre-production environment used to validate changes before the final release.",
@@ -338,7 +338,7 @@ The project involved challenges such as multi-profile access control, complex op
         { title: "Muito flexível com fusos horários na comunicação", description: "" },
         { title: "Minha stack", description: "Sempre buscando evoluir" },
         { title: "Código limpo e escalável com foco em performance e usabilidade.", description: "" },
-        { title: "Explorando JavaScript avançado e animações de interface.", description: "Por dentro" },
+        { title: "Criando experiências digitais que unem usabilidade, performance e impacto.", description: "Por dentro" },
         { title: "Sempre aberto a novos desafios e projetos com impacto.", description: "" },
       ],
     },
@@ -615,7 +615,7 @@ Um dos destaques do projeto foi a implementação de um mapa interativo, que exi
       impactLabel: "Impacto",
       stagingNoticeTitle: "Homologação e demonstração",
       stagingNoticeBody:
-        "Imagens, vídeos e telas de homologação ou teste, não de produção. Nomes, números e fluxos são exemplos fictícios ou anonimizados para o portfólio não representam clientes reais nem dados identificáveis.",
+        "Imagens, vídeos e telas de homologação ou teste, não de produção. Nomes, números e fluxos são exemplos fictícios ou anonimizados para o portfólio; não representam clientes reais nem dados identificáveis.",
       stagingNoticeTerm: "homologação",
       stagingNoticeTermTooltip:
         "Ambiente de validação parecido com o de produção, usado para testar alterações antes da liberação final.",
