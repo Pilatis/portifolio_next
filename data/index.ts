@@ -1,3 +1,6 @@
+import { Certification } from "@/types/certificationTypes";
+import { Project } from "@/types/projectTypes";
+
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
@@ -117,27 +120,17 @@ export const STACK_LABELS: Record<string, string> = {
   "/java.svg": "Java",
   "/postgresql.svg": "PostgreSQL",
   "/chakra.svg": "Chakra UI",
-};
-
-export type Certification = {
-  id: number;
-  image: string;
-  /** Imagem por idioma (PT/EN); quando definidos, substituem `image` conforme o locale. */
-  imagePt?: string;
-  imageEn?: string;
-  images?: string[];
-  title: string;
-  description: string;
-  issuer: string;
-  startedAt: string;
-  issuedAt: string | null;
-  category: string[];
-  skills: string[];
-  topics?: string[];
-  practicalApplication?: string;
-  impact?: string;
-  hours?: string;
-  featured?: boolean;
+  "/react": "React",
+  "/expo": "Expo",
+  "/nestjs": "NestJS",
+  "/nodejs": "Node.js",
+  "/prisma": "Prisma",
+  "/docker": "Docker",
+  "/postgresql": "PostgreSQL",
+  "/expo.svg": "Expo",
+  "/nestjs.svg": "NestJS",
+  "/prisma.svg": "Prisma",
+  "/nodejs.svg": "Node.js",
 };
 
 export const certificationCategories = [
@@ -503,7 +496,7 @@ export const certifications: Certification[] = [
   }
 ];
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: 1,
     title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
@@ -522,12 +515,33 @@ export const projects = [
   },
   {
     id: 2,
-    title: "Electron Editor App",
-    des: "Um editor de texto simples feito com Electron, com suporte para abrir, editar, salvar e renomear arquivos .txt",
-    img: "/p2.svg",
-    images: ["/p2.svg", "/bg.png", "/grid.svg"],
-    iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/chakra.svg", "/stream.svg", "/c.svg"],
-    link: "/ui.yoom.com",
+    title: "Fotocord",
+    des: "Aplicativo mobile para criação de fotolivros personalizados, permitindo ao usuário montar álbuns com suas fotos, realizar pagamentos e receber o produto físico em casa.",
+    img: "/fotocord/cartoes-salvos.JPG",
+    iconLists: ["/re.svg", "/ts.svg", "/dock.svg", "/postgresql.svg", "/git.svg"],
+    iconListsDetail: [
+      "/re.svg",
+      "/ts.svg",
+      "/expo.svg",
+      "/nestjs.svg",
+      "/nodejs.svg",
+      "/postgresql.svg",
+      "/prisma.svg",
+      "/dock.svg",
+    ],
+    clientName: "Cognitiva Brasil",
+    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
+    media: [
+      { src: "/fotocord/login-app.JPG", type: "image" as const },
+      { src: "/fotocord/fluxo-cadastro-fotocord.mp4", type: "video" as const },
+      { src: "/fotocord/tela-verificacao-email-app.JPG", type: "image" as const },
+      { src: "/fotocord/tela-notificacoes-app.JPG", type: "image" as const },
+      { src: "/fotocord/assinatura-app.JPG", type: "image" as const },
+      { src: "/fotocord/cartoes-salvos.JPG", type: "image" as const },
+      { src: "/fotocord/cadastro-cartap-app.JPG", type: "image" as const },
+      { src: "/fotocord/pix-gerado.JPG", type: "image" as const },
+      { src: "/fotocord/fluxo-pagamento-fotocord.mp4", type: "video" as const },
+    ],
   },
   {
     id: 3,

@@ -134,7 +134,7 @@ export default function ProjectsPage() {
         {/* Grid de projetos - ProjectCard com PinContainer fullWidth */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
           {filtered.map((item) => {
-            const idx = item.id - 1;
+            const idx = projects.findIndex((p) => p.id === item.id);
             return (
               <ProjectCard
                 key={item.id}

@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects, STACK_LABELS } from "@/data";
 import { PinContainer } from "./ui/Pin";
+import { StackTooltip } from "./ui/StackTooltip";
 
 export type ProjectItem = (typeof projects)[number];
 
@@ -79,16 +80,20 @@ export function ProjectCard({
 
       <div className="flex items-center justify-between mt-7 mb-3">
         <div className="flex items-center">
-          {item.iconLists?.slice(0, 5).map((icon, index) => (
-            <div
-              key={index}
-              title={getStackLabel(icon)}
-              className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center cursor-default"
-              style={!isGrid ? { transform: `translateX(-${5 * index + 2}px)` } : undefined}
-            >
-              <img src={icon.startsWith("/") ? icon : `/${icon}`} alt="" className="p-2" />
-            </div>
-          ))}
+          {item.iconLists?.slice(0, 5).map((icon, index) => {
+            const label = getStackLabel(icon);
+            const src = icon.startsWith("/") ? icon : `/${icon}`;
+            return (
+              <StackTooltip key={`${src}-${index}`} label={label}>
+                <div
+                  className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center cursor-default"
+                  style={!isGrid ? { transform: `translateX(-${5 * index + 2}px)` } : undefined}
+                >
+                  <img src={src} alt={label} className="p-2" />
+                </div>
+              </StackTooltip>
+            );
+          })}
         </div>
         <div className="flex justify-center items-center">
           <span className="flex items-center lg:text-xl md:text-xs text-sm text-purple">

@@ -53,7 +53,17 @@ const translations = {
         {
           title: "Voxa – Career Development and Guidance Platform",
           des: "Digital platform for self-awareness and career guidance, with assessments, tests and AI-powered interview simulation.",
-          fullDes: "I worked as a Front-end Developer on Voxa, a digital platform focused on helping people understand themselves better professionally and make more assertive decisions about their career. The project brings together different assessments and interactive experiences: career moment and professional goals tests, problem-solving and quick reasoning assessments, person–company fit mapping, leadership potential assessment through cognitive stimuli, and interview simulation with an AI-based interactive chat that analyzes answers and calculates results in real time. On the front-end, I built interactive and responsive interfaces, ensuring clear presentation of the tests, good user experience and smooth navigation through complex flow steps. I worked in close collaboration with product, UX and development teams, contributing to the continuous evolution of the platform and to an intuitive, reliable experience for the end user. The project involved challenges such as organizing dynamic flows, displaying personalized results and integrating with assessment logic, always with a focus on usability, accessibility and interface quality.",
+          fullDes: `I worked as a Front-end Developer on Voxa, a digital platform focused on helping people understand themselves better professionally and make more assertive career decisions.
+
+The project brings together different assessments and interactive experiences, such as career moment tests, professional goal definition, problem-solving assessments, person–company fit mapping and leadership potential analysis. One of the platform's main differentiators is interview simulation with an AI-powered interactive chat that analyzes answers and generates results in real time.
+
+On the front end, I built interactive, responsive, user-centered interfaces, ensuring clarity in presenting tests and smooth navigation across complex steps. I worked hands-on with dynamic flows and varied UI states, keeping data display consistent and personalized outcomes reliable.
+
+I actively contributed to product evolution alongside product, UX and engineering teams, supporting technical decisions and continuous improvements. The project demanded strong attention to usability, accessibility and performance, especially for long, interactive journeys.`,
+          practicalApplication:
+            "Development of interfaces for dynamic assessment flows, including AI-powered interview simulation, real-time result processing and personalized data presentation for users.",
+          impact:
+            "Direct contribution to the user experience on a career-focused platform, ensuring clarity, flow and reliability in critical interactions such as assessments and interview simulations.",
           media: [
             { title: "Homepage", description: "Landing page of the Voxa platform, presenting the professional self-awareness journey, with access to career tests, job discovery and selection process simulation, in a modern, UX-focused layout." },
             { title: "Tests and Results", description: "Overview of the platform's main tests (Career Moment, Solu, Fit Mapping and Volt), with consolidated results and insights on professional profile and potential." },
@@ -62,13 +72,46 @@ const translations = {
           ],
         },
         {
-          title: "Electron Editor App",
-          des: "A simple text editor built with Electron, with support for opening, editing, saving and renaming .txt files.",
+          title: "Fotocord – Photo Book Creation App with Integrated Checkout",
+          des: "Mobile app for personalized photo books, with full order flow, authentication and integrated payments.",
+          fullDes: `I worked on Fotocord, a mobile app for creating personalized photo books: users assemble albums with their photos, pay in the app and receive the physical product.
+
+The project uses React Native (Expo) on the client and NestJS on the backend, with PostgreSQL, Prisma and Docker.
+
+My main responsibility was the payments system end to end: integrating the backend with the K8 Fintech gateway and shaping the entire checkout flow. I implemented multiple methods—including PIX, hybrid boleto, credit card and subscriptions—covering charge creation, processing and reliable payment status updates.
+
+The design includes state handling (pending, approved, error, expired), webhooks to stay in sync with the gateway and idempotency strategies to avoid duplicate charges. I also wired payments to orders so financial transactions stayed consistent with the purchase journey.
+
+I contributed to authentication and user management with Keycloak, covering sign-up, login and application security.
+
+I also worked on communications: transactional email with Resend (account confirmation, password recovery) and push notifications with Expo Notifications, improving engagement and the overall experience.
+
+The project involved real product challenges: a robust checkout, integrations with external services, asynchronous state handling and a smooth experience across the full user journey.`,
+          practicalApplication:
+            "Implementation of a complete payments system in production, including integration with a financial gateway, multiple payment methods, webhooks for status updates and a direct link to the platform order flow.",
+          impact:
+            "Ownership of one of the most critical parts of the product, ensuring the purchase journey worked end to end—supporting system reliability, user experience and operational viability of the app.",
+          media: [
+            { title: "User registration flow", description: "Full in-app account creation flow, including data entry steps and initial user validation." },
+            { title: "Email verification", description: "Account confirmation screen with a code sent by email, validating the user and securing access to the platform." },
+            { title: "Notification center", description: "Screen listing system notifications such as account created, payment completed and albums created, keeping the user informed in real time." },
+            { title: "Subscription management", description: "View and manage an active subscription, integrated with recurring payments." },
+            { title: "Saved cards", description: "Manage previously saved cards for secure reuse at checkout." },
+            { title: "Add card", description: "Full flow to enter credit card details, integrated with the payment gateway including validation and tokenization." },
+            { title: "PIX payment", description: "PIX charge screen with QR code and instructions for immediate payment." },
+            { title: "Full checkout flow", description: "End-to-end payment demo (mocked): method selection, order summary and transaction states such as waiting, success, error and expired for PIX and boleto." },
+          ],
         },
         {
           title: "DR Insights — Data Intelligence and Analytics Platform",
           des: "Insights and data analytics platform for companies, integrating multiple social media APIs for analysis of posts, texts, documents and startup data.",
-          fullDes: "I worked as a Front-End Developer on a data insights and analytics platform for companies, integrating multiple social media APIs to analyze posts, texts, documents and startup data. The solution generates strategic insights through relational charts, pivot tables and interactive visualizations. I was responsible for developing responsive and scalable interfaces, with a focus on usability, performance and user experience. In collaboration with other developers and the UX team, I participated in daily meetings and technical decisions for the continuous evolution of the product. One of the highlights was the implementation of an interactive map that displays and marks company locations, enabling intuitive exploration of geographic data and expanding the visual analysis of insights presented on the platform.",
+          fullDes: `I worked as a Front-End Developer on a data insights and analytics platform for companies, integrating multiple social media APIs to analyze posts, texts, documents and startup data.
+
+The solution generates strategic insights through relational charts, pivot tables and interactive visualizations.
+
+I was responsible for developing responsive and scalable interfaces, with a focus on usability, performance and user experience. In collaboration with other developers and the UX team, I participated in daily meetings and technical decisions for the continuous evolution of the product.
+
+One of the highlights was the implementation of an interactive map that displays and marks company locations, enabling intuitive exploration of geographic data and expanding the visual analysis of insights presented on the platform.`,
           media: [
             { title: "Interactive Company Map", description: "Interactive map that displays and marks companies geographically based on dynamic filters, enabling visual exploration of data, regional analysis and identification of market patterns in an intuitive and responsive way." },
             { title: "Intelligent Term Search", description: "Intelligent search interface that allows analysis of terms across multiple market APIs, consolidating data from social networks and external sources to generate strategic insights, trends and relevant opportunities for companies." },
@@ -78,13 +121,25 @@ const translations = {
         },
         {
           title: "B2BHotel – SaaS Platform for Hotel Service Management and Intermediation",
-          des: "B2B SaaS platform for intermediation and management of services in the hotel sector, connecting hotels, service providers and administrative staff.",
-          fullDes: "B2B SaaS platform aimed at intermediation and management of services in the hotel sector, connecting hotels, service providers and administrative staff in a centralized digital ecosystem. I actively participated in the development of the solution across different phases of the project, starting with a focus on front-end and later acting as a Full Stack developer, contributing both to the evolution of the interface and to the implementation of business rules and integrations on the backend. The platform is structured around three main profiles: Provider – structured onboarding flow with complete professional registration, automated resume generation, personalized calendar and intelligent opportunity filtering system; Hotel – operational panel for creating and tracking services, organizing demands and viewing indicators; Admin – operational core responsible for creating and managing services, financial consolidation, generation of receivables and payables, payment batch processing and integration with banking services. The solution was developed with a Full Stack architecture using React, Next.js, Spring Boot and PostgreSQL, hosted on AWS with separation between staging and production. The system centralizes operational and financial rules, including permission control by profile, automated report generation (PDF, CSV and XLSX) and REST API integration with Banco Inter for payment automation. Project in production, structured for scalability, operational control and continuous expansion.",
+          des: "B2B SaaS platform for operational and financial management in the hotel sector, connecting hotels, providers and administration.",
+          fullDes: `The B2B SaaS platform focuses on intermediation and management of services in the hotel sector, connecting hotels, providers and administrative staff in one centralized digital ecosystem.
+
+I started as a Front-End developer and later worked as Full Stack, contributing both to the interface and to business rules and backend integrations.
+
+The platform is organized around three main profiles: Provider—with full onboarding, automated résumé generation and a personalized calendar; Hotel—with an operational panel for creating and tracking services; and Admin—handling financial management, payment processing and operational control.
+
+The solution was built with a Full Stack architecture using React, Next.js, Spring Boot and PostgreSQL, hosted on AWS. It centralizes operational and financial rules, including permission controls, report generation and integration with Banco Inter for payment automation.
+
+The project involved challenges such as multi-profile access control, complex operational flows, banking integrations and consistency across financial processes.`,
+          practicalApplication:
+            "Full stack development of a multi-profile SaaS platform, including business rules, banking API integration and automated reporting and financial workflows.",
+          impact:
+            "Direct contribution to structuring a production solution that centralizes hotel-sector operations and financial processes, improving operational efficiency and platform control.",
           media: [
-            { title: "Hotel Dashboard – Operational View", description: "Main hotel panel with consolidated view of operations within the platform. The interface shows indicators such as active selection processes, scheduled interviews, hires made, vacancy validity, contracted plans and access requests, enabling quick monitoring and decision-making based on operational status." },
-            { title: "Vacancy Management – Filters and Operational Control", description: "Vacancy management interface with filters by sector, state and city, enabling full organization and control of published opportunities. The screen allows editing and tracking of vacancies, reinforcing the modular structure and centralized management of selection processes." },
-            { title: "Provider Dashboard – Personalized Opportunities", description: "Provider homepage with intelligent display of available vacancies according to location and applied filters (area, service, state and city). Designed to prioritize relevant opportunities and optimize navigation and applications within the platform." },
-            { title: "Provider Calendar – Custom Calendar", description: "Calendar developed for full visualization of selection processes, vacancies and scheduled times. The interface allows organized tracking of the professional's activities, with a customized structure for availability and commitment control." },
+            { title: "Hotel Dashboard – Operational View", description: "Dashboard with a consolidated view of hotel operations, showing indicators and status for hiring processes, hires and activities." },
+            { title: "Vacancy Management – Operational Control", description: "Vacancy management UI with advanced filters for organizing and tracking all published opportunities." },
+            { title: "Provider Dashboard – Opportunities", description: "Provider home screen with personalized vacancy listings based on filters and location, prioritizing relevance." },
+            { title: "Provider Calendar – Calendar", description: "Custom calendar for commitments, hiring processes and provider availability." },
           ],
         },
       ],
@@ -225,6 +280,16 @@ const translations = {
       techStack: "Tech stack",
       inPartnershipWith: "In partnership with",
       notFound: "Project not found.",
+      practicalApplicationLabel: "Practical application",
+      impactLabel: "Impact",
+      stagingNoticeTitle: "Staging & demo content",
+      stagingNoticeBody:
+        "Images, videos and screens from staging or test, not production. Fictional or anonymized content, no real client data.",
+      stagingNoticeTerm: "staging",
+      stagingNoticeTermTooltip:
+        "Pre-production environment used to validate changes before the final release.",
+      stagingNoticeCompact:
+        "Staging or test media, not production. No real client data.",
     },
     projectsPage: {
       heading: "Projects",
@@ -286,7 +351,20 @@ const translations = {
         {
           title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
           des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
-          fullDes: "Atuação como Desenvolvedor Front-end no desenvolvimento do Voxa, uma plataforma digital focada em ajudar pessoas a se conhecerem melhor profissionalmente e tomarem decisões mais assertivas sobre sua carreira. O projeto reúne diferentes avaliações e experiências interativas, como: testes de momento de carreira e definição de objetivos profissionais; avaliações de resolução de problemas e raciocínio rápido; mapeamento de compatibilidade pessoa–empresa; avaliação de potencial de liderança por meio de estímulos cognitivos; simulação de entrevistas com chat interativo baseado em IA, com análise das respostas e cálculo de resultados em tempo real. No front-end, atuei na construção de interfaces interativas e responsivas, garantindo clareza na apresentação dos testes, boa experiência do usuário e fluidez na navegação entre etapas complexas do fluxo. Trabalhei em colaboração direta com time de produto, UX e desenvolvimento, contribuindo para a evolução contínua da plataforma e para a entrega de uma experiência intuitiva e confiável ao usuário final. O projeto envolveu desafios como organização de fluxos dinâmicos, exibição de resultados personalizados e integração com lógicas de avaliação, sempre com foco em usabilidade, acessibilidade e qualidade da interface.",
+          fullDes: `Atuação como Desenvolvedor Front-end no desenvolvimento do Voxa, uma plataforma digital focada em ajudar pessoas a se conhecerem melhor profissionalmente e tomarem decisões mais assertivas sobre sua carreira.
+        
+        O projeto reúne diferentes avaliações e experiências interativas, como testes de momento de carreira, definição de objetivos profissionais, avaliações de resolução de problemas, mapeamento de compatibilidade pessoa–empresa e análise de potencial de liderança. Um dos principais diferenciais da plataforma é a simulação de entrevistas com chat interativo baseado em IA, responsável por analisar respostas e gerar resultados em tempo real.
+        
+        No front-end, atuei na construção de interfaces interativas, responsivas e orientadas à experiência do usuário, garantindo clareza na apresentação dos testes e fluidez na navegação entre etapas complexas. Trabalhei diretamente com fluxos dinâmicos e estados variados, assegurando consistência na exibição de dados e resultados personalizados.
+        
+        Participei ativamente da evolução do produto em colaboração com equipes de produto, UX e desenvolvimento, contribuindo para decisões técnicas e melhorias contínuas na plataforma. O projeto exigiu atenção especial à usabilidade, acessibilidade e performance, principalmente na construção de jornadas longas e interativas.`,
+        
+          practicalApplication:
+            "Desenvolvimento de interfaces complexas para fluxos dinâmicos de avaliação, incluindo simulação de entrevistas com IA, processamento de resultados em tempo real e exibição de dados personalizados ao usuário.",
+        
+          impact:
+            "Contribuição direta na experiência do usuário em uma plataforma centrada em decisões de carreira, garantindo clareza, fluidez e confiabilidade em interações críticas como testes e simulações de entrevista.",
+        
           media: [
             { title: "Homepage", description: "Tela inicial da plataforma Voxa, apresentando a jornada de autoconhecimento profissional, com acesso aos testes de carreira, descoberta de vagas e simulação de processos seletivos, em um layout moderno e focado em UX." },
             { title: "Testes e Resultados", description: "Visão geral dos principais testes da plataforma (Momento de Carreira, Solu, Mapeamento de Compatibilidade e Volt), com consolidação de resultados e insights sobre perfil profissional e potencial." },
@@ -294,14 +372,74 @@ const translations = {
             { title: "Simulação de Entrevista", description: "Demonstração da simulação de entrevista com chat interativo baseado em IA, avaliando respostas do usuário e gerando feedbacks para desenvolvimento profissional." },
           ],
         },
-        {
-          title: "Electron Editor App",
-          des: "Editor de texto simples feito com Electron: abrir, editar, salvar e renomear arquivos .txt.",
-        },
+          {
+            title: "Fotocord – Aplicativo de Criação de Fotolivros com Checkout Integrado",
+            des: "Aplicativo mobile para criação de fotolivros personalizados, com fluxo completo de pedidos, autenticação e pagamentos integrados.",
+            fullDes: `Atuação no desenvolvimento do Fotocord, um aplicativo mobile voltado à criação de fotolivros personalizados, onde o usuário pode montar álbuns com suas fotos, realizar o pagamento diretamente pelo app e receber o produto físico.
+        
+        O projeto foi construído com React Native (Expo) no front-end e NestJS no backend, utilizando PostgreSQL, Prisma e Docker para estruturação da aplicação.
+        
+        Minha principal responsabilidade foi o desenvolvimento completo do sistema de pagamentos, integrando o backend a um gateway financeiro (K8 Fintech) e estruturando todo o fluxo de checkout da aplicação. Implementei suporte a múltiplos métodos de pagamento, incluindo PIX, boleto híbrido, cartão de crédito e assinaturas, garantindo a criação de cobranças, processamento e atualização de estados de pagamento de forma confiável.
+        
+        O sistema foi projetado com controle de estados (pendente, aprovado, erro, expirado), utilização de webhooks para sincronização com o gateway e estratégias de idempotência para evitar duplicidade de cobranças. Também atuei na conexão entre pagamentos e pedidos, garantindo consistência entre transações financeiras e o fluxo de compra do usuário.
+        
+        Além disso, contribuí diretamente na implementação da autenticação e gerenciamento de usuários utilizando Keycloak, integrando fluxos de cadastro, login e segurança da aplicação.
+        
+        Participei também da implementação de comunicação do sistema, incluindo envio de emails transacionais com Resend (confirmação de conta, recuperação de senha) e sistema de notificações push utilizando Expo Notifications, melhorando a experiência e o engajamento do usuário.
+        
+        O projeto envolveu desafios reais de produto, como construção de um checkout robusto, integração com serviços externos, tratamento de estados assíncronos e garantia de uma experiência fluida para o usuário em todas as etapas da jornada.`,
+        
+            practicalApplication:
+              "Implementação de um sistema de pagamentos completo em produção, incluindo integração com gateway financeiro, processamento de múltiplos métodos de pagamento, uso de webhooks para atualização de estados e conexão direta com o fluxo de pedidos do sistema.",
+        
+            impact:
+              "Atuação em uma das áreas mais críticas do produto, garantindo que o fluxo de compra funcionasse de ponta a ponta. Contribuiu diretamente para a confiabilidade do sistema, experiência do usuário e viabilidade operacional do aplicativo.",
+        
+            media: [
+              {
+                title: "Fluxo de Cadastro do Usuário",
+                description: "Demonstração do processo completo de criação de conta no aplicativo, incluindo etapas de entrada de dados e validação inicial do usuário."
+              },
+              {
+                title: "Verificação de Email",
+                description: "Tela de confirmação de conta via código enviado por email, garantindo validação do usuário e segurança no acesso à plataforma."
+              },
+              {
+                title: "Central de Notificações",
+                description: "Tela que apresenta notificações do sistema, incluindo eventos como conta criada, pagamento realizado e criação de álbuns, integrando comunicação em tempo real com o usuário."
+              },
+              {
+                title: "Gestão de Assinatura",
+                description: "Interface de visualização e gerenciamento de assinatura ativa, integrada ao sistema de pagamentos recorrentes."
+              },
+              {
+                title: "Cartões Salvos",
+                description: "Tela de gerenciamento de cartões previamente cadastrados, permitindo reutilização segura de métodos de pagamento."
+              },
+              {
+                title: "Cadastro de Cartão",
+                description: "Fluxo completo de inserção de dados de cartão de crédito, integrado ao gateway de pagamento com validação e tokenização."
+              },
+              {
+                title: "Pagamento via PIX",
+                description: "Tela de geração de cobrança via PIX, com exibição de QR Code e instruções para pagamento imediato."
+              },
+              {
+                title: "Fluxo Completo de Checkout",
+                description: "Demonstração do fluxo completo de pagamento (mockado), incluindo escolha de método, resumo do pedido e estados de transação como aguardando, sucesso, erro e expirado para PIX e boleto."
+              }
+            ]
+          },
         {
           title: "DR Insights — Plataforma de Inteligência e Análise de Dados",
           des: "Plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.",
-          fullDes: "Atuei como Desenvolvedor Front-End em uma plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups. A solução gera insights estratégicos por meio de gráficos relacionais, tabelas dinâmicas e visualizações interativas. Fui responsável pelo desenvolvimento de interfaces responsivas e escaláveis, com foco em usabilidade, performance e experiência do usuário. Em colaboração com outros desenvolvedores e o time de UX, participei de reuniões diárias e decisões técnicas para evolução contínua do produto. Um dos destaques do projeto foi a implementação de um mapa interativo, que exibe e marca a localização das empresas, permitindo a exploração intuitiva de dados geográficos e ampliando a análise visual dos insights apresentados na plataforma.",
+          fullDes: `Atuei como Desenvolvedor Front-End em uma plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.
+
+A solução gera insights estratégicos por meio de gráficos relacionais, tabelas dinâmicas e visualizações interativas.
+
+Fui responsável pelo desenvolvimento de interfaces responsivas e escaláveis, com foco em usabilidade, performance e experiência do usuário. Em colaboração com outros desenvolvedores e o time de UX, participei de reuniões diárias e decisões técnicas para evolução contínua do produto.
+
+Um dos destaques do projeto foi a implementação de um mapa interativo, que exibe e marca a localização das empresas, permitindo a exploração intuitiva de dados geográficos e ampliando a análise visual dos insights apresentados na plataforma.`,
           media: [
             { title: "Mapa Interativo de Empresas", description: "Mapa interativo que exibe e marca empresas geograficamente a partir de filtros dinâmicos, permitindo a exploração visual de dados, análise regional e identificação de padrões de mercado de forma intuitiva e responsiva." },
             { title: "Busca Inteligente de Termos", description: "Interface de busca inteligente que permite a análise de termos em múltiplas APIs de mercado, consolidando dados de redes sociais e fontes externas para gerar insights estratégicos, tendências e oportunidades relevantes para empresas." },
@@ -311,13 +449,28 @@ const translations = {
         },
         {
           title: "B2BHotel – Plataforma SaaS de Gestão e Intermediação de Serviços para Hotéis",
-          des: "Plataforma SaaS B2B para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa.",
-          fullDes: "Plataforma SaaS B2B voltada para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa em um ecossistema digital centralizado. Participei ativamente do desenvolvimento da solução ao longo de diferentes fases do projeto, iniciando com foco em front-end e posteriormente atuando como desenvolvedor Full Stack, contribuindo tanto na evolução da interface quanto na implementação de regras de negócio e integrações no backend. A plataforma é estruturada em três perfis principais: Prestador – fluxo de onboarding estruturado com cadastro profissional completo, geração automatizada de currículo, agenda personalizada e sistema inteligente de filtragem de oportunidades; Hotel – painel operacional para criação e acompanhamento de serviços, organização de demandas e visualização de indicadores; Admin – núcleo operacional responsável pela criação e gestão de serviços, consolidação financeira, geração de contas a receber e contas a pagar, processamento de lotes de pagamento e integração com serviços bancários. A solução foi desenvolvida com arquitetura Full Stack utilizando React, Next.js, Spring Boot e PostgreSQL, hospedada em ambiente AWS com separação entre homologação e produção. O sistema centraliza regras operacionais e financeiras da operação, incluindo controle de permissões por perfil, geração automatizada de relatórios (PDF, CSV e XLSX) e integração via API REST com o Banco Inter para automação de pagamentos. Projeto em produção, estruturado para escalabilidade, controle operacional e expansão contínua.",
+          des: "Plataforma SaaS B2B para gestão operacional e financeira no setor hoteleiro, conectando hotéis, prestadores e administração.",
+          fullDes: `Plataforma SaaS B2B voltada para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa em um ecossistema digital centralizado.
+        
+        Atuei inicialmente como desenvolvedor Front-End e posteriormente como Full Stack, contribuindo tanto na construção da interface quanto na implementação de regras de negócio e integrações no backend.
+        
+        A plataforma é estruturada em três perfis principais: Prestador, com onboarding completo, geração automatizada de currículo e agenda personalizada; Hotel, com painel operacional para criação e acompanhamento de serviços; e Admin, responsável pela gestão financeira, processamento de pagamentos e controle da operação.
+        
+        A solução foi desenvolvida com arquitetura Full Stack utilizando React, Next.js, Spring Boot e PostgreSQL, hospedada em ambiente AWS. O sistema centraliza regras operacionais e financeiras, incluindo controle de permissões, geração de relatórios e integração com o Banco Inter para automação de pagamentos.
+        
+        O projeto envolveu desafios como controle de múltiplos perfis, organização de fluxos operacionais complexos, integração com serviços bancários e garantia de consistência em processos financeiros.`,
+        
+          practicalApplication:
+            "Desenvolvimento full stack de uma plataforma SaaS com múltiplos perfis de usuário, incluindo implementação de regras de negócio, integração com APIs bancárias e geração automatizada de relatórios e processos financeiros.",
+        
+          impact:
+            "Contribuição direta na estruturação de uma solução em produção, centralizando operações e processos financeiros do setor hoteleiro, aumentando eficiência operacional e controle da plataforma.",
+        
           media: [
-            { title: "Dashboard do Hotel – Visão Operacional", description: "Painel principal do hotel com visão consolidada da operação dentro da plataforma. A interface apresenta indicadores como processos seletivos ativos, entrevistas agendadas, contratações realizadas, validade de vagas, planos contratados e solicitações de acesso, permitindo acompanhamento rápido e tomada de decisão baseada em status operacionais." },
-            { title: "Gestão de Vagas – Filtros e Controle Operacional", description: "Interface de gerenciamento de vagas com filtros por setor, estado e cidade, permitindo organização e controle completo das oportunidades publicadas. A tela possibilita edição e acompanhamento das vagas, reforçando a estrutura modular e a gestão centralizada de processos seletivos." },
-            { title: "Dashboard do Prestador – Oportunidades Personalizadas", description: "Página inicial do prestador com exibição inteligente de vagas disponíveis conforme localização e filtros aplicados (área, serviço, estado e cidade). Desenvolvida para priorizar oportunidades relevantes e otimizar a navegação e candidatura dentro da plataforma." },
-            { title: "Agenda do Prestador – Calendário Customizado", description: "Calendário desenvolvido para visualização completa de processos seletivos, vagas e horários agendados. A interface permite acompanhamento organizado das atividades do profissional, com estrutura personalizada para controle de disponibilidade e compromissos." },
+            { title: "Dashboard do Hotel – Visão Operacional", description: "Painel com visão consolidada da operação do hotel, apresentando indicadores e status de processos seletivos, contratações e atividades." },
+            { title: "Gestão de Vagas – Controle Operacional", description: "Interface de gerenciamento de vagas com filtros avançados, permitindo organização e acompanhamento completo das oportunidades publicadas." },
+            { title: "Dashboard do Prestador – Oportunidades", description: "Tela inicial do prestador com exibição personalizada de vagas conforme filtros e localização, priorizando relevância." },
+            { title: "Agenda do Prestador – Calendário", description: "Calendário customizado para visualização de compromissos, processos seletivos e disponibilidade do profissional." },
           ],
         },
       ],
@@ -458,6 +611,16 @@ const translations = {
       techStack: "Stack técnico",
       inPartnershipWith: "Associado a",
       notFound: "Projeto não encontrado.",
+      practicalApplicationLabel: "Aplicação prática",
+      impactLabel: "Impacto",
+      stagingNoticeTitle: "Homologação e demonstração",
+      stagingNoticeBody:
+        "Imagens, vídeos e telas de homologação ou teste, não de produção. Nomes, números e fluxos são exemplos fictícios ou anonimizados para o portfólio não representam clientes reais nem dados identificáveis.",
+      stagingNoticeTerm: "homologação",
+      stagingNoticeTermTooltip:
+        "Ambiente de validação parecido com o de produção, usado para testar alterações antes da liberação final.",
+      stagingNoticeCompact:
+        "Mídias de homologação ou teste, não de produção. Sem dados reais.",
     },
     projectsPage: {
       heading: "Projetos",

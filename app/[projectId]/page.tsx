@@ -10,7 +10,9 @@ import { projects, STACK_LABELS } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import MagicButton from "@/components/MagicButton";
-import { cn } from "@/lib/utils";
+import { StagingProjectDisclaimer } from "@/components/StagingProjectDisclaimer";
+import { StackTooltip } from "@/components/ui/StackTooltip";
+import { splitDescriptionParagraphs } from "@/lib/utils";
 
 export default function ProjectPage() {
   const { projectId } = useParams();
@@ -21,6 +23,8 @@ export default function ProjectPage() {
       title: string;
       des: string;
       fullDes?: string;
+      practicalApplication?: string;
+      impact?: string;
       media?: Array<{ title: string; description: string }>;
     }>;
   };
@@ -30,6 +34,8 @@ export default function ProjectPage() {
     techStack: string;
     inPartnershipWith: string;
     notFound: string;
+    practicalApplicationLabel: string;
+    impactLabel: string;
   };
 
   const project = projects.find((p) => String(p.id) === String(projectId));
@@ -38,6 +44,9 @@ export default function ProjectPage() {
   const itemT = project && index >= 0 ? projectsT.items[index] : null;
   /** Na página de detalhe o conteúdo é sempre completo (viewMode não afeta). */
   const description = itemT?.fullDes ?? itemT?.des ?? project?.des ?? "";
+  const descriptionParagraphs = splitDescriptionParagraphs(description);
+  const practicalApplicationText = itemT?.practicalApplication?.trim();
+  const impactText = itemT?.impact?.trim();
   const showAboutTitle = true;
   const showClientBlock = true;
   const showProjectLink = true;
@@ -79,6 +88,10 @@ export default function ProjectPage() {
   }
 
   const backHref = `/#project-${project.id}`;
+  const stackIcons =
+    project.iconListsDetail && project.iconListsDetail.length > 0
+      ? project.iconListsDetail
+      : project.iconLists ?? [];
 
   return (
     <div key={lang} className="min-h-screen bg-black-100 relative overflow-hidden">
@@ -119,6 +132,15 @@ export default function ProjectPage() {
           {title}
         </motion.h1>
 
+        <StagingProjectDisclaimer
+          title={projectPageT.stagingNoticeTitle}
+          body={projectPageT.stagingNoticeBody}
+          term={projectPageT.stagingNoticeTerm}
+          termTooltip={projectPageT.stagingNoticeTermTooltip}
+          compactText={projectPageT.stagingNoticeCompact}
+          variant="full"
+        />
+
         {/* Carousel */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -140,14 +162,38 @@ export default function ProjectPage() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
-            className="lg:col-span-2"
+            className="lg:col-span-2 space-y-8"
           >
             {showAboutTitle && (
-              <h2 className="text-lg font-semibold text-purple mb-3">{projectPageT.aboutTitle}</h2>
+              <div>
+                <h2 className="text-lg font-semibold text-purple mb-4">{projectPageT.aboutTitle}</h2>
+                <div className="space-y-5 text-white-200 text-base md:text-lg leading-relaxed">
+                  {descriptionParagraphs.map((paragraph, i) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
             )}
-            <p className="text-white-200 text-base md:text-lg leading-relaxed">
-              {description}
-            </p>
+            {practicalApplicationText ? (
+              <div>
+                <h2 className="text-lg font-semibold text-purple mb-3">{projectPageT.practicalApplicationLabel}</h2>
+                <div className="space-y-5 text-white-200 text-base md:text-lg leading-relaxed">
+                  {splitDescriptionParagraphs(practicalApplicationText).map((paragraph, i) => (
+                    <p key={`pa-${i}`}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            ) : null}
+            {impactText ? (
+              <div>
+                <h2 className="text-lg font-semibold text-purple mb-3">{projectPageT.impactLabel}</h2>
+                <div className="space-y-5 text-white-200 text-base md:text-lg leading-relaxed">
+                  {splitDescriptionParagraphs(impactText).map((paragraph, i) => (
+                    <p key={`im-${i}`}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            ) : null}
           </motion.div>
 
           {/* Sidebar: Tech + CTA */}
@@ -158,19 +204,22 @@ export default function ProjectPage() {
             className="space-y-8"
           >
             {/* Tech stack */}
-            {project.iconLists && project.iconLists.length > 0 && (
+            {stackIcons.length > 0 && (
               <div>
                 <h2 className="text-lg font-semibold text-purple mb-4">{projectPageT.techStack}</h2>
                 <div className="flex flex-wrap gap-3">
-                  {project.iconLists.slice(0, 5).map((icon, i) => (
-                    <div
-                      key={i}
-                      title={STACK_LABELS[icon] ?? icon.replace(/^\/(.*)\.svg$/i, "$1")}
-                      className="w-12 h-12 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center hover:border-purple/30 transition-colors cursor-default"
-                    >
-                      <img src={icon} alt={STACK_LABELS[icon] ?? ""} className="w-7 h-7 object-contain" />
-                    </div>
-                  ))}
+                  {stackIcons.map((icon, i) => {
+                    const iconSrc = icon.startsWith("/") ? icon : `/${icon}`;
+                    const stackName =
+                      STACK_LABELS[iconSrc] ?? icon.replace(/^\/(.*)\.svg$/i, "$1");
+                    return (
+                      <StackTooltip key={`${iconSrc}-${i}`} label={stackName}>
+                        <div className="w-12 h-12 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center hover:border-purple/30 transition-colors cursor-default">
+                          <img src={iconSrc} alt={stackName} className="w-7 h-7 object-contain" />
+                        </div>
+                      </StackTooltip>
+                    );
+                  })}
                 </div>
               </div>
             )}

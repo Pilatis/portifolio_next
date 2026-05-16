@@ -34,7 +34,7 @@ const RecentProjects = () => {
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {list.map((item) => {
-          const itemIndex = item.id - 1;
+          const itemIndex = projects.findIndex((p) => p.id === item.id);
           return (
             <div key={item.id} id={`project-${item.id}`} className="scroll-mt-24">
               <ProjectCard
