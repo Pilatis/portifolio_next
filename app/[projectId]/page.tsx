@@ -36,6 +36,11 @@ export default function ProjectPage() {
     notFound: string;
     practicalApplicationLabel: string;
     impactLabel: string;
+    stagingNoticeTitle: string;
+    stagingNoticeBody: string;
+    stagingNoticeTerm: string;
+    stagingNoticeTermTooltip: string;
+    stagingNoticeCompact: string;
   };
 
   const project = projects.find((p) => String(p.id) === String(projectId));

@@ -1,6 +1,9 @@
 import { Certification } from "@/types/certificationTypes";
 import { Project } from "@/types/projectTypes";
 
+export type { Certification } from "@/types/certificationTypes";
+export type { Project } from "@/types/projectTypes";
+
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
