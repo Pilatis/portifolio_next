@@ -501,7 +501,7 @@ export const certifications: Certification[] = [
 
 export const projects: Project[] = [
   {
-    id: 1,
+    id: 3,
     title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
     des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
     img: "/voxa/voxa1.PNG",
@@ -547,7 +547,7 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: "DR Insights — Plataforma de Inteligência e Análise de Dados",
     des: "Plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.",
     img: "/dr/DrInsights4.PNG",
@@ -563,7 +563,7 @@ export const projects: Project[] = [
     clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
   },
   {
-    id: 4,
+    id: 1,
     title: "B2BHotel – Plataforma SaaS de Gestão e Intermediação de Serviços para Hotéis",
     des: "Plataforma SaaS B2B para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa.",
     img: "/b2b/home-hotel.PNG",
