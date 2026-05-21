@@ -499,6 +499,32 @@ export const certifications: Certification[] = [
   }
 ];
 
+/** Ordem na home: B2B → Fotocord → Voxa → DR Insights */
+export const HOME_PROJECT_IDS = [1, 2, 3, 4] as const;
+
+export function getProjectsByIds(ids: readonly number[] | number[]) {
+  return ids
+    .map((id) => projects.find((p) => p.id === id))
+    .filter((p): p is Project => p != null);
+}
+
+/** Índice em translations.projects.items até alinhar com ids 1–4 */
+const PROJECT_TRANSLATION_ITEM_INDEX: Record<number, number> = {
+  1: 3,
+  2: 1,
+  3: 0,
+  4: 2,
+};
+
+export function getProjectTranslationItem<T>(
+  items: T[] | undefined,
+  projectId: number,
+): T | undefined {
+  if (!items?.length) return undefined;
+  const idx = PROJECT_TRANSLATION_ITEM_INDEX[projectId];
+  return items[idx ?? projectId - 1];
+}
+
 export const projects: Project[] = [
   {
     id: 1,

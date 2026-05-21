@@ -1,13 +1,12 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaLocationArrow } from "react-icons/fa6";
 import { IoArrowBack } from "react-icons/io5";
-import { projects, STACK_LABELS } from "@/data";
+import { getProjectTranslationItem, projects, STACK_LABELS } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import MagicButton from "@/components/MagicButton";
@@ -45,9 +44,8 @@ export default function ProjectPage() {
   };
 
   const project = projects.find((p) => String(p.id) === String(projectId));
-  const index = project ? projects.findIndex((p) => p.id === project.id) : -1;
-  const title = project && index >= 0 ? projectsT.items[index]?.title ?? project.title : "";
-  const itemT = project && index >= 0 ? projectsT.items[index] : null;
+  const itemT = project ? getProjectTranslationItem(projectsT.items, project.id) : null;
+  const title = itemT?.title ?? project?.title ?? "";
   /** Na página de detalhe o conteúdo é sempre completo (viewMode não afeta). */
   const description = itemT?.fullDes ?? itemT?.des ?? project?.des ?? "";
   const descriptionParagraphs = splitDescriptionParagraphs(description);
@@ -221,13 +219,7 @@ export default function ProjectPage() {
                     return (
                       <StackTooltip key={`${iconSrc}-${i}`} label={stackName}>
                         <div className="w-12 h-12 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center hover:border-purple/30 transition-colors cursor-default">
-                          <Image
-                            src={iconSrc}
-                            alt={stackName}
-                            width={28}
-                            height={28}
-                            className="w-7 h-7 object-contain"
-                          />
+                          <img src={iconSrc} alt={stackName} className="w-7 h-7 object-contain" />
                         </div>
                       </StackTooltip>
                     );
@@ -242,11 +234,9 @@ export default function ProjectPage() {
                 <p className="text-sm text-white-200 mb-2">{projectPageT.inPartnershipWith}</p>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
                   {"clientLogo" in project && project.clientLogo && (
-                    <Image
+                    <img
                       src={project.clientLogo}
                       alt=""
-                      width={120}
-                      height={36}
                       className="h-9 w-auto object-contain flex-shrink-0 rounded-lg"
                     />
                   )}

@@ -3,7 +3,13 @@
 import { useCallback, useMemo, useState } from "react";
 import Link from "next/link";
 import { IoArrowBack } from "react-icons/io5";
-import { projects, STACK_LABELS } from "@/data";
+import {
+  HOME_PROJECT_IDS,
+  getProjectTranslationItem,
+  getProjectsByIds,
+  projects,
+  STACK_LABELS,
+} from "@/data";
 import { ProjectCard } from "@/components/ProjectCard";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -45,7 +51,7 @@ export default function ProjectsPage() {
   const [selectedStack, setSelectedStack] = useState<string | null>(null);
 
   const filtered = useMemo(() => {
-    let list = projects;
+    let list = getProjectsByIds(HOME_PROJECT_IDS);
     const q = search.trim().toLowerCase();
     if (q) {
       list = list.filter(
@@ -134,13 +140,13 @@ export default function ProjectsPage() {
         {/* Grid de projetos - ProjectCard com PinContainer fullWidth */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
           {filtered.map((item) => {
-            const idx = projects.findIndex((p) => p.id === item.id);
+            const itemT = getProjectTranslationItem(projectsT.items, item.id);
             return (
               <ProjectCard
                 key={item.id}
                 item={item}
-                title={projectsT.items[idx]?.title ?? item.title}
-                des={projectsT.items[idx]?.des ?? item.des}
+                title={itemT?.title ?? item.title}
+                des={itemT?.des ?? item.des}
                 checkLiveSite={projectsT.checkLiveSite}
                 showClientBadge={true}
                 variant="grid"

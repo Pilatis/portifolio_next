@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { FaLocationArrow } from "react-icons/fa6";
-import { projects } from "@/data";
+import {
+  HOME_PROJECT_IDS,
+  getProjectTranslationItem,
+  getProjectsByIds,
+  projects,
+} from "@/data";
 import { ProjectCard } from "./ProjectCard";
 import { useLanguage } from "@/context/LanguageContext";
 import { useViewMode } from "@/context/ViewModeContext";
@@ -19,12 +24,10 @@ const RecentProjects = () => {
   };
   const showClientBadge = viewMode === "technical";
   const isRecruiter = viewMode === "recruiter";
-  const recruiterFeaturedIds = [4, 2];
+  const recruiterFeaturedIds = [1, 2];
   const list = isRecruiter
-    ? recruiterFeaturedIds
-        .map((id) => projects.find((p) => p.id === id))
-        .filter((p): p is (typeof projects)[number] => p != null)
-    : projects;
+    ? getProjectsByIds(recruiterFeaturedIds)
+    : getProjectsByIds(HOME_PROJECT_IDS);
 
   return (
     <div id="projects" className="scroll-mt-20">
@@ -34,13 +37,13 @@ const RecentProjects = () => {
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
         {list.map((item) => {
-          const itemIndex = projects.findIndex((p) => p.id === item.id);
+          const itemT = getProjectTranslationItem(projectsT.items, item.id);
           return (
             <div key={item.id} id={`project-${item.id}`} className="scroll-mt-24">
               <ProjectCard
                 item={item}
-                title={projectsT.items[itemIndex]?.title ?? item.title}
-                des={projectsT.items[itemIndex]?.des ?? item.des}
+                title={itemT?.title ?? item.title}
+                des={itemT?.des ?? item.des}
                 checkLiveSite={projectsT.checkLiveSite}
                 showClientBadge={showClientBadge}
                 variant="home"
