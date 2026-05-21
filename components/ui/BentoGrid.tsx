@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { IoCopyOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
 
@@ -96,23 +97,26 @@ export const BentoGridItem = ({
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
           {img && (
-            <img
+            <Image
               src={img}
-              alt={img}
-              className={cn(imgClassName, "object-cover object-center ")}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 400px"
+              className={cn(imgClassName, "object-cover object-center")}
             />
           )}
         </div>
         <div
-          className={`absolute right-0 -bottom-5 ${id === 5 && "w-full opacity-80"
+          className={`absolute right-0 -bottom-5 relative ${id === 5 && "w-full opacity-80"
             } `}
         >
           {spareImg && (
-            <img
+            <Image
               src={spareImg}
-              alt={spareImg}
-              //   width={220}
-              className="object-cover object-center w-full h-full"
+              alt=""
+              fill
+              sizes="(max-width: 768px) 50vw, 220px"
+              className="object-cover object-center"
             />
           )}
         </div>
@@ -186,7 +190,14 @@ export const BentoGridItem = ({
               >
                 {/* <img src="/confetti.gif" alt="confetti" /> */}
                 {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
-                <img src="/confetti.gif" alt="confetti" className="w-[400px] h-[200px]" />
+                <Image
+                  src="/confetti.gif"
+                  alt="confetti"
+                  width={400}
+                  height={200}
+                  unoptimized
+                  className="w-[400px] h-[200px]"
+                />
               </div>
 
               <MagicButton

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -220,7 +221,13 @@ export default function ProjectPage() {
                     return (
                       <StackTooltip key={`${iconSrc}-${i}`} label={stackName}>
                         <div className="w-12 h-12 rounded-xl border border-white/10 bg-black/40 flex items-center justify-center hover:border-purple/30 transition-colors cursor-default">
-                          <img src={iconSrc} alt={stackName} className="w-7 h-7 object-contain" />
+                          <Image
+                            src={iconSrc}
+                            alt={stackName}
+                            width={28}
+                            height={28}
+                            className="w-7 h-7 object-contain"
+                          />
                         </div>
                       </StackTooltip>
                     );
@@ -235,9 +242,11 @@ export default function ProjectPage() {
                 <p className="text-sm text-white-200 mb-2">{projectPageT.inPartnershipWith}</p>
                 <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur-sm">
                   {"clientLogo" in project && project.clientLogo && (
-                    <img
+                    <Image
                       src={project.clientLogo}
                       alt=""
+                      width={120}
+                      height={36}
                       className="h-9 w-auto object-contain flex-shrink-0 rounded-lg"
                     />
                   )}

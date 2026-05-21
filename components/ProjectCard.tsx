@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaLocationArrow } from "react-icons/fa6";
@@ -48,14 +49,29 @@ export function ProjectCard({
           className="relative w-full h-full overflow-hidden lg:rounded-3xl"
           style={{ backgroundColor: "#13162D" }}
         >
-          <img src="/bg.png" alt="" className="w-full h-full object-cover opacity-40" />
+          <Image
+            src="/bg.png"
+            alt=""
+            fill
+            sizes="(max-width: 768px) 80vw, 400px"
+            className="object-cover opacity-40"
+          />
         </div>
-        <img
-          src={item.img}
-          alt=""
-          className={isGrid ? "z-10 absolute bottom-0 left-1/2 -translate-x-1/2 max-h-full w-auto object-contain" : "z-10 absolute bottom-0"}
-          style={isGrid ? { maxWidth: "100%" } : { height: "100%" }}
-        />
+        <div
+          className={
+            isGrid
+              ? "z-10 absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-full max-w-full"
+              : "z-10 absolute bottom-0 left-0 right-0 h-full"
+          }
+        >
+          <Image
+            src={item.img}
+            alt={title}
+            fill
+            sizes="(max-width: 768px) 80vw, 384px"
+            className="object-contain object-bottom"
+          />
+        </div>
       </div>
 
       <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
@@ -72,7 +88,13 @@ export function ProjectCard({
       {showClientBadge && "clientName" in item && item.clientName && (
         <div className="flex items-center gap-2 mt-2">
           {"clientLogo" in item && item.clientLogo && (
-            <img src={item.clientLogo} alt="" className="h-6 w-auto object-contain rounded" />
+            <Image
+              src={item.clientLogo}
+              alt=""
+              width={96}
+              height={24}
+              className="h-6 w-auto object-contain rounded"
+            />
           )}
           <span className="text-xs text-white-200/80">{item.clientName}</span>
         </div>
@@ -89,7 +111,7 @@ export function ProjectCard({
                   className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center cursor-default"
                   style={!isGrid ? { transform: `translateX(-${5 * index + 2}px)` } : undefined}
                 >
-                  <img src={src} alt={label} className="p-2" />
+                  <Image src={src} alt={label} width={24} height={24} className="p-2" />
                 </div>
               </StackTooltip>
             );

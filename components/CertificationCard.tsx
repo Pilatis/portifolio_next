@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import type { Certification } from "@/data";
 import { FaLocationArrow } from "react-icons/fa6";
@@ -76,20 +77,29 @@ export function CertificationCard({
               className="absolute inset-0 overflow-hidden rounded-2xl"
               style={{ backgroundColor: "#13162D" }}
             >
-              <img src="/bg.png" alt="" className="w-full h-full object-cover opacity-40" />
+              <Image
+                src="/bg.png"
+                alt=""
+                fill
+                sizes="(max-width: 768px) 85vw, 400px"
+                className="object-cover opacity-40"
+              />
             </div>
             {showPlaceholder ? (
               <div className="z-10 absolute inset-0 flex items-center justify-center text-white-200/60 text-sm rounded-2xl bg-black-300/80">
                 Certificado
               </div>
             ) : (
-              <img
-                src={displayImage}
-                alt=""
-                className="z-10 relative max-h-full w-auto object-contain"
-                style={{ maxWidth: "100%" }}
-                onError={() => setImgError(true)}
-              />
+              <div className="z-10 absolute inset-0">
+                <Image
+                  src={displayImage}
+                  alt={itemT?.title ?? cert.title}
+                  fill
+                  sizes="(max-width: 768px) 85vw, 400px"
+                  className="object-contain"
+                  onError={() => setImgError(true)}
+                />
+              </div>
             )}
           </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
@@ -133,14 +134,16 @@ export default function CertificationDetailPage() {
               key={src + i}
               className="rounded-2xl overflow-hidden border border-white/10 bg-black-200/80 shadow-2xl shadow-purple/10"
             >
-              <div className="aspect-[4/3] w-full bg-black-300 flex items-center justify-center">
+              <div className="relative aspect-[4/3] w-full bg-black-300 flex items-center justify-center">
                 {certificationImages.length === 1 && imgError ? (
                   <div className="text-white-200/60 text-sm">Certificado</div>
                 ) : (
-                  <img
+                  <Image
                     src={src}
                     alt={certificationImages.length > 1 ? `Página ${i + 1}` : ""}
-                    className="w-full h-full object-contain"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-contain"
                     onError={() => setImgError(true)}
                   />
                 )}

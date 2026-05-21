@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 import { MovingBorder } from "./ui/MovingBorders";
@@ -111,11 +112,13 @@ function PhotoWithMovingBorder({ imageAlt }: { imageAlt: string }) {
         className="relative w-full h-full rounded-[1.5rem] overflow-hidden border border-white/10 bg-black/40"
         style={{ borderRadius: innerRadius }}
       >
-        <img
+        <Image
           src={PHOTO_SRC}
           alt={imageAlt}
-          className="w-full h-full object-cover object-top"
-          loading="eager"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 384px"
+          className="object-cover object-top"
         />
       </div>
     </div>

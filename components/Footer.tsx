@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FaLocationArrow, FaFileLines, FaGithub, FaLinkedin } from "react-icons/fa6";
 
 import { socialMedia } from "@/data";
@@ -14,11 +15,15 @@ const Footer = () => {
   return (
     <footer className="relative w-full pt-20 pb-10 overflow-hidden" id="contact">
       <div className="absolute left-0 bottom-0 w-full min-h-96 pointer-events-none" aria-hidden>
-        <img
-          src="/footer-grid.svg"
-          alt=""
-          className="w-full h-full opacity-50 object-cover object-bottom"
-        />
+        <div className="relative w-full h-full min-h-96">
+          <Image
+            src="/footer-grid.svg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="opacity-50 object-cover object-bottom"
+          />
+        </div>
       </div>
 
       <div className="flex flex-col items-center">

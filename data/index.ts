@@ -493,7 +493,7 @@ export const certifications: Certification[] = [
     practicalApplication:
       "Aplicação de arquiteturas avançadas de redes neurais na construção de soluções inteligentes, incluindo processamento de dados complexos e sequenciais.",
     impact:
-      "Evolução para o entendimento de modelos mais avançados de aprendizado de máquina, ampliando a capacidade de atuar em problemas reais com dados complexos.",
+    "Evolução para o entendimento de modelos mais avançados de aprendizado de máquina, ampliando a capacidade de atuar em problemas reais com dados complexos.",
     hours: "40h",
     featured: false
   }
@@ -501,17 +501,17 @@ export const certifications: Certification[] = [
 
 export const projects: Project[] = [
   {
-    id: 3,
-    title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
-    des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
-    img: "/voxa/voxa1.PNG",
-    iconLists: ["/re.svg", "/next.svg", "/ts.svg", "/chakra.svg", "/dock.svg", "/git.svg", "/java.svg", "/postgresql.svg", "/git.svg"],
+    id: 1,
+    title: "B2BHotel – Plataforma SaaS de Gestão e Intermediação de Serviços para Hotéis",
+    des: "Plataforma SaaS B2B para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa.",
+    img: "/b2b/home-hotel.PNG",
+    iconLists: ["/re.svg", "/next.svg", "/ts.svg", "/chakra.svg", "/git.svg", "/java.svg", "/postgresql.svg"],
     link: "",
     media: [
-      { src: "/voxa/voxa1.PNG", type: "image" as const },
-      { src: "/voxa/voxa2.PNG", type: "image" as const },
-      { src: "/voxa/solu2.PNG", type: "image" as const },
-      { src: "/voxa/Video%20Project%202.mp4", type: "video" as const },
+      { src: "/b2b/home-hotel.PNG", type: "image" as const },
+      { src: "/b2b/vagas.PNG", type: "image" as const },
+      { src: "/b2b/home.PNG", type: "image" as const },
+      { src: "/b2b/agenda.PNG", type: "image" as const },
     ],
     clientName: "Cognitiva Brasil",
     clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
@@ -547,6 +547,22 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 3,
+    title: "Voxa – Plataforma de Desenvolvimento e Orientação de Carreira",
+    des: "Plataforma digital de autoconhecimento e orientação de carreira, com testes, avaliações e simulação de entrevistas com IA.",
+    img: "/voxa/voxa1.PNG",
+    iconLists: ["/re.svg", "/next.svg", "/ts.svg", "/chakra.svg", "/dock.svg", "/git.svg", "/java.svg", "/postgresql.svg", "/git.svg"],
+    link: "",
+    media: [
+      { src: "/voxa/voxa1.PNG", type: "image" as const },
+      { src: "/voxa/voxa2.PNG", type: "image" as const },
+      { src: "/voxa/solu2.PNG", type: "image" as const },
+      { src: "/voxa/Video%20Project%202.mp4", type: "video" as const },
+    ],
+    clientName: "Cognitiva Brasil",
+    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
+  },
+  {
     id: 4,
     title: "DR Insights — Plataforma de Inteligência e Análise de Dados",
     des: "Plataforma de insights e análise de dados para empresas, integrando múltiplas APIs de redes sociais para análise de posts, textos, documentos e dados de startups.",
@@ -558,22 +574,6 @@ export const projects: Project[] = [
       { src: "/dr/Dr6.PNG", type: "image" as const },
       { src: "/dr/Dr3.PNG", type: "image" as const },
       { src: "/dr/DrInsights4.PNG", type: "image" as const },
-    ],
-    clientName: "Cognitiva Brasil",
-    clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",
-  },
-  {
-    id: 1,
-    title: "B2BHotel – Plataforma SaaS de Gestão e Intermediação de Serviços para Hotéis",
-    des: "Plataforma SaaS B2B para intermediação e gestão de serviços no setor hoteleiro, conectando hotéis, prestadores e equipe administrativa.",
-    img: "/b2b/home-hotel.PNG",
-    iconLists: ["/re.svg", "/next.svg", "/ts.svg", "/chakra.svg", "/git.svg", "/java.svg", "/postgresql.svg"],
-    link: "",
-    media: [
-      { src: "/b2b/home-hotel.PNG", type: "image" as const },
-      { src: "/b2b/vagas.PNG", type: "image" as const },
-      { src: "/b2b/home.PNG", type: "image" as const },
-      { src: "/b2b/agenda.PNG", type: "image" as const },
     ],
     clientName: "Cognitiva Brasil",
     clientLogo: "/cognitiva_brasil_tecnologias_educacionais_logo.jpg",

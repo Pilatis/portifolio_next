@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
 import { cn } from "@/lib/utils";
@@ -74,12 +75,15 @@ export default function ProjectCarousel({
                 Your browser does not support the video tag.
               </video>
             ) : (
-              <img
-                key={current.src}
-                src={current.src}
-                alt={current.title ?? `${alt} - ${index + 1}`}
-                className="max-h-full w-auto object-contain object-center rounded-xl"
-              />
+              <div key={current.src} className="relative w-full h-full min-h-[12rem]">
+                <Image
+                  src={current.src}
+                  alt={current.title ?? `${alt} - ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 896px"
+                  className="object-contain object-center rounded-xl"
+                />
+              </div>
             )}
           </motion.div>
         </AnimatePresence>
