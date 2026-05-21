@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaLocationArrow } from "react-icons/fa6";
@@ -49,29 +48,18 @@ export function ProjectCard({
           className="relative w-full h-full overflow-hidden lg:rounded-3xl"
           style={{ backgroundColor: "#13162D" }}
         >
-          <Image
-            src="/bg.png"
-            alt=""
-            fill
-            sizes="(max-width: 768px) 80vw, 400px"
-            className="object-cover opacity-40"
-          />
+          <img src="/bg.png" alt="" className="w-full h-full object-cover opacity-40" />
         </div>
-        <div
+        <img
+          src={item.img}
+          alt={title}
           className={
             isGrid
-              ? "z-10 absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-full max-w-full"
-              : "z-10 absolute bottom-0 left-0 right-0 h-full"
+              ? "z-10 absolute bottom-0 left-1/2 -translate-x-1/2 max-h-full w-auto object-contain"
+              : "z-10 absolute bottom-0 max-w-full object-contain object-bottom"
           }
-        >
-          <Image
-            src={item.img}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 80vw, 384px"
-            className="object-contain object-bottom"
-          />
-        </div>
+          style={isGrid ? { maxWidth: "100%" } : { height: "100%" }}
+        />
       </div>
 
       <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 text-white">
@@ -88,11 +76,9 @@ export function ProjectCard({
       {showClientBadge && "clientName" in item && item.clientName && (
         <div className="flex items-center gap-2 mt-2">
           {"clientLogo" in item && item.clientLogo && (
-            <Image
+            <img
               src={item.clientLogo}
               alt=""
-              width={96}
-              height={24}
               className="h-6 w-auto object-contain rounded"
             />
           )}
@@ -111,7 +97,7 @@ export function ProjectCard({
                   className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center cursor-default"
                   style={!isGrid ? { transform: `translateX(-${5 * index + 2}px)` } : undefined}
                 >
-                  <Image src={src} alt={label} width={24} height={24} className="p-2" />
+                  <img src={src} alt={label} className="p-2 w-full h-full object-contain" />
                 </div>
               </StackTooltip>
             );
