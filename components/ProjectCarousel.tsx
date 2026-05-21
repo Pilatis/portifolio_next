@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { IoChevronBack, IoChevronForward } from "react-icons/io5";
@@ -34,18 +34,61 @@ export default function ProjectCarousel({
     ? media
     : (images ?? []).map((src) => ({ src, type: "image" as const }));
   const [index, setIndex] = useState(0);
+  const [imageReady, setImageReady] = useState<Record<string, boolean>>({});
+  const hasAnimated = useRef(false);
+  const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const count = items.length;
 
-  const goPrev = () => setIndex((i) => (i - 1 + count) % count);
-  const goNext = () => setIndex((i) => (i + 1) % count);
+  const clearAutoplay = useCallback(() => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  }, []);
 
-  useEffect(() => {
+  const startAutoplay = useCallback(() => {
+    clearAutoplay();
     if (count <= 1) return;
-    const currentItem = items[index];
-    if (currentItem?.type === "video") return; // pausa troca automática no vídeo
-    const t = setInterval(() => setIndex((i) => (i + 1) % count), AUTO_PLAY_MS);
-    return () => clearInterval(t);
-  }, [count, index]);
+    autoplayRef.current = setInterval(() => {
+      setIndex((i) => (i + 1) % count);
+    }, AUTO_PLAY_MS);
+  }, [clearAutoplay, count]);
+
+  const goTo = useCallback(
+    (nextIndex: number) => {
+      setIndex(nextIndex);
+      startAutoplay();
+    },
+    [startAutoplay],
+  );
+
+  const goPrev = () => goTo((index - 1 + count) % count);
+  const goNext = () => goTo((index + 1) % count);
+
+  const imageSrcKey = items
+    .filter((item) => item.type === "image")
+    .map((item) => item.src)
+    .join("|");
+
+  /** Pré-carrega imagens do carrossel (troca de slide instantânea). */
+  useEffect(() => {
+    items.forEach((item) => {
+      if (item.type !== "image" || !item.src) return;
+      const img = new window.Image();
+      img.src = item.src;
+    });
+  }, [imageSrcKey]);
+
+  /** Autoplay contínuo; pausa só no slide de vídeo. Reinicia após interação do usuário. */
+  useEffect(() => {
+    if (count <= 1) return clearAutoplay;
+    if (items[index]?.type === "video") {
+      clearAutoplay();
+      return;
+    }
+    startAutoplay();
+    return clearAutoplay;
+  }, [index, count, imageSrcKey, clearAutoplay, startAutoplay]);
 
   if (!count) return null;
 
@@ -58,11 +101,14 @@ export default function ProjectCarousel({
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={index}
-            initial={{ opacity: 0 }}
+            initial={hasAnimated.current ? { opacity: 0 } : false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="absolute inset-0 flex items-center justify-center p-4"
+            transition={{ duration: hasAnimated.current ? 0.25 : 0 }}
+            onAnimationComplete={() => {
+              hasAnimated.current = true;
+            }}
+            className="absolute inset-0 flex items-center justify-center px-4 pt-4 pb-6 md:pb-8"
           >
             {isVideo ? (
               <video
@@ -75,13 +121,29 @@ export default function ProjectCarousel({
                 Your browser does not support the video tag.
               </video>
             ) : (
-              <div key={current.src} className="relative w-full h-full min-h-[12rem]">
+              <div
+                key={current.src}
+                className="relative w-full h-full min-h-[12rem] max-h-[calc(100%-2rem)]"
+              >
+                {!imageReady[current.src] && (
+                  <div
+                    className="absolute inset-0 animate-pulse rounded-xl bg-white/[0.06]"
+                    aria-hidden
+                  />
+                )}
                 <Image
                   src={current.src}
                   alt={current.title ?? `${alt} - ${index + 1}`}
                   fill
+                  priority={index === 0}
                   sizes="(max-width: 768px) 100vw, 896px"
-                  className="object-contain object-center rounded-xl"
+                  className={cn(
+                    "object-contain object-center rounded-xl transition-opacity duration-200",
+                    imageReady[current.src] ? "opacity-100" : "opacity-0",
+                  )}
+                  onLoad={() =>
+                    setImageReady((prev) => ({ ...prev, [current.src]: true }))
+                  }
                 />
               </div>
             )}
@@ -106,13 +168,13 @@ export default function ProjectCarousel({
             >
               <IoChevronForward className="text-xl" />
             </button>
-            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10 pointer-events-auto">
               {items.map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   aria-label={`Slide ${i + 1}`}
-                  onClick={() => setIndex(i)}
+                  onClick={() => goTo(i)}
                   className={cn(
                     "h-2 rounded-full transition-all duration-300",
                     i === index ? "w-6 bg-purple" : "w-2 bg-white/40 hover:bg-white/60"
@@ -121,7 +183,7 @@ export default function ProjectCarousel({
               ))}
             </div>
             <div
-              className="absolute bottom-3 right-3 text-xs text-white/60 z-10"
+              className="absolute bottom-2 right-4 text-xs text-white/60 z-10"
               aria-hidden
             >
               {index + 1} / {count}

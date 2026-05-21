@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects, STACK_LABELS } from "@/data";
+import { cn } from "@/lib/utils";
 import { PinContainer } from "./ui/Pin";
 import { StackTooltip } from "./ui/StackTooltip";
 
@@ -38,27 +39,21 @@ export function ProjectCard({
   const content = (
     <>
       <div
-        className={
-          isGrid
-            ? "relative flex items-center justify-center w-full overflow-hidden h-[20vh] lg:h-[30vh] mb-10"
-            : "relative flex items-center justify-center sm:w-96 w-[80vw] overflow-hidden h-[20vh] lg:h-[30vh] mb-10"
-        }
+        className={cn(
+          "relative flex items-center justify-center overflow-hidden h-[20vh] lg:h-[30vh] mb-10",
+          isGrid ? "w-full" : "sm:w-96 w-[80vw]",
+        )}
       >
         <div
-          className="relative w-full h-full overflow-hidden lg:rounded-3xl"
+          className="absolute inset-0 overflow-hidden lg:rounded-3xl"
           style={{ backgroundColor: "#13162D" }}
         >
-          <img src="/bg.png" alt="" className="w-full h-full object-cover opacity-40" />
+          <img src="/bg.png" alt="" className="h-full w-full object-cover opacity-40" />
         </div>
         <img
           src={item.img}
           alt={title}
-          className={
-            isGrid
-              ? "z-10 absolute bottom-0 left-1/2 -translate-x-1/2 max-h-full w-auto object-contain"
-              : "z-10 absolute bottom-0 max-w-full object-contain object-bottom"
-          }
-          style={isGrid ? { maxWidth: "100%" } : { height: "100%" }}
+          className="relative z-10 max-h-full max-w-full object-contain object-center"
         />
       </div>
 
