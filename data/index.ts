@@ -1,11 +1,14 @@
+import { BrandProduct } from "@/types/brandProductTypes";
 import { Certification } from "@/types/certificationTypes";
 import { Project } from "@/types/projectTypes";
 
+export type { BrandProduct } from "@/types/brandProductTypes";
 export type { Certification } from "@/types/certificationTypes";
 export type { Project } from "@/types/projectTypes";
 
 export const navItems = [
   { name: "About", link: "#about" },
+  { name: "Brands", link: "#brands" },
   { name: "Projects", link: "#projects" },
   { name: "Certifications", link: "#certifications" },
   { name: "Principles", link: "#principles" },
@@ -134,7 +137,50 @@ export const STACK_LABELS: Record<string, string> = {
   "/nestjs.svg": "NestJS",
   "/prisma.svg": "Prisma",
   "/nodejs.svg": "Node.js",
+  "/electron.svg": "Electron",
+  "/sqlite.svg": "SQLite",
 };
+
+/** Marcas e produtos próprios (não cases de cliente). */
+export const brandProducts: BrandProduct[] = [
+  {
+    id: "corenote",
+    brandName: "CoreNote",
+    liveUrl: "https://dev.d2sibj6qt5qfq9.amplifyapp.com/",
+    status: "live",
+    platforms: ["Windows"],
+    logoIcon: "/images/brands/corenote/icon-dark.png",
+    logoWordmark: "/images/brands/corenote/wordmark.png",
+    logoFull: "/images/brands/corenote/logo-full.jpg",
+    // coverImg / media: preencher quando os prints do app chegarem
+    iconLists: ["/electron.svg", "/re.svg", "/ts.svg", "/sqlite.svg", "/tail.svg"],
+    iconListsDetail: [
+      "/electron.svg",
+      "/re.svg",
+      "/ts.svg",
+      "/sqlite.svg",
+      "/tail.svg",
+      "/git.svg",
+    ],
+    accent: "#3B82F6",
+  },
+];
+
+export function getBrandProduct(id: string): BrandProduct | undefined {
+  return brandProducts.find((b) => b.id === id);
+}
+
+export function getBrandTranslationItem<T extends { id?: string }>(
+  items: T[] | undefined,
+  brandId: string,
+  indexFallback?: number,
+): T | undefined {
+  if (!items?.length) return undefined;
+  const byId = items.find((item) => item.id === brandId);
+  if (byId) return byId;
+  if (typeof indexFallback === "number") return items[indexFallback];
+  return undefined;
+}
 
 export const certificationCategories = [
   "Frontend",
@@ -365,15 +411,15 @@ export const certifications: Certification[] = [
   },
   {
     id: 9,
-    image: "/images/certificates/banco-de-dados-ifsulp1.jpg",
+    image: "/images/certificates/banco-de-dados-ifsulp1.png",
     images: [
-      "/images/certificates/banco-de-dados-ifsulp1.jpg",
-      "/images/certificates/banco-de-dados-ifsul-p2.jpg"
+      "/images/certificates/banco-de-dados-ifsulp1.png",
+      "/images/certificates/banco-de-dados-ifsul-p2.png"
     ],
     title: "Banco de Dados: Sistemas e Modelagem Relacional",
     description:
       "Formação em bancos de dados com foco em modelagem relacional, normalização e estruturação eficiente de dados, garantindo integridade, consistência e suporte a aplicações escaláveis.",
-    issuer: "IFSUL - Instituto Federal Sul-rio-grandense",
+    issuer: "IFRS - Instituto Federal do Rio Grande do Sul",
     startedAt: "2026-03",
     issuedAt: "2026-04",
     category: ["Banco de Dados", "Backend"],

@@ -4,6 +4,7 @@ const translations = {
   en: {
     nav: {
       about: "About",
+      brands: "Brands",
       projects: "Projects",
       certifications: "Certifications",
       principles: "Principles",
@@ -42,6 +43,43 @@ const translations = {
         { title: "Clean, scalable code with performance and usability in mind.", description: "" },
         { title: "Building digital experiences that combine usability, performance and impact.", description: "The Inside Scoop" },
         { title: "Always open to new challenges and impactful projects.", description: "" },
+      ],
+    },
+    brands: {
+      heading: "Brands &",
+      highlight: "Products",
+      subtitle: "Products I create and maintain — real brands with live platforms.",
+      openSite: "Open site",
+      viewDetails: "View details",
+      previewSoon: "App preview coming soon",
+      statusLive: "Live",
+      statusBuilding: "In progress",
+      platformsLabel: "Platforms",
+      pillarsTitle: "Product pillars",
+      aboutTitle: "About the product",
+      techStack: "Tech stack",
+      backToBrands: "Back to brands",
+      notFound: "Brand not found.",
+      items: [
+        {
+          id: "corenote",
+          brandName: "CoreNote",
+          tagline: "Your world in notes",
+          des: "Local-first desktop notes hub — Quiet Dark, instant search, and an AES-256-GCM vault. 100% on your device.",
+          fullDes: `CoreNote is a local-first desktop notes hub for people who write a lot and want privacy, focus, and control over their files.
+
+Markdown and plain-text notes live on disk with SQLite metadata. Organize with folders, tags, pins, archive, and trash. Navigate with Ctrl+P. Focus mode hides the chrome so the text stays center stage. The Vault protects sensitive notes with a master password and auto-lock — encryption runs only in the Electron main process.
+
+The marketing site presents the product and Windows installer; notes are never hosted in the cloud. Sync and accounts are roadmap (Phase 2B), not claims of the current release.`,
+          pillars: [
+            { title: "MD & TXT editor", description: "Auto-save, familiar shortcuts, TipTap for Markdown." },
+            { title: "Ctrl+P search", description: "Title, content, and tags — keyboard-first navigation." },
+            { title: "Focus mode", description: "Sidebar gone; typography tuned for long writing." },
+            { title: "Tags & folders", description: "Local organization with pins and archive." },
+            { title: "Vault", description: "AES-256-GCM + Argon2id, master password, auto-lock." },
+            { title: "Local-first", description: "Files + SQLite on device; network not required to write." },
+          ],
+        },
       ],
     },
     projects: {
@@ -186,7 +224,7 @@ The project involved challenges such as multi-profile access control, complex op
         { title: "Scrum", description: "Training in Scrum methodology with focus on agile team organization, role definition, sprint planning and practical application of agile frameworks in software projects.", issuer: "Leonardo da Vinci University Center - Uniasselvi", skills: ["Scrum", "Agile Management", "Sprints", "Product Backlog"], practicalApplication: "Application of agile practices in planning and organizing software projects.", impact: "Improved task management and organization of the development workflow." },
         { title: "React Native: Creating Modern Mobile Applications", description: "React Native course offered by IFSUL (40 hours), held from March 3 to May 4, 2025. Practical approach to creating modern mobile applications for iOS and Android, focusing on components, navigation, state and API integration.", issuer: "IFSUL - Federal Institute Sul-rio-grandense", skills: ["React Native", "JavaScript", "Mobile", "iOS", "Android", "Expo"], practicalApplication: "Exploration of cross-platform mobile development using React Native and API integration.", impact: "Expanded capability to develop for iOS and Android mobile platforms." },
         { title: "English for Developers – A2 (CEFR)", description: "English certification for developers focusing on grammar, listening and reading comprehension, aligned to CEFR level A2.", issuer: "freeCodeCamp", skills: ["English", "Reading", "Listening", "Grammar", "Technical Communication"], practicalApplication: "Use of English for reading technical documentation, international courses and following global developer community content.", impact: "Greater autonomy to learn technologies, understand official documentation and engage with technical materials in English." },
-        { title: "Databases: Relational Systems and Modeling", description: "Training in databases with a focus on relational modeling, normalization and efficient data structuring, ensuring integrity, consistency and support for scalable applications.", issuer: "IFSUL - Federal Institute Sul-rio-grandense", skills: ["SQL", "Data Modeling", "Relational Databases", "Database Design", "Normalization"], practicalApplication: "Application in modeling relational databases for APIs and web systems, ensuring data consistency and query efficiency.", impact: "Evolution in the ability to structure scalable and optimized databases, reducing integrity issues and improving application performance." },
+        { title: "Databases: Relational Systems and Modeling", description: "Training in databases with a focus on relational modeling, normalization and efficient data structuring, ensuring integrity, consistency and support for scalable applications.", issuer: "IFRS - Federal Institute of Rio Grande do Sul", skills: ["SQL", "Data Modeling", "Relational Databases", "Database Design", "Normalization"], practicalApplication: "Application in modeling relational databases for APIs and web systems, ensuring data consistency and query efficiency.", impact: "Evolution in the ability to structure scalable and optimized databases, reducing integrity issues and improving application performance." },
         { title: "Node.js API Development and Backend Architecture", description: "Certification in modern API development with Node.js, covering RESTful architecture, building services with Express.js, database integration, and authentication and authorization implementation.", issuer: "Federal Institute of Rio Grande do Sul (IFRS)", skills: ["Node.js", "Express.js", "REST APIs", "Backend Development", "Authentication", "Authorization", "Database Integration"], practicalApplication: "Application in building scalable APIs, with route definition, database integration and implementation of secure access control.", impact: "Strengthening in building robust, well-structured backends, with focus on security, organization and API development best practices." },
         { title: "Artificial Intelligence I: Artificial Neural Networks", description: "Training in Artificial Intelligence focused on artificial neural networks, from foundational concepts to architectures such as Perceptron, Adaline and Multilayer Perceptron (MLP).", issuer: "Federal Institute of Education, Science and Technology of Triângulo Mineiro (IFTM)", skills: ["Artificial Intelligence", "Neural Networks", "Machine Learning", "Perceptron", "MLP"], practicalApplication: "Understanding and applying neural network concepts to computational problems, as a foundation for growth in machine learning and intelligent systems.", impact: "Expanded technical foundation in artificial intelligence, enabling understanding of learning algorithms and their applications in modern solutions." },
         { title: "Artificial Intelligence II: Advanced Neural Network Architectures", description: "Advanced training in Artificial Intelligence focused on modern neural network architectures, including convolutional networks, recurrent models such as LSTM, and techniques for imbalanced data and dimensionality reduction.", issuer: "Federal Institute of Education, Science and Technology of Triângulo Mineiro (IFTM)", skills: ["Neural Networks", "Deep Learning", "CNN", "LSTM", "Machine Learning", "Dimensionality Reduction"], practicalApplication: "Application of advanced neural network architectures in building intelligent solutions, including processing of complex and sequential data.", impact: "Deeper understanding of advanced machine learning models, expanding the ability to tackle real-world problems with complex data." },
@@ -302,6 +340,7 @@ The project involved challenges such as multi-profile access control, complex op
   pt: {
     nav: {
       about: "Sobre",
+      brands: "Marcas",
       projects: "Projetos",
       certifications: "Certificações",
       principles: "Princípios",
@@ -340,6 +379,43 @@ The project involved challenges such as multi-profile access control, complex op
         { title: "Código limpo e escalável com foco em performance e usabilidade.", description: "" },
         { title: "Criando experiências digitais que unem usabilidade, performance e impacto.", description: "Por dentro" },
         { title: "Sempre aberto a novos desafios e projetos com impacto.", description: "" },
+      ],
+    },
+    brands: {
+      heading: "Marcas &",
+      highlight: "Produtos",
+      subtitle: "Produtos que eu crio e mantenho — marcas reais com plataformas ao vivo.",
+      openSite: "Abrir site",
+      viewDetails: "Ver detalhes",
+      previewSoon: "Preview do app em breve",
+      statusLive: "Ao vivo",
+      statusBuilding: "Em construção",
+      platformsLabel: "Plataformas",
+      pillarsTitle: "Pilares do produto",
+      aboutTitle: "Sobre o produto",
+      techStack: "Stack técnico",
+      backToBrands: "Voltar às marcas",
+      notFound: "Marca não encontrada.",
+      items: [
+        {
+          id: "corenote",
+          brandName: "CoreNote",
+          tagline: "Seu mundo em notas",
+          des: "Hub desktop local-first de notas — Quiet Dark, busca instantânea e cofre AES-256-GCM. 100% no seu dispositivo.",
+          fullDes: `CoreNote é um hub de notas no desktop local-first para quem escreve muito e quer privacidade, foco e controle sobre os próprios arquivos.
+
+Notas em Markdown e texto puro ficam no disco, com metadados em SQLite. Organize com pastas, tags, pins, arquivo e lixeira. Navegue com Ctrl+P. O modo foco esconde o chrome para o texto ficar no centro. O Cofre protege notas sensíveis com senha mestra e auto-lock — a criptografia roda só no processo main do Electron.
+
+O site apresenta o produto e o instalador Windows; as notas nunca são hospedadas na nuvem. Sync e conta fazem parte do roadmap (Phase 2B), não do release atual.`,
+          pillars: [
+            { title: "Editor MD & TXT", description: "Auto-save, atalhos familiares, TipTap para Markdown." },
+            { title: "Busca Ctrl+P", description: "Título, conteúdo e tags — navegação por teclado." },
+            { title: "Modo foco", description: "Sidebar some; tipografia para escrita longa." },
+            { title: "Tags & pastas", description: "Organização local com pins e arquivo." },
+            { title: "Cofre", description: "AES-256-GCM + Argon2id, senha mestra e auto-lock." },
+            { title: "Local-first", description: "Arquivos + SQLite no dispositivo; rede não é obrigatória." },
+          ],
+        },
       ],
     },
     projects: {
@@ -517,7 +593,7 @@ Um dos destaques do projeto foi a implementação de um mapa interativo, que exi
         { title: "Scrum", description: "Formação em metodologia Scrum com foco em organização de times ágeis, definição de papéis, planejamento de sprints e aplicação prática de frameworks ágeis em projetos de software.", issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi", skills: ["Scrum", "Gestão Ágil", "Sprints", "Product Backlog"], practicalApplication: "Aplicação de práticas ágeis no planejamento e organização de projetos de software.", impact: "Melhoria na gestão de tarefas e organização do fluxo de desenvolvimento." },
         { title: "React Native: Criação de Aplicativos Móveis Modernos", description: "Curso de React Native ofertado pelo IFSUL (40 horas), realizado de 3 de março a 4 de maio de 2025. Abordagem prática na criação de aplicativos móveis modernos para iOS e Android, com foco em componentes, navegação, estado e integração com APIs.", issuer: "IFSUL - Instituto Federal Sul-rio-grandense", skills: ["React Native", "JavaScript", "Mobile", "iOS", "Android", "Expo"], practicalApplication: "Exploração do desenvolvimento mobile multiplataforma utilizando React Native e integração com APIs.", impact: "Ampliação da capacidade de desenvolvimento para plataformas móveis iOS e Android." },
         { title: "English for Developers – A2 (CEFR)", description: "Certificação de inglês para desenvolvedores com foco em gramática, compreensão auditiva e leitura, alinhada ao nível A2 do CEFR.", issuer: "freeCodeCamp", skills: ["Inglês", "Leitura", "Compreensão auditiva", "Gramática", "Comunicação técnica"], practicalApplication: "Utilização do inglês para leitura de documentação técnica, cursos internacionais e acompanhamento de conteúdos da comunidade global de desenvolvimento.", impact: "Maior autonomia para estudar tecnologias, compreender documentação oficial e interagir com materiais técnicos em inglês." },
-        { title: "Banco de Dados: Sistemas e Modelagem Relacional", description: "Formação em bancos de dados com foco em modelagem relacional, normalização e estruturação eficiente de dados, garantindo integridade, consistência e suporte a aplicações escaláveis.", issuer: "IFSUL - Instituto Federal Sul-rio-grandense", skills: ["SQL", "Modelagem de Dados", "Bancos Relacionais", "Design de Banco de Dados", "Normalização"], practicalApplication: "Aplicação na modelagem de bancos relacionais para APIs e sistemas web, garantindo consistência de dados e eficiência em consultas.", impact: "Evolução na capacidade de estruturar bancos de dados de forma escalável e otimizada, reduzindo problemas de integridade e melhorando a performance das aplicações." },
+        { title: "Banco de Dados: Sistemas e Modelagem Relacional", description: "Formação em bancos de dados com foco em modelagem relacional, normalização e estruturação eficiente de dados, garantindo integridade, consistência e suporte a aplicações escaláveis.", issuer: "IFRS - Instituto Federal do Rio Grande do Sul", skills: ["SQL", "Modelagem de Dados", "Bancos Relacionais", "Design de Banco de Dados", "Normalização"], practicalApplication: "Aplicação na modelagem de bancos relacionais para APIs e sistemas web, garantindo consistência de dados e eficiência em consultas.", impact: "Evolução na capacidade de estruturar bancos de dados de forma escalável e otimizada, reduzindo problemas de integridade e melhorando a performance das aplicações." },
         { title: "Node.js Desenvolvimento de APIs e Arquitetura de Backend", description: "Certificação em desenvolvimento de APIs modernas com Node.js, abrangendo arquitetura RESTful, construção de serviços com Express.js, integração com bancos de dados e implementação de autenticação e autorização.", issuer: "Instituto Federal do Rio Grande do Sul (IFRS)", skills: ["Node.js", "Express.js", "REST APIs", "Backend Development", "Authentication", "Authorization", "Database Integration"], practicalApplication: "Aplicação na construção de APIs escaláveis, com definição de rotas, integração com banco de dados e implementação de controle de acesso seguro.", impact: "Fortalecimento na construção de backends robustos e bem estruturados, com foco em segurança, organização e boas práticas de desenvolvimento de APIs." },
         { title: "Inteligência Artificial I: Redes Neurais Artificiais", description: "Formação em Inteligência Artificial com foco em redes neurais artificiais, abordando desde os conceitos iniciais até arquiteturas como Perceptron, Adaline e Multilayer Perceptron (MLP).", issuer: "Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro (IFTM)", skills: ["Inteligência Artificial", "Redes Neurais", "Machine Learning", "Perceptron", "MLP"], practicalApplication: "Compreensão e aplicação de conceitos de redes neurais em problemas computacionais, servindo como base para evolução em machine learning e sistemas inteligentes.", impact: "Expansão da base técnica em inteligência artificial, permitindo entendimento de algoritmos de aprendizado e suas aplicações em soluções modernas." },
         { title: "Inteligência Artificial II: Arquiteturas Avançadas de Redes Neurais", description: "Formação avançada em Inteligência Artificial com foco em arquiteturas modernas de redes neurais, incluindo redes convolucionais, modelos recorrentes como LSTM e técnicas para tratamento de dados desbalanceados e redução de dimensionalidade.", issuer: "Instituto Federal de Educação, Ciência e Tecnologia do Triângulo Mineiro (IFTM)", skills: ["Redes Neurais", "Deep Learning", "CNN", "LSTM", "Machine Learning", "Redução de Dimensionalidade"], practicalApplication: "Aplicação de arquiteturas avançadas de redes neurais na construção de soluções inteligentes, incluindo processamento de dados complexos e sequenciais.", impact: "Evolução para o entendimento de modelos mais avançados de aprendizado de máquina, ampliando a capacidade de atuar em problemas reais com dados complexos." },

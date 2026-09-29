@@ -10,6 +10,10 @@ const Grid = dynamic(() => import("@/components/Grid"), {
   loading: () => <SectionSkeleton className="h-[28rem] my-20" />,
 });
 
+const BrandsProducts = dynamic(() => import("@/components/BrandsProducts"), {
+  loading: () => <SectionSkeleton className="h-[36rem] my-20" />,
+});
+
 const Experience = dynamic(() => import("@/components/Experience"), {
   loading: () => <SectionSkeleton className="h-80 my-20" />,
 });
@@ -39,6 +43,7 @@ export default function Home() {
         <Hero />
         <About />
         <Grid />
+        <BrandsProducts />
         <RecentProjects />
         <Experience />
         <Certifications />

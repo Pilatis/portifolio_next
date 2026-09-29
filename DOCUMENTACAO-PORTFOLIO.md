@@ -8,7 +8,7 @@ Este documento descreve a estrutura, seções e conteúdo do portfólio pessoal,
 
 O portfólio é uma aplicação **Next.js** de página única (SPA) com rota dinâmica para detalhes de projetos. Possui **internacionalização (PT/EN)** e seções fixas na home, com navegação por âncoras e por rota.
 
-**Ordem das seções na home:** Hero → About → Grid → Projetos → Experiência → Certificações → Princípios de Engenharia → Approach → Footer (Contato).
+**Ordem das seções na home:** Hero → About → Grid → Marcas & Produtos → Projetos → Experiência → Certificações → Princípios de Engenharia → Approach → Footer (Contato).
 
 ---
 
@@ -44,7 +44,14 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 ---
 
-### 4. Projetos recentes (`#projects`)
+### 4. Marcas & Produtos (`#brands`)
+
+- **Função:** Vitrine de produtos próprios / marcas (não cases de cliente).
+- **Conteúdo por card:** ícone e wordmark da marca, tagline, status (Ao vivo / Em construção), área de mockup (ou placeholder até as imagens), descrição curta, stack (até 5), plataformas, CTAs **Abrir site** (externo) e **Ver detalhes** (`/brands/{id}`).
+- **Dados:** `brandProducts` em `data/index.ts`; textos em `brands` em `translations.ts` (PT/EN). Assets em `/public/images/brands/{id}/`.
+- **Pontos importantes:** Escala para N marcas em grid 1–2 colunas; visual distinto dos projetos de trabalho (glow por `accent`, sem PinContainer / sem clientLogo).
+
+### 5. Projetos recentes (`#projects`)
 
 - **Função:** Listar os projetos em cards clicáveis que levam à página de detalhe do projeto.
 - **Conteúdo por card:**
@@ -54,11 +61,11 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
   - Link “Ver projeto” (texto configurável; antes “Ver site”)
 - **Comportamento:** Clique no card ou no link navega para `/{id}` (página do projeto). Cada card tem `id="project-{id}"` para deep link (ex.: `/#project-1`).
 - **Dados:** Array `projects` em `data/index.ts`; títulos e descrições em `projects.items` em `translations.ts`. Ícones limitados a 5 no componente.
-- **Pontos importantes:** É a seção central do portfólio; quantidade de stacks exibidas é limitada a 5 por card.
+- **Pontos importantes:** É a seção central de cases/trabalho; quantidade de stacks exibidas é limitada a 5 por card.
 
 ---
 
-### 5. Experiência (`#experience` – “Minha experiência”)
+### 6. Experiência (`#experience` – “Minha experiência”)
 
 - **Função:** Mostrar trajetória e tipos de atuação profissional.
 - **Conteúdo:** Quatro cards: Full Stack Developer, Front-End & Mobile (React Native), Projetos Freelance Full Stack e Liderança Técnica Front-End. Cada card tem título, descrição e ícone/thumbnail.
@@ -68,7 +75,7 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 ---
 
-### 6. Certificações (`#certifications` – “Minhas certificações”)
+### 7. Certificações (`#certifications` – “Minhas certificações”)
 
 - **Função:** Exibir certificados e formações com filtro por categoria.
 - **Conteúdo:** Filtros por categoria (Todos, Frontend, Backend, Fundamentos, Liderança, Metodologias Ágeis) e grid de cards. Cada card mostra: imagem do certificado (ou placeholder se ausente/erro), título do curso, instituição emissora (issuer), período (startedAt – issuedAt ou “Em andamento” quando issuedAt é null), descrição técnica objetiva e skills em tags.
@@ -78,7 +85,7 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 ---
 
-### 7. Engineering Principles / Princípios de Engenharia (`#principles`)
+### 8. Engineering Principles / Princípios de Engenharia (`#principles`)
 
 - **Função:** Demonstrar maturidade técnica e decisões arquiteturais por meio de princípios objetivos (não lista de tecnologias).
 - **Conteúdo:** Grid de cards; cada card tem categoria (Arquitetura, Backend, Frontend, Banco de Dados, DevOps, Segurança, Qualidade), título do princípio, descrição técnica concisa e tags (palavras-chave). Ex.: separação de responsabilidades, APIs REST, RBAC, frontend estruturado, PostgreSQL, AWS, clean code, relatórios PDF/CSV/XLSX, performance.
@@ -88,7 +95,7 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 ---
 
-### 8. Approach / Abordagem
+### 9. Approach / Abordagem
 
 - **Função:** Explicar a forma de trabalho em três fases.
 - **Conteúdo:** Três cards: Planejamento e Estratégia, Desenvolvimento e Colaboração, Entrega e Evolução. Cada um com título, “fase” (order) e descrição.
@@ -98,12 +105,20 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 ---
 
-### 9. Footer / Contato (`#contact`)
+### 10. Footer / Contato (`#contact`)
 
 - **Função:** CTA final e meios de contato.
 - **Conteúdo:** Frase de chamada (“Pronto para construir algo significativo juntos?”), texto de apoio, botão “Vamos conversar” que abre o cliente de e-mail (`mailto:pilatidev1@gmail.com`), copyright e ícones de redes (GitHub, LinkedIn).
 - **Dados:** `footer` em `translations.ts` e `socialMedia` em `data/index.ts` (links e ícones).
 - **Pontos importantes:** Contato principal é e-mail; redes são secundárias.
+
+---
+
+## Página de detalhe da marca (`/brands/[brandId]`)
+
+- **Função:** Detalhe de um produto próprio: narrativa, pilares, stack e CTA para o site ao vivo.
+- **Conteúdo:** Voltar a `/#brand-{id}`, logo, tagline, status, carrossel ou placeholder de preview, sobre o produto, pilares, stack, plataformas, botão Abrir site.
+- **Dados:** `brandProducts` + `brands.items` em `translations.ts`.
 
 ---
 
@@ -121,6 +136,14 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
   - Botão “Ver projeto” / link externo quando `project.link` está preenchido
 - **Dados:** Projeto em `projects` por `id`; textos e legendas das mídias em `projects.items[index]` (title, des, fullDes, media[]) em `translations.ts`.
 - **Pontos importantes:** Projetos com `media` e `media` em translations ganham carrossel com legendas; projetos sem `media` usam `images` ou apenas `img`.
+
+---
+
+## Marcas cadastradas
+
+| ID | Nome | Site | Status | Stack (card) | Mídias |
+|----|------|------|--------|--------------|--------|
+| corenote | **CoreNote** | Amplify (domínio definitivo depois) | live | Electron, React, TypeScript, SQLite, Tailwind | Placeholder até prints do app |
 
 ---
 
@@ -152,9 +175,12 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 | Arquivo | Uso |
 |--------|-----|
-| `data/index.ts` | `navItems`, `aboutMe`, `gridItems`, `certifications`, `certificationCategories`, `engineeringPrinciples`, `projects`, `workExperience`, `socialMedia`, `STACK_LABELS`, etc. |
-| `data/translations.ts` | Todos os textos por idioma (pt/en); inclui descrições longas e legendas dos projetos. |
-| `app/page.tsx` | Página principal; importa e ordena Hero, About, Grid, RecentProjects, Experience, Certifications, EngineeringPrinciples, Approach, Footer. |
+| `data/index.ts` | `navItems`, `aboutMe`, `gridItems`, `brandProducts`, `certifications`, `certificationCategories`, `engineeringPrinciples`, `projects`, `workExperience`, `socialMedia`, `STACK_LABELS`, etc. |
+| `data/translations.ts` | Todos os textos por idioma (pt/en); inclui `brands` e descrições longas dos projetos. |
+| `app/page.tsx` | Página principal; ordem: Hero, About, Grid, BrandsProducts, RecentProjects, Experience, Certifications, EngineeringPrinciples, Approach, Footer. |
+| `components/BrandsProducts.tsx` | Seção Marcas & Produtos na home. |
+| `components/BrandProductCard.tsx` | Card de marca com placeholder de mídia e CTAs. |
+| `app/brands/[brandId]/page.tsx` | Página de detalhe da marca. |
 | `components/Certifications.tsx` | Seção de certificações; filtros por categoria, grid de cards com imagem/placeholder, datas e skills. |
 | `components/EngineeringPrinciples.tsx` | Seção de princípios de engenharia; grid de cards com categoria, título, descrição e tags. |
 | `app/[projectId]/page.tsx` | Página de detalhe do projeto; usa `projects`, traduções e ProjectCarousel. |
@@ -164,13 +190,15 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 ## Resumo dos pontos importantes
 
-1. **Seções na home:** Hero → About → Grid → Projetos → Experiência → Certificações → Princípios de Engenharia → Approach → Footer.
-2. **Certificações:** Dados em `certifications` e `certificationCategories`; filtros por categoria; textos em `certifications` (items, categoryLabels, inProgress) em `translations.ts` (PT/EN).
-3. **Princípios de engenharia:** Dados em `engineeringPrinciples` (title, description, category, tags); textos em `principles` (heading, highlight, categoryLabels, items) em `translations.ts` (PT/EN).
-4. **Projetos:** 4 ativos (Voxa, Electron Editor, DR Insights, B2BHotel); textos e legendas em PT e EN em `translations.ts`.
-5. **Stack nos cards:** Máximo de 5 ícones por projeto (lista e página de detalhe).
-6. **Botão de ação dos projetos:** Texto “Ver projeto” (PT) / “View project” (EN); link pode ser interno (`/{id}`) ou externo (`project.link`).
-7. **Deep link:** `/#project-{id}` leva ao card do projeto na home; `/{id}` abre a página de detalhe; `#certifications` e `#principles` levam às seções de certificações e princípios.
-8. **Novo projeto:** Adicionar objeto em `projects` em `data/index.ts` e um item correspondente em `projects.items` (pt e en) em `data/translations.ts`, incluindo `media` se houver carrossel com legendas.
+1. **Seções na home:** Hero → About → Grid → Marcas & Produtos → Projetos → Experiência → Certificações → Princípios de Engenharia → Approach → Footer.
+2. **Marcas & Produtos:** Dados em `brandProducts`; textos em `brands` (PT/EN); detalhe em `/brands/{id}`; deep link `/#brand-{id}`.
+3. **Certificações:** Dados em `certifications` e `certificationCategories`; filtros por categoria; textos em `certifications` (items, categoryLabels, inProgress) em `translations.ts` (PT/EN).
+4. **Princípios de engenharia:** Dados em `engineeringPrinciples` (title, description, category, tags); textos em `principles` (heading, highlight, categoryLabels, items) em `translations.ts` (PT/EN).
+5. **Projetos:** 4 ativos (Voxa, Electron Editor, DR Insights, B2BHotel); textos e legendas em PT e EN em `translations.ts`.
+6. **Stack nos cards:** Máximo de 5 ícones por projeto/marca (lista e página de detalhe).
+7. **Botão de ação dos projetos:** Texto “Ver projeto” (PT) / “View project” (EN); link pode ser interno (`/{id}`) ou externo (`project.link`).
+8. **Deep link:** `/#project-{id}` e `/#brand-{id}` na home; `/{id}` detalhe de projeto; `/brands/{id}` detalhe de marca; `#certifications` e `#principles` para as seções.
+9. **Nova marca:** Adicionar em `brandProducts`, item em `brands.items` (pt/en), assets em `public/images/brands/{id}/`; preencher `coverImg`/`media` quando houver prints.
+10. **Novo projeto:** Adicionar objeto em `projects` em `data/index.ts` e um item correspondente em `projects.items` (pt e en) em `data/translations.ts`, incluindo `media` se houver carrossel com legendas.
 
 Este documento pode ser mantido atualizado sempre que uma seção for alterada ou um novo projeto for incluído.

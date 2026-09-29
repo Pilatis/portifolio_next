@@ -3,14 +3,14 @@
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
-/** Scroll para #project-* ao voltar à home com hash (client-only). */
+/** Scroll para #project-* ou #brand-* ao voltar à home com hash (client-only). */
 export default function HomeHashScroll() {
   const pathname = usePathname();
 
   useEffect(() => {
     if (pathname !== "/" || typeof window === "undefined") return;
     const hash = window.location.hash?.slice(1);
-    if (!hash || !hash.startsWith("project-")) return;
+    if (!hash || (!hash.startsWith("project-") && !hash.startsWith("brand-"))) return;
     const el = document.getElementById(hash);
     if (el) {
       requestAnimationFrame(() => {
