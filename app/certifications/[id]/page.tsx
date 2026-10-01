@@ -22,6 +22,8 @@ type CertDetailT = {
   skillsLabel: string;
   categoryLabel: string;
   issuerLabel: string;
+  credentialLabel?: string;
+  verifyCredential?: string;
   categoryLabels: Record<string, string>;
   items: Array<{
     title: string;
@@ -171,6 +173,39 @@ export default function CertificationDetailPage() {
             <>
               <span className="text-white-200/50">·</span>
               <span><strong className="text-purple/90">{certT.hoursLabel}:</strong> {cert.hours}</span>
+            </>
+          )}
+          {cert.credentialId && (
+            <>
+              <span className="text-white-200/50">·</span>
+              <span>
+                <strong className="text-purple/90">{certT.credentialLabel ?? "Credencial"}:</strong>{" "}
+                {cert.credentialUrl ? (
+                  <a
+                    href={cert.credentialUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple hover:underline"
+                  >
+                    #{cert.credentialId}
+                  </a>
+                ) : (
+                  `#${cert.credentialId}`
+                )}
+              </span>
+            </>
+          )}
+          {!cert.credentialId && cert.credentialUrl && (
+            <>
+              <span className="text-white-200/50">·</span>
+              <a
+                href={cert.credentialUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-purple hover:underline"
+              >
+                {certT.verifyCredential ?? "Verificar credencial"}
+              </a>
             </>
           )}
         </motion.div>

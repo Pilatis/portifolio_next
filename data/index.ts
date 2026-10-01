@@ -231,7 +231,7 @@ export const certifications: Certification[] = [
       "Aplicação dos conceitos no desenvolvimento de aplicações modernas utilizando React, Next.js e APIs REST.",
     impact:
       "Melhoria na organização de aplicações front-end, otimização de carregamento de páginas e melhor estruturação de projetos web.",
-    featured: true,
+    featured: false,
   },
   {
     id: 2,
@@ -255,7 +255,7 @@ export const certifications: Certification[] = [
       "Utilização dos conceitos para criação de interfaces modulares e reutilizáveis em aplicações React.",
     impact:
       "Aumento da reutilização de componentes e melhoria na manutenção de aplicações front-end.",
-    featured: true,
+    featured: false,
   },
   {
     id: 3,
@@ -340,7 +340,7 @@ export const certifications: Certification[] = [
       "Uso contínuo do JavaScript no desenvolvimento de aplicações com React, Next.js e Node.js.",
     impact:
       "Melhoria na organização da lógica de negócio e maior eficiência na manipulação de dados em aplicações web.",
-    featured: true,
+    featured: false,
   },
   {
     id: 6,
@@ -555,7 +555,89 @@ export const certifications: Certification[] = [
     "Evolução para o entendimento de modelos mais avançados de aprendizado de máquina, ampliando a capacidade de atuar em problemas reais com dados complexos.",
     hours: "40h",
     featured: false
-  }
+  },
+  {
+    id: 13,
+    image: "/images/certificates/google-intro-generative-ai.jpg",
+    title: "Introduction to Generative AI",
+    description:
+      "Curso introdutório sobre Inteligência Artificial Generativa, abordando conceitos fundamentais, funcionamento de modelos generativos, aplicações práticas e tecnologias utilizadas na construção de soluções baseadas em IA.",
+    issuer: "Google Cloud Skills Boost",
+    startedAt: "2026-05",
+    issuedAt: "2026-05",
+    category: ["Inteligência Artificial", "Dados"],
+    skills: [
+      "Inteligência Artificial Generativa",
+      "Machine Learning",
+      "Google Cloud",
+    ],
+    topics: [
+      "Conceitos de IA generativa",
+      "Modelos generativos",
+      "Aplicações práticas",
+      "Tecnologias Google Cloud",
+    ],
+    practicalApplication:
+      "Base para compreender e aplicar soluções de IA generativa em produtos e fluxos no ecossistema Google Cloud.",
+    impact:
+      "Fundação clara em GenAI para evoluir em MLOps e soluções baseadas em modelos de linguagem.",
+    credentialId: "24503430",
+    credentialUrl:
+      "https://www.skills.google/public_profiles/e8e50834-ab49-4d98-adb7-6cf8eca1c05b/badges/24503430",
+    featured: true,
+  },
+  {
+    id: 14,
+    image: "/images/certificates/google-mlops-generative-ai.jpg",
+    title: "Machine Learning Operations (MLOps) for Generative AI",
+    description:
+      "Curso focado em práticas de MLOps aplicadas ao ciclo de vida de soluções de IA Generativa no Google Cloud. Abordou deploy, monitoramento, governança e escalabilidade de modelos de linguagem e aplicações baseadas em IA.",
+    issuer: "Google Cloud Skills Boost",
+    startedAt: "2026-05",
+    issuedAt: "2026-05",
+    category: ["Inteligência Artificial", "Dados"],
+    skills: ["MLOps", "Inteligência Artificial Generativa", "Google Cloud"],
+    topics: [
+      "Ciclo de vida de GenAI",
+      "Deploy e monitoramento",
+      "Governança de modelos",
+      "Escalabilidade no Google Cloud",
+    ],
+    practicalApplication:
+      "Aplicação de práticas de MLOps no deploy e operação de soluções de IA generativa na nuvem.",
+    impact:
+      "Capacidade de estruturar fluxos de produção mais confiáveis para aplicações GenAI.",
+    credentialId: "24286336",
+    credentialUrl:
+      "https://www.skills.google/public_profiles/e8e50834-ab49-4d98-adb7-6cf8eca1c05b/badges/24286336",
+    featured: true,
+  },
+  {
+    id: 15,
+    image: "/images/certificates/google-mlops-vertex-model-evaluation.jpg",
+    title: "Machine Learning Operations (MLOps) with Vertex AI: Model Evaluation",
+    description:
+      "Curso focado na avaliação de modelos de IA dentro de fluxos de MLOps, explorando métricas, estratégias de avaliação e análise de modelos utilizando recursos do Google Cloud Vertex AI, com foco em confiabilidade e otimização.",
+    issuer: "Google Cloud Skills Boost",
+    startedAt: "2026-05",
+    issuedAt: "2026-05",
+    category: ["Inteligência Artificial", "Dados"],
+    skills: ["MLOps", "Model Evaluation", "Google Cloud", "Vertex AI"],
+    topics: [
+      "Avaliação de modelos",
+      "Métricas de desempenho",
+      "Vertex AI",
+      "Confiabilidade e otimização",
+    ],
+    practicalApplication:
+      "Uso de métricas e estratégias de avaliação em pipelines MLOps no Vertex AI.",
+    impact:
+      "Melhor critério técnico para validar e otimizar modelos antes e após o deploy.",
+    credentialId: "24379997",
+    credentialUrl:
+      "https://www.skills.google/public_profiles/e8e50834-ab49-4d98-adb7-6cf8eca1c05b/badges/24379997",
+    featured: true,
+  },
 ];
 
 /** Ordem na home: B2B → Fotocord → Voxa → DR Insights */

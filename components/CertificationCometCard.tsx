@@ -105,6 +105,31 @@ export function CertificationCometCard({
             )}
           </p>
 
+          {cert.credentialUrl && (
+            <span
+              role="link"
+              tabIndex={0}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(cert.credentialUrl, "_blank", "noopener,noreferrer");
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.open(cert.credentialUrl, "_blank", "noopener,noreferrer");
+                }
+              }}
+              className="mb-3 inline-flex items-center gap-1.5 text-xs text-purple hover:underline cursor-pointer"
+            >
+              {labels.verifyCredential ?? "Verificar credencial"}
+              {cert.credentialId ? (
+                <span className="text-white-200/60">#{cert.credentialId}</span>
+              ) : null}
+            </span>
+          )}
+
           {!compact && hasExtra && (
             <div className="space-y-3 flex-1">
               {displaySkills.length > 0 && (

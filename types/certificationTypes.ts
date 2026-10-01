@@ -19,4 +19,8 @@ export type Certification = {
     impact?: string;
     hours?: string;
     featured?: boolean;
+    /** Código da credencial (ex.: Google Skills Boost). */
+    credentialId?: string;
+    /** URL pública de verificação da credencial. */
+    credentialUrl?: string;
   };

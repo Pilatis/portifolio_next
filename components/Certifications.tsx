@@ -21,6 +21,8 @@ type CertificationsT = {
   practicalApplicationLabel: string;
   impactLabel: string;
   hoursLabel: string;
+  credentialLabel?: string;
+  verifyCredential?: string;
   categoryLabels: Record<string, string>;
   items: Array<{
     title: string;
@@ -140,6 +142,8 @@ export default function Certifications({ variant = "home" }: CertificationsProps
                 practicalApplicationLabel: certT.practicalApplicationLabel ?? "Aplicação prática",
                 impactLabel: certT.impactLabel ?? "Impacto",
                 hoursLabel: certT.hoursLabel ?? "Carga horária",
+                credentialLabel: certT.credentialLabel,
+                verifyCredential: certT.verifyCredential,
               }}
             />
           ) : (
@@ -155,6 +159,8 @@ export default function Certifications({ variant = "home" }: CertificationsProps
                 practicalApplicationLabel: certT.practicalApplicationLabel ?? "Aplicação prática",
                 impactLabel: certT.impactLabel ?? "Impacto",
                 hoursLabel: certT.hoursLabel ?? "Carga horária",
+                credentialLabel: certT.credentialLabel,
+                verifyCredential: certT.verifyCredential,
               }}
               from="list"
             />
