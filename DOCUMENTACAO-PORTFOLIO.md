@@ -143,7 +143,7 @@ O portfólio é uma aplicação **Next.js** de página única (SPA) com rota din
 
 | ID | Nome | Site | Status | Stack (card) | Mídias |
 |----|------|------|--------|--------------|--------|
-| corenote | **CoreNote** | Amplify (domínio definitivo depois) | live | Electron, React, TypeScript, SQLite, Tailwind | Placeholder até prints do app |
+| corenote | **CoreNote** | Amplify (domínio definitivo depois) | live | Electron, React, TypeScript, SQLite, Tailwind | 9 imagens (capa = editor/checklist); setup do cofre, arquivadas e expand ficam no `public` para próxima rodada |
 
 ---
 

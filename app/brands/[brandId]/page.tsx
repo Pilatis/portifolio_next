@@ -32,6 +32,7 @@ type BrandsPageT = {
     des: string;
     fullDes?: string;
     pillars?: Array<{ title: string; description: string }>;
+    media?: Array<{ title: string; description: string }>;
   }>;
 };
 
@@ -74,9 +75,15 @@ export default function BrandDetailPage() {
       ? brand.iconListsDetail
       : brand.iconLists;
 
+  const mediaCaptions = itemT?.media;
   const media =
     brand.media && brand.media.length > 0
-      ? brand.media.map((m) => ({ src: m.src, type: m.type as "image" | "video" }))
+      ? brand.media.map((m, i) => ({
+          src: m.src,
+          type: m.type as "image" | "video",
+          title: mediaCaptions?.[i]?.title,
+          description: mediaCaptions?.[i]?.description,
+        }))
       : brand.coverImg
         ? [{ src: brand.coverImg, type: "image" as const }]
         : [];

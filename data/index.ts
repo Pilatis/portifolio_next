@@ -152,7 +152,18 @@ export const brandProducts: BrandProduct[] = [
     logoIcon: "/images/brands/corenote/icon-dark.png",
     logoWordmark: "/images/brands/corenote/wordmark.png",
     logoFull: "/images/brands/corenote/logo-full.jpg",
-    // coverImg / media: preencher quando os prints do app chegarem
+    coverImg: "/images/brands/corenote/02-editor-checklist.png",
+    media: [
+      { src: "/images/brands/corenote/01-home-onboarding.png", type: "image" },
+      { src: "/images/brands/corenote/02-editor-checklist.png", type: "image" },
+      { src: "/images/brands/corenote/03-focus-mode.png", type: "image" },
+      { src: "/images/brands/corenote/04-manage-tags.png", type: "image" },
+      { src: "/images/brands/corenote/05-links.png", type: "image" },
+      { src: "/images/brands/corenote/06-moodboard.png", type: "image" },
+      { src: "/images/brands/corenote/07-vault-unlock.png", type: "image" },
+      { src: "/images/brands/corenote/09-sync-data.png", type: "image" },
+      { src: "/images/brands/corenote/10-trash.png", type: "image" },
+    ],
     iconLists: ["/electron.svg", "/re.svg", "/ts.svg", "/sqlite.svg", "/tail.svg"],
     iconListsDetail: [
       "/electron.svg",

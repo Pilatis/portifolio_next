@@ -70,14 +70,52 @@ const translations = {
 
 Markdown and plain-text notes live on disk with SQLite metadata. Organize with folders, tags, pins, archive, and trash. Navigate with Ctrl+P. Focus mode hides the chrome so the text stays center stage. The Vault protects sensitive notes with a master password and auto-lock — encryption runs only in the Electron main process.
 
-The marketing site presents the product and Windows installer; notes are never hosted in the cloud. Sync and accounts are roadmap (Phase 2B), not claims of the current release.`,
+Optional local folder sync mirrors notes to a Windows path you choose. The marketing site presents the product and installer; notes are not hosted as a cloud SaaS.`,
           pillars: [
             { title: "MD & TXT editor", description: "Auto-save, familiar shortcuts, TipTap for Markdown." },
             { title: "Ctrl+P search", description: "Title, content, and tags — keyboard-first navigation." },
             { title: "Focus mode", description: "Sidebar gone; typography tuned for long writing." },
             { title: "Tags & folders", description: "Local organization with pins and archive." },
             { title: "Vault", description: "AES-256-GCM + Argon2id, master password, auto-lock." },
-            { title: "Local-first", description: "Files + SQLite on device; network not required to write." },
+            { title: "Local-first", description: "Files + SQLite on device; optional folder mirror sync." },
+          ],
+          media: [
+            {
+              title: "Home & onboarding",
+              description: "Empty-state welcome with brand, shortcuts, and first-note CTA.",
+            },
+            {
+              title: "Pinned note & checklist",
+              description: "Editor with tags, formatting toolbar, and product checklist.",
+            },
+            {
+              title: "Focus mode",
+              description: "Distraction-free writing — chrome gone, text in the center.",
+            },
+            {
+              title: "Manage tags",
+              description: "Rename or delete tags across notes from one place.",
+            },
+            {
+              title: "Link types",
+              description: "Preview, URL, and mention styles inside the editor.",
+            },
+            {
+              title: "Images in notes",
+              description: "Moodboard-style note with embedded local attachments.",
+            },
+            {
+              title: "Unlock vault",
+              description: "Master password gate to open a protected note.",
+            },
+            {
+              title: "Local sync & backup",
+              description: "Mirror notes to a Windows folder and export snapshots.",
+            },
+            {
+              title: "Trash",
+              description: "Soft-delete with retention before permanent purge.",
+            },
           ],
         },
       ],
@@ -406,14 +444,52 @@ The project involved challenges such as multi-profile access control, complex op
 
 Notas em Markdown e texto puro ficam no disco, com metadados em SQLite. Organize com pastas, tags, pins, arquivo e lixeira. Navegue com Ctrl+P. O modo foco esconde o chrome para o texto ficar no centro. O Cofre protege notas sensíveis com senha mestra e auto-lock — a criptografia roda só no processo main do Electron.
 
-O site apresenta o produto e o instalador Windows; as notas nunca são hospedadas na nuvem. Sync e conta fazem parte do roadmap (Phase 2B), não do release atual.`,
+A sincronização opcional espelha notas em uma pasta Windows que você escolhe. O site apresenta o produto e o instalador; as notas não são hospedadas como SaaS na nuvem.`,
           pillars: [
             { title: "Editor MD & TXT", description: "Auto-save, atalhos familiares, TipTap para Markdown." },
             { title: "Busca Ctrl+P", description: "Título, conteúdo e tags — navegação por teclado." },
             { title: "Modo foco", description: "Sidebar some; tipografia para escrita longa." },
             { title: "Tags & pastas", description: "Organização local com pins e arquivo." },
             { title: "Cofre", description: "AES-256-GCM + Argon2id, senha mestra e auto-lock." },
-            { title: "Local-first", description: "Arquivos + SQLite no dispositivo; rede não é obrigatória." },
+            { title: "Local-first", description: "Arquivos + SQLite no dispositivo; sync opcional por pasta." },
+          ],
+          media: [
+            {
+              title: "Home e onboarding",
+              description: "Estado inicial com marca, atalhos e CTA da primeira nota.",
+            },
+            {
+              title: "Nota fixada e checklist",
+              description: "Editor com tags, toolbar e checklist do produto.",
+            },
+            {
+              title: "Modo foco",
+              description: "Escrita sem distração — chrome fora, texto no centro.",
+            },
+            {
+              title: "Gerenciar tags",
+              description: "Renomear ou excluir tags em todas as notas.",
+            },
+            {
+              title: "Tipos de links",
+              description: "Prévia, URL e menção dentro do editor.",
+            },
+            {
+              title: "Imagens na nota",
+              description: "Nota tipo moodboard com anexos locais embutidos.",
+            },
+            {
+              title: "Desbloquear cofre",
+              description: "Senha mestra para abrir nota protegida.",
+            },
+            {
+              title: "Sync e backup local",
+              description: "Espelho em pasta Windows e export de snapshot.",
+            },
+            {
+              title: "Lixeira",
+              description: "Soft-delete com retenção antes da exclusão permanente.",
+            },
           ],
         },
       ],
