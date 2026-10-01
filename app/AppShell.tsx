@@ -21,7 +21,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     <LanguageProvider>
       <ViewModeProvider>
         <LangSync>
-          <div className="fixed top-6 right-6 z-50 flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-3">
+          <div className="portfolio-chrome fixed top-6 right-6 z-50 flex flex-col sm:flex-row items-end sm:items-center gap-2 sm:gap-3 transition-opacity">
             <ViewModeSwitcher />
             <LanguageSwitcher />
           </div>

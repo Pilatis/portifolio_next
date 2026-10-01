@@ -62,6 +62,8 @@ const translations = {
       notFound: "Brand not found.",
       pauseSlideshow: "Pause slideshow",
       playSlideshow: "Play slideshow",
+      lockCover: "Show cover only",
+      unlockCover: "Show app images",
       items: [
         {
           id: "corenote",
@@ -444,6 +446,8 @@ The project involved challenges such as multi-profile access control, complex op
       notFound: "Marca não encontrada.",
       pauseSlideshow: "Pausar slideshow",
       playSlideshow: "Reproduzir slideshow",
+      lockCover: "Mostrar só a capa",
+      unlockCover: "Ver imagens do app",
       items: [
         {
           id: "corenote",

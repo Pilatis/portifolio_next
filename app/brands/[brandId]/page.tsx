@@ -27,6 +27,8 @@ type BrandsPageT = {
   notFound: string;
   pauseSlideshow?: string;
   playSlideshow?: string;
+  lockCover?: string;
+  unlockCover?: string;
   items: Array<{
     id?: string;
     brandName: string;
@@ -121,38 +123,40 @@ export default function BrandDetailPage() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.05 }}
-          className="flex flex-wrap items-center gap-4 mb-4"
+          className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4"
         >
-          {brand.logoFull ? (
-            <div className="relative w-full max-w-xl h-24 sm:h-28 md:h-32">
-              <Image
-                src={brand.logoFull}
-                alt={title}
-                fill
-                unoptimized
-                priority
-                className="object-contain object-left"
-                sizes="(max-width: 768px) 90vw, 576px"
-              />
-            </div>
-          ) : (
-            <>
-              <div
-                className="relative h-14 w-14 overflow-hidden rounded-2xl ring-1 ring-white/10"
-                style={{ boxShadow: `0 0 28px -6px ${accent}` }}
-              >
-                <Image src={brand.logoIcon} alt="" width={56} height={56} unoptimized className="object-cover" />
-              </div>
-              <div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">{title}</h1>
-                {tagline && (
-                  <p className="mt-1 text-xs font-medium uppercase tracking-[0.28em] text-white/50">
-                    {tagline}
-                  </p>
-                )}
-              </div>
-            </>
-          )}
+          <div
+            className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10"
+            style={{ boxShadow: `0 0 24px -6px ${accent}` }}
+          >
+            <Image
+              src={brand.logoIcon}
+              alt=""
+              width={48}
+              height={48}
+              unoptimized
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="min-w-0">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+              {title === "CoreNote" ? (
+                <>
+                  <span>Core</span>
+                  <span className="bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent">
+                    Note
+                  </span>
+                </>
+              ) : (
+                title
+              )}
+            </h1>
+            {tagline && (
+              <p className="mt-1 text-[11px] sm:text-xs font-medium uppercase tracking-[0.22em] text-white/50">
+                {tagline}
+              </p>
+            )}
+          </div>
           <span
             className={
               brand.status === "live"
@@ -175,8 +179,9 @@ export default function BrandDetailPage() {
             <ProjectCarousel
               media={media}
               alt={title}
-              pauseLabel={brandsT.pauseSlideshow ?? "Pause slideshow"}
-              playLabel={brandsT.playSlideshow ?? "Play slideshow"}
+              coverMode
+              lockCoverLabel={brandsT.lockCover ?? "Show cover only"}
+              unlockCoverLabel={brandsT.unlockCover ?? "Show app images"}
             />
           ) : (
             <div

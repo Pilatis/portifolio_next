@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -10,10 +10,13 @@ import {
   IoClose,
   IoPause,
   IoPlay,
+  IoLockClosed,
+  IoImages,
 } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 
 const AUTO_PLAY_MS = 4500;
+const LIGHTBOX_BODY_CLASS = "carousel-lightbox-open";
 
 export type MediaItem = {
   src: string;
@@ -29,8 +32,16 @@ type ProjectCarouselProps = {
   media?: MediaItem[];
   alt: string;
   className?: string;
+  /** Projetos sem capa: botão pause/play do slideshow. */
   pauseLabel?: string;
   playLabel?: string;
+  /**
+   * Marcas com capa: 1º item = capa.
+   * Toggle: só capa (bloqueada) ↔ galeria de imagens (solta).
+   */
+  coverMode?: boolean;
+  lockCoverLabel?: string;
+  unlockCoverLabel?: string;
 };
 
 const navBtnClass =
@@ -46,16 +57,38 @@ export default function ProjectCarousel({
   className,
   pauseLabel = "Pause slideshow",
   playLabel = "Play slideshow",
+  coverMode = false,
+  lockCoverLabel = "Show cover only",
+  unlockCoverLabel = "Show app images",
 }: ProjectCarouselProps) {
-  const items: MediaItem[] = media?.length
-    ? media
-    : (images ?? []).map((src) => ({ src, type: "image" as const }));
+  const allItems: MediaItem[] = useMemo(
+    () =>
+      media?.length
+        ? media
+        : (images ?? []).map((src) => ({ src, type: "image" as const })),
+    [media, images],
+  );
+
+  const coverItem = coverMode && allItems.length > 0 ? allItems[0] : null;
+  const galleryItems = useMemo(
+    () => (coverMode ? allItems.slice(1) : allItems),
+    [coverMode, allItems],
+  );
+
+  /** Capa bloqueada = só capa; solta = galeria de imagens do app. */
+  const [coverLocked, setCoverLocked] = useState(coverMode);
   const [index, setIndex] = useState(0);
   const [imageReady, setImageReady] = useState<Record<string, boolean>>({});
   const [expanded, setExpanded] = useState(false);
   const [paused, setPaused] = useState(false);
   const hasAnimated = useRef(false);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const items = useMemo(() => {
+    if (coverMode && coverLocked && coverItem) return [coverItem];
+    return galleryItems;
+  }, [coverMode, coverLocked, coverItem, galleryItems]);
+
   const count = items.length;
 
   const clearAutoplay = useCallback(() => {
@@ -68,24 +101,33 @@ export default function ProjectCarousel({
   const startAutoplay = useCallback(() => {
     clearAutoplay();
     if (count <= 1 || expanded || paused) return;
+    if (coverMode && coverLocked) return;
     autoplayRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % count);
     }, AUTO_PLAY_MS);
-  }, [clearAutoplay, count, expanded, paused]);
+  }, [clearAutoplay, count, expanded, paused, coverMode, coverLocked]);
 
   const goTo = useCallback(
     (nextIndex: number) => {
       setIndex(nextIndex);
-      if (!expanded && !paused) startAutoplay();
+      if (!expanded && !paused && !(coverMode && coverLocked)) startAutoplay();
     },
-    [startAutoplay, expanded, paused],
+    [startAutoplay, expanded, paused, coverMode, coverLocked],
   );
 
   const goPrev = () => goTo((index - 1 + count) % count);
   const goNext = () => goTo((index + 1) % count);
 
-  const togglePause = () => {
-    setPaused((prev) => !prev);
+  const togglePause = () => setPaused((prev) => !prev);
+
+  const toggleCoverLock = () => {
+    setCoverLocked((prev) => {
+      const next = !prev;
+      setIndex(0);
+      hasAnimated.current = false;
+      if (next) clearAutoplay();
+      return next;
+    });
   };
 
   const openExpand = () => {
@@ -94,9 +136,7 @@ export default function ProjectCarousel({
     setExpanded(true);
   };
 
-  const closeExpand = () => {
-    setExpanded(false);
-  };
+  const closeExpand = () => setExpanded(false);
 
   const imageSrcKey = items
     .filter((item) => item.type === "image")
@@ -112,17 +152,30 @@ export default function ProjectCarousel({
   }, [imageSrcKey]);
 
   useEffect(() => {
-    if (count <= 1 || expanded || paused) return clearAutoplay;
+    if (count <= 1 || expanded || paused || (coverMode && coverLocked)) {
+      return clearAutoplay();
+    }
     if (items[index]?.type === "video") {
       clearAutoplay();
       return;
     }
     startAutoplay();
     return clearAutoplay;
-  }, [index, count, imageSrcKey, clearAutoplay, startAutoplay, expanded, paused]);
+  }, [
+    index,
+    count,
+    imageSrcKey,
+    clearAutoplay,
+    startAutoplay,
+    expanded,
+    paused,
+    coverMode,
+    coverLocked,
+  ]);
 
   useEffect(() => {
     if (!expanded) return;
+    document.body.classList.add(LIGHTBOX_BODY_CLASS);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setExpanded(false);
       if (count <= 1) return;
@@ -132,6 +185,7 @@ export default function ProjectCarousel({
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
     return () => {
+      document.body.classList.remove(LIGHTBOX_BODY_CLASS);
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
@@ -141,13 +195,16 @@ export default function ProjectCarousel({
 
   const current = items[index];
   const isVideo = current.type === "video";
+  const showPauseControl = !coverMode && count > 1;
+  const showCoverControl = coverMode && galleryItems.length > 0;
+  const showNav = count > 1 && !(coverMode && coverLocked);
 
   return (
     <div className={cn("relative w-full overflow-hidden rounded-2xl", className)}>
       <div className="relative aspect-video w-full bg-black/40 border border-white/10 rounded-2xl">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
-            key={index}
+            key={`${coverLocked ? "cover" : "gallery"}-${index}`}
             initial={hasAnimated.current ? { opacity: 0 } : false}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -202,7 +259,21 @@ export default function ProjectCarousel({
         </AnimatePresence>
 
         <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between gap-2 pointer-events-none">
-          {count > 1 ? (
+          {showCoverControl ? (
+            <button
+              type="button"
+              onClick={toggleCoverLock}
+              aria-label={coverLocked ? unlockCoverLabel : lockCoverLabel}
+              title={coverLocked ? unlockCoverLabel : lockCoverLabel}
+              className={cn(toolBtnClass, "pointer-events-auto")}
+            >
+              {coverLocked ? (
+                <IoLockClosed className="text-lg" />
+              ) : (
+                <IoImages className="text-lg" />
+              )}
+            </button>
+          ) : showPauseControl ? (
             <button
               type="button"
               onClick={togglePause}
@@ -227,7 +298,7 @@ export default function ProjectCarousel({
           )}
         </div>
 
-        {count > 1 && (
+        {showNav && (
           <>
             <button
               type="button"
@@ -289,7 +360,7 @@ export default function ProjectCarousel({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-8"
             onClick={closeExpand}
             role="dialog"
             aria-modal="true"
@@ -299,12 +370,12 @@ export default function ProjectCarousel({
               type="button"
               onClick={closeExpand}
               aria-label="Close"
-              className="absolute top-4 right-4 z-[110] w-11 h-11 rounded-full bg-black/70 hover:bg-black/85 backdrop-blur-md border border-white/20 flex items-center justify-center text-white"
+              className="absolute top-4 right-4 z-[10000] w-11 h-11 rounded-full bg-black/70 hover:bg-black/85 backdrop-blur-md border border-white/20 flex items-center justify-center text-white"
             >
               <IoClose className="text-2xl" />
             </button>
 
-            {count > 1 && (
+            {showNav && (
               <>
                 <button
                   type="button"

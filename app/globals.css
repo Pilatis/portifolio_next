@@ -84,6 +84,13 @@
   }
 }
 
+/* Esconde idioma/view mode enquanto o lightbox do carrossel está aberto */
+body.carousel-lightbox-open .portfolio-chrome {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 @theme inline {
   --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1
   var(--delay, 0ms);
