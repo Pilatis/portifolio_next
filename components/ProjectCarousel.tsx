@@ -16,6 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const AUTO_PLAY_MS = 4500;
+const FADE_MS = 320;
 const LIGHTBOX_BODY_CLASS = "carousel-lightbox-open";
 
 export type MediaItem = {
@@ -81,8 +82,8 @@ export default function ProjectCarousel({
   const [imageReady, setImageReady] = useState<Record<string, boolean>>({});
   const [expanded, setExpanded] = useState(false);
   const [paused, setPaused] = useState(false);
-  const hasAnimated = useRef(false);
   const autoplayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const transitioningRef = useRef(false);
 
   const items = useMemo(() => {
     if (coverMode && coverLocked && coverItem) return [coverItem];
@@ -90,6 +91,7 @@ export default function ProjectCarousel({
   }, [coverMode, coverLocked, coverItem, galleryItems]);
 
   const count = items.length;
+  const itemsKey = items.map((i) => i.src).join("|");
 
   const clearAutoplay = useCallback(() => {
     if (autoplayRef.current) {
@@ -98,25 +100,38 @@ export default function ProjectCarousel({
     }
   }, []);
 
-  const startAutoplay = useCallback(() => {
-    clearAutoplay();
-    if (count <= 1 || expanded || paused) return;
-    if (coverMode && coverLocked) return;
-    autoplayRef.current = setInterval(() => {
-      setIndex((i) => (i + 1) % count);
-    }, AUTO_PLAY_MS);
-  }, [clearAutoplay, count, expanded, paused, coverMode, coverLocked]);
+  const canAutoplay =
+    count > 1 && !expanded && !paused && !(coverMode && coverLocked);
 
   const goTo = useCallback(
     (nextIndex: number) => {
-      setIndex(nextIndex);
-      if (!expanded && !paused && !(coverMode && coverLocked)) startAutoplay();
+      if (count <= 0) return;
+      const normalized = ((nextIndex % count) + count) % count;
+      setIndex((current) => {
+        if (current === normalized) return current;
+        return normalized;
+      });
     },
-    [startAutoplay, expanded, paused, coverMode, coverLocked],
+    [count],
   );
 
-  const goPrev = () => goTo((index - 1 + count) % count);
-  const goNext = () => goTo((index + 1) % count);
+  const goPrev = useCallback(() => {
+    if (count <= 1 || transitioningRef.current) return;
+    transitioningRef.current = true;
+    setIndex((i) => (i - 1 + count) % count);
+    window.setTimeout(() => {
+      transitioningRef.current = false;
+    }, FADE_MS);
+  }, [count]);
+
+  const goNext = useCallback(() => {
+    if (count <= 1 || transitioningRef.current) return;
+    transitioningRef.current = true;
+    setIndex((i) => (i + 1) % count);
+    window.setTimeout(() => {
+      transitioningRef.current = false;
+    }, FADE_MS);
+  }, [count]);
 
   const togglePause = () => setPaused((prev) => !prev);
 
@@ -124,7 +139,7 @@ export default function ProjectCarousel({
     setCoverLocked((prev) => {
       const next = !prev;
       setIndex(0);
-      hasAnimated.current = false;
+      transitioningRef.current = false;
       if (next) clearAutoplay();
       return next;
     });
@@ -138,40 +153,34 @@ export default function ProjectCarousel({
 
   const closeExpand = () => setExpanded(false);
 
-  const imageSrcKey = items
-    .filter((item) => item.type === "image")
-    .map((item) => item.src)
-    .join("|");
-
+  /** Pré-carrega capa + galeria (troca sem flash). */
   useEffect(() => {
-    items.forEach((item) => {
+    allItems.forEach((item) => {
       if (item.type !== "image" || !item.src) return;
       const img = new window.Image();
       img.src = item.src;
+      const mark = () => {
+        setImageReady((prev) =>
+          prev[item.src] ? prev : { ...prev, [item.src]: true },
+        );
+      };
+      img.onload = mark;
+      if (img.complete) mark();
     });
-  }, [imageSrcKey]);
+  }, [allItems]);
 
+  /** Autoplay: reinicia o timer quando o índice muda (após clique ou tick). */
   useEffect(() => {
-    if (count <= 1 || expanded || paused || (coverMode && coverLocked)) {
-      return clearAutoplay();
-    }
-    if (items[index]?.type === "video") {
-      clearAutoplay();
-      return;
-    }
-    startAutoplay();
+    clearAutoplay();
+    if (!canAutoplay) return;
+    if (items[index]?.type === "video") return;
+
+    autoplayRef.current = setInterval(() => {
+      setIndex((i) => (i + 1) % count);
+    }, AUTO_PLAY_MS);
+
     return clearAutoplay;
-  }, [
-    index,
-    count,
-    imageSrcKey,
-    clearAutoplay,
-    startAutoplay,
-    expanded,
-    paused,
-    coverMode,
-    coverLocked,
-  ]);
+  }, [canAutoplay, count, index, itemsKey, clearAutoplay]);
 
   useEffect(() => {
     if (!expanded) return;
@@ -179,8 +188,8 @@ export default function ProjectCarousel({
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setExpanded(false);
       if (count <= 1) return;
-      if (e.key === "ArrowLeft") setIndex((i) => (i - 1 + count) % count);
-      if (e.key === "ArrowRight") setIndex((i) => (i + 1) % count);
+      if (e.key === "ArrowLeft") goPrev();
+      if (e.key === "ArrowRight") goNext();
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
@@ -189,11 +198,16 @@ export default function ProjectCarousel({
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
     };
-  }, [expanded, count]);
+  }, [expanded, count, goPrev, goNext]);
+
+  /** Se a lista muda e o índice fica inválido, corrige. */
+  useEffect(() => {
+    if (index >= count && count > 0) setIndex(0);
+  }, [count, index]);
 
   if (!count) return null;
 
-  const current = items[index];
+  const current = items[Math.min(index, count - 1)];
   const isVideo = current.type === "video";
   const showPauseControl = !coverMode && count > 1;
   const showCoverControl = coverMode && galleryItems.length > 0;
@@ -202,61 +216,70 @@ export default function ProjectCarousel({
   return (
     <div className={cn("relative w-full overflow-hidden rounded-2xl", className)}>
       <div className="relative aspect-video w-full bg-black/40 border border-white/10 rounded-2xl">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={`${coverLocked ? "cover" : "gallery"}-${index}`}
-            initial={hasAnimated.current ? { opacity: 0 } : false}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: hasAnimated.current ? 0.25 : 0 }}
-            onAnimationComplete={() => {
-              hasAnimated.current = true;
-            }}
-            className="absolute inset-0 flex items-center justify-center px-4 pt-4 pb-6 md:pb-8"
-          >
-            {isVideo ? (
-              <video
-                key={current.src}
-                src={current.src}
-                controls
-                className="max-h-full w-auto max-w-full object-contain rounded-xl"
-                playsInline
-              >
-                Your browser does not support the video tag.
-              </video>
-            ) : (
-              <button
-                type="button"
-                key={current.src}
-                onClick={openExpand}
-                aria-label="Expand image"
-                className="relative w-full h-full min-h-[12rem] max-h-[calc(100%-2rem)] cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 rounded-xl"
-              >
-                {!imageReady[current.src] && (
-                  <div
-                    className="absolute inset-0 animate-pulse rounded-xl bg-white/[0.06]"
-                    aria-hidden
-                  />
+        {/* Slides empilhados + crossfade (sem remount / mode=wait) */}
+        <div className="absolute inset-0">
+          {items.map((item, i) => {
+            const active = i === index;
+            const ready = item.type === "video" || Boolean(imageReady[item.src]);
+
+            return (
+              <div
+                key={`${itemsKey}:${item.src}:${i}`}
+                className={cn(
+                  "absolute inset-0 flex items-center justify-center px-4 pt-4 pb-6 md:pb-8 transition-opacity ease-out",
+                  active ? "z-[1] opacity-100" : "z-0 opacity-0 pointer-events-none",
                 )}
-                <Image
-                  src={current.src}
-                  alt={current.title ?? `${alt} - ${index + 1}`}
-                  fill
-                  priority={index === 0}
-                  quality={95}
-                  sizes="(max-width: 768px) 100vw, 1100px"
-                  className={cn(
-                    "object-contain object-center rounded-xl transition-opacity duration-200",
-                    imageReady[current.src] ? "opacity-100" : "opacity-0",
-                  )}
-                  onLoad={() =>
-                    setImageReady((prev) => ({ ...prev, [current.src]: true }))
-                  }
-                />
-              </button>
-            )}
-          </motion.div>
-        </AnimatePresence>
+                style={{ transitionDuration: `${FADE_MS}ms` }}
+                aria-hidden={!active}
+              >
+                {item.type === "video" ? (
+                  active ? (
+                    <video
+                      src={item.src}
+                      controls
+                      className="max-h-full w-auto max-w-full object-contain rounded-xl"
+                      playsInline
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  ) : null
+                ) : (
+                  <button
+                    type="button"
+                    onClick={openExpand}
+                    tabIndex={active ? 0 : -1}
+                    aria-label="Expand image"
+                    className="relative w-full h-full min-h-[12rem] max-h-[calc(100%-2rem)] cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 rounded-xl"
+                  >
+                    {!ready && (
+                      <div
+                        className="absolute inset-0 animate-pulse rounded-xl bg-white/[0.06]"
+                        aria-hidden
+                      />
+                    )}
+                    <Image
+                      src={item.src}
+                      alt={item.title ?? `${alt} - ${i + 1}`}
+                      fill
+                      priority={i === 0 || i === index}
+                      quality={90}
+                      sizes="(max-width: 768px) 100vw, 1100px"
+                      className={cn(
+                        "object-contain object-center rounded-xl transition-opacity duration-200",
+                        ready ? "opacity-100" : "opacity-0",
+                      )}
+                      onLoadingComplete={() =>
+                        setImageReady((prev) =>
+                          prev[item.src] ? prev : { ...prev, [item.src]: true },
+                        )
+                      }
+                    />
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
 
         <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between gap-2 pointer-events-none">
           {showCoverControl ? (
@@ -403,23 +426,33 @@ export default function ProjectCarousel({
             )}
 
             <motion.div
-              initial={{ scale: 0.96, opacity: 0 }}
+              initial={{ scale: 0.98, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              exit={{ scale: 0.98, opacity: 0 }}
+              transition={{ duration: 0.18 }}
               className="relative max-h-[90vh] max-w-[95vw] w-full h-full flex flex-col items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="relative w-full h-[min(85vh,900px)]">
-                <Image
-                  src={current.src}
-                  alt={current.title ?? `${alt} - ${index + 1}`}
-                  fill
-                  unoptimized
-                  sizes="100vw"
-                  className="object-contain"
-                  priority
-                />
+                {/* Crossfade também no lightbox */}
+                {items.map((item, i) =>
+                  item.type === "image" ? (
+                    <Image
+                      key={item.src}
+                      src={item.src}
+                      alt={item.title ?? `${alt} - ${i + 1}`}
+                      fill
+                      unoptimized
+                      sizes="100vw"
+                      className={cn(
+                        "object-contain transition-opacity ease-out",
+                        i === index ? "opacity-100" : "opacity-0",
+                      )}
+                      style={{ transitionDuration: `${FADE_MS}ms` }}
+                      priority={i === index}
+                    />
+                  ) : null,
+                )}
               </div>
               {(current.title || count > 1) && (
                 <div className="mt-3 flex items-center gap-3 text-sm text-white/80">
