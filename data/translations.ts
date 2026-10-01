@@ -60,6 +60,8 @@ const translations = {
       techStack: "Tech stack",
       backToBrands: "Back to brands",
       notFound: "Brand not found.",
+      pauseSlideshow: "Pause slideshow",
+      playSlideshow: "Play slideshow",
       items: [
         {
           id: "corenote",
@@ -80,6 +82,10 @@ Optional local folder sync mirrors notes to a Windows path you choose. The marke
             { title: "Local-first", description: "Files + SQLite on device; optional folder mirror sync." },
           ],
           media: [
+            {
+              title: "CoreNote",
+              description: "Brand cover — local-first notes hub.",
+            },
             {
               title: "Home & onboarding",
               description: "Empty-state welcome with brand, shortcuts, and first-note CTA.",
@@ -366,6 +372,8 @@ The project involved challenges such as multi-profile access control, complex op
         "Pre-production environment used to validate changes before the final release.",
       stagingNoticeCompact:
         "Staging or test media, not production. No real client data.",
+      pauseSlideshow: "Pause slideshow",
+      playSlideshow: "Play slideshow",
     },
     projectsPage: {
       heading: "Projects",
@@ -434,6 +442,8 @@ The project involved challenges such as multi-profile access control, complex op
       techStack: "Stack técnico",
       backToBrands: "Voltar às marcas",
       notFound: "Marca não encontrada.",
+      pauseSlideshow: "Pausar slideshow",
+      playSlideshow: "Reproduzir slideshow",
       items: [
         {
           id: "corenote",
@@ -454,6 +464,10 @@ A sincronização opcional espelha notas em uma pasta Windows que você escolhe.
             { title: "Local-first", description: "Arquivos + SQLite no dispositivo; sync opcional por pasta." },
           ],
           media: [
+            {
+              title: "CoreNote",
+              description: "Capa da marca — hub de notas local-first.",
+            },
             {
               title: "Home e onboarding",
               description: "Estado inicial com marca, atalhos e CTA da primeira nota.",
@@ -773,6 +787,8 @@ Um dos destaques do projeto foi a implementação de um mapa interativo, que exi
         "Ambiente de validação parecido com o de produção, usado para testar alterações antes da liberação final.",
       stagingNoticeCompact:
         "Mídias de homologação ou teste, não de produção. Sem dados reais.",
+      pauseSlideshow: "Pausar slideshow",
+      playSlideshow: "Reproduzir slideshow",
     },
     projectsPage: {
       heading: "Projetos",

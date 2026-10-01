@@ -65,7 +65,7 @@ export function BrandProductCard({
       />
 
       <div className="relative z-10 flex flex-col gap-5 p-5 sm:p-6 md:p-7">
-        {/* Header: icon + wordmark + status */}
+        {/* Header: icon + brand name + status */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3">
             <div
@@ -77,24 +77,15 @@ export function BrandProductCard({
                 alt=""
                 width={48}
                 height={48}
+                unoptimized
                 className="h-full w-full object-cover"
               />
             </div>
             <div className="min-w-0">
-              {item.logoWordmark ? (
-                <Image
-                  src={item.logoWordmark}
-                  alt={copy.brandName}
-                  width={160}
-                  height={36}
-                  className="h-7 w-auto max-w-[160px] object-contain object-left"
-                />
-              ) : (
-                <h3 className="truncate text-xl font-bold text-white">{copy.brandName}</h3>
-              )}
-              <p
-                className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50"
-              >
+              <h3 className="truncate text-xl font-bold tracking-tight text-white">
+                {copy.brandName}
+              </h3>
+              <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
                 {copy.tagline}
               </p>
             </div>
@@ -111,7 +102,7 @@ export function BrandProductCard({
           </span>
         </div>
 
-        {/* Media / placeholder */}
+        {/* Brand cover (logo completa) */}
         <div
           className="relative aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/[0.06]"
           style={{ background: `linear-gradient(145deg, ${accent}18 0%, #0a0f1e 55%, #050810 100%)` }}
@@ -119,9 +110,11 @@ export function BrandProductCard({
           {hasCover && item.coverImg ? (
             <Image
               src={item.coverImg}
-              alt={`${copy.brandName} preview`}
+              alt={`${copy.brandName} logo`}
               fill
-              className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
+              unoptimized
+              priority={index === 0}
+              className="object-contain object-center p-6 sm:p-8 transition-transform duration-500 group-hover:scale-[1.02]"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : (

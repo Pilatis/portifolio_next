@@ -41,6 +41,8 @@ export default function ProjectPage() {
     stagingNoticeTerm: string;
     stagingNoticeTermTooltip: string;
     stagingNoticeCompact: string;
+    pauseSlideshow?: string;
+    playSlideshow?: string;
   };
 
   const project = projects.find((p) => String(p.id) === String(projectId));
@@ -157,6 +159,8 @@ export default function ProjectPage() {
             images={carouselImages}
             alt={title}
             className="shadow-2xl shadow-purple/10"
+            pauseLabel={projectPageT.pauseSlideshow}
+            playLabel={projectPageT.playSlideshow}
           />
         </motion.div>
 
