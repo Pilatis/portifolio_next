@@ -114,7 +114,7 @@ export function BrandProductCard({
               fill
               unoptimized
               priority={index === 0}
-              className="object-contain object-center p-6 sm:p-8 transition-transform duration-500 group-hover:scale-[1.02]"
+              className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : (

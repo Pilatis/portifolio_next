@@ -84,7 +84,7 @@ Optional local folder sync mirrors notes to a Windows path you choose. The marke
           media: [
             {
               title: "CoreNote",
-              description: "Brand cover — local-first notes hub.",
+              description: "Brand cover — your world in notes.",
             },
             {
               title: "Home & onboarding",
@@ -466,7 +466,7 @@ A sincronização opcional espelha notas em uma pasta Windows que você escolhe.
           media: [
             {
               title: "CoreNote",
-              description: "Capa da marca — hub de notas local-first.",
+              description: "Capa da marca — seu mundo em notas.",
             },
             {
               title: "Home e onboarding",

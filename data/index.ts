@@ -152,10 +152,10 @@ export const brandProducts: BrandProduct[] = [
     logoIcon: "/images/brands/corenote/icon-dark.jpg",
     logoWordmark: "/images/brands/corenote/logo-full.jpg",
     logoFull: "/images/brands/corenote/logo-full.jpg",
-    /** Capa do card = logo completa (marca), não screenshot do app */
-    coverImg: "/images/brands/corenote/logo-full.jpg",
+    /** Capa do card / 1º slide do carrossel = arte promocional */
+    coverImg: "/images/brands/corenote/00-cover.jpg",
     media: [
-      { src: "/images/brands/corenote/logo-full.jpg", type: "image" },
+      { src: "/images/brands/corenote/00-cover.jpg", type: "image" },
       { src: "/images/brands/corenote/01-home-onboarding.jpg", type: "image" },
       { src: "/images/brands/corenote/02-editor-checklist.jpg", type: "image" },
       { src: "/images/brands/corenote/03-focus-mode.jpg", type: "image" },
