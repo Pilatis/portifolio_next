@@ -152,7 +152,9 @@ export const brandProducts: BrandProduct[] = [
     liveUrl: "https://freelagoapp.com.br",
     status: "live",
     platforms: ["Web", "iOS", "Android"],
-    logoIcon: "/images/brands/freelago/icon.svg",
+    logoIcon: "/images/brands/freelago/logo-wordmark.png",
+    logoWordmark: "/images/brands/freelago/logo-wordmark.png",
+    logoFull: "/images/brands/freelago/logo-wordmark.png",
     coverImg: "/images/brands/freelago/00-cover.jpg",
     media: [{ src: "/images/brands/freelago/00-cover.jpg", type: "image" }],
     iconLists: [
@@ -179,7 +181,7 @@ export const brandProducts: BrandProduct[] = [
   {
     id: "corenote",
     brandName: "CoreNote",
-    liveUrl: "https://dev.d2sibj6qt5qfq9.amplifyapp.com/",
+    liveUrl: "https://corenotedesk.com.br/",
     status: "live",
     platforms: ["Windows"],
     logoIcon: "/images/brands/corenote/icon-dark.jpg",

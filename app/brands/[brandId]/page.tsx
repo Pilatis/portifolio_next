@@ -125,50 +125,60 @@ export default function BrandDetailPage() {
           transition={{ duration: 0.4, delay: 0.05 }}
           className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4"
         >
-          <div
-            className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10"
-            style={{ boxShadow: `0 0 24px -6px ${accent}` }}
-          >
-            <Image
-              src={brand.logoIcon}
-              alt=""
-              width={48}
-              height={48}
-              unoptimized
-              className={
-                brand.logoIcon.endsWith(".svg")
-                  ? "h-full w-full object-contain p-1.5"
-                  : "h-full w-full object-cover"
-              }
-            />
-          </div>
-          <div className="min-w-0">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
-              {title === "CoreNote" ? (
-                <>
-                  <span>Core</span>
-                  <span className="bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent">
-                    Note
-                  </span>
-                </>
-              ) : title === "FreelaGoApp" ? (
-                <>
-                  <span>Freela</span>
-                  <span className="bg-gradient-to-r from-sky-300 to-blue-600 bg-clip-text text-transparent">
-                    Go
-                  </span>
-                  <span>App</span>
-                </>
-              ) : (
-                title
+          {brand.logoWordmark && brand.logoIcon === brand.logoWordmark ? (
+            <div className="min-w-0">
+              <div className="inline-flex max-w-full items-center rounded-xl bg-white px-3 py-2.5 sm:px-4 shadow-[0_0_28px_-8px_rgba(37,99,235,0.55)]">
+                <Image
+                  src={brand.logoWordmark}
+                  alt={title}
+                  width={320}
+                  height={64}
+                  unoptimized
+                  className="h-9 w-auto max-w-[min(100%,280px)] object-contain object-left sm:h-11"
+                />
+              </div>
+              {tagline && (
+                <p className="mt-2 text-[11px] sm:text-xs font-medium uppercase tracking-[0.22em] text-white/50">
+                  {tagline}
+                </p>
               )}
-            </h1>
-            {tagline && (
-              <p className="mt-1 text-[11px] sm:text-xs font-medium uppercase tracking-[0.22em] text-white/50">
-                {tagline}
-              </p>
-            )}
-          </div>
+            </div>
+          ) : (
+            <>
+              <div
+                className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10"
+                style={{ boxShadow: `0 0 24px -6px ${accent}` }}
+              >
+                <Image
+                  src={brand.logoIcon}
+                  alt=""
+                  width={48}
+                  height={48}
+                  unoptimized
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="min-w-0">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white">
+                  {title === "CoreNote" ? (
+                    <>
+                      <span>Core</span>
+                      <span className="bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent">
+                        Note
+                      </span>
+                    </>
+                  ) : (
+                    title
+                  )}
+                </h1>
+                {tagline && (
+                  <p className="mt-1 text-[11px] sm:text-xs font-medium uppercase tracking-[0.22em] text-white/50">
+                    {tagline}
+                  </p>
+                )}
+              </div>
+            </>
+          )}
           <span
             className={
               brand.status === "live"

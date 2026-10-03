@@ -67,42 +67,48 @@ export function BrandProductCard({
       <div className="relative z-10 flex flex-col gap-5 p-5 sm:p-6 md:p-7">
         {/* Header: icon + brand name + status */}
         <div className="flex items-start justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-3">
-            <div
-              className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10"
-              style={{ boxShadow: `0 0 24px -4px ${accent}88` }}
-            >
-              <Image
-                src={item.logoIcon}
-                alt=""
-                width={48}
-                height={48}
-                unoptimized
-                className={
-                  item.logoIcon.endsWith(".svg")
-                    ? "h-full w-full object-contain p-1.5"
-                    : "h-full w-full object-cover"
-                }
-              />
-            </div>
-            <div className="min-w-0">
-              <h3 className="truncate text-xl font-bold tracking-tight text-white">
-                {copy.brandName === "FreelaGoApp" ? (
-                  <>
-                    Freela
-                    <span className="bg-gradient-to-r from-sky-300 to-blue-600 bg-clip-text text-transparent">
-                      Go
-                    </span>
-                    App
-                  </>
-                ) : (
-                  copy.brandName
-                )}
-              </h3>
-              <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
-                {copy.tagline}
-              </p>
-            </div>
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            {item.logoWordmark && item.logoIcon === item.logoWordmark ? (
+              <div className="min-w-0">
+                <div className="inline-flex max-w-full items-center rounded-lg bg-white px-3 py-2 shadow-[0_0_24px_-8px_rgba(37,99,235,0.55)]">
+                  <Image
+                    src={item.logoWordmark}
+                    alt={copy.brandName}
+                    width={220}
+                    height={48}
+                    unoptimized
+                    className="h-8 w-auto max-w-[min(100%,220px)] object-contain object-left sm:h-9"
+                  />
+                </div>
+                <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
+                  {copy.tagline}
+                </p>
+              </div>
+            ) : (
+              <>
+                <div
+                  className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10"
+                  style={{ boxShadow: `0 0 24px -4px ${accent}88` }}
+                >
+                  <Image
+                    src={item.logoIcon}
+                    alt=""
+                    width={48}
+                    height={48}
+                    unoptimized
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="min-w-0">
+                  <h3 className="truncate text-xl font-bold tracking-tight text-white">
+                    {copy.brandName}
+                  </h3>
+                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
+                    {copy.tagline}
+                  </p>
+                </div>
+              </>
+            )}
           </div>
           <span
             className={cn(
