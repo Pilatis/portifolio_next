@@ -68,47 +68,42 @@ export function BrandProductCard({
         {/* Header: icon + brand name + status */}
         <div className="flex items-start justify-between gap-3">
           <div className="flex min-w-0 flex-1 items-center gap-3">
-            {item.logoWordmark && item.logoIcon === item.logoWordmark ? (
-              <div className="min-w-0">
-                <div className="inline-flex max-w-full items-center rounded-lg bg-white px-3 py-2 shadow-[0_0_24px_-8px_rgba(37,99,235,0.55)]">
+            <div
+              className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10 bg-black"
+              style={{ boxShadow: `0 0 24px -4px ${accent}88` }}
+            >
+              <Image
+                src={item.logoIcon}
+                alt=""
+                width={48}
+                height={48}
+                unoptimized
+                className="h-full w-full object-contain"
+              />
+            </div>
+            <div className="min-w-0">
+              {item.logoWordmark &&
+              item.logoFull &&
+              item.logoWordmark !== item.logoFull ? (
+                <div className="inline-flex max-w-full items-center rounded-md bg-white/95 px-2 py-1">
                   <Image
                     src={item.logoWordmark}
                     alt={copy.brandName}
-                    width={220}
-                    height={48}
+                    width={200}
+                    height={40}
                     unoptimized
-                    className="h-8 w-auto max-w-[min(100%,220px)] object-contain object-left sm:h-9"
+                    className="h-6 w-auto max-w-[min(100%,180px)] object-contain object-left sm:h-7"
                   />
                 </div>
-                <p className="mt-2 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
-                  {copy.tagline}
-                </p>
-              </div>
-            ) : (
-              <>
-                <div
-                  className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10"
-                  style={{ boxShadow: `0 0 24px -4px ${accent}88` }}
-                >
-                  <Image
-                    src={item.logoIcon}
-                    alt=""
-                    width={48}
-                    height={48}
-                    unoptimized
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="truncate text-xl font-bold tracking-tight text-white">
-                    {copy.brandName}
-                  </h3>
-                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
-                    {copy.tagline}
-                  </p>
-                </div>
-              </>
-            )}
+              ) : (
+                <h3 className="truncate text-xl font-bold tracking-tight text-white">
+                  {copy.brandName}
+                </h3>
+              )}
+              <p className="mt-1.5 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
+                {copy.tagline}
+              </p>
+            </div>
           </div>
           <span
             className={cn(

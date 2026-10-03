@@ -152,9 +152,9 @@ export const brandProducts: BrandProduct[] = [
     liveUrl: "https://freelagoapp.com.br",
     status: "live",
     platforms: ["Web", "iOS", "Android"],
-    logoIcon: "/images/brands/freelago/logo-wordmark.png",
+    logoIcon: "/images/brands/freelago/icon.jpg",
     logoWordmark: "/images/brands/freelago/logo-wordmark.png",
-    logoFull: "/images/brands/freelago/logo-wordmark.png",
+    logoFull: "/images/brands/freelago/logo-full.png",
     coverImg: "/images/brands/freelago/00-cover.jpg",
     media: [{ src: "/images/brands/freelago/00-cover.jpg", type: "image" }],
     iconLists: [

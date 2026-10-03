@@ -125,16 +125,18 @@ export default function BrandDetailPage() {
           transition={{ duration: 0.4, delay: 0.05 }}
           className="flex flex-wrap items-center gap-3 sm:gap-4 mb-4"
         >
-          {brand.logoWordmark && brand.logoIcon === brand.logoWordmark ? (
+          {brand.logoFull &&
+          brand.logoWordmark &&
+          brand.logoWordmark !== brand.logoFull ? (
             <div className="min-w-0">
-              <div className="inline-flex max-w-full items-center rounded-xl bg-white px-3 py-2.5 sm:px-4 shadow-[0_0_28px_-8px_rgba(37,99,235,0.55)]">
+              <div className="inline-flex max-w-full items-center">
                 <Image
-                  src={brand.logoWordmark}
+                  src={brand.logoFull}
                   alt={title}
-                  width={320}
-                  height={64}
+                  width={420}
+                  height={120}
                   unoptimized
-                  className="h-9 w-auto max-w-[min(100%,280px)] object-contain object-left sm:h-11"
+                  className="h-12 w-auto max-w-[min(100%,340px)] object-contain object-left sm:h-14"
                 />
               </div>
               {tagline && (
@@ -146,7 +148,7 @@ export default function BrandDetailPage() {
           ) : (
             <>
               <div
-                className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10"
+                className="relative h-11 w-11 sm:h-12 sm:w-12 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/10 bg-black"
                 style={{ boxShadow: `0 0 24px -6px ${accent}` }}
               >
                 <Image
@@ -155,7 +157,7 @@ export default function BrandDetailPage() {
                   width={48}
                   height={48}
                   unoptimized
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               </div>
               <div className="min-w-0">
