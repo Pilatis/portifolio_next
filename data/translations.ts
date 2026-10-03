@@ -68,33 +68,35 @@ const translations = {
         {
           id: "corenote",
           brandName: "CoreNote",
-          tagline: "Your world in notes",
-          des: "Local-first desktop notes hub — Quiet Dark, instant search, and an AES-256-GCM vault. 100% on your device.",
-          fullDes: `CoreNote is a local-first desktop notes hub for people who write a lot and want privacy, focus, and control over their files.
+          tagline: "Every note, in the right place.",
+          des: "Local-first desktop notes hub — Quiet Dark experience, instant search, and an AES-256-GCM vault. 100% on your device.",
+          fullDes: `CoreNote is a local-first desktop notes hub built for people who write a lot and want privacy, focus, and full control over their files — not another cloud notepad that depends on an account to work.
 
-Markdown and plain-text notes live on disk with SQLite metadata. Organize with folders, tags, pins, archive, and trash. Navigate with Ctrl+P. Focus mode hides the chrome so the text stays center stage. The Vault protects sensitive notes with a master password and auto-lock — encryption runs only in the Electron main process.
+Notes live as Markdown (.md) and plain text (.txt) on disk; metadata, tags, folders, and search index sit in local SQLite. Organize with nested folders, tags, pins, archive, and trash. Navigate with Ctrl+P. Focus mode (Ctrl+Shift+F) hides the sidebar and chrome so the text stays center stage. The Vault protects sensitive notes with a master password, per-note unlock, and idle auto-lock — AES-256-GCM + Argon2id run only in the Electron main process; the key never leaves RAM and never goes to the cloud.
 
-Optional local folder sync mirrors notes to a Windows path you choose. The marketing site presents the product and installer; notes are not hosted as a cloud SaaS.`,
+The app is Electron + React (TipTap editor, cmdk palette, Quiet Dark UI). Optional local folder sync mirrors readable notes to a path you choose — useful with your own OneDrive/Dropbox folder, without CoreNote operating that account. Backup and export keep your library portable.
+
+The official site (CoreNoteWeb) is a Next.js static export on AWS Amplify Hosting: marketing, license popup, and Windows installer delivery via CDN. Amplify does not store notes. GitLab Releases host the NSIS Setup for Windows x64 (v0.3.0). Writing, searching, and organizing work fully offline.`,
           pillars: [
-            { title: "MD & TXT editor", description: "Auto-save, familiar shortcuts, TipTap for Markdown." },
-            { title: "Ctrl+P search", description: "Title, content, and tags — keyboard-first navigation." },
-            { title: "Focus mode", description: "Sidebar gone; typography tuned for long writing." },
-            { title: "Tags & folders", description: "Local organization with pins and archive." },
-            { title: "Vault", description: "AES-256-GCM + Argon2id, master password, auto-lock." },
-            { title: "Local-first", description: "Files + SQLite on device; optional folder mirror sync." },
+            { title: "MD & TXT editor", description: "TipTap Markdown, auto-save (~500ms), undo/redo, and familiar shortcuts." },
+            { title: "Ctrl+P search", description: "Title, content, and tags — recent notes and keyboard-first navigation." },
+            { title: "Focus mode", description: "Sidebar and chrome gone; typography tuned for long writing." },
+            { title: "Tags & folders", description: "Local organization with pins, archive, and soft-delete trash." },
+            { title: "Vault", description: "AES-256-GCM + Argon2id, master password, per-note unlock, auto-lock." },
+            { title: "Local-first", description: "Files + SQLite on device; Amplify only ships the site and installer." },
           ],
           media: [
             {
               title: "CoreNote",
-              description: "Brand cover — your world in notes.",
+              description: "Brand cover — every note, in the right place.",
             },
             {
               title: "Home & onboarding",
-              description: "Empty-state welcome with brand, shortcuts, and first-note CTA.",
+              description: "First-run guidance: Ctrl+N, Ctrl+P, and Vault setup in Preferences.",
             },
             {
               title: "Pinned note & checklist",
-              description: "Editor with tags, formatting toolbar, and product checklist.",
+              description: "Editor with tags, formatting toolbar, checklists, and local attachments.",
             },
             {
               title: "Focus mode",
@@ -106,23 +108,23 @@ Optional local folder sync mirrors notes to a Windows path you choose. The marke
             },
             {
               title: "Link types",
-              description: "Preview, URL, and mention styles inside the editor.",
+              description: "Preview, URL, and mention styles with Open Graph metadata fetch.",
             },
             {
               title: "Images in notes",
-              description: "Moodboard-style note with embedded local attachments.",
+              description: "Moodboard-style note with paste/drop attachments stored locally.",
             },
             {
               title: "Unlock vault",
-              description: "Master password gate to open a protected note.",
+              description: "Master password gate when opening a protected note.",
             },
             {
               title: "Local sync & backup",
-              description: "Mirror notes to a Windows folder and export snapshots.",
+              description: "Folder mirror on disk, full backup, and readable export — no cloud notes API.",
             },
             {
               title: "Trash",
-              description: "Soft-delete with retention before permanent purge.",
+              description: "Soft-delete with restore or permanent purge.",
             },
           ],
         },
@@ -457,33 +459,35 @@ The project involved challenges such as multi-profile access control, complex op
         {
           id: "corenote",
           brandName: "CoreNote",
-          tagline: "Seu mundo em notas",
-          des: "Hub desktop local-first de notas — Quiet Dark, busca instantânea e cofre AES-256-GCM. 100% no seu dispositivo.",
-          fullDes: `CoreNote é um hub de notas no desktop local-first para quem escreve muito e quer privacidade, foco e controle sobre os próprios arquivos.
+          tagline: "Cada nota, no lugar certo.",
+          des: "Hub desktop local-first de notas — experiência Quiet Dark, busca instantânea e cofre AES-256-GCM. 100% no seu dispositivo.",
+          fullDes: `CoreNote é um hub de notas no desktop local-first para quem escreve muito e quer privacidade, foco e controle total sobre os próprios arquivos — não mais um bloco de notas na nuvem que depende de conta para funcionar.
 
-Notas em Markdown e texto puro ficam no disco, com metadados em SQLite. Organize com pastas, tags, pins, arquivo e lixeira. Navegue com Ctrl+P. O modo foco esconde o chrome para o texto ficar no centro. O Cofre protege notas sensíveis com senha mestra e auto-lock — a criptografia roda só no processo main do Electron.
+As notas vivem como Markdown (.md) e texto puro (.txt) no disco; metadados, tags, pastas e índice de busca ficam no SQLite local. Organize com pastas aninhadas, tags, pins, arquivo e lixeira. Navegue com Ctrl+P. O modo foco (Ctrl+Shift+F) esconde sidebar e chrome para o texto ficar no centro. O Cofre protege notas sensíveis com senha mestra, unlock por nota e auto-lock por ociosidade — AES-256-GCM + Argon2id rodam só no processo main do Electron; a chave fica só em RAM e nunca sobe para a nuvem.
 
-A sincronização opcional espelha notas em uma pasta Windows que você escolhe. O site apresenta o produto e o instalador; as notas não são hospedadas como SaaS na nuvem.`,
+O app é Electron + React (editor TipTap, command palette cmdk, UI Quiet Dark). A pasta sincronizada opcional espelha notas legíveis num caminho que você escolhe — útil com OneDrive/Dropbox do usuário, sem o CoreNote operar essa conta. Backup e export mantêm a biblioteca portátil.
+
+O site oficial (CoreNoteWeb) é um export estático Next.js no AWS Amplify Hosting: marketing, popup de licença e entrega do instalador Windows via CDN. O Amplify não armazena notas. As releases no GitLab hospedam o Setup NSIS para Windows x64 (v0.3.0). Escrever, buscar e organizar funcionam 100% offline.`,
           pillars: [
-            { title: "Editor MD & TXT", description: "Auto-save, atalhos familiares, TipTap para Markdown." },
-            { title: "Busca Ctrl+P", description: "Título, conteúdo e tags — navegação por teclado." },
-            { title: "Modo foco", description: "Sidebar some; tipografia para escrita longa." },
-            { title: "Tags & pastas", description: "Organização local com pins e arquivo." },
-            { title: "Cofre", description: "AES-256-GCM + Argon2id, senha mestra e auto-lock." },
-            { title: "Local-first", description: "Arquivos + SQLite no dispositivo; sync opcional por pasta." },
+            { title: "Editor MD & TXT", description: "Markdown TipTap, auto-save (~500ms), undo/redo e atalhos familiares." },
+            { title: "Busca Ctrl+P", description: "Título, conteúdo e tags — recentes e navegação por teclado." },
+            { title: "Modo foco", description: "Sidebar e chrome somem; tipografia para escrita longa." },
+            { title: "Tags & pastas", description: "Organização local com pins, arquivo e lixeira (soft-delete)." },
+            { title: "Cofre", description: "AES-256-GCM + Argon2id, senha mestra, unlock por nota e auto-lock." },
+            { title: "Local-first", description: "Arquivos + SQLite no dispositivo; Amplify só entrega site e instalador." },
           ],
           media: [
             {
               title: "CoreNote",
-              description: "Capa da marca — seu mundo em notas.",
+              description: "Capa da marca — cada nota, no lugar certo.",
             },
             {
               title: "Home e onboarding",
-              description: "Estado inicial com marca, atalhos e CTA da primeira nota.",
+              description: "Primeiro uso: Ctrl+N, Ctrl+P e setup do Cofre nas Preferências.",
             },
             {
               title: "Nota fixada e checklist",
-              description: "Editor com tags, toolbar e checklist do produto.",
+              description: "Editor com tags, toolbar, checklists e anexos locais.",
             },
             {
               title: "Modo foco",
@@ -495,23 +499,23 @@ A sincronização opcional espelha notas em uma pasta Windows que você escolhe.
             },
             {
               title: "Tipos de links",
-              description: "Prévia, URL e menção dentro do editor.",
+              description: "Prévia, URL e menção com fetch de metadados Open Graph.",
             },
             {
               title: "Imagens na nota",
-              description: "Nota tipo moodboard com anexos locais embutidos.",
+              description: "Nota tipo moodboard com anexos colados/arrastados no disco local.",
             },
             {
               title: "Desbloquear cofre",
-              description: "Senha mestra para abrir nota protegida.",
+              description: "Senha mestra ao abrir uma nota protegida.",
             },
             {
               title: "Sync e backup local",
-              description: "Espelho em pasta Windows e export de snapshot.",
+              description: "Espelho em pasta, backup completo e export legível — sem API de notas na nuvem.",
             },
             {
               title: "Lixeira",
-              description: "Soft-delete com retenção antes da exclusão permanente.",
+              description: "Soft-delete com restaurar ou exclusão permanente.",
             },
           ],
         },

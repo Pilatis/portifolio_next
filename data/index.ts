@@ -139,6 +139,7 @@ export const STACK_LABELS: Record<string, string> = {
   "/nodejs.svg": "Node.js",
   "/electron.svg": "Electron",
   "/sqlite.svg": "SQLite",
+  "/amplify.svg": "AWS Amplify",
 };
 
 /** Marcas e produtos próprios (não cases de cliente). */
@@ -166,13 +167,21 @@ export const brandProducts: BrandProduct[] = [
       { src: "/images/brands/corenote/09-sync-data.jpg", type: "image" },
       { src: "/images/brands/corenote/10-trash.jpg", type: "image" },
     ],
-    iconLists: ["/electron.svg", "/re.svg", "/ts.svg", "/sqlite.svg", "/tail.svg"],
-    iconListsDetail: [
+    iconLists: [
       "/electron.svg",
       "/re.svg",
       "/ts.svg",
       "/sqlite.svg",
+      "/amplify.svg",
+    ],
+    iconListsDetail: [
+      "/electron.svg",
+      "/re.svg",
+      "/ts.svg",
+      "/next.svg",
+      "/sqlite.svg",
       "/tail.svg",
+      "/amplify.svg",
       "/git.svg",
     ],
     accent: "#3B82F6",
