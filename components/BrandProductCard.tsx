@@ -78,12 +78,26 @@ export function BrandProductCard({
                 width={48}
                 height={48}
                 unoptimized
-                className="h-full w-full object-cover"
+                className={
+                  item.logoIcon.endsWith(".svg")
+                    ? "h-full w-full object-contain p-1.5"
+                    : "h-full w-full object-cover"
+                }
               />
             </div>
             <div className="min-w-0">
               <h3 className="truncate text-xl font-bold tracking-tight text-white">
-                {copy.brandName}
+                {copy.brandName === "FreelaGoApp" ? (
+                  <>
+                    Freela
+                    <span className="bg-gradient-to-r from-sky-300 to-blue-600 bg-clip-text text-transparent">
+                      Go
+                    </span>
+                    App
+                  </>
+                ) : (
+                  copy.brandName
+                )}
               </h3>
               <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.22em] text-white/50">
                 {copy.tagline}

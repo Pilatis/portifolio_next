@@ -66,6 +66,31 @@ const translations = {
       unlockCover: "Show app images",
       items: [
         {
+          id: "freelago",
+          brandName: "FreelaGoApp",
+          tagline: "Freelance and company. One app.",
+          des: "Connecting companies and professionals for real services — pay to publish, on-site presence, 48h retention, and a backoffice running the process end to end.",
+          fullDes: `FreelaGoApp connects companies to operational freelancers for real shifts — events, logistics, general services and short-term roles. The company pays to publish a job; professionals apply or accept invites; both confirm presence on site with check-in/out codes; payout sits in a short retention window before PIX withdrawal. FreelaGo is not a bank: it orchestrates states while money moves through a payment provider.
+
+Professionals get onboarding with KYC, availability, job hub with match and map, invites, chat, wallet, and ratings. Companies get multi-user teams, talent bank, budget before pay, public company page, consolidated agenda, and presence cards on the day. A full backoffice handles document review, moderation, incidents, catalog, fees, and payment queues.
+
+Built full-stack: Java 21 / Spring Boot 3 API, Next.js 15 BFF (HttpOnly cookies), Expo/React Native apps, Keycloak OIDC, PostgreSQL + Liquibase, STOMP realtime, Asaas payments, Docker + Render. Core hiring, presence, chat, invites, wallet (sandbox), and backoffice already run end-to-end — company billing invoices and full production PSP go-live are the next block.`,
+          pillars: [
+            { title: "Pay to publish", description: "Company pays upfront; the pro receives 100% of the listed rate." },
+            { title: "Match & invites", description: "Apply, save jobs, or accept company invites with clear expiry rules." },
+            { title: "On-site presence", description: "Check-in/out codes, delay rules, and incident flow when something breaks." },
+            { title: "Trust & KYC", description: "Document review, verified profiles, and human backoffice support." },
+            { title: "Wallet & PIX", description: "48h retention, available balance, and PIX withdrawal for the pro." },
+            { title: "Web + native apps", description: "Same core flows on Next.js and Expo for candidates and companies." },
+          ],
+          media: [
+            {
+              title: "FreelaGoApp",
+              description: "Brand cover — freelance and company, in the same app.",
+            },
+          ],
+        },
+        {
           id: "corenote",
           brandName: "CoreNote",
           tagline: "Every note, in the right place.",
@@ -456,6 +481,31 @@ The project involved challenges such as multi-profile access control, complex op
       lockCover: "Mostrar só a capa",
       unlockCover: "Ver imagens do app",
       items: [
+        {
+          id: "freelago",
+          brandName: "FreelaGoApp",
+          tagline: "Freela e empresa. Um só app.",
+          des: "Conectando empresas e profissionais para serviços de verdade — pague para publicar, presença no local, retenção de 48h e backoffice operando o processo ponta a ponta.",
+          fullDes: `FreelaGoApp conecta empresas a freelancers operacionais para turnos reais — eventos, logística, serviços gerais e funções de curto prazo. A empresa paga para publicar a vaga; o profissional candidata-se ou aceita convite; os dois confirmam presença no local com códigos de check-in/out; o valor fica em retenção por um período curto antes do saque PIX. A FreelaGo não é banco: orquestra estados enquanto o dinheiro passa por um provedor de pagamentos.
+
+Do lado do profissional: onboarding com KYC, disponibilidade, hub de vagas com match e mapa, convites, chat, carteira e avaliações. Da empresa: equipa multi-utilizador, banco de talentos, orçamento antes de pagar, página pública, agenda consolidada e cartão de presença no dia. O backoffice cobre revisão de documentos, moderação, ocorrências, catálogo, taxas e fila de pagamentos.
+
+Stack full-stack: API Java 21 / Spring Boot 3, Next.js 15 (BFF com cookies HttpOnly), apps Expo/React Native, Keycloak OIDC, PostgreSQL + Liquibase, realtime STOMP, pagamentos Asaas, Docker + Render. O core de contratação, presença, chat, convites, carteira (sandbox) e backoffice já roda de ponta a ponta — faturas de billing da empresa e go-live completo do PSP em produção são o próximo bloco.`,
+          pillars: [
+            { title: "Pague para publicar", description: "Empresa paga na publicação; o profissional recebe 100% do valor anunciado." },
+            { title: "Match e convites", description: "Candidatura, vagas salvas ou convites da empresa com regras claras de expiração." },
+            { title: "Presença no local", description: "Códigos de check-in/out, regras de atraso e ocorrências quando algo falha." },
+            { title: "Confiança e KYC", description: "Revisão de documentos, perfis verificados e suporte humano no backoffice." },
+            { title: "Carteira e PIX", description: "Retenção de 48h, saldo disponível e saque PIX para o prestador." },
+            { title: "Web + apps nativas", description: "Mesmos fluxos principais no Next.js e no Expo para candidato e empresa." },
+          ],
+          media: [
+            {
+              title: "FreelaGoApp",
+              description: "Capa da marca — freela e empresa, tudo no mesmo app.",
+            },
+          ],
+        },
         {
           id: "corenote",
           brandName: "CoreNote",

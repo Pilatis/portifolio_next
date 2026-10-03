@@ -135,7 +135,11 @@ export default function BrandDetailPage() {
               width={48}
               height={48}
               unoptimized
-              className="h-full w-full object-cover"
+              className={
+                brand.logoIcon.endsWith(".svg")
+                  ? "h-full w-full object-contain p-1.5"
+                  : "h-full w-full object-cover"
+              }
             />
           </div>
           <div className="min-w-0">
@@ -146,6 +150,14 @@ export default function BrandDetailPage() {
                   <span className="bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent">
                     Note
                   </span>
+                </>
+              ) : title === "FreelaGoApp" ? (
+                <>
+                  <span>Freela</span>
+                  <span className="bg-gradient-to-r from-sky-300 to-blue-600 bg-clip-text text-transparent">
+                    Go
+                  </span>
+                  <span>App</span>
                 </>
               ) : (
                 title

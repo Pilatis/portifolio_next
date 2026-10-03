@@ -140,10 +140,42 @@ export const STACK_LABELS: Record<string, string> = {
   "/electron.svg": "Electron",
   "/sqlite.svg": "SQLite",
   "/amplify.svg": "AWS Amplify",
+  "/spring.svg": "Spring Boot",
+  "/keycloak.svg": "Keycloak",
 };
 
-/** Marcas e produtos próprios (não cases de cliente). */
+/** Marcas e produtos próprios (não cases de cliente). FreelaGoApp primeiro = marca principal. */
 export const brandProducts: BrandProduct[] = [
+  {
+    id: "freelago",
+    brandName: "FreelaGoApp",
+    liveUrl: "https://freelagoapp.com.br",
+    status: "live",
+    platforms: ["Web", "iOS", "Android"],
+    logoIcon: "/images/brands/freelago/icon.svg",
+    coverImg: "/images/brands/freelago/00-cover.jpg",
+    media: [{ src: "/images/brands/freelago/00-cover.jpg", type: "image" }],
+    iconLists: [
+      "/java.svg",
+      "/spring.svg",
+      "/next.svg",
+      "/expo.svg",
+      "/postgresql.svg",
+    ],
+    iconListsDetail: [
+      "/java.svg",
+      "/spring.svg",
+      "/next.svg",
+      "/expo.svg",
+      "/re.svg",
+      "/ts.svg",
+      "/postgresql.svg",
+      "/keycloak.svg",
+      "/dock.svg",
+      "/git.svg",
+    ],
+    accent: "#2563EB",
+  },
   {
     id: "corenote",
     brandName: "CoreNote",
