@@ -40,12 +40,12 @@ const Footer = () => {
           href="mailto:pilatidev1@gmail.com"
         />
       </div>
-      <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
-        <p className="md:text-base text-sm md:font-normal font-light">
+      <div className="mt-16 flex flex-col items-center justify-between gap-8 md:flex-row md:gap-4">
+        <p className="text-sm font-light md:text-base md:font-normal">
           {footer.copyright}
         </p>
 
-        <div className="flex items-center md:gap-3 gap-6">
+        <div className="flex items-center gap-6 md:gap-3">
           {socialMedia && socialMedia.map((info: { id: number, img: string, link: string }) => {
             const isGitHub = info.link.includes("github");
             const Icon = isGitHub ? FaGithub : FaLinkedin;
