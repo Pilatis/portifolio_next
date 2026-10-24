@@ -142,6 +142,11 @@ export const STACK_LABELS: Record<string, string> = {
   "/amplify.svg": "AWS Amplify",
   "/spring.svg": "Spring Boot",
   "/keycloak.svg": "Keycloak",
+  "/html.png": "HTML5",
+  "/css.png": "CSS3",
+  "/js.png": "JavaScript",
+  "/sqlserver.svg": "SQL Server",
+  "/sqlserver.png": "SQL Server",
 };
 
 /** Marcas e produtos próprios (não cases de cliente). FreelaGoApp primeiro = marca principal. */
@@ -994,10 +999,14 @@ export const workExperience: WorkExperienceItem[] = [
       "/java.svg",
       "/spring.svg",
       "/nodejs.svg",
+      "/js.png",
+      "/ts.svg",
       "/re.svg",
       "/next.svg",
-      "/ts.svg",
+      "/html.png",
+      "/css.png",
       "/postgresql.svg",
+      "/sqlserver.svg",
       "/chakra.svg",
       "/expo.svg",
       "/tail.svg",
