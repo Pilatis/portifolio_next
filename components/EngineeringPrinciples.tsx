@@ -27,6 +27,9 @@ export default function EngineeringPrinciples({ variant = "home" }: EngineeringP
   const principlesT = t("principles") as PrinciplesT;
 
   const isHome = variant === "home";
+  /** Home no modo recrutador: seção omitida para manter a narrativa enxuta. */
+  if (isHome && viewMode === "recruiter") return null;
+
   const featuredList = engineeringPrinciples.filter((p) => p.featured === true);
   /** Na página full (/principles) o modo não afeta: sempre o mesmo conteúdo do technical (todos + cards completos). */
   const list = isHome

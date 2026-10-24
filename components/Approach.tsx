@@ -5,13 +5,17 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { CanvasRevealEffect } from "./ui/CanvasRevealEffect";
 import { useLanguage } from "@/context/LanguageContext";
+import { useViewMode } from "@/context/ViewModeContext";
 
 type ApproachCard = { title: string; order: string; des: string };
 
 const Approach = () => {
   const { t } = useLanguage();
+  const { viewMode } = useViewMode();
   const approach = t("approach") as { heading: string; highlight: string; cards: ApproachCard[] };
   const cards = approach.cards;
+
+  if (viewMode === "recruiter") return null;
   const configs = [
     {
       containerClassName: "bg-emerald-900 rounded-3xl overflow-hidden",

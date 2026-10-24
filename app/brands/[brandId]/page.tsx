@@ -9,9 +9,11 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 import { IoArrowBack } from "react-icons/io5";
 import { brandProducts, getBrandTranslationItem, STACK_LABELS } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
+import { useViewMode } from "@/context/ViewModeContext";
 import ProjectCarousel from "@/components/ProjectCarousel";
 import MagicButton from "@/components/MagicButton";
 import { StackTooltip } from "@/components/ui/StackTooltip";
+import { resolveBrandCopy } from "@/lib/resolveBrandCopy";
 import { splitDescriptionParagraphs } from "@/lib/utils";
 
 type BrandsPageT = {
@@ -35,6 +37,8 @@ type BrandsPageT = {
     tagline: string;
     des: string;
     fullDes?: string;
+    desTechnical?: string;
+    fullDesTechnical?: string;
     pillars?: Array<{ title: string; description: string }>;
     media?: Array<{ title: string; description: string }>;
   }>;
@@ -48,13 +52,15 @@ function getStackLabel(icon: string): string {
 export default function BrandDetailPage() {
   const { brandId } = useParams();
   const { t, lang } = useLanguage();
+  const { viewMode } = useViewMode();
   const brandsT = t("brands") as BrandsPageT;
 
   const brandIndex = brandProducts.findIndex((b) => b.id === String(brandId));
   const brand = brandIndex >= 0 ? brandProducts[brandIndex] : undefined;
-  const itemT = brand
+  const rawItemT = brand
     ? getBrandTranslationItem(brandsT.items, brand.id, brandIndex)
     : undefined;
+  const itemT = rawItemT ? resolveBrandCopy(rawItemT, viewMode) : undefined;
 
   if (!brand) {
     return (

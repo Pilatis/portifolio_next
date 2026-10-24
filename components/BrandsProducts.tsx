@@ -2,6 +2,8 @@
 
 import { brandProducts, getBrandTranslationItem } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
+import { useViewMode } from "@/context/ViewModeContext";
+import { resolveBrandCopy } from "@/lib/resolveBrandCopy";
 import { BrandProductCard } from "./BrandProductCard";
 import { Spotlight } from "./ui/Spotlight";
 
@@ -19,11 +21,13 @@ type BrandsT = {
     brandName: string;
     tagline: string;
     des: string;
+    desTechnical?: string;
   }>;
 };
 
 const BrandsProducts = () => {
   const { t } = useLanguage();
+  const { viewMode } = useViewMode();
   const brandsT = t("brands") as BrandsT;
 
   return (
@@ -52,11 +56,12 @@ const BrandsProducts = () => {
           }
         >
           {brandProducts.map((item, index) => {
-            const copy = getBrandTranslationItem(brandsT.items, item.id, index) ?? {
+            const raw = getBrandTranslationItem(brandsT.items, item.id, index) ?? {
               brandName: item.brandName,
               tagline: "",
               des: "",
             };
+            const copy = resolveBrandCopy(raw, viewMode);
             return (
               <BrandProductCard
                 key={item.id}

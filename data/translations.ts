@@ -69,18 +69,20 @@ const translations = {
           id: "freelago",
           brandName: "FreelaGoApp",
           tagline: "Freelance and company. One app.",
-          des: "Connecting companies and professionals for real services — pay to publish, on-site presence, 48h retention, and a backoffice running the process end to end.",
-          fullDes: `FreelaGoApp connects companies to operational freelancers for real shifts — events, logistics, general services and short-term roles. The company pays to publish a job; professionals apply or accept invites; both confirm presence on site with check-in/out codes; payout sits in a short retention window before PIX withdrawal. FreelaGo is not a bank: it orchestrates states while money moves through a payment provider.
+          des: "Connects companies to freelancers for short shifts and one-off ops — prepaid jobs, clear rules, and presence you can trust on the day.",
+          fullDes: `FreelaGo connects companies to operational freelancers for short-term shifts — with prepaid publishing, clear rules, and confidence on service day. The company publishes only after paying; the professional applies or accepts an invite; on site, both confirm presence; after the job, funds sit in a short protection window before withdrawal. If something goes off-plan, there is an incident channel and a human ops team watching the process.
 
-Professionals get onboarding with KYC, availability, job hub with match and map, invites, chat, wallet, and ratings. Companies get multi-user teams, talent bank, budget before pay, public company page, consolidated agenda, and presence cards on the day. A full backoffice handles document review, moderation, incidents, catalog, fees, and payment queues.
+In short: fast hiring, transparent pay, and verifiable presence — from listing to payout, in one place. The company pays the platform fee; the pro receives 100% of the listed rate. Match, invites, shared agenda, chat, check-in/out codes, wallet with temporary retention and PIX withdrawal keep both sides aligned without informal groups or handshake deals.`,
+          desTechnical: "Full-stack marketplace for operational freelancers: companies publish prepaid shifts, candidates onboard with KYC, apply or get invited, and a backoffice runs review, moderation, incidents, and financial reconciliation.",
+          fullDesTechnical: `FreelaGo is a full-stack marketplace for operational freelancers: companies publish shifts with prepaid commitment, candidates go through onboarding/KYC and apply or receive invites, and a backoffice operates review, moderation, incidents, and financial reconciliation.
 
-Built full-stack: Java 21 / Spring Boot 3 API, Next.js 15 BFF (HttpOnly cookies), Expo/React Native apps, Keycloak OIDC, PostgreSQL + Liquibase, STOMP realtime, Asaas payments, Docker + Render. Core hiring, presence, chat, invites, wallet (sandbox), and backoffice already run end-to-end — company billing invoices and full production PSP go-live are the next block.`,
+Stack: Java/Spring Boot 3 API, Next.js 15 web (BFF), Expo/React Native apps, Keycloak (OIDC/JWT), STOMP realtime, Asaas payments, deploy on Render. Presence is confirmed with check-in/out codes; wallet uses short retention before PIX. FreelaGo is not a bank — it orchestrates states while money moves through the PSP. Core hiring → presence → payout already runs end to end; full company billing invoices and production PSP go-live are the next leap.`,
           pillars: [
             { title: "Pay to publish", description: "Company pays upfront; the pro receives 100% of the listed rate." },
             { title: "Match & invites", description: "Apply, save jobs, or accept company invites with clear expiry rules." },
             { title: "On-site presence", description: "Check-in/out codes, delay rules, and incident flow when something breaks." },
             { title: "Trust & KYC", description: "Document review, verified profiles, and human backoffice support." },
-            { title: "Wallet & PIX", description: "48h retention, available balance, and PIX withdrawal for the pro." },
+            { title: "Wallet & PIX", description: "Short retention, available balance, and PIX withdrawal for the pro." },
             { title: "Web + native apps", description: "Same core flows on Next.js and Expo for candidates and companies." },
           ],
           media: [
@@ -94,16 +96,18 @@ Built full-stack: Java 21 / Spring Boot 3 API, Next.js 15 BFF (HttpOnly cookies)
           id: "corenote",
           brandName: "CoreNote",
           tagline: "Every note, in the right place.",
-          des: "Local-first desktop notes hub — Quiet Dark experience, instant search, and an AES-256-GCM vault. 100% on your device.",
-          fullDes: `CoreNote is a local-first desktop notes hub built for people who write a lot and want privacy, focus, and full control over their files — not another cloud notepad that depends on an account to work.
+          des: "A local-first desktop hub for notes and long writing — Quiet Dark, focus mode, and files under your control, without needing the cloud for daily work.",
+          fullDes: `Most note apps push you into accounts, sync, and servers by default — even when you just want focused writing, ownership of your files, and protection for what is sensitive. CoreNote is a desktop hub for notes and texts — a “second brain” on the PC — with Quiet Dark aesthetics, minimal chrome, and typography for long reading, without depending on the internet day to day.
 
-Notes live as Markdown (.md) and plain text (.txt) on disk; metadata, tags, folders, and search index sit in local SQLite. Organize with nested folders, tags, pins, archive, and trash. Navigate with Ctrl+P. Focus mode (Ctrl+Shift+F) hides the sidebar and chrome so the text stays center stage. The Vault protects sensitive notes with a master password, per-note unlock, and idle auto-lock — AES-256-GCM + Argon2id run only in the Electron main process; the key never leaves RAM and never goes to the cloud.
+Create and edit Markdown and plain text with auto-save, familiar shortcuts, and a rich TipTap editor (headings, lists, checklists, images, link previews). Organize with nested folders, tags, pins, archive, and trash. Command Palette (Ctrl+P) searches titles, tags, and content locally; Focus mode (Ctrl+Shift+F) clears the chrome. The Vault encrypts notes at rest with a master password (Argon2id), unlocks per note, and auto-locks after idle time. Optional local sync folder mirrors readable notes to Explorer — point it at OneDrive/Dropbox if you want; CoreNote never runs a cloud account or uploads plaintext.
 
-The app is Electron + React (TipTap editor, cmdk palette, Quiet Dark UI). Optional local folder sync mirrors readable notes to a path you choose — useful with your own OneDrive/Dropbox folder, without CoreNote operating that account. Backup and export keep your library portable.
+Public v0.3.0 ships for Windows x64 (NSIS). The marketing site only presents the product and delivers the installer — notes stay on your machine.`,
+          desTechnical: "Electron + React local-first notes hub: MD/TXT on disk, SQLite metadata, TipTap editor, Argon2id/AES vault in the main process; Amplify static site only for marketing and the installer.",
+          fullDesTechnical: `CoreNote is a local-first desktop notes hub (v0.3.0, Windows x64 NSIS). Electron + React renderer; domain in @corenote/core (ports/use-cases, no Electron/React coupling); note bodies as files on disk; metadata in SQLite (sql.js); crypto (@corenote/crypto) and key access only in main — Zod-validated IPC, contextIsolation + sandbox on.
 
-The official site (CoreNoteWeb) is a Next.js static export on AWS Amplify Hosting: marketing, license popup, and Windows installer delivery via CDN. Amplify does not store notes. GitLab Releases host the NSIS Setup for Windows x64 (v0.3.0). Writing, searching, and organizing work fully offline.`,
+Editor: TipTap (MD/TXT), auto-save, Command Palette, Focus mode. Vault: Argon2id-derived master key, AES-256-GCM at rest, per-note unlock, idle auto-lock. SyncPort/AuthPort exist as seams (no-op today) for a future optional E2E sync where the cloud would only see ciphertext. CoreNoteWeb is Next.js 15 static export on AWS Amplify Hosting + CDN — landing, license popup, SmartScreen notice, download links. GitLab Releases host CoreNote-Setup-0.3.0.exe; the app checks that API for updates (manual, no auto-install). Amplify and GitLab do not host notes or expose a content API — source of truth remains under %APPDATA%\\CoreNote\\corenote\\.`,
           pillars: [
-            { title: "MD & TXT editor", description: "TipTap Markdown, auto-save (~500ms), undo/redo, and familiar shortcuts." },
+            { title: "MD & TXT editor", description: "TipTap Markdown, auto-save, undo/redo, and familiar shortcuts." },
             { title: "Ctrl+P search", description: "Title, content, and tags — recent notes and keyboard-first navigation." },
             { title: "Focus mode", description: "Sidebar and chrome gone; typography tuned for long writing." },
             { title: "Tags & folders", description: "Local organization with pins, archive, and soft-delete trash." },
@@ -313,20 +317,37 @@ The project involved challenges such as multi-profile access control, complex op
       highlight: "work experience",
       items: [
         {
-          title: "Full Stack Developer",
-          desc: "Building modern web applications with React, Next.js and TypeScript, focusing on scalability, performance and clean architecture, while integrating front-end and back-end solutions.",
+          title: "Founder & Full Stack",
+          company: "FreelaGoApp",
+          period: "2025 — Present",
+          desc: "Building an operational freelance marketplace end to end — prepaid job publishing, match/invites, on-site presence, wallet, and backoffice.",
+          bullets: [
+            "Designed hiring → presence → payout flows across web, native apps, and ops backoffice",
+            "Stack: Spring Boot 3, Next.js 15 BFF, Expo, Keycloak, Asaas, Render",
+            "Core product path already runs end to end; production billing go-live next",
+          ],
         },
         {
-          title: "Front-End & Mobile Developer (React Native)",
-          desc: "Developing responsive web interfaces and native mobile applications for iOS and Android using React Native, delivering smooth and intuitive user experiences.",
+          title: "Full Stack / Front-End Developer",
+          company: "Cognitiva Brasil",
+          period: "2024 — Present",
+          desc: "Shipping product features for B2B and mobile clients — career platform, hotel SaaS, data insights, and photo-book app with real checkout flows.",
+          bullets: [
+            "React, Next.js, TypeScript, Chakra UI; mobile with React Native / Expo",
+            "Collaborated on architecture, UX journeys, and integrations (auth, payments, APIs)",
+            "Cases: Voxa, B2BHotel, DR Insights, Fotocord",
+          ],
         },
         {
-          title: "Freelance Full Stack Projects",
-          desc: "Working on freelance projects from concept to deployment, collaborating with clients to deliver customized web and application solutions tailored to real business needs.",
-        },
-        {
-          title: "Front-End Technical Leadership",
-          desc: "Contributing to technical decisions, defining front-end architecture, and collaborating closely with design and product teams to ensure consistent, scalable solutions.",
+          title: "Product Creator",
+          company: "CoreNote",
+          period: "2025 — 2026",
+          desc: "Shipped a local-first desktop notes hub (v0.3.0) — Quiet Dark UI, TipTap editor, vault, and Windows installer with a static marketing site.",
+          bullets: [
+            "Electron + React monorepo: core, crypto, SQLite, TipTap, Command Palette, Focus mode",
+            "Vault with Argon2id / AES-256-GCM in the main process only",
+            "CoreNoteWeb on Amplify for download; notes never leave the device",
+          ],
         },
       ],
     },
@@ -485,18 +506,20 @@ The project involved challenges such as multi-profile access control, complex op
           id: "freelago",
           brandName: "FreelaGoApp",
           tagline: "Freela e empresa. Um só app.",
-          des: "Conectando empresas e profissionais para serviços de verdade — pague para publicar, presença no local, retenção de 48h e backoffice operando o processo ponta a ponta.",
-          fullDes: `FreelaGoApp conecta empresas a freelancers operacionais para turnos reais — eventos, logística, serviços gerais e funções de curto prazo. A empresa paga para publicar a vaga; o profissional candidata-se ou aceita convite; os dois confirmam presença no local com códigos de check-in/out; o valor fica em retenção por um período curto antes do saque PIX. A FreelaGo não é banco: orquestra estados enquanto o dinheiro passa por um provedor de pagamentos.
+          des: "Conecta empresas a freelancers para turnos e operações pontuais — com pagamento antecipado, regras claras e confiança no dia do serviço.",
+          fullDes: `A FreelaGo conecta empresas a profissionais freelancers para turnos e operações pontuais — com pagamento antecipado, regras claras e confiança no dia do serviço. A empresa publica a vaga depois de pagar; o profissional candidata-se ou aceita um convite; no local, ambos confirmam presença; e, após o trabalho, o valor fica protegido por um período curto antes do saque. Se algo sai do previsto, há um canal de ocorrências e uma operação humana a acompanhar o processo.
 
-Do lado do profissional: onboarding com KYC, disponibilidade, hub de vagas com match e mapa, convites, chat, carteira e avaliações. Da empresa: equipa multi-utilizador, banco de talentos, orçamento antes de pagar, página pública, agenda consolidada e cartão de presença no dia. O backoffice cobre revisão de documentos, moderação, ocorrências, catálogo, taxas e fila de pagamentos.
+Em resumo: contratação ágil, remuneração transparente e presença verificável — do anúncio ao pagamento, num só lugar. A taxa da plataforma fica do lado de quem contrata; o profissional recebe o valor anunciado por inteiro. Match, convites, agenda, chat, códigos de check-in/out, carteira com retenção temporária e saque via PIX organizam o ciclo completo — sem depender de grupos informais ou acordos soltos.`,
+          desTechnical: "Marketplace full-stack de freelancers operacionais: empresas publicam turnos com pagamento antecipado, candidatos passam por onboarding/KYC e candidatam-se ou recebem convites, e um backoffice opera revisão, moderação, ocorrências e conciliação financeira.",
+          fullDesTechnical: `FreelaGo é um marketplace full-stack de freelancers operacionais: empresas publicam turnos com pagamento antecipado, candidatos passam por onboarding/KYC e candidatam-se ou recebem convites, e um backoffice opera revisão, moderação, ocorrências e conciliação financeira.
 
-Stack full-stack: API Java 21 / Spring Boot 3, Next.js 15 (BFF com cookies HttpOnly), apps Expo/React Native, Keycloak OIDC, PostgreSQL + Liquibase, realtime STOMP, pagamentos Asaas, Docker + Render. O core de contratação, presença, chat, convites, carteira (sandbox) e backoffice já roda de ponta a ponta — faturas de billing da empresa e go-live completo do PSP em produção são o próximo bloco.`,
+Stack: API Java/Spring Boot 3, web Next.js 15 (BFF), app Expo/React Native, autenticação Keycloak (OIDC/JWT), realtime STOMP, pagamentos Asaas e deploy em Render. No dia do serviço, a presença é confirmada com códigos de check-in e check-out; a carteira usa retenção curta antes do saque PIX. A FreelaGo não atua como banco — orquestra estados enquanto o dinheiro passa pelo PSP. O núcleo contratação → presença → pagamento já roda de ponta a ponta; o próximo salto é faturamento completo para empresas e go-live pleno dos pagamentos em produção.`,
           pillars: [
             { title: "Pague para publicar", description: "Empresa paga na publicação; o profissional recebe 100% do valor anunciado." },
             { title: "Match e convites", description: "Candidatura, vagas salvas ou convites da empresa com regras claras de expiração." },
             { title: "Presença no local", description: "Códigos de check-in/out, regras de atraso e ocorrências quando algo falha." },
             { title: "Confiança e KYC", description: "Revisão de documentos, perfis verificados e suporte humano no backoffice." },
-            { title: "Carteira e PIX", description: "Retenção de 48h, saldo disponível e saque PIX para o prestador." },
+            { title: "Carteira e PIX", description: "Retenção temporária, saldo disponível e saque PIX para o prestador." },
             { title: "Web + apps nativas", description: "Mesmos fluxos principais no Next.js e no Expo para candidato e empresa." },
           ],
           media: [
@@ -510,16 +533,18 @@ Stack full-stack: API Java 21 / Spring Boot 3, Next.js 15 (BFF com cookies HttpO
           id: "corenote",
           brandName: "CoreNote",
           tagline: "Cada nota, no lugar certo.",
-          des: "Hub desktop local-first de notas — experiência Quiet Dark, busca instantânea e cofre AES-256-GCM. 100% no seu dispositivo.",
-          fullDes: `CoreNote é um hub de notas no desktop local-first para quem escreve muito e quer privacidade, foco e controle total sobre os próprios arquivos — não mais um bloco de notas na nuvem que depende de conta para funcionar.
+          des: "Hub desktop local-first de notas e textos — Quiet Dark, modo foco e arquivos sob o seu controle, sem depender da internet no dia a dia.",
+          fullDes: `A maior parte dos apps de notas empurra conta, sync e servidor como caminho padrão — mesmo quando o que se quer é escrever com foco, ter os arquivos sob controle e proteger o que é sensível. O CoreNote é um hub desktop de notas e textos — um “segundo cérebro” no PC — com estética Quiet Dark, chrome mínimo e tipografia para leitura longa, sem depender da internet no fluxo do dia a dia.
 
-As notas vivem como Markdown (.md) e texto puro (.txt) no disco; metadados, tags, pastas e índice de busca ficam no SQLite local. Organize com pastas aninhadas, tags, pins, arquivo e lixeira. Navegue com Ctrl+P. O modo foco (Ctrl+Shift+F) esconde sidebar e chrome para o texto ficar no centro. O Cofre protege notas sensíveis com senha mestra, unlock por nota e auto-lock por ociosidade — AES-256-GCM + Argon2id rodam só no processo main do Electron; a chave fica só em RAM e nunca sobe para a nuvem.
+Crie e edite notas em Markdown e texto puro, com auto-save, atalhos familiares e editor rico (TipTap): headings, listas, checklists, imagens e links com prévia. Organize com pastas aninhadas, tags, notas fixadas, arquivo e lixeira. A Command Palette (Ctrl+P) busca título, tags e conteúdo no índice local; o modo foco (Ctrl+Shift+F) remove a sidebar. O Cofre protege notas com criptografia em repouso: senha mestra (Argon2id), desbloqueio por nota e auto-lock por ociosidade. Em Preferências → Dados há backup, export, import de .md/.txt e pasta sincronizada local que espelha notas no Explorer — se apontar para OneDrive ou Dropbox, quem replica é o provedor; o CoreNote não opera conta cloud nem sobe plaintext.
 
-O app é Electron + React (editor TipTap, command palette cmdk, UI Quiet Dark). A pasta sincronizada opcional espelha notas legíveis num caminho que você escolhe — útil com OneDrive/Dropbox do usuário, sem o CoreNote operar essa conta. Backup e export mantêm a biblioteca portátil.
+A versão pública 0.3.0 distribui para Windows x64 (NSIS). O site só apresenta o produto e entrega o instalador — as notas ficam no seu dispositivo.`,
+          desTechnical: "Hub Electron + React local-first: MD/TXT no disco, metadados SQLite, TipTap, cofre Argon2id/AES no main process; site estático no Amplify só para marketing e instalador.",
+          fullDesTechnical: `CoreNote é um hub desktop local-first de notas (v0.3.0, Windows x64 NSIS). Electron + React no renderer; domínio em @corenote/core (ports e use-cases, sem acoplar Electron/React); corpo das notas em arquivo no disco; metadados em SQLite (sql.js); criptografia (@corenote/crypto) e chave só no main — IPC validado por Zod, contextIsolation e sandbox ligados.
 
-O site oficial (CoreNoteWeb) é um export estático Next.js no AWS Amplify Hosting: marketing, popup de licença e entrega do instalador Windows via CDN. O Amplify não armazena notas. As releases no GitLab hospedam o Setup NSIS para Windows x64 (v0.3.0). Escrever, buscar e organizar funcionam 100% offline.`,
+Editor TipTap (MD/TXT), auto-save, Command Palette e modo foco. Cofre: chave mestra com Argon2id, AES-256-GCM em repouso, unlock por nota e auto-lock. AuthPort/SyncPort existem como seams (hoje no-op) para sync opcional ponta a ponta futuro, em que a nuvem só veria ciphertext. CoreNoteWeb é Next.js 15 export estático no AWS Amplify Hosting + CDN — landing, popup de licença, aviso SmartScreen e downloads. Releases no GitLab com CoreNote-Setup-0.3.0.exe; o app consulta essa API para atualizações manuais (sem auto-instalação). Amplify e GitLab não hospedam notas nem expõem API de conteúdo — a fonte da verdade continua em %APPDATA%\\CoreNote\\corenote\\.`,
           pillars: [
-            { title: "Editor MD & TXT", description: "Markdown TipTap, auto-save (~500ms), undo/redo e atalhos familiares." },
+            { title: "Editor MD & TXT", description: "Markdown TipTap, auto-save, undo/redo e atalhos familiares." },
             { title: "Busca Ctrl+P", description: "Título, conteúdo e tags — recentes e navegação por teclado." },
             { title: "Modo foco", description: "Sidebar e chrome somem; tipografia para escrita longa." },
             { title: "Tags & pastas", description: "Organização local com pins, arquivo e lixeira (soft-delete)." },
@@ -762,20 +787,37 @@ Um dos destaques do projeto foi a implementação de um mapa interativo, que exi
       highlight: "experiência",
       items: [
         {
-          title: "Desenvolvedor Full Stack",
-          desc: "Construindo aplicações web modernas com React, Next.js e TypeScript, com foco em escalabilidade, performance e arquitetura limpa, integrando front-end e back-end.",
+          title: "Fundador e Full Stack",
+          company: "FreelaGoApp",
+          period: "2025 — Atual",
+          desc: "Construindo um marketplace de freelancers operacionais de ponta a ponta — publicação com pagamento antecipado, match/convites, presença no local, carteira e backoffice.",
+          bullets: [
+            "Fluxos contratação → presença → pagamento na web, apps nativos e backoffice",
+            "Stack: Spring Boot 3, Next.js 15 BFF, Expo, Keycloak, Asaas, Render",
+            "Núcleo do produto já operacional; próximo passo é go-live pleno de billing",
+          ],
         },
         {
-          title: "Desenvolvedor Front-End e Mobile (React Native)",
-          desc: "Desenvolvendo interfaces web responsivas e aplicativos nativos para iOS e Android com React Native, entregando experiências fluidas e intuitivas.",
+          title: "Desenvolvedor Full Stack / Front-End",
+          company: "Cognitiva Brasil",
+          period: "2024 — Atual",
+          desc: "Entregando features de produto para clientes B2B e mobile — plataforma de carreira, SaaS hoteleiro, insights de dados e app de fotolivros com checkout real.",
+          bullets: [
+            "React, Next.js, TypeScript, Chakra UI; mobile com React Native / Expo",
+            "Arquitetura, jornadas de UX e integrações (auth, pagamentos, APIs)",
+            "Cases: Voxa, B2BHotel, DR Insights, Fotocord",
+          ],
         },
         {
-          title: "Projetos Freelance Full Stack",
-          desc: "Atuando em projetos freelance do conceito ao deploy, em colaboração com clientes para entregar soluções web e aplicações sob medida para necessidades reais.",
-        },
-        {
-          title: "Liderança Técnica Front-End",
-          desc: "Contribuindo com decisões técnicas, definindo arquitetura front-end e colaborando com design e produto para soluções consistentes e escaláveis.",
+          title: "Criador do produto",
+          company: "CoreNote",
+          period: "2025 — 2026",
+          desc: "Lancei um hub desktop local-first de notas (v0.3.0) — UI Quiet Dark, editor TipTap, cofre e instalador Windows com site estático de marketing.",
+          bullets: [
+            "Monorepo Electron + React: core, crypto, SQLite, TipTap, Command Palette, modo foco",
+            "Cofre com Argon2id / AES-256-GCM só no processo main",
+            "CoreNoteWeb no Amplify para download; notas nunca saem do dispositivo",
+          ],
         },
       ],
     },
@@ -811,17 +853,17 @@ Um dos destaques do projeto foi a implementação de um mapa interativo, que exi
       cards: [
         {
           title: "Planejamento e Estratégia",
-          order: "Frase 1",
+          order: "Fase 1",
           des: "Começo entendendo objetivos, usuários e necessidades técnicas para definir a direção certa desde o primeiro dia.",
         },
         {
           title: "Desenvolvimento e Colaboração",
-          order: "Frase 2",
+          order: "Fase 2",
           des: "Desenvolvo com foco em código limpo, comunicação clara e atualizações constantes durante todo o processo.",
         },
         {
           title: "Entrega e Evolução",
-          order: "Frase 3",
+          order: "Fase 3",
           des: "Entrego soluções escaláveis e prontas para produção e as melhoro continuamente com base em uso real e feedback.",
         },
       ],

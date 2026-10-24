@@ -1,56 +1,86 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-
 import { workExperience } from "@/data";
-import { Button } from "./ui/MovingBorders";
 import { useLanguage } from "@/context/LanguageContext";
+import { useViewMode } from "@/context/ViewModeContext";
+import { cn } from "@/lib/utils";
+
+type ExpItemT = {
+  title: string;
+  company: string;
+  period: string;
+  desc: string;
+  bullets?: string[];
+};
+
+type ExperienceT = {
+  heading: string;
+  highlight: string;
+  items: ExpItemT[];
+};
 
 const Experience = () => {
   const { t } = useLanguage();
-  const experienceT = t("experience") as { heading: string; highlight: string; items: Array<{ title: string; desc: string }> };
+  const { viewMode } = useViewMode();
+  const experienceT = t("experience") as ExperienceT;
+  const isTechnical = viewMode === "technical";
+
   return (
-    <div className="py-20 w-full">
+    <section id="experience" className="w-full scroll-mt-20 py-20">
       <h1 className="heading">
-        {experienceT.heading} <span className="text-purple">{experienceT.highlight}</span>
+        {experienceT.heading}{" "}
+        <span className="text-purple">{experienceT.highlight}</span>
       </h1>
 
-      <div className="w-full mt-12 grid lg:grid-cols-4 grid-cols-1 gap-10">
-        {workExperience.map((card, index) => (
-          <Button
-            key={card.id}
-            duration={Math.floor(Math.random() * 10000) + 10000}
-            borderRadius="1.75rem"
-            style={{
-              background: "rgb(4,7,29)",
-              backgroundColor:
-                "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-              borderRadius: `calc(1.75rem* 0.96)`,
-            }}
-            className="flex-1 text-black dark:text-white border-neutral-200 dark:border-slate-800"
-          >
-            <div className="flex lg:flex-row flex-col lg:items-center p-3 py-6 md:p-5 lg:p-10 gap-2">
-              <Image
-                src={card.thumbnail}
-                alt={card.thumbnail}
-                width={128}
-                height={128}
-                className="lg:w-32 md:w-20 w-16 h-auto"
+      <ol className="relative mx-auto mt-12 max-w-3xl space-y-0 border-l border-white/10 pl-6 sm:pl-8">
+        {workExperience.map((card, index) => {
+          const item = experienceT.items[index];
+          const title = item?.title ?? card.title;
+          const company = item?.company ?? card.company;
+          const period = item?.period ?? card.period;
+          const desc = item?.desc ?? card.desc;
+          const bullets = item?.bullets ?? card.bullets ?? [];
+
+          return (
+            <li key={card.id} className="relative pb-10 last:pb-0">
+              <span
+                aria-hidden
+                className="absolute -left-[1.55rem] top-1.5 h-3 w-3 rounded-full border-2 border-purple bg-black-100 sm:-left-[2.05rem]"
               />
-              <div className="lg:ms-5">
-                <h1 className="text-start text-xl md:text-2xl font-bold">
-                  {experienceT.items[index]?.title ?? card.title}
-                </h1>
-                <p className="text-start text-white-100 mt-3 font-semibold">
-                  {experienceT.items[index]?.desc ?? card.desc}
-                </p>
+              <div
+                className={cn(
+                  "rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6",
+                  "transition-colors hover:border-white/[0.14]",
+                )}
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                  <h2 className="text-lg font-bold text-white sm:text-xl">{title}</h2>
+                  <span className="text-xs font-medium uppercase tracking-wider text-purple/90 sm:text-sm">
+                    {period}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm font-medium text-white-200/80">{company}</p>
+                <p className="mt-3 text-sm leading-relaxed text-white-200">{desc}</p>
+                {isTechnical && bullets.length > 0 && (
+                  <ul className="mt-3 space-y-1.5">
+                    {bullets.map((b) => (
+                      <li
+                        key={b}
+                        className="flex gap-2 text-sm leading-relaxed text-white-200/85"
+                      >
+                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-purple" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-            </div>
-          </Button>
-        ))}
-      </div>
-    </div>
+            </li>
+          );
+        })}
+      </ol>
+    </section>
   );
 };
 

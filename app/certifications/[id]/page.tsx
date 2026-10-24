@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { IoArrowBack } from "react-icons/io5";
 import { certifications } from "@/data";
 import { useLanguage } from "@/context/LanguageContext";
+import { formatCertDateRange } from "@/lib/formatCertDate";
 
 type CertDetailT = {
   backToCertifications: string;
@@ -34,11 +35,6 @@ type CertDetailT = {
     impact?: string;
   }>;
 };
-
-function formatDateRange(startedAt: string, issuedAt: string | null, inProgress: string): string {
-  if (issuedAt === null) return inProgress;
-  return `${startedAt} – ${issuedAt}`;
-}
 
 export default function CertificationDetailPage() {
   const { id } = useParams();
@@ -144,6 +140,7 @@ export default function CertificationDetailPage() {
                     src={src}
                     alt={certificationImages.length > 1 ? `Página ${i + 1}` : ""}
                     fill
+                    unoptimized
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-contain"
                     onError={() => setImgError(true)}
@@ -168,7 +165,7 @@ export default function CertificationDetailPage() {
         >
           <span><strong className="text-purple/90">{certT.issuerLabel ?? "Instituição"}:</strong> {issuer}</span>
           <span className="text-white-200/50">·</span>
-          <span><strong className="text-purple/90">{certT.period}:</strong> {formatDateRange(cert.startedAt, cert.issuedAt, certT.inProgress)}</span>
+          <span><strong className="text-purple/90">{certT.period}:</strong> {formatCertDateRange(cert.startedAt, cert.issuedAt, certT.inProgress)}</span>
           {cert.hours && (
             <>
               <span className="text-white-200/50">·</span>

@@ -258,7 +258,7 @@ export const certifications: Certification[] = [
     title: "Next.js e React",
     issuer: "Udemy",
     startedAt: "2023-12",
-    issuedAt: "2026-02",
+    issuedAt: "2024-02",
     category: ["Frontend", "Backend"],
     skills: ["React", "Next.js", "Node.js", "HTML", "CSS"],
     topics: [
@@ -282,7 +282,7 @@ export const certifications: Certification[] = [
     title: "React do Zero a Maestria (c/Hooks, Router, API, Projetos)",
     issuer: "Udemy",
     startedAt: "2023-11",
-    issuedAt: "2026-02",
+    issuedAt: "2024-01",
     category: ["Frontend"],
     skills: ["React", "Node.js", "HTML", "CSS"],
     topics: [
@@ -360,7 +360,7 @@ export const certifications: Certification[] = [
     title: "JavaScript",
     issuer: "freeCodeCamp",
     startedAt: "2024-12",
-    issuedAt: "2026-02",
+    issuedAt: "2025-03",
     hours: "300h",
     category: ["Frontend", "Fundamentos"],
     skills: [
@@ -395,7 +395,7 @@ export const certifications: Certification[] = [
     title: "Scrum",
     issuer: "Centro Universitário Leonardo da Vinci - Uniasselvi",
     startedAt: "2025-12",
-    issuedAt: "2026-02",
+    issuedAt: "2026-01",
     category: ["Metodologias Ágeis"],
     skills: ["Scrum", "Gestão Ágil", "Sprints", "Product Backlog"],
     topics: [
@@ -973,31 +973,39 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Full Stack Developer",
-    desc: "Building modern web applications with React, Next.js and TypeScript, focusing on scalability, performance and clean architecture, while integrating front-end and back-end solutions.",
-    className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
+    title: "Founder & Full Stack",
+    company: "FreelaGoApp",
+    period: "2025 — Present",
+    desc: "Building an operational freelance marketplace end to end — prepaid job publishing, match/invites, on-site presence, wallet, and backoffice.",
+    bullets: [
+      "Designed hiring → presence → payout flows across web, native apps, and ops backoffice",
+      "Stack: Spring Boot 3, Next.js 15 BFF, Expo, Keycloak, Asaas, Render",
+      "Core product path already runs end to end; production billing go-live next",
+    ],
   },
   {
     id: 2,
-    title: "Front-End & Mobile Developer (React Native)",
-    desc: "Developing responsive web interfaces and native mobile applications for iOS and Android using React Native, delivering smooth and intuitive user experiences.",
-    className: "md:col-span-2",
-    thumbnail: "/exp2.svg",
+    title: "Full Stack / Front-End Developer",
+    company: "Cognitiva Brasil",
+    period: "2024 — Present",
+    desc: "Shipping product features for B2B and mobile clients — career platform, hotel SaaS, data insights, and photo-book app with real checkout flows.",
+    bullets: [
+      "React, Next.js, TypeScript, Chakra UI; mobile with React Native / Expo",
+      "Collaborated on architecture, UX journeys, and integrations (auth, payments, APIs)",
+      "Cases: Voxa, B2BHotel, DR Insights, Fotocord",
+    ],
   },
   {
     id: 3,
-    title: "Freelance Full Stack Projects",
-    desc: "Working on freelance projects from concept to deployment, collaborating with clients to deliver customized web and application solutions tailored to real business needs.",
-    className: "md:col-span-2",
-    thumbnail: "/exp3.svg",
-  },
-  {
-    id: 4,
-    title: "Front-End Technical Leadership",
-    desc: "Contributing to technical decisions, defining front-end architecture, and collaborating closely with design and product teams to ensure consistent, scalable solutions.",
-    className: "md:col-span-2",
-    thumbnail: "/exp4.svg",
+    title: "Product Creator",
+    company: "CoreNote",
+    period: "2025 — 2026",
+    desc: "Shipped a local-first desktop notes hub (v0.3.0) — Quiet Dark UI, TipTap editor, vault, and Windows installer with a static marketing site.",
+    bullets: [
+      "Electron + React monorepo: core, crypto, SQLite, TipTap, Command Palette, Focus mode",
+      "Vault with Argon2id / AES-256-GCM in the main process only",
+      "CoreNoteWeb on Amplify for download; notes never leave the device",
+    ],
   },
 ];
 

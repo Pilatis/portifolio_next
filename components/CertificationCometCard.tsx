@@ -8,11 +8,7 @@ import type { CertificationItemT, CertificationCardLabels } from "./Certificatio
 import { FaLocationArrow } from "react-icons/fa6";
 import { useLanguage } from "@/context/LanguageContext";
 import { CometCard } from "@/components/ui/comet-card";
-
-function formatDateRange(startedAt: string, issuedAt: string | null, inProgress: string): string {
-  if (issuedAt === null) return inProgress;
-  return `${startedAt} – ${issuedAt}`;
-}
+import { formatCertDateRange } from "@/lib/formatCertDate";
 
 export type CertificationCometCardProps = {
   cert: Certification;
@@ -80,6 +76,7 @@ export function CertificationCometCard({
                   src={displayImage}
                   alt={itemT?.title ?? cert.title}
                   fill
+                  unoptimized
                   sizes="(max-width: 768px) 85vw, 400px"
                   className="object-contain"
                   onError={() => setImgError(true)}
@@ -95,7 +92,7 @@ export function CertificationCometCard({
           <p className="text-sm text-white-200/90 mb-3 flex flex-wrap items-center gap-x-2 gap-y-0.5">
             <span>{itemT?.issuer ?? cert.issuer}</span>
             <span className="text-white-200/50">·</span>
-            <span>{formatDateRange(cert.startedAt, cert.issuedAt, inProgress)}</span>
+            <span>{formatCertDateRange(cert.startedAt, cert.issuedAt, inProgress)}</span>
             {cert.hours && (
               <>
                 <span className="text-white-200/50">·</span>
