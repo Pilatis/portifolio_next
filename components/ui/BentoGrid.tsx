@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { IoCopyOutline } from "react-icons/io5";
 import dynamic from "next/dynamic";
@@ -58,13 +58,14 @@ export const BentoGridItem = ({
   const rightLists = ["React Native", "JavaScript", "Node.js"];
 
   const [copied, setCopied] = useState(false);
+  const [confettiKey, setConfettiKey] = useState(0);
   const { t } = useLanguage();
   const bento = t("bento") as { copyEmail: string; emailCopied: string };
 
-  const defaultOptions = {
-    loop: copied,
-    autoplay: copied,
-    animationData: animationData,
+  const confettiOptions = {
+    loop: false,
+    autoplay: true,
+    animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
     },
@@ -72,10 +73,12 @@ export const BentoGridItem = ({
 
   const handleCopy = () => {
     const text = "pilatidev1@gmail.com";
-    if (typeof navigator !== 'undefined' && navigator.clipboard) {
-      navigator.clipboard.writeText(text);
+    if (typeof navigator !== "undefined" && navigator.clipboard) {
+      void navigator.clipboard.writeText(text);
     }
     setCopied(true);
+    setConfettiKey((k) => k + 1);
+    window.setTimeout(() => setCopied(false), 2500);
   };
 
   return (
@@ -107,8 +110,9 @@ export const BentoGridItem = ({
           )}
         </div>
         <div
-          className={`absolute right-0 -bottom-5 relative ${id === 5 && "w-full opacity-80"
-            } `}
+          className={`absolute right-0 -bottom-5 relative ${
+            id === 5 && "w-full opacity-80"
+          } `}
         >
           {spareImg && (
             <Image
@@ -146,7 +150,7 @@ export const BentoGridItem = ({
           </div>
 
           {/* for the github 3d globe */}
-          {id === 2 && <GridGlobe /> }
+          {id === 2 && <GridGlobe />}
 
           {/* Tech stack list div */}
           {id === 3 && (
@@ -180,25 +184,16 @@ export const BentoGridItem = ({
           )}
           {id === 6 && (
             <div className="mt-5 relative">
-              {/* button border magic from tailwind css buttons  */}
-              {/* add rounded-md h-8 md:h-8, remove rounded-full */}
-              {/* remove focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 */}
-              {/* add handleCopy() for the copy the text */}
-              <div
-                className={`absolute -bottom-5 right-0 ${copied ? "block" : "block"
-                  }`}
-              >
-                {/* <img src="/confetti.gif" alt="confetti" /> */}
-                {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
-                <Image
-                  src="/confetti.gif"
-                  alt="confetti"
-                  width={400}
-                  height={200}
-                  unoptimized
-                  className="w-[400px] h-[200px]"
-                />
-              </div>
+              {copied && (
+                <div className="pointer-events-none absolute -bottom-5 right-0 z-10">
+                  <Lottie
+                    key={confettiKey}
+                    options={confettiOptions}
+                    height={200}
+                    width={400}
+                  />
+                </div>
+              )}
 
               <MagicButton
                 title={copied ? bento.emailCopied : bento.copyEmail}
