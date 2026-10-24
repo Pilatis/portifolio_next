@@ -110,7 +110,7 @@ export function ProjectCard({
 
   if (isGrid) {
     return (
-      <div className="w-full min-w-0 lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center">
+      <div className="flex h-auto w-full min-w-0 items-center justify-center md:h-[25rem] lg:min-h-[32.5rem]">
         <PinContainer
           title={checkLiveSite}
           href={`/${item.id}`}
@@ -132,7 +132,7 @@ export function ProjectCard({
     <div
       role="button"
       tabIndex={0}
-      className="lg:min-h-[32.5rem] h-[25rem] flex items-center justify-center sm:w-96 w-[80vw] cursor-pointer"
+      className="flex h-auto w-[80vw] cursor-pointer items-center justify-center sm:w-96 md:h-[25rem] lg:min-h-[32.5rem]"
       onClick={() => router.push(`/${item.id}`)}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {

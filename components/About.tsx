@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 import { MovingBorder } from "./ui/MovingBorders";
 import { Terminal } from "./ui/terminal";
 import { cn } from "@/lib/utils";
@@ -82,6 +83,7 @@ export default function About() {
 
 function PhotoWithMovingBorder({ imageAlt }: { imageAlt: string }) {
   const [mounted, setMounted] = useState(false);
+  const isDesktop = useIsDesktop();
   const borderRadius = "1.5rem";
   const innerRadius = "calc(1.5rem * 0.96)";
 
@@ -97,7 +99,7 @@ function PhotoWithMovingBorder({ imageAlt }: { imageAlt: string }) {
       )}
       style={{ borderRadius }}
     >
-      {mounted && (
+      {mounted && isDesktop && (
         <div
           className="absolute inset-0 rounded-[1.5rem]"
           style={{ borderRadius: innerRadius }}

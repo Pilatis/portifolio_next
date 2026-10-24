@@ -57,10 +57,10 @@ export function BrandProductCard({
         boxShadow: `0 0 0 1px ${accent}14, 0 24px 60px -28px ${accent}55`,
       }}
     >
-      {/* Accent glow */}
+      {/* Accent glow — só desktop (hover + blur pesado no mobile) */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 left-1/2 h-48 w-[70%] -translate-x-1/2 rounded-full opacity-40 blur-3xl transition-opacity duration-500 group-hover:opacity-70"
+        className="pointer-events-none absolute -top-24 left-1/2 hidden h-48 w-[70%] -translate-x-1/2 rounded-full opacity-40 blur-3xl transition-opacity duration-500 group-hover:opacity-70 md:block"
         style={{ background: accent }}
       />
 

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 import { cn } from "@/lib/utils";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 
 export const PinContainer = ({
   children,
@@ -21,6 +22,7 @@ export const PinContainer = ({
   /** Quando true, o container e o card ocupam 100% da largura (ex.: grid na página de projetos). */
   fullWidth?: boolean;
 }) => {
+  const isDesktop = useIsDesktop();
   const [transform, setTransform] = useState(
     "translate(-50%,-50%) rotateX(0deg)"
   );
@@ -31,6 +33,35 @@ export const PinContainer = ({
   const onMouseLeave = () => {
     setTransform("translate(-50%,-50%) rotateX(0deg) scale(1)");
   };
+
+  if (!isDesktop) {
+    return (
+      <div
+        className={cn(
+          "relative z-50 w-full",
+          fullWidth && "min-w-0",
+          containerClassName
+        )}
+      >
+        <div
+          className={cn(
+            "rounded-2xl border border-white/[0.1] bg-black-100/40 p-4 shadow-[0_8px_16px_rgb(0_0_0/0.4)] overflow-hidden",
+            fullWidth && "w-full max-w-full"
+          )}
+        >
+          <div
+            className={cn(
+              "relative z-50",
+              fullWidth ? "w-full min-w-0" : "",
+              className
+            )}
+          >
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div

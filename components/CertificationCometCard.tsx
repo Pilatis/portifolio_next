@@ -53,8 +53,7 @@ export function CertificationCometCard({
       <CometCard className="w-[85vw] sm:w-96" rotateDepth={12} translateDepth={14}>
         <Link
           href={detailHref}
-          className="flex w-full cursor-pointer flex-col h-full p-4 rounded-2xl shadow-[0_8px_16px_rgb(0_0_0/0.4)] border border-white/[0.1] hover:border-white/[0.2] transition duration-700 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black-100"
-          style={{ transformStyle: "preserve-3d" }}
+          className="flex w-full cursor-pointer flex-col h-full p-4 rounded-2xl shadow-[0_8px_16px_rgb(0_0_0/0.4)] border border-white/[0.1] hover:border-white/[0.2] transition duration-700 overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-purple/50 focus-visible:ring-offset-2 focus-visible:ring-offset-black-100 md:[transform-style:preserve-3d]"
           aria-label={itemT?.title ?? cert.title}
         >
           {/* Área da imagem – igual ao card padrão */}

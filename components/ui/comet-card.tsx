@@ -9,6 +9,7 @@ import {
   useMotionTemplate,
 } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useIsDesktop } from "@/hooks/useIsDesktop";
 
 export const CometCard = ({
   rotateDepth = 17.5,
@@ -21,6 +22,7 @@ export const CometCard = ({
   className?: string;
   children: React.ReactNode;
 }) => {
+  const isDesktop = useIsDesktop();
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0);
@@ -78,6 +80,10 @@ export const CometCard = ({
     x.set(0);
     y.set(0);
   };
+
+  if (!isDesktop) {
+    return <div className={cn(className)}>{children}</div>;
+  }
 
   return (
     <div
