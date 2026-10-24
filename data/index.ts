@@ -1003,7 +1003,6 @@ export const workExperience: WorkExperienceItem[] = [
       "/tail.svg",
       "/dock.svg",
       "/git.svg",
-      // Faltam ícones no repo (usuário enviará): C#, SQL Server, JavaScript, HTML, CSS, Scrum
     ],
     relatedProjectIds: [3, 1, 4, 2],
   },
