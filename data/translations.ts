@@ -315,32 +315,100 @@ The project involved challenges such as multi-profile access control, complex op
     experience: {
       heading: "My",
       highlight: "work experience",
+      viewDetails: "View details",
+      backToExperience: "Back to experience",
+      notFound: "Experience not found.",
+      aboutTitle: "About the role",
+      worksTitle: "Work delivered",
+      learnedTitle: "What I learned",
+      outcomesTitle: "Positive outcomes",
+      stackTitle: "Tech stack",
+      relatedProjectsTitle: "Related projects",
       items: [
         {
+          id: "cognitiva",
           title: "Full Stack Developer",
           company: "Cognitiva Brasil · TechForge",
-          period: "12/2023 — Present",
+          period: "12/2023 to Present",
           location: "Brazil",
-          desc: "Full-stack development in production with end-to-end ownership — APIs, data modeling, React/Next interfaces, and critical financial flows on a SaaS platform with 60k users.",
-          bullets: [
-            "Owned demands end to end: requirements, business rules, APIs, UIs, and integrations",
-            "Built Java / Spring Boot APIs with layered services and PostgreSQL + external integrations",
-            "Modeled and evolved relational schemas and queries for integrity and performance",
-            "Shipped React, Next.js and TypeScript UIs on REST APIs with solid error handling",
-            "Worked on financial and critical systems: payments, transactional states, async ops",
-            "Helped evolve a production SaaS with 60k users — stability, fewer failures, scalability",
-            "Scrum, code review, Git (GitHub/GitLab) and quality practices in the delivery cycle",
+          desc: "Full stack development in production with end-to-end ownership of APIs, data modeling, React and Next.js interfaces, and critical financial flows on a SaaS platform with 60k users.",
+          summary:
+            "At Cognitiva Brasil (TechForge) I work as a Full Stack Developer on digital products in production (web and mobile). I own demands from requirements to delivery: business rules, APIs, interfaces, and integrations. The work includes Java with Spring Boot, React, Next.js, TypeScript, PostgreSQL, and agile practices with Scrum, code review, and Git.",
+          works: [
+            {
+              title: "End-to-end product delivery",
+              description:
+                "Owned features from requirements and business rules through APIs, UIs, and integrations, with responsibility for the full delivery cycle.",
+            },
+            {
+              title: "APIs and layered architecture",
+              description:
+                "Implemented Java and Spring Boot APIs with service layers, data modeling, and integration with PostgreSQL and external services.",
+            },
+            {
+              title: "Web interfaces in production",
+              description:
+                "Built React, Next.js, and TypeScript interfaces on REST APIs, with state handling, error treatment, and stable UX.",
+            },
+            {
+              title: "Financial and critical flows",
+              description:
+                "Contributed to payment flows, transactional states, and asynchronous operations in systems that require reliability.",
+            },
+            {
+              title: "Portfolio products",
+              description:
+                "Shipped product work on Voxa, B2BHotel, DR Insights, and Fotocord for Cognitiva clients.",
+            },
+          ],
+          learned: [
+            "Operating full stack in production with ownership of critical business rules",
+            "Relational modeling and query performance on PostgreSQL for sensitive flows",
+            "Layered API design with Spring Boot and consistent frontend contracts",
+            "Delivery discipline with Scrum, code review, and Git on GitHub and GitLab",
+          ],
+          outcomes: [
+            "Helped evolve a production SaaS with 60k users, with focus on stability and fewer failures",
+            "Reduced ambiguity in critical flows through clearer states, error handling, and integrations",
+            "Improved consistency between APIs, data models, and React or Next.js interfaces",
+            "Raised delivery quality through code review and shared engineering practices",
           ],
         },
         {
-          title: "Front-End Developer — Freelance",
+          id: "ezap",
+          title: "Front-End Developer Freelancer",
           company: "Ezap Comunicação Integrada para Empresas",
-          period: "01/2025 — 03/2025",
+          period: "01/2025 to 03/2025",
           location: "Brazil",
           desc: "Built an onboarding and self-service system in React.js with guided flows that simplified complex tasks for end users.",
-          bullets: [
-            "Designed reusable components and step-by-step wizards to reduce navigation friction",
-            "Worked with stakeholders on requirements gathering and refinement aligned to the business",
+          summary:
+            "Freelance Front-End engagement for Ezap Comunicação Integrada para Empresas. I built an onboarding and self-service experience in React.js, with guided flows and reusable components aligned to business needs.",
+          works: [
+            {
+              title: "Onboarding and self-service",
+              description:
+                "Developed guided flows that broke complex tasks into clear steps for the end user.",
+            },
+            {
+              title: "Reusable UI and wizards",
+              description:
+                "Modeled reusable components and step-by-step wizards to reduce navigation friction.",
+            },
+            {
+              title: "Requirements with stakeholders",
+              description:
+                "Gathered and refined requirements with stakeholders so deliveries matched business needs.",
+            },
+          ],
+          learned: [
+            "Designing progressive onboarding flows for non-technical users",
+            "Structuring reusable React components and multi-step wizards",
+            "Translating business requirements into a clear front-end experience",
+          ],
+          outcomes: [
+            "Simplified complex tasks through guided self-service flows",
+            "Reduced navigation friction with consistent step-by-step wizards",
+            "Aligned front-end delivery with stakeholder priorities in a short engagement",
           ],
         },
       ],
@@ -779,32 +847,100 @@ Um dos destaques do projeto foi a implementação de um mapa interativo, que exi
     experience: {
       heading: "Minha",
       highlight: "experiência",
+      viewDetails: "Ver detalhes",
+      backToExperience: "Voltar à experiência",
+      notFound: "Experiência não encontrada.",
+      aboutTitle: "Sobre a atuação",
+      worksTitle: "Trabalhos realizados",
+      learnedTitle: "O que aprendi",
+      outcomesTitle: "Resultados positivos",
+      stackTitle: "Stack técnica",
+      relatedProjectsTitle: "Projetos relacionados",
       items: [
         {
+          id: "cognitiva",
           title: "Desenvolvedor Full Stack",
           company: "Cognitiva Brasil · TechForge",
-          period: "12/2023 — Atual",
+          period: "12/2023 a Atual",
           location: "Brasil",
-          desc: "Desenvolvimento full stack em produção com ownership ponta a ponta — APIs, modelagem de dados, interfaces React/Next e fluxos financeiros críticos em SaaS com 60 mil usuários.",
-          bullets: [
-            "Ownership de demandas do início ao fim: requisitos, regras de negócio, APIs, interfaces e integrações",
-            "APIs com Java e Spring Boot, camadas de serviço e integração com PostgreSQL e serviços externos",
-            "Modelagem e evolução de schemas e consultas relacionais com foco em integridade e performance",
-            "Interfaces com React, Next.js e TypeScript integradas a APIs REST, com estados e tratamento de erros",
-            "Fluxos financeiros e sistemas críticos: pagamentos, estados transacionais e operações assíncronas",
-            "Evolução de plataforma SaaS em produção com 60 mil usuários — estabilidade, menos falhas e escalabilidade",
-            "Scrum, code review, Git (GitHub/GitLab) e boas práticas de qualidade no ciclo de desenvolvimento",
+          desc: "Desenvolvimento full stack em produção com ownership ponta a ponta de APIs, modelagem de dados, interfaces React e Next.js, e fluxos financeiros críticos em SaaS com 60 mil usuários.",
+          summary:
+            "Na Cognitiva Brasil (TechForge) atuo como Desenvolvedor Full Stack em produtos digitais em produção (web e mobile). Faço ownership de demandas do requisito à entrega: regras de negócio, APIs, interfaces e integrações. O trabalho inclui Java com Spring Boot, React, Next.js, TypeScript, PostgreSQL e práticas ágeis com Scrum, code review e Git.",
+          works: [
+            {
+              title: "Entrega ponta a ponta",
+              description:
+                "Ownership de features desde requisitos e regras de negócio até APIs, interfaces e integrações, com responsabilidade pelo ciclo completo de entrega.",
+            },
+            {
+              title: "APIs e arquitetura em camadas",
+              description:
+                "Implementação de APIs com Java e Spring Boot, camadas de serviço, modelagem de dados e integração com PostgreSQL e serviços externos.",
+            },
+            {
+              title: "Interfaces web em produção",
+              description:
+                "Construção de interfaces com React, Next.js e TypeScript sobre APIs REST, com estados, tratamento de erros e experiência de uso estável.",
+            },
+            {
+              title: "Fluxos financeiros e críticos",
+              description:
+                "Atuação em pagamentos, estados transacionais e operações assíncronas em sistemas que exigem confiabilidade.",
+            },
+            {
+              title: "Produtos do portfólio",
+              description:
+                "Entregas em Voxa, B2BHotel, DR Insights e Fotocord para clientes da Cognitiva.",
+            },
+          ],
+          learned: [
+            "Operar full stack em produção com ownership de regras de negócio críticas",
+            "Modelagem relacional e performance de consultas em PostgreSQL em fluxos sensíveis",
+            "Design de APIs em camadas com Spring Boot e contratos consistentes com o frontend",
+            "Disciplina de entrega com Scrum, code review e Git no GitHub e GitLab",
+          ],
+          outcomes: [
+            "Contribuí para a evolução de um SaaS em produção com 60 mil usuários, com foco em estabilidade e menos falhas",
+            "Reduzi ambiguidade em fluxos críticos com estados mais claros, tratamento de erros e integrações",
+            "Melhorei a consistência entre APIs, modelos de dados e interfaces React ou Next.js",
+            "Elevei a qualidade das entregas com code review e práticas compartilhadas de engenharia",
           ],
         },
         {
-          title: "Desenvolvedor Front-End — Freelancer",
+          id: "ezap",
+          title: "Desenvolvedor Front-End Freelancer",
           company: "Ezap Comunicação Integrada para Empresas",
-          period: "01/2025 — 03/2025",
+          period: "01/2025 a 03/2025",
           location: "Brasil",
           desc: "Desenvolvi um sistema de onboarding e autoatendimento em React.js, com fluxos guiados que simplificaram tarefas complexas para o usuário.",
-          bullets: [
-            "Componentes reutilizáveis e wizards step-by-step, reduzindo fricção na navegação",
-            "Levantamento e refinamento de requisitos com stakeholders, alinhando entregas ao negócio",
+          summary:
+            "Atuação freelance de Front-End na Ezap Comunicação Integrada para Empresas. Construí uma experiência de onboarding e autoatendimento em React.js, com fluxos guiados e componentes reutilizáveis alinhados às necessidades do negócio.",
+          works: [
+            {
+              title: "Onboarding e autoatendimento",
+              description:
+                "Desenvolvimento de fluxos guiados que quebraram tarefas complexas em etapas claras para o usuário final.",
+            },
+            {
+              title: "UI reutilizável e wizards",
+              description:
+                "Modelagem de componentes reutilizáveis e wizards passo a passo para reduzir fricção na navegação.",
+            },
+            {
+              title: "Requisitos com stakeholders",
+              description:
+                "Levantamento e refinamento de requisitos com stakeholders para alinhar entregas às necessidades do negócio.",
+            },
+          ],
+          learned: [
+            "Desenhar fluxos progressivos de onboarding para usuários não técnicos",
+            "Estruturar componentes React reutilizáveis e wizards de múltiplas etapas",
+            "Traduzir requisitos de negócio em uma experiência de front-end clara",
+          ],
+          outcomes: [
+            "Simplifiquei tarefas complexas com fluxos guiados de autoatendimento",
+            "Reduzi fricção na navegação com wizards consistentes passo a passo",
+            "Alinhei a entrega de front-end às prioridades dos stakeholders em um engajamento curto",
           ],
         },
       ],

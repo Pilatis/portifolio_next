@@ -970,39 +970,54 @@ export const companies = [
   },
 ];
 
-export const workExperience = [
+export type WorkExperienceItem = {
+  id: string;
+  title: string;
+  company: string;
+  period: string;
+  location: string;
+  thumbnail: string;
+  iconLists: string[];
+  /** Projetos do portfólio ligados a esta experiência */
+  relatedProjectIds?: number[];
+};
+
+export const workExperience: WorkExperienceItem[] = [
   {
-    id: 1,
+    id: "cognitiva",
     title: "Full Stack Developer",
     company: "Cognitiva Brasil · TechForge",
-    period: "12/2023 — Present",
-    location: "Brazil",
+    period: "12/2023 a Atual",
+    location: "Brasil",
     thumbnail: "/exp1.svg",
-    desc: "Full-stack development in production with end-to-end ownership — APIs, data modeling, React/Next interfaces, and critical financial flows on a SaaS platform with 60k users.",
-    bullets: [
-      "Owned demands end to end: requirements, business rules, APIs, UIs, and integrations",
-      "Built Java / Spring Boot APIs with layered services and PostgreSQL + external integrations",
-      "Modeled and evolved relational schemas and queries for integrity and performance",
-      "Shipped React, Next.js and TypeScript UIs on REST APIs with solid error handling",
-      "Worked on financial and critical systems: payments, transactional states, async ops",
-      "Helped evolve a production SaaS with 60k users — stability, fewer failures, scalability",
-      "Scrum, code review, Git (GitHub/GitLab) and quality practices in the delivery cycle",
+    iconLists: [
+      "/java.svg",
+      "/spring.svg",
+      "/re.svg",
+      "/next.svg",
+      "/ts.svg",
+      "/postgresql.svg",
+      "/nodejs.svg",
+      "/dock.svg",
+      "/git.svg",
+      "/chakra.svg",
     ],
+    relatedProjectIds: [3, 1, 4, 2],
   },
   {
-    id: 2,
-    title: "Front-End Developer — Freelance",
+    id: "ezap",
+    title: "Front-End Developer Freelancer",
     company: "Ezap Comunicação Integrada para Empresas",
-    period: "01/2025 — 03/2025",
-    location: "Brazil",
+    period: "01/2025 a 03/2025",
+    location: "Brasil",
     thumbnail: "/exp2.svg",
-    desc: "Built an onboarding and self-service system in React.js with guided flows that simplified complex tasks for end users.",
-    bullets: [
-      "Designed reusable components and step-by-step wizards to reduce navigation friction",
-      "Worked with stakeholders on requirements gathering and refinement aligned to the business",
-    ],
+    iconLists: ["/re.svg", "/ts.svg", "/git.svg"],
   },
 ];
+
+export function getWorkExperience(id: string): WorkExperienceItem | undefined {
+  return workExperience.find((item) => item.id === id);
+}
 
 export const socialMedia = [
   {
