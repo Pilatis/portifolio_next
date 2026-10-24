@@ -37,7 +37,7 @@ const Footer = () => {
           title={footer.button}
           icon={<FaLocationArrow />}
           position="right"
-          href="mailto:pilatidev1@gmail.com"
+          href="mailto:pilatidev1@gmail.com?subject=Contato%20via%20portf%C3%B3lio"
         />
       </div>
       <div className="mt-16 flex flex-col items-center justify-between gap-8 md:flex-row md:gap-4">
