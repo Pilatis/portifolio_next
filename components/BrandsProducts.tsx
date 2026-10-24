@@ -31,11 +31,16 @@ const BrandsProducts = () => {
   const brandsT = t("brands") as BrandsT;
 
   return (
-    <section id="brands" className="relative scroll-mt-20 py-20 w-full overflow-hidden">
-      <div className="pointer-events-none absolute inset-0">
-        <Spotlight className="top-10 left-0 h-[40vh] w-[50vw]" fill="blue" />
-        <Spotlight className="-top-10 right-0 h-[30vh] w-[40vw]" fill="white" />
-      </div>
+    <section id="brands" className="relative scroll-mt-20 py-20 w-full">
+      {/* Posicionamento no estilo Hero — sem w/h apertados (cortam o blur do SVG). */}
+      <Spotlight
+        className="-top-40 -left-10 md:-left-32 md:-top-20 h-[80vh]"
+        fill="blue"
+      />
+      <Spotlight
+        className="top-10 left-full h-[60vh] w-[50vw]"
+        fill="white"
+      />
 
       <div className="relative z-10">
         <h1 className="heading">

@@ -98,11 +98,12 @@ const Experience = () => {
   const isTechnical = viewMode === "technical";
 
   return (
-    <section id="experience" className="relative w-full scroll-mt-20 overflow-hidden py-20">
-      <div className="pointer-events-none absolute inset-0">
-        <Spotlight className="-top-10 left-0 h-[40vh] w-[50vw]" fill="white" />
-        <Spotlight className="top-28 right-0 h-[35vh] w-[40vw]" fill="blue" />
-      </div>
+    <section id="experience" className="relative w-full scroll-mt-20 py-20">
+      <Spotlight
+        className="-top-40 -left-10 md:-left-32 md:-top-20 h-[80vh]"
+        fill="white"
+      />
+      <Spotlight className="top-10 left-full h-[60vh] w-[50vw]" fill="blue" />
 
       <div className="relative z-10">
         <h1 className="heading">

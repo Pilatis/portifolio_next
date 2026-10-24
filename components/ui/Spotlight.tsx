@@ -1,5 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { useId } from "react";
 
 type SpotlightProps = {
   className?: string;
@@ -7,17 +9,20 @@ type SpotlightProps = {
 };
 
 export const Spotlight = ({ className, fill }: SpotlightProps) => {
+  const uid = useId().replace(/:/g, "");
+  const filterId = `spotlight-filter-${uid}`;
+
   return (
     <svg
       className={cn(
         "animate-spotlight pointer-events-none absolute z-[1] hidden h-[169%] w-[138%] opacity-0 md:block lg:w-[84%]",
-        className
+        className,
       )}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 3787 2842"
       fill="none"
     >
-      <g filter="url(#filter)">
+      <g filter={`url(#${filterId})`}>
         <ellipse
           cx="1924.71"
           cy="273.501"
@@ -26,11 +31,11 @@ export const Spotlight = ({ className, fill }: SpotlightProps) => {
           transform="matrix(-0.822377 -0.568943 -0.568943 0.822377 3631.88 2291.09)"
           fill={fill || "white"}
           fillOpacity="0.21"
-        ></ellipse>
+        />
       </g>
       <defs>
         <filter
-          id="filter"
+          id={filterId}
           x="0.860352"
           y="0.838989"
           width="3785.16"
@@ -38,17 +43,17 @@ export const Spotlight = ({ className, fill }: SpotlightProps) => {
           filterUnits="userSpaceOnUse"
           colorInterpolationFilters="sRGB"
         >
-          <feFlood floodOpacity="0" result="BackgroundImageFix"></feFlood>
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feBlend
             mode="normal"
             in="SourceGraphic"
             in2="BackgroundImageFix"
             result="shape"
-          ></feBlend>
+          />
           <feGaussianBlur
             stdDeviation="151"
             result="effect1_foregroundBlur_1065_8"
-          ></feGaussianBlur>
+          />
         </filter>
       </defs>
     </svg>
