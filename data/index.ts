@@ -993,14 +993,17 @@ export const workExperience: WorkExperienceItem[] = [
     iconLists: [
       "/java.svg",
       "/spring.svg",
+      "/nodejs.svg",
       "/re.svg",
       "/next.svg",
       "/ts.svg",
       "/postgresql.svg",
-      "/nodejs.svg",
+      "/chakra.svg",
+      "/expo.svg",
+      "/tail.svg",
       "/dock.svg",
       "/git.svg",
-      "/chakra.svg",
+      // Faltam ícones no repo (usuário enviará): C#, SQL Server, JavaScript, HTML, CSS, Scrum
     ],
     relatedProjectIds: [3, 1, 4, 2],
   },
@@ -1011,7 +1014,7 @@ export const workExperience: WorkExperienceItem[] = [
     period: "01/2025 a 03/2025",
     location: "Brasil",
     thumbnail: "/exp2.svg",
-    iconLists: ["/re.svg", "/ts.svg", "/git.svg"],
+    iconLists: ["/re.svg", "/ts.svg", "/git.svg", "/tail.svg"],
   },
 ];
 

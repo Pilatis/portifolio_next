@@ -83,7 +83,7 @@ function ExpCardBody({
 
         {iconLists.length > 0 && (
           <div className="mt-4 flex flex-wrap items-center">
-            {iconLists.slice(0, 6).map((icon, i) => {
+            {iconLists.slice(0, 8).map((icon, i) => {
               const label = getStackLabel(icon);
               const src = icon.startsWith("/") ? icon : `/${icon}`;
               return (
