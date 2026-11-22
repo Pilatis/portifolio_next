@@ -686,6 +686,40 @@ export const certifications: Certification[] = [
       "https://www.skills.google/public_profiles/e8e50834-ab49-4d98-adb7-6cf8eca1c05b/badges/24379997",
     featured: true,
   },
+  {
+    id: 16,
+    image: "/images/certificates/openai-academy-ai-foundations.png",
+    title: "AI Foundations",
+    description:
+      "Trilha da OpenAI Academy sobre fundamentos de IA, large language models e ChatGPT, com prática em instruções claras, contexto, revisão de saídas e uso responsável de IA no trabalho.",
+    issuer: "OpenAI Academy",
+    startedAt: "2026-11",
+    issuedAt: "2026-11",
+    hours: "~70min",
+    category: ["Inteligência Artificial"],
+    skills: [
+      "Fundamentos de IA e LLMs",
+      "Prompt writing",
+      "Context setting",
+      "Output evaluation",
+      "Responsible AI use",
+    ],
+    topics: [
+      "Fundamentos de IA e modelos de linguagem",
+      "Instruções claras e prompting",
+      "Contexto e revisão de saídas",
+      "Uso responsável de IA no trabalho",
+      "Avaliação prática com ChatGPT",
+    ],
+    practicalApplication:
+      "Aplicação de hábitos de prompting, contexto e revisão em tarefas reais do dia a dia com ChatGPT.",
+    impact:
+      "Base prática para usar IA com mais clareza, critério e responsabilidade em fluxos de trabalho.",
+    credentialId: "6289558f-6884-4945-8dec-b1a21894d79f",
+    credentialUrl:
+      "https://oaiacademy.credential.net/6289558f-6884-4945-8dec-b1a21894d79f",
+    featured: true,
+  },
 ];
 
 /** Ordem na home: B2B → Fotocord → Voxa → DR Insights */
