@@ -34,8 +34,10 @@ type CertificationsT = {
   }>;
 };
 
+const HOME_CERTIFICATIONS_LIMIT = 3;
+
 type CertificationsProps = {
-  /** Se true, mostra apenas 3 em destaque + link "Ver mais". Se false, mostra todas com filtro (página /certifications). */
+  /** Se true, mostra no máximo 3 em destaque + link "Ver mais". Se false, mostra todas com filtro (página /certifications). */
   variant?: "home" | "full";
 };
 
@@ -50,7 +52,16 @@ export default function Certifications({ variant = "home" }: CertificationsProps
   /** Na página full (/certifications) o modo não afeta: sempre conteúdo técnico (busca, filtros, cards completos). */
   const isCompact = isHome && viewMode === "recruiter";
 
-  const featuredList = certifications.filter((c) => c.featured === true);
+  const featuredList = React.useMemo(() => {
+    return certifications
+      .filter((c) => c.featured === true)
+      .sort((a, b) => {
+        const dateA = a.issuedAt ?? a.startedAt;
+        const dateB = b.issuedAt ?? b.startedAt;
+        return dateB.localeCompare(dateA);
+      })
+      .slice(0, HOME_CERTIFICATIONS_LIMIT);
+  }, []);
 
   const byCategory =
     selectedCategory === null
