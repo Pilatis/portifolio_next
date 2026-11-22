@@ -165,7 +165,7 @@ export default function CertificationDetailPage() {
         >
           <span><strong className="text-purple/90">{certT.issuerLabel ?? "Instituição"}:</strong> {issuer}</span>
           <span className="text-white-200/50">·</span>
-          <span><strong className="text-purple/90">{certT.period}:</strong> {formatCertDateRange(cert.startedAt, cert.issuedAt, certT.inProgress)}</span>
+          <span><strong className="text-purple/90">{certT.period}:</strong> {formatCertDateRange(cert.startedAt, cert.issuedAt, certT.inProgress, lang)}</span>
           {cert.hours && (
             <>
               <span className="text-white-200/50">·</span>

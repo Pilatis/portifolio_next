@@ -111,7 +111,7 @@ export function CertificationCard({
           <p className="text-sm text-white-200/90 mb-3 flex flex-wrap items-center gap-x-2 gap-y-0.5">
             <span>{itemT?.issuer ?? cert.issuer}</span>
             <span className="text-white-200/50">·</span>
-            <span>{formatCertDateRange(cert.startedAt, cert.issuedAt, inProgress)}</span>
+            <span>{formatCertDateRange(cert.startedAt, cert.issuedAt, inProgress, lang)}</span>
             {cert.hours && (
               <>
                 <span className="text-white-200/50">·</span>
