@@ -720,6 +720,40 @@ export const certifications: Certification[] = [
       "https://oaiacademy.credential.net/6289558f-6884-4945-8dec-b1a21894d79f",
     featured: true,
   },
+  {
+    id: 17,
+    image: "/images/certificates/openai-academy-applied-ai-foundations.png",
+    title: "Applied AI Foundations",
+    description:
+      "Trilha intermediária da OpenAI Academy para aplicar IA em trabalho recorrente: quebrar workflows em etapas, identificar onde a IA ajuda e montar um plano prático de uso ao longo do processo.",
+    issuer: "OpenAI Academy",
+    startedAt: "2026-11",
+    issuedAt: "2026-11",
+    hours: "~80min",
+    category: ["Inteligência Artificial"],
+    skills: [
+      "AI workflows",
+      "Process design",
+      "Prompting aplicado",
+      "Context setting",
+      "Human review checkpoints",
+    ],
+    topics: [
+      "Aplicação de IA em workflows recorrentes",
+      "Decomposição de tarefas em etapas",
+      "Identificação de pontos de alavancagem com IA",
+      "Planejamento prático de uso de IA",
+      "Revisão humana e consistência no processo",
+    ],
+    practicalApplication:
+      "Transformação de uma tarefa real de trabalho em um fluxo reutilizável com apoio de IA e pontos de revisão.",
+    impact:
+      "Uso mais consistente e estruturado de IA em processos do dia a dia, com melhor critério de onde e como aplicar.",
+    credentialId: "7e1d16af-c40a-4dbb-914f-43e95259dc89",
+    credentialUrl:
+      "https://oaiacademy.credential.net/7e1d16af-c40a-4dbb-914f-43e95259dc89",
+    featured: true,
+  },
 ];
 
 /** Ordem na home: B2B → Fotocord → Voxa → DR Insights */
