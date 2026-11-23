@@ -754,6 +754,40 @@ export const certifications: Certification[] = [
       "https://oaiacademy.credential.net/7e1d16af-c40a-4dbb-914f-43e95259dc89",
     featured: true,
   },
+  {
+    id: 18,
+    image: "",
+    title: "Java Completo: OO, Spring Boot, JPA e Projetos",
+    description:
+      "Formação completa em Java e Programação Orientada a Objetos, cobrindo sintaxe, OO, UML, JDBC, JavaFX, Spring Boot, JPA/Hibernate, MySQL, MongoDB e práticas de mercado, com projetos e exercícios.",
+    issuer: "Udemy",
+    startedAt: "2026-11",
+    issuedAt: null,
+    hours: "54h",
+    category: ["Backend", "Fundamentos"],
+    skills: [
+      "Java",
+      "Orientação a Objetos",
+      "Spring Boot",
+      "JPA / Hibernate",
+      "MySQL",
+      "MongoDB",
+      "JDBC",
+      "Maven",
+    ],
+    topics: [
+      "Lógica, sintaxe Java e OO",
+      "UML, herança, polimorfismo e interfaces",
+      "Generics, lambdas e Stream API",
+      "JDBC, JPA/Hibernate e Spring Data",
+      "Spring Boot, JavaFX, MySQL e MongoDB",
+    ],
+    practicalApplication:
+      "Base para desenvolvimento backend em Java com Spring Boot, persistência relacional/NoSQL e construção de soluções orientadas a objetos.",
+    impact:
+      "Fortalecimento da stack Java no backend, alinhada ao uso profissional com Spring e acesso a dados.",
+    featured: false,
+  },
 ];
 
 /** Ordem na home: B2B → Fotocord → Voxa → DR Insights */
